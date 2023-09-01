@@ -35,6 +35,8 @@ const Post = () => {
     },
   });
 
+  const { updateData } = myProfileData;
+
   const openDropdown = () => {
     clearTimeout(timeoutRef.current);
     setIsDropdownOpen(true);
@@ -54,7 +56,7 @@ const Post = () => {
     }
   };
 
-  const { updateData } = myProfileData;
+
 
   const { isLoading, data: posts = [] } = useQuery({
     queryKey: ["posts"],

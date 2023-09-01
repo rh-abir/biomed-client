@@ -1,20 +1,26 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../Provider/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import axios from 'axios';
-import coverBg from '../../assets/profile_bg/whitel-wall.jpg'
+import React, { useContext } from 'react';
+import { AuthContext } from '../../Provider/AuthProvider';
+import coverBg from '../../assets/profile_bg/whitel-wall.jpg';
+import Post from '../Shared/CommunityFeed/Post/Post';
+import SharePost from '../Shared/CommunityFeed/SharePost/SharePost';
 
 const CommunityProfileHome = () => {
 
     const { user } = useContext(AuthContext);
 
     const { data: myProfileData = [] } = useQuery({
-        queryKey: ["profile"],
+        queryKey: ["profile", user?.email],
         queryFn: async () => {
-            const res = await axios(`https://biomed-server.vercel.app/users/${user?.email}`);
-            return res.data;
+          const res = await axios(
+            `https://biomed-server.vercel.app/users/${user?.email}`
+          );
+          return res.data;
         },
-    });
+      });
+    
+      const { updateData } = myProfileData;
 
     return (
         <div>
@@ -25,15 +31,15 @@ const CommunityProfileHome = () => {
                     className="w-full h-60 object-cover"
                 />
                 <img
-                    src={myProfileData.image}
+                    src={updateData?.image}
                     alt="Profile Photo"
                     className="w-32 h-32 absolute bottom-0 left-20 transform translate-y-1/2 rounded-full border-4 border-gray-400"
                 />
             </div>
             <div className='p-8'>
                 <div className="mt-10 ms-12">
-                    <h1 className="text-2xl font-bold">{myProfileData.name}</h1>
-                    <p className="text-gray-600">{myProfileData.email}</p>
+                    <h1 className="text-2xl font-bold">{updateData?.name}</h1>
+                    <p className="text-gray-600">{updateData?.email}</p>
                     <p className='text-gray-600'>Software Engineer, Dhaka</p>
                 </div>
                 <div className="flex mt-2 ms-12">
@@ -79,6 +85,10 @@ const CommunityProfileHome = () => {
                     </div>
                 </div>
             </div>
+            {/* Shared Post */}
+            <SharePost/>
+            {/* Own Post */}
+            <Post/>
         </div>
     );
 };

@@ -12,7 +12,7 @@ const CategoryMenu = () => {
   ];
 
   return (
-    <div className="pt-[80px]">
+    <div className="pt-[80px] bg-green-200">
       <Container>
         <ul className="hidden md:flex justify-start items-center gap-10 font-semibold">
           {categories.map((category) => (

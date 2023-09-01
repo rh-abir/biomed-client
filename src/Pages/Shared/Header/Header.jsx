@@ -50,7 +50,7 @@ const Header = () => {
 
   return (
     <div
-      className={`fixed w-full z-50 transition-all ease-in-out duration-200 ${
+      className={`fixed w-full bg-green-200 z-50 transition-all ease-in-out duration-200 ${
         scrolling ? "backdrop-blur-lg bg-opacity-80 shadow-md" : ""
       }`}
     >

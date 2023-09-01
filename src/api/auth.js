@@ -36,6 +36,7 @@ export const saveClient = (user, updateData) => {
       updateData,
     };
 
+
     fetch(`https://biomed-server.vercel.app/users/${user?.email}`, {
       method: "PUT",
       headers: {

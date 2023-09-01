@@ -6,10 +6,23 @@ import {
     FaLinkedinIn,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import Loader from "../../../components/Loader/Loader";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const Footer = () => {
     const currentDate = new Date();
     const currentYear = currentDate.getFullYear();
+
+    const { data: socialMedia, isLoading } = useQuery({
+        queryFn: async () => {
+            const res = await axios(`http://localhost:5000/social-media`);
+            return res.data;
+        },
+    });
+    if (isLoading) {
+        return <Loader />;
+    }
 
     return (
         <footer className="bg-gray-800 text-white py-12">
@@ -18,14 +31,21 @@ const Footer = () => {
                     <div className="flex gap-8 mb-6 md:mb-0">
                         <Link to="/terms">Terms of Service</Link>
                         <p>Privacy Policy</p>
-                        <p>Site Map</p>
                     </div>
                     <div className="flex gap-5 items-center">
                         <p>Follow Us</p>
-                        <FaFacebookF />
-                        <FaTwitter />
-                        <FaInstagram />
-                        <FaLinkedinIn />
+                        <Link to={`${socialMedia[0].facebook}`}>
+                            <FaFacebookF />
+                        </Link>
+                        <Link to={`${socialMedia[0].twitter}`}>
+                            <FaTwitter />
+                        </Link>
+                        <Link to={`${socialMedia[0].instagram}`}>
+                            <FaInstagram />
+                        </Link>
+                        <Link to={`${socialMedia[0].linkedin}`}>
+                            <FaLinkedinIn />
+                        </Link>
                     </div>
                 </div>
                 <hr className="h-px mt-10 mb-6 border-0 bg-gray-600"></hr>

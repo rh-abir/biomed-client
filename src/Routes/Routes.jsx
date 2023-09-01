@@ -12,7 +12,6 @@ import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApp
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
 import PostTask from "../Dashboard/DashboardClient/PostTask/PostTask";
-import ShortlistedResumes from "../Dashboard/DashboardClient/ShortlistedResumes/ShortlistedResumes";
 import Community from "../Layout/Community";
 import CommunityProfile from "../Layout/CommunityProfile";
 import Dashboard from "../Layout/Dashboard";
@@ -30,6 +29,8 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import PostBlog from "../Dashboard/DashboardAdmin/PostBlog/PostBlog";
+import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
 import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTasks";
 import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
 import InstructorView from "../Dashboard/DashboardClient/InstructorProfile/InstructorView/InstructorView";
@@ -140,10 +141,6 @@ const router = createBrowserRouter([
         element: <AllApplications />,
       },
       {
-        path: "/dashboard/shortlisted-resumes",
-        element: <ShortlistedResumes />,
-      },
-      {
         path: "/dashboard/editProfile",
         element: <EditProfile />,
       },
@@ -165,6 +162,14 @@ const router = createBrowserRouter([
         path: "/dashboard/all-moderator",
         element: <AllModerator />,
       },
+      {
+        path: "/dashboard/social-media",
+        element: <SocialMedia />,
+      },
+      {
+        path: "/dashboard/post-blog",
+        element: <PostBlog/>,
+      }
     ],
   },
   // Community Routes

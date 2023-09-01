@@ -3,20 +3,20 @@ import React, { useEffect, useRef, useState } from 'react';
 
 const SearchForm = () => {
     const [search, setSearch] = useState('')
-    const [category, setCategory] = useState('');
+    const [industry, setIndustry] = useState('');
 
     console.log(search)
     useEffect(() => {
         const SearchResults = async () => {
             if (search !== '') {
-                const response = await fetch(`https://biomed-server.vercel.app/jobSearchByTitle/${search}/${category}`);
+                const response = await fetch(`http://localhost:5000/jobSearchByTitle/${search}/${industry}`);
                 const data = await response.json();
                 console.log(data); // Log the results to the console
             }
         };
 
         SearchResults();
-    }, [search, category]);
+    }, [search, industry]);
 
     const handleOnSearch = (event) =>{
         event.preventDefault()
@@ -26,12 +26,12 @@ const SearchForm = () => {
     }
     const handleCategoryChange = (event) => {
         event.preventDefault()
-        const selectedCategory = event.target.value;
-        setCategory(selectedCategory);
+        const selectedIndustry = event.target.value;
+        setIndustry(selectedIndustry);
     }
     return (
-        <div className="lg:flex">
-            <div className="border rounded-lg p-4 max-w-2xl">
+        <div className="lg:flex">       
+            <div className="border border-gray-700 rounded-lg p-4 max-w-2xl">
                 <form onSubmit={handleOnSearch} className="space-y-4">
                     <div className=" flex flex-col lg:flex-row lg:flex lg:items-center lg:space-x-4 gap-2 lg:gap-0">
                         <div className="flex-grow">
@@ -52,13 +52,15 @@ const SearchForm = () => {
                                 className="w-full dark:bg-slate-800 py-2 pl-2 pr-8 rounded-lg outline-none"
                             >
                                 <option>Categories</option>
-                                <option>Design & Creative</option>
-                                <option>Development & IT</option>
-                                <option>Digital Marketing</option>
-                                <option>Finance & Accounting</option>
-                                <option>Programming & Tech</option>
-                                <option>Trending</option>
-                                <option>Writing & Translation</option>
+                                <option>Science</option>
+                                <option>Mathematics</option>
+                                <option>Literature</option>
+                                <option>History</option>
+                                <option>Technology</option>
+                                <option>Business</option>
+                                <option>Healthcare</option>
+                                <option>Arts</option>
+                                <option>Social Sciences</option>
                             </select>
                         </div>
                         <div className="flex-shrink">
