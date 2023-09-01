@@ -53,7 +53,7 @@ const AllModerator = () => {
                   <td className="py-2 md:py-4">
                     <div className="flex items-center">
                       <img
-                        src={client.image}
+                        src={client?.image}
                         alt="Job"
                         className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
                       />

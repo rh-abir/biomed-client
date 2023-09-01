@@ -104,11 +104,11 @@ const AuthProvider = ({ children }) => {
   });
 
   // get single job using email
-  const { data: manageJobs = [] } = useQuery({
+  const { data: manageJobs = [], isLoading } = useQuery({
     queryKey: ["manageJobs"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/jobs/souravh093@gmail.com`
+        `https://biomed-server.vercel.app/jobs/${user?.email}`
       );
       return res.data;
     },
@@ -140,6 +140,7 @@ const AuthProvider = ({ children }) => {
 
     // manage jobs single job
     manageJobs,
+    isLoading
   };
 
   return (
