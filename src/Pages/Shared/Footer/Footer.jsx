@@ -18,6 +18,7 @@ const Footer = () => {
         queryFn: async () => {
             const res = await axios(`http://localhost:5000/social-media`);
             return res.data;
+                    console.log("CONSOLE TO FOOTER" ,socialMedia);
         },
     });
     if (isLoading) {
@@ -34,16 +35,16 @@ const Footer = () => {
                     </div>
                     <div className="flex gap-5 items-center">
                         <p>Follow Us</p>
-                        <Link to={`${socialMedia[0].facebook}`}>
+                        <Link to="/">
                             <FaFacebookF />
                         </Link>
-                        <Link to={`${socialMedia[0].twitter}`}>
+                        <Link to="/">
                             <FaTwitter />
                         </Link>
-                        <Link to={`${socialMedia[0].instagram}`}>
+                        <Link to="/">
                             <FaInstagram />
                         </Link>
-                        <Link to={`${socialMedia[0].linkedin}`}>
+                        <Link to="/">
                             <FaLinkedinIn />
                         </Link>
                     </div>
