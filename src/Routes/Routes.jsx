@@ -8,7 +8,6 @@ import CandidateHome from "../Dashboard/DashboardCandidate/CandidateHome/Candida
 import EditProfile from "../Dashboard/DashboardCandidate/MyProfile/EditProfile/EditProfile";
 import MyProfile from "../Dashboard/DashboardCandidate/MyProfile/MyProfile";
 import ShortlistedTasks from "../Dashboard/DashboardCandidate/ShortlistedTasks/ShortlistedTasks";
-import UploadResume from "../Dashboard/DashboardCandidate/UploadResume/UploadResume";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
@@ -115,10 +114,7 @@ const router = createBrowserRouter([
         path: "/dashboard/applied-tasks",
         element: <AppliedTasks></AppliedTasks>,
       },
-      {
-        path: "/dashboard/upload-resume",
-        element: <UploadResume />,
-      },
+  
       {
         path: "/dashboard/post-task",
         element: <PostTask />,

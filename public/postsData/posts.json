@@ -1,0 +1,47 @@
+[
+  {
+    "_id": 2562827282,
+    "desc": "Love For All, Hatred For None.",
+    "photo": "https://i.ibb.co/hLQP3G5/beautiful.jpg",
+    "date": "5 mins ago",
+    "userId": 1,
+    "like": 32,
+    "comment": 9
+  },
+  {
+    "_id": 2562827282,
+    "desc": "A beautiful sunset view.",
+    "photo": "https://i.ibb.co/tYHfK8p/beautiful-sunset.jpg",
+    "date": "15 mins ago",
+    "userId": 2,
+    "like": 2,
+    "comment": 1
+  },
+  {
+    "_id": 2562827282,
+    "desc": "Every moment is a fresh beginning.",
+    "photo": "https://i.ibb.co/sggb3tf/fresh-beginning.jpg",
+    "date": "1 hour ago",
+    "userId": 3,
+    "like": 61,
+    "comment": 2
+  },
+  {
+    "_id": 2562827282,
+    "desc": "Exploring new places.",
+    "photo": "https://i.ibb.co/rFZcH1c/new-places.jpg",
+    "date": "4 hours ago",
+    "userId": 4,
+    "like": 7,
+    "comment": 3
+  },
+  {
+    "_id": 2562827282,
+    "desc": "Delicious homemade dinner.",
+    "photo": "https://i.ibb.co/XxjMQGK/homemade-dinner.jpg",
+    "date": "5 hours ago",
+    "userId": 5,
+    "like": 23,
+    "comment": 5
+  }
+]
