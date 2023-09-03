@@ -28,6 +28,8 @@ const BrowseJobsDetails = () => {
     grading,
   } = useLoaderData();
 
+  console.log(attachment)
+
   const showInfoCompany = {
     _id,
     title,

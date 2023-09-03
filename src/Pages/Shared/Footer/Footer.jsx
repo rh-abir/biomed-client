@@ -16,7 +16,7 @@ const Footer = () => {
 
     const { data: socialMedia, isLoading } = useQuery({
         queryFn: async () => {
-            const res = await axios(`http://localhost:5000/social-media`);
+            const res = await axios(`https://biomed-server.vercel.app/social-media`);
             return res.data;
                     console.log("CONSOLE TO FOOTER" ,socialMedia);
         },

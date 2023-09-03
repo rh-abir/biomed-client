@@ -35,6 +35,7 @@ import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTa
 import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
 import InstructorView from "../Dashboard/DashboardClient/InstructorProfile/InstructorView/InstructorView";
 import ManageTask from "../Dashboard/DashboardClient/ManageTask/ManageTask";
+import SwipeableTemporaryDrawer from "../test/SwipeableTemporaryDrawer";
 
 const router = createBrowserRouter([
   {
@@ -85,6 +86,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
+      {
+        path: "/test",
+        element: <SwipeableTemporaryDrawer />
+      }
     ],
   },
   {
