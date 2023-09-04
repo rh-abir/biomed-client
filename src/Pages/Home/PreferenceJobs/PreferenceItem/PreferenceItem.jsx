@@ -1,46 +1,31 @@
 import React from "react";
-import { CiLocationOn, CiMoneyCheck1 } from "react-icons/ci";
-import { IoIosArrowForward } from "react-icons/io";
-import { Link } from "react-router-dom";
+import quoteImg from '../../../../assets/quote/quote.png'
 
-const PreferenceItem = ({ data }) => {
+const PreferenceItem = ({ task }) => {
   const {
-    job_name,
-    company_logo,
-    job_location,
-    company_name,
-    salary,
-    company_description,
-  } = data;
+    ceo_image,
+    ceo_name,
+    task_text
+  } = task;
+
 
   return (
-    <div className="dark:bg-gray-800 bg-white shadow-md rounded-lg overflow-hidden flex flex-col w-full h-[485px]">
-      <div className="p-6 flex-grow">
-        <div className="flex items-center space-x-4">
-          <img className="w-16 h-16 rounded-full" src={company_logo} alt="" />
-          <div>
-            <h2 className="text-lg font-semibold text-gray-800">{job_name}</h2>
-            <h3 className="text-sm text-gray-600">{company_name}</h3>
-          </div>
+    <div className="bg-white dark:bg-gray-800 shadow-md rounded-lg overflow-hidden w-100">
+      <div className="p-4 text-center">
+        <div className="mt-4">
+          <img
+            className="w-12 h-12 mx-auto mb-2 object-cover"
+            src={quoteImg}
+            alt="Testimonials Icon"
+          />
+          <h2 className="text-xl font-semibold">{ceo_name}</h2>
+          <p className="text-gray-600 mt-2">{task_text}</p>
         </div>
-        <hr className="my-4 border-t border-gray-300" />
-        <div className="text-gray-700">
-          <div className="flex items-center mb-2">
-            <CiLocationOn className="w-4 h-4 mr-2" /> {job_location}
-          </div>
-          <div className="flex items-center">
-            <CiMoneyCheck1 className="w-4 h-4 mr-2" /> {salary} /year
-          </div>
-        </div>
-        <div className="my-5 flex-grow">
-          <p>{company_description}</p>
-        </div>
-      </div>
-      <div className="bg-[#5BBB7B] text-white py-2 text-center hover:bg-opacity-90">
-        <Link to="/details" className="flex items-center justify-center">
-          <span className="mr-1">View details</span>
-          <IoIosArrowForward className="w-4 h-4" />
-        </Link>
+        <img
+          className="w-16 h-16 mx-auto rounded-full mt-4"
+          src={ceo_image}
+          alt="Profile"
+        />
       </div>
     </div>
   );

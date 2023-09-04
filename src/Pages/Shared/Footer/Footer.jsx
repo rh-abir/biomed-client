@@ -1,14 +1,14 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
 import {
     FaFacebookF,
-    FaTwitter,
     FaInstagram,
     FaLinkedinIn,
+    FaTwitter,
 } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import Loader from "../../../components/Loader/Loader";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 
 const Footer = () => {
     const currentDate = new Date();
@@ -16,7 +16,7 @@ const Footer = () => {
 
     const { data: socialMedia, isLoading } = useQuery({
         queryFn: async () => {
-            const res = await axios(`http://localhost:5000/social-media`);
+            const res = await axios(`https://biomed-server.vercel.app/social-media`);
             return res.data;
                     console.log("CONSOLE TO FOOTER" ,socialMedia);
         },
