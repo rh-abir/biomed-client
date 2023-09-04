@@ -61,7 +61,6 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
       },
-
       {
         path: "/browseTasks",
         element: <BrowseTasks />,
