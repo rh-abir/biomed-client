@@ -1,11 +1,15 @@
+import { Favorite, FavoriteBorder } from "@mui/icons-material";
+import { Checkbox } from "@mui/material";
+import { useState } from "react";
 import { AiOutlineClockCircle, AiOutlineFileDone } from "react-icons/ai";
-import { BsBookmarkPlus } from "react-icons/bs";
 import { FaIndustry } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 
-const TaskCard = ({ task }) => {
+const label = { inputProps: { "aria-label": "Checkbox demo" } };
+
+const JobCard = ({ task }) => {
   const {
     logo,
     title,
@@ -18,6 +22,9 @@ const TaskCard = ({ task }) => {
     deadline,
   } = task;
 
+  const [toggleLove, setToggleLove] = useState(false);
+  console.log(toggleLove);
+
   return (
     <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full">
       <div className="flex items-center justify-between mb-5">
@@ -25,7 +32,13 @@ const TaskCard = ({ task }) => {
           <h2>{title}</h2>
         </div>
         <div>
-          <BsBookmarkPlus className="text-xl md:text-2xl" />
+          <Checkbox
+            onClick={() => setToggleLove(!toggleLove)}
+            style={{ color: "red" }}
+            {...label}
+            icon={<FavoriteBorder />}
+            checkedIcon={<Favorite />}
+          />
         </div>
       </div>
 
@@ -94,4 +107,4 @@ const TaskCard = ({ task }) => {
   );
 };
 
-export default TaskCard;
+export default JobCard;

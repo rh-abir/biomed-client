@@ -35,6 +35,7 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import SwipeableTemporaryDrawer from "../test/SwipeableTemporaryDrawer";
 import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
 import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
 import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
@@ -89,6 +90,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
+      {
+        path: "/test",
+        element: <SwipeableTemporaryDrawer />
+      }
     ],
   },
   {

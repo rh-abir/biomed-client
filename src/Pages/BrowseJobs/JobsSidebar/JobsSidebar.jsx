@@ -36,9 +36,9 @@ const selectStyles = {
       }
   }),
 };
-const TasksSidebar = ({browseJobsData,getData}) => {
+const JobsSidebar = ({browseJobsData,getData}) => {
   // console.log(browseJobsData);
-  const { setTasksSidebarToggle } = useContext(AuthContext);
+  const { setJobsSidebarToggle } = useContext(AuthContext);
   const [jobTitle,setJobTitle] = useState('');
   const [location,setLocation] = useState('');
   const [value, setValue] = useState('');
@@ -74,10 +74,10 @@ const TasksSidebar = ({browseJobsData,getData}) => {
   }
   return (
     <div>
-    <div className="px-4 md:px-10 py-5 h-screen bg-white dark:bg-slate-700">
+    <div className="px-4 md:px-10 py-5 h-screen bg-white">
         <div>
           <div className="flex justify-end lg:hidden">
-            <button onClick={() => setTasksSidebarToggle(false)} className="bg-primary p-2 mt-2 rounded-full text-white hover:bg-hover">
+            <button onClick={() => setJobsSidebarToggle(false)} className="bg-primary p-2 mt-2 rounded-full text-white hover:bg-hover">
               <AiOutlineClose />
             </button>
           </div>
@@ -87,7 +87,7 @@ const TasksSidebar = ({browseJobsData,getData}) => {
               onChange={(e) => setJobTitle(e.target.value)}
               type="text"
               placeholder="Job title"
-              className="w-full py-3 pl-8 md:pl-14 lg:pl-10 rounded-lg  focus:outline-none  focus:ring focus:ring-[#5BBB7B] text-xs md:text-s dark:bg-slate-700"
+              className="w-full py-3 pl-8 md:pl-14 lg:pl-10 rounded-lg  focus:outline-none  focus:ring focus:ring-[#5BBB7B] text-xs md:text-sm"
             />
             <button className="absolute top-0 left-0 bottom-0 w-10 pl-3">
               <BiSearch></BiSearch>
@@ -101,7 +101,7 @@ const TasksSidebar = ({browseJobsData,getData}) => {
               onChange={(e) => setLocation(e.target.value)}
               type="text"
               placeholder="Country"
-              className="w-full py-3 pl-8 md:pl-14 lg:pl-10 rounded-lg  focus:outline-none  focus:ring focus:ring-[#5BBB7B] text-xs md:text-sm dark:bg-slate-700"
+              className="w-full py-3 pl-8 md:pl-14 lg:pl-10 rounded-lg  focus:outline-none  focus:ring focus:ring-[#5BBB7B] text-xs md:text-sm"
             />
             <button className="absolute top-0 left-0 bottom-0 w-10 pl-3">
               <CiLocationOn></CiLocationOn>
@@ -109,10 +109,10 @@ const TasksSidebar = ({browseJobsData,getData}) => {
           </div>
         </div>
         <div className="space-y-5">
-          <h2 className="mt-5">Job type</h2>
+          <h2 className="mt-5 ">Job type</h2>
           <div className="w-full mt-2 md:mt-0">
           <Select
-            className='text-sm dark:bg-slate-700'
+            className='text-sm'
             isSearchable={false}
             options={options}
             defaultValue={value}
@@ -127,7 +127,7 @@ const TasksSidebar = ({browseJobsData,getData}) => {
           <div className="relative">
             <div className="mb-4">
             <Select
-            className='text-sm dark:bg-slate-700'
+            className='text-sm'
             isSearchable={false}
             options={skills}
             defaultValue={value}
@@ -171,4 +171,4 @@ const TasksSidebar = ({browseJobsData,getData}) => {
   );
 };
 
-export default TasksSidebar;
+export default JobsSidebar;
