@@ -5,7 +5,7 @@ import { MdLocationOn } from "react-icons/md";
 
 import { Link } from "react-router-dom";
 
-const JobCard = ({ task }) => {
+const TaskCard = ({ task }) => {
   const {
     logo,
     title,
@@ -94,4 +94,4 @@ const JobCard = ({ task }) => {
   );
 };
 
-export default JobCard;
+export default TaskCard;

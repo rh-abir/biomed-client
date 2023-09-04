@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -12,8 +14,6 @@ import {
 import React, { createContext, useEffect, useState } from "react";
 import { getAdminRole, getClientRole, getModeratorRole } from "../api/auth";
 import app from "../firebase/firebase.config";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 
 const auth = getAuth(app);
 
@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
   const [adminRole, setAdminRole] = useState(null);
   const [moderatorRole, setModeratorRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
-  const [jobsSidebarToggle, setJobsSidebarToggle] = useState(false);
+  const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -114,7 +114,6 @@ const AuthProvider = ({ children }) => {
     },
   });
 
-
   const authInfo = {
     user,
     loading,
@@ -125,7 +124,7 @@ const AuthProvider = ({ children }) => {
     clientRole,
     setClientRole,
     dashboardToggle,
-    jobsSidebarToggle,
+    tasksSidebarToggle,
     setLoading,
     createUser,
     loginUser,
@@ -134,7 +133,7 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     googleLoginUser,
     setDashboardToggle,
-    setJobsSidebarToggle,
+    setTasksSidebarToggle,
     // my profile data sharing
     myProfileData,
 
