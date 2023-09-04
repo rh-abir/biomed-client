@@ -4,6 +4,9 @@ import CommunityProfileHome from "../Community/CommunityProfileHome/CommunityPro
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
+import PostBlog from "../Dashboard/DashboardAdmin/PostBlog/PostBlog";
+import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
+import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTasks";
 import CandidateHome from "../Dashboard/DashboardCandidate/CandidateHome/CandidateHome";
 import EditProfile from "../Dashboard/DashboardCandidate/MyProfile/EditProfile/EditProfile";
 import MyProfile from "../Dashboard/DashboardCandidate/MyProfile/MyProfile";
@@ -11,6 +14,9 @@ import ShortlistedTasks from "../Dashboard/DashboardCandidate/ShortlistedTasks/S
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
+import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
+import InstructorView from "../Dashboard/DashboardClient/InstructorProfile/InstructorView/InstructorView";
+import ManageTask from "../Dashboard/DashboardClient/ManageTask/ManageTask";
 import PostTask from "../Dashboard/DashboardClient/PostTask/PostTask";
 import Community from "../Layout/Community";
 import CommunityProfile from "../Layout/CommunityProfile";
@@ -18,9 +24,9 @@ import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import BlogDetails from "../Pages/Blogs/BlogDetails/BlogDetails";
 import Blogs from "../Pages/Blogs/Blogs";
-import BrowseJobs from "../Pages/BrowseJobs/BrowseJobs";
-import BrowseJobsDetails from "../Pages/BrowseJobs/BrowseJobsDetails/BrowseJobsDetails";
-import BrowseJobsHome from "../Pages/BrowseJobs/BrowseJobsHome";
+import BrowseTasks from "../Pages/BrowsTasks/BrowseTasks";
+import BrowseTasksDetails from "../Pages/BrowsTasks/BrowseTasksDetails/BrowseTasksDetails";
+import BrowseTasksHome from "../Pages/BrowsTasks/BrowseTasksHome";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
@@ -29,13 +35,11 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
-import PostBlog from "../Dashboard/DashboardAdmin/PostBlog/PostBlog";
-import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
-import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTasks";
-import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
-import InstructorView from "../Dashboard/DashboardClient/InstructorProfile/InstructorView/InstructorView";
-import ManageTask from "../Dashboard/DashboardClient/ManageTask/ManageTask";
 import SwipeableTemporaryDrawer from "../test/SwipeableTemporaryDrawer";
+import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
+import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
+import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
+import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory";
 
 const router = createBrowserRouter([
   {
@@ -59,18 +63,18 @@ const router = createBrowserRouter([
       },
 
       {
-        path: "/browseJobs",
-        element: <BrowseJobs />,
+        path: "/browseTasks",
+        element: <BrowseTasks />,
         children: [
           {
-            path: "/browseJobs/browseJobs-home",
-            element: <BrowseJobsHome />,
+            path: "/browseTasks/browseTasks-home",
+            element: <BrowseTasksHome />,
           },
         ],
       },
       {
-        path: "/jobsDatail/:id",
-        element: <BrowseJobsDetails />,
+        path: "/tasksDatail/:id",
+        element: <BrowseTasksDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/singlejob/${params.id}`),
       },
@@ -117,10 +121,26 @@ const router = createBrowserRouter([
         element: <MyProfile />,
       },
       {
+        path: "/dashboard/task-overview",
+        element: <TaskOverview />,
+      },
+      {
+        path: "/dashboard/task-details",
+        element: <TaskDetails />,
+      },
+      {
+        path: "/dashboard/task-submission",
+        element: <TaskSubmission />,
+      },
+      {
+        path: "/dashboard/task-history",
+        element: <TaskHistory />,
+      },
+      {
         path: "/dashboard/applied-tasks",
         element: <AppliedTasks></AppliedTasks>,
       },
-  
+
       {
         path: "/dashboard/post-task",
         element: <PostTask />,
@@ -173,8 +193,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/post-blog",
-        element: <PostBlog/>,
-      }
+        element: <PostBlog />,
+      },
     ],
   },
   // Community Routes
@@ -184,7 +204,6 @@ const router = createBrowserRouter([
       <PrivateRoute>
         <Community />
       </PrivateRoute>
-
     ),
     children: [
       {
@@ -199,7 +218,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/community/community-profile",
-        element: <CommunityProfileHome />
+        element: <CommunityProfileHome />,
       },
     ],
   },
