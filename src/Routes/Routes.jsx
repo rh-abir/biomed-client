@@ -11,10 +11,6 @@ import CandidateHome from "../Dashboard/DashboardCandidate/CandidateHome/Candida
 import EditProfile from "../Dashboard/DashboardCandidate/MyProfile/EditProfile/EditProfile";
 import MyProfile from "../Dashboard/DashboardCandidate/MyProfile/MyProfile";
 import ShortlistedTasks from "../Dashboard/DashboardCandidate/ShortlistedTasks/ShortlistedTasks";
-import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
-import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory";
-import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
-import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
@@ -28,7 +24,6 @@ import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import BlogDetails from "../Pages/Blogs/BlogDetails/BlogDetails";
 import Blogs from "../Pages/Blogs/Blogs";
-import BrowseTasks from "../Pages/BrowsTasks/BrowseTasks";
 import BrowseTasksDetails from "../Pages/BrowsTasks/BrowseTasksDetails/BrowseTasksDetails";
 import BrowseTasksHome from "../Pages/BrowsTasks/BrowseTasksHome";
 import Contact from "../Pages/Contact/Contact";
@@ -39,14 +34,8 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
-<<<<<<< HEAD
 import SwipeableTemporaryDrawer from "../test/SwipeableTemporaryDrawer";
-import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
-import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
-import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
-import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory";
-=======
->>>>>>> b47cfc50e08eaf4af2ba9820bc5bbd03ac3430a8
+import BrowseTasks from "../Pages/BrowseJobs/BrowseTasks";
 
 const router = createBrowserRouter([
   {
@@ -125,22 +114,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-profile",
         element: <MyProfile />,
-      },
-      {
-        path: "/dashboard/task-overview",
-        element: <TaskOverview />,
-      },
-      {
-        path: "/dashboard/task-details",
-        element: <TaskDetails />,
-      },
-      {
-        path: "/dashboard/task-submission",
-        element: <TaskSubmission />,
-      },
-      {
-        path: "/dashboard/task-history",
-        element: <TaskHistory />,
       },
       {
         path: "/dashboard/applied-tasks",
