@@ -6,7 +6,7 @@ import { BiMessageDetail, BiSearchAlt2 } from "react-icons/bi";
 import { MdNotifications } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import logo from "../../../assets/White_logo.png";
+import logo from "../../../assets/logo.png";
 import "./CommunityNavbar.css";
 
 const CommunityNavbar = () => {
@@ -24,7 +24,7 @@ const CommunityNavbar = () => {
   const { updateData } = myProfileData;
   return (
     <>
-      <nav className="px-2 md:px-0 h-14 w-full bg-[#5bbb7b] flex items-center justify-evenly sticky top-0 z-50">
+      <nav className="px-2 md:px-0 h-14 w-full bg-white flex items-center justify-evenly sticky top-0 z-50">
         {/* Navbar Left SIde */}
         <div className="topbarLeft">
           {/* Logo section for large devices */}
@@ -56,20 +56,9 @@ const CommunityNavbar = () => {
           </div>
         </div>
         {/* Navbar Center SIde */}
-        <div className="topbarCenter">
-          <div className="w-11/12 md:w-full h-8 bg-white rounded-full flex items-center">
-            <BiSearchAlt2 className="text-2xl mt-1 ml-2" />
-            <input
-              type="text"
-              placeholder="Search for friends or post"
-              className="border-none w-11/12 md:w-full focus:outline-none rounded-full px-1"
-            />
-          </div>
-        </div>
-        {/* Navbar Right SIde */}
-        <div className="topbarRight flex items-center justify-around text-white">
-          {/* Text section */}
-          <div className="gap-2 text-base hidden md:flex">
+        <div className="topbarCenter flex justify-center items-center gap-4">
+           {/* Text section */}
+           <div className="gap-2 text-base">
             <Link to={"/community"}>Homepage</Link>
           </div>
           {/* Icons section */}
@@ -84,7 +73,7 @@ const CommunityNavbar = () => {
             </div>
           </div>
           {/* Profile section for large devices */}
-          <Link to={"/community/community-profile"}>
+          {/* <Link to={"/community/community-profile"}>
             <div
               title="View Profile"
               className="hidden md:block w-9 h-9 rounded-full overflow-hidden cursor-pointer border-[3px] border-black/50"
@@ -96,7 +85,18 @@ const CommunityNavbar = () => {
                 className="w-full h-full object-cover"
               />
             </div>
-          </Link>
+          </Link> */}
+        </div>
+        {/* Navbar Right SIde */}
+        <div className="topbarRight flex items-center justify-around text-gray-600 mx-4">
+        <div className="w-11/12 md:w-full h-8  bg-slate-200 rounded-full flex items-center ">
+            <BiSearchAlt2 className="text-2xl mt-1 ml-2" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="border-none w-11/12 md:w-full focus:outline-none rounded-full px-1  bg-slate-200"
+            />
+          </div>
         </div>
       </nav>
     </>

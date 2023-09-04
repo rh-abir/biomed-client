@@ -8,14 +8,14 @@ const Community = () => {
   return (
     <>
       <CommunityNavbar />
-      <div className="grid grid-cols-7">
+      <div className="grid grid-cols-9 bg-[#5bbb7b]">
         <div className="col-span-2 hidden lg:block">
           <CommunityLeftSidebar />
         </div>
-        <div className="col-span-7 lg:col-span-3">
+        <div className="col-span-9 lg:col-span-5">
           <Outlet />
         </div>
-        <div  className="col-span-2 hidden lg:block">
+        <div className="col-span-2 hidden lg:block">
           <CommunityRightSidebar />
         </div>
       </div>

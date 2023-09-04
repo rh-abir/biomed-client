@@ -79,13 +79,13 @@ const TaskCard = ({ task }) => {
       <div className="mt-auto grid grid-cols-2 gap-5">
         <Link
           className="flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg"
-          to={`/jobsDatail/${_id}`}
+          to={`/tasksDatail/${_id}`}
         >
           Apply Now
         </Link>
         <Link
           className="flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg"
-          to={`/jobsDatail/${_id}`}
+          to={`/tasksDatail/${_id}`}
         >
           View Details
         </Link>

@@ -1,107 +1,59 @@
-.rightbar {
-  flex: 3.5;
+.leftSidebar {
+  flex: 3;
   height: calc(100vh - 50px);
   overflow-y: scroll;
   position: sticky;
-  top: 50px;
+  top: 100px;
+  margin: 30px 20px 30px 0;
+  border-radius: 15px;
+  background-color: #fff;
 }
 
-.rightbarWrapper {
-  padding: 20px 20px 0 0;
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(179, 179, 179);
 }
 
-.birthdayContainer {
-  display: flex;
-  align-items: center;
+.sidebarWrapper {
+  padding: 20px;
 }
 
-.birthdayImg {
-  width: 40px;
-  height: 40px;
-  margin-right: 10px;
-}
-
-.birthdayText {
-  font-weight: 300;
-  font-size: 15px;
-}
-
-.rightbarAd {
-  width: 100%;
-  border-radius: 10px;
-  margin: 30px 0;
-}
-
-.rightbarFriendList {
+.sidebarList {
   padding: 0;
   margin: 0;
   list-style: none;
 }
 
-.rightbarProfileImgContainer {
-  margin-right: 10px;
-  position: relative;
-}
-
-.rightbarProfileImg {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-  margin-right: 5px;
-}
-
-.rightbarTitle {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 10px;
-}
-
-.rightbarInfo {
-  margin-bottom: 30px;
-}
-
-.rightbarInfoItem {
-  margin-bottom: 10px;
-}
-
-.rightbarInfoKey {
-  font-weight: 500;
-  margin-right: 15px;
-  color: #555;
-}
-
-.rightbarInfoValue {
-  font-weight: 300;
-}
-
-.rightbarFollowings {
+.sidebarListItem {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
-
-.rightbarFollowing {
-  display: flex;
-  flex-direction: column;
+  align-items: center;
   margin-bottom: 20px;
+  font-size: 18px;
   cursor: pointer;
 }
 
-.rightbarFollowingImg {
-  width: 100px;
-  height: 100px;
-  object-fit: cover;
+.sidebarButton {
+  width: 150px;
+  border: none;
+  padding: 10px;
   border-radius: 5px;
+  font-weight: 500;
 }
 
-.rightbarOnline {
-  width: 12px;
-  height: 12px;
+.sidebarHr {
+  margin: 20px;
+  border: 1px solid rgba(0, 0, 0, 0.178);
+}
+
+.sidebarFriendImg {
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
-  background-color: limegreen;
-  position: absolute;
-  top: 25px;
-  right: 0;
-  border: 2px solid white;
+  object-fit: cover;
+  margin-right: 10px;
 }

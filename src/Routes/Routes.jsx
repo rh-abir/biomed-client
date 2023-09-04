@@ -115,7 +115,6 @@ const router = createBrowserRouter([
         path: "/dashboard/applied-tasks",
         element: <AppliedTasks></AppliedTasks>,
       },
-
       {
         path: "/dashboard/post-task",
         element: <PostTask />,
