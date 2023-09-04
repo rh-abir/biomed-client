@@ -11,6 +11,10 @@ import CandidateHome from "../Dashboard/DashboardCandidate/CandidateHome/Candida
 import EditProfile from "../Dashboard/DashboardCandidate/MyProfile/EditProfile/EditProfile";
 import MyProfile from "../Dashboard/DashboardCandidate/MyProfile/MyProfile";
 import ShortlistedTasks from "../Dashboard/DashboardCandidate/ShortlistedTasks/ShortlistedTasks";
+import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
+import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory";
+import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
+import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
@@ -35,11 +39,14 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+<<<<<<< HEAD
 import SwipeableTemporaryDrawer from "../test/SwipeableTemporaryDrawer";
 import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
 import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
 import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory";
+=======
+>>>>>>> b47cfc50e08eaf4af2ba9820bc5bbd03ac3430a8
 
 const router = createBrowserRouter([
   {
@@ -72,7 +79,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/tasksDatail/:id",
+        path: "/jobsDatail/:id",
         element: <BrowseTasksDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/singlejob/${params.id}`),
