@@ -11,6 +11,10 @@ import CandidateHome from "../Dashboard/DashboardCandidate/CandidateHome/Candida
 import EditProfile from "../Dashboard/DashboardCandidate/MyProfile/EditProfile/EditProfile";
 import MyProfile from "../Dashboard/DashboardCandidate/MyProfile/MyProfile";
 import ShortlistedTasks from "../Dashboard/DashboardCandidate/ShortlistedTasks/ShortlistedTasks";
+import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
+import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory";
+import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
+import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
@@ -68,7 +72,7 @@ const router = createBrowserRouter([
         ],
       },
       {
-        path: "/tasksDatail/:id",
+        path: "/jobsDatail/:id",
         element: <BrowseTasksDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/singlejob/${params.id}`),
@@ -110,6 +114,22 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/my-profile",
         element: <MyProfile />,
+      },
+      {
+        path: "/dashboard/task-overview",
+        element: <TaskOverview />,
+      },
+      {
+        path: "/dashboard/task-details",
+        element: <TaskDetails />,
+      },
+      {
+        path: "/dashboard/task-submission",
+        element: <TaskSubmission />,
+      },
+      {
+        path: "/dashboard/task-history",
+        element: <TaskHistory />,
       },
       {
         path: "/dashboard/applied-tasks",
