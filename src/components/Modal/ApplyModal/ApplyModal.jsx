@@ -13,7 +13,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
   const { myProfileData, user } = useContext(AuthContext);
-  const { _id, title, companyName } = showInfoCompany;
+  const { _id, title, deadline } = showInfoCompany;
 
   const {
     register,
@@ -34,10 +34,10 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
           downloadPdf: downloadUrl,
           coverLetter: data?.coverLetter,
           ...myProfileData,
-          companyName,
+          deadline,
           title,
-          companyId: _id,
-          email: user?.email
+          taskId: _id,
+          email: user?.email,
         };
 
         axios
@@ -96,7 +96,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                   className=" bg-gray-100 py-10 px-5 rounded-lg leading-6 text-gray-900"
                 >
                   <div className="text-xl font-semibold">{title}</div>
-                  <h3 className="">{companyName}</h3>
+                  <h3 className="">{deadline}</h3>
                 </Dialog.Title>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
@@ -107,7 +107,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                       className="block text-gray-700 text-sm font-bold mb-2"
                       htmlFor="resume"
                     >
-                      Upload Submitted file 
+                      Upload Submitted file
                     </label>
                     <input
                       type="file"

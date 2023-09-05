@@ -96,9 +96,9 @@ const ProfileDropdown = () => {
             <Link
               to={
                 adminRole
-                  ? "/dashboard/admin-home"
+                  ? "/dashboard/client-home"
                   : moderatorRole
-                  ? "/dashboard/moderator-home"
+                  ? "/dashboard/client-home"
                   : clientRole
                   ? "/dashboard/client-home"
                   : "/dashboard/candidate-home"

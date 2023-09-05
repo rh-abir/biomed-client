@@ -55,7 +55,7 @@ const TaskCard = ({ task }) => {
         </div>
         <div className="flex gap-2 items-center text-base xl:text-lg text-gray-500 font-semibold">
           <AiOutlineFileDone className="md:text-2xl lg:text-base xl:text-3xl text-primary" />{" "}
-          {5} Completed
+          {5} Applied
         </div>
       </div>
 
