@@ -2,8 +2,8 @@
 import clsx from "clsx";
 import { useRef, useState } from "react";
 import { LoadingPosts } from "../../LoadingPost";
-import useLazyLoad from "../../hooks/useLazyLoad";
 import TaskCard from "./TaskCard/TaskCard";
+import useLazyLoad from "../../hook/useLazyLoad";
 
 const NUM_PER_PAGE = 2;
 

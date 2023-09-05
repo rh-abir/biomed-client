@@ -10,8 +10,6 @@ import {
   AiOutlineHistory
 } from "react-icons/ai";
 
-import { PiBagSimpleBold } from "react-icons/pi";
-import { RiMessage2Line } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
@@ -57,15 +55,6 @@ const CandidateMenu = () => {
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
-            to="/dashboard/applied-tasks"
-            className="flex items-center gap-3"
-          >
-            <PiBagSimpleBold /> Applied Tasks
-          </Link>
-        </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
-            onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-overview"
             className="flex items-center gap-3"
           >
@@ -97,18 +86,6 @@ const CandidateMenu = () => {
             className="flex items-center gap-3"
           >
             <AiOutlineHistory /> Task History
-          </Link>
-        </li>
-
-
-
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-
-          <Link
-            onClick={() => setDashboardToggle(false)}
-            className="flex items-center gap-3"
-          >
-            <RiMessage2Line /> Messages
           </Link>
         </li>
         <li

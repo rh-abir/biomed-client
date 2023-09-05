@@ -1,62 +1,70 @@
-import React from 'react';
+import React from "react";
+import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
+import { FaEye, FaRegTrashAlt } from "react-icons/fa";
 
 const TaskHistory = () => {
-    return (
-        <div className='text-xl p-10'>
-            <h2>The Task History section is essential for tracking and reviewing the changes and actions associated with a specific task over time. Here are key elements and functionalities to include in the task history section: <br />
+    
+  return (
+    <div className="px-10 py-6 bg-gray-100 min-h-screen flex flex-col">
+      {/* Title Section */}
+      <DashboardTitle title={"Tasks History"} slogan={"Ready to jump back in?"} />
 
-                <p className='my-3 text-red-600'><strong>Functionalities:</strong></p>
-
-                <strong>Activity Log:</strong> Display a chronological list of activities, changes, and actions related to the task. Each entry should include a timestamp to indicate when the activity occurred. <br />
-
-                <strong>Activity Details:</strong> For each activity log entry, provide a clear and concise description of the action taken or change made to the task. Include details such as who performed the action and what was modified. <br />
-
-                <strong>User Attribution:</strong>Clearly indicate which user (by name or username) initiated each action or change in the task history. <br />
-
-                <strong>Filter and Search:</strong> Implement filtering options and a search bar to allow users to narrow down and find specific activities or changes within the task history.<br />
-
-                <strong>Types of Activities:</strong> Categorize activities into different types (e.g., task creation, status updates, comments added, attachments added) and use icons or color coding to distinguish them.. <br />
-
-                <strong>Version Control (if applicable):</strong> If tasks have multiple versions or revisions, show a history of changes with the ability to compare versions side by side.. <br />
-
-                <strong>Comment Threads (if applicable):</strong> If comments are part of the task history, display threaded conversations for a clear view of discussions and interactions related to the task.<br />
-
-
-
-                <strong> Action Links (if applicable):</strong>If certain activities involve actions like editing the task, reverting changes, or responding to comments, provide links or buttons to perform these actions directly from the history log.<br />
-
-                <strong>Privacy and Permissions:</strong> Ensure that users can only access task history entries relevant to their role or permissions. Protect sensitive information from unauthorized access. <br />
-
-                <strong>Export and Download:</strong> Allow users to export the task history log, either in a downloadable format (e.g., CSV, PDF) or for printing purposes.<br />
-
-                <strong>Audit Trail (if applicable):</strong> - If your platform requires a detailed audit trail for compliance purposes, record all actions and changes comprehensively.<br />
-
-
-
-                <p className='my-3 text-red-600'><strong>UI Design for Task History:</strong></p>
-
-                <strong> Clear Layout: </strong> Design a clean and organized layout for the task history section, with activities presented in a clear and easy-to-read format.<br />
-
-                <strong>Timestamps:</strong> Ensure that timestamps are prominently displayed and easily distinguishable from activity descriptions.<br />
-
-                <strong>Icons and Symbols:</strong> Use icons and symbols to represent different types of activities and actions, making the log visually informative..<br />
-
-                <strong> Expandable Entries:</strong> Implement expand/collapse functionality for individual activity log entries to save screen space and reduce clutter.<br />
-
-                <strong>Pagination or Infinite Scroll: </strong> Consider how users will navigate through a long task history and provide a convenient way to access older entries.<br />
-
-                <strong> Search and Filter Options: </strong>Make search and filtering tools easily accessible and user-friendly..<br />
-
-                <strong>Privacy Controls: </strong> Implement appropriate privacy controls to ensure that users only see history entries they have permission to access..<br />
-
-                <strong>  Color Coding:  </strong>   Use color coding to highlight important events or changes in the task history.<br />
-
-                <strong>Print-Friendly Format: </strong>  If users need to print or share the task history, provide a print-friendly view option.<br />
+      <div className="bg-white shadow-md p-4 md:p-8 mx-2 md:mx-10 rounded-2xl">
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50 text-green-400">
+              <tr>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg px-3 md:ps-5">
+                  Image
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Email
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              
+                <tr >
+                  <td className="py-2 md:py-4">
+                    <div className="flex items-center">
+                      <img
+                        src=""
+                        alt="Job"
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
+                      />
+                      <div>
+                        <p className="font-semibold text-base md:text-lg">
+                          sourave
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-2 md:py-4">souravh02@gamic.com</td>
+                  <td className="py-2 md:py-4">
+                    <div className="flex space-x-1 md:space-x-2">
+                      <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
+                        <FaEye className="w-3 h-3 md:w-4 md:h-4" />
+                      </span>
+                      <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
+                        <FaRegTrashAlt className="w-3 h-3 md:w-4 md:h-4" />
+                      </span>
+                    </div>
+                  </td>
+                </tr>
 
 
-                Remember to conduct user testing to refine the design and functionality of the task history section based on user feedback and needs. Task history is a valuable feature for tracking the evolution of tasks and maintaining transparency in task management.</h2>
+            </tbody>
+          </table>
         </div>
-    );
+      </div>
+      <div className="my-10 md:my-20 text-center text-gray-600 text-xs md:text-base">
+        © 2023 Biomed LTD. All Rights Reserved.
+      </div>
+    </div>
+  );
 };
 
 export default TaskHistory;

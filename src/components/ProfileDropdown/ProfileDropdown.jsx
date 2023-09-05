@@ -104,7 +104,7 @@ const ProfileDropdown = () => {
                   : "/dashboard/candidate-home"
               }
             >
-              <li className="px-10 py-2 w-full  dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer">
+              <li className="px-10 py-2 w-full dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer">
                 Dashboard
               </li>
             </Link>
