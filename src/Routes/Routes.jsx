@@ -24,6 +24,7 @@ import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import BlogDetails from "../Pages/Blogs/BlogDetails/BlogDetails";
 import Blogs from "../Pages/Blogs/Blogs";
+import BrowseTasks from "../Pages/BrowsTasks/BrowseTasks";
 import BrowseTasksDetails from "../Pages/BrowsTasks/BrowseTasksDetails/BrowseTasksDetails";
 import BrowseTasksHome from "../Pages/BrowsTasks/BrowseTasksHome";
 import Contact from "../Pages/Contact/Contact";
@@ -34,8 +35,6 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
-import SwipeableTemporaryDrawer from "../test/SwipeableTemporaryDrawer";
-import BrowseTasks from "../Pages/BrowseJobs/BrowseTasks";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +56,7 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
       },
+
       {
         path: "/browseTasks",
         element: <BrowseTasks />,
@@ -85,10 +85,6 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
-      {
-        path: "/test",
-        element: <SwipeableTemporaryDrawer />
-      }
     ],
   },
   {

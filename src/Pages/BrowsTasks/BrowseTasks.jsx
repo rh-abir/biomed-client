@@ -5,8 +5,8 @@ import { HiOutlineMenuAlt3 } from "react-icons/hi";
 import { AuthContext } from "../../Provider/AuthProvider";
 import Loader from "../../components/Loader/Loader";
 import Container from "../../components/Shared/Container/Container";
-import BrowseJobsHome from "./BrowseJobsHome";
-import JobsSidebar from "./JobsSidebar/JobsSidebar";
+import BrowseTasksHome from "./BrowseTasksHome";
+import TasksSidebar from "./TasksSidebar/TasksSidebar";
 
 const BrowseTasks = () => {
   const { tasksSidebarToggle: tasksSidebarToggle, setTasksSidebarToggle } =

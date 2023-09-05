@@ -10,7 +10,7 @@ import { Link, useLoaderData } from "react-router-dom";
 import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 import Container from "../../../components/Shared/Container/Container";
 
-const BrowseJobsDetails = () => {
+const BrowseTasksDetails = () => {
   const {
     _id,
     country,
@@ -27,8 +27,6 @@ const BrowseJobsDetails = () => {
     attachment,
     grading,
   } = useLoaderData();
-
-  console.log(attachment)
 
   const showInfoCompany = {
     _id,
@@ -197,4 +195,4 @@ const BrowseJobsDetails = () => {
   );
 };
 
-export default BrowseJobsDetails;
+export default BrowseTasksDetails;
