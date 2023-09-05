@@ -39,7 +39,7 @@ const TaskDetails = () => {
 
                 <strong> Task Location (if relevant):</strong>  If tasks are location-based, display a map or location information associated with the task.<br />
 
-                <p className='my-3 text-red-600'><strong>UI Design for Task Details:</strong></p>
+                <p className='my-3 text-red-600'><strong>UI Design of Task Details:</strong></p>
 
                 <strong>Clean and Organized Layout:</strong>Ensure that the task details section has a clean and organized layout, making it easy for users to find the information they need.<br />
 
