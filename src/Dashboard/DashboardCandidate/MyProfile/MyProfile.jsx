@@ -161,19 +161,7 @@ const CompanyForm = () => {
               {...register("companyName")}
             />
           </div>
-
-<<<<<<< HEAD
-          <div className="mb-4">
-            <label htmlFor="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              defaultValue={user?.email}
-              disabled
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none cursor-not-allowed"
-              {...register("email")}
-            />
-=======
+        </div>
       <div
         key={myProfileData._id}
         className="bg-white dark:bg-gray-800 dark:text-white p-6 rounded-md my-6"
@@ -209,7 +197,6 @@ const CompanyForm = () => {
                 </span>
               </p>
             </div>
->>>>>>> 02e07c6beb7ad0c72b6a7708d0e66a49bcf03b81
           </div>
 
           <div className="mb-4">
@@ -355,6 +342,7 @@ const CompanyForm = () => {
         >
           Save Profile
         </button>
+        </div>
       </form>
     </div>
   );
