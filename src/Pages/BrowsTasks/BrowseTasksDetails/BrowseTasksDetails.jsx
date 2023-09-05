@@ -1,4 +1,5 @@
-import { useState } from "react";
+import axios from "axios";
+import { useContext, useState } from "react";
 import { AiOutlineShareAlt, AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BiBriefcaseAlt } from "react-icons/bi";
 import { BsBookmarkPlus, BsHourglassSplit } from "react-icons/bs";
@@ -7,14 +8,19 @@ import { LiaBusinessTimeSolid } from "react-icons/lia";
 import { PiBriefcaseThin } from "react-icons/pi";
 import { TbHomeDot } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 import Container from "../../../components/Shared/Container/Container";
 
 const BrowseTasksDetails = () => {
+  const { myProfileData, user } = useContext(AuthContext);
+  console.log(myProfileData);
   const {
     _id,
     country,
     deadline,
+    companyName,
     description,
     experience,
     jobType,
@@ -23,7 +29,6 @@ const BrowseTasksDetails = () => {
     skills,
     startDate,
     title,
-    companyName,
     attachment,
     grading,
   } = useLoaderData();
@@ -31,7 +36,7 @@ const BrowseTasksDetails = () => {
   const showInfoCompany = {
     _id,
     title,
-    companyName,
+    deadline,
   };
 
   const [isOpenApply, setIsOpenApply] = useState(false);
@@ -42,6 +47,42 @@ const BrowseTasksDetails = () => {
 
   const openApplyModal = () => {
     setIsOpenApply(true);
+  };
+
+  const handleApply = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Apply",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const applyJob = {
+          ...myProfileData,
+          deadline,
+          title,
+          companyName,
+          taskId: _id,
+          email: user?.email,
+        };
+
+        axios
+          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .then((response) => {
+            if (response.data.acknowledged) {
+              Swal.fire("Applied", "Your are successfully apply.", "success");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      axios.put(`http://localhost:5000/jobs/${_id}/apply`).then(() => {});
+    });
   };
 
   return (
@@ -174,7 +215,7 @@ const BrowseTasksDetails = () => {
 
                 <div className="my-5">
                   <button
-                    onClick={openApplyModal}
+                    onClick={handleApply}
                     className="bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition cursor-pointer "
                   >
                     Apply Now

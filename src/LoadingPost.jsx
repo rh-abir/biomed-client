@@ -42,12 +42,8 @@ export const LoadingCard = () => {
 export const LoadingPosts = ({ loading }) => {
   const loadPages = [1, 2];
   return (
-      <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 content-start`}>
-      {loading ? (
-        loadPages.map((num) => <LoadingCard key={num} />)
-      ) : (
-        null
-      )}
+    <div className={`grid grid-cols-1 md:grid-cols-2 gap-4 content-start`}>
+      {loading ? loadPages.map((num) => <LoadingCard key={num} />) : null}
     </div>
   );
 };

@@ -24,7 +24,7 @@ const PreferenceJobs = () => {
 
   return (
     <div className="dark:bg-gray-800 bg-[#f4fdf4] py-10">
-      <Container>
+      <Container className="dark:bg-gray-800">
         <SectionTitle
           heading={"User Testimonials"}
           text={"Discover how our platform has transformed tasks and projects for our users."}
