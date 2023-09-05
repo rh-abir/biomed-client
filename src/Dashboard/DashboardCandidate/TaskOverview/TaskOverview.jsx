@@ -1,65 +1,144 @@
-import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useContext, useEffect, useState } from "react";
+import { FaArrowLeft, FaArrowRight, FaEye } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
 const TaskOverview = () => {
-    return (
-        <div className='text-xl p-10'>
-            <h2>Creating a user dashboard for a Task Evaluation Platform involves providing users with tools and information to manage and track their tasks effectively. Here are some functionalities, information, and UI design elements you can consider for the Task Overview section of your dashboard: <br />
+  const user = useContext(AuthContext);
+  const currentUserEmail = user.user.email;
 
-                <p className='my-3 text-red-600'><strong>Functionalities:</strong></p>
+  const [allApplayJobs, setAllApplayJobs] = useState([]);
 
-                <strong>Task Creation:</strong> Allow users to create new tasks easily. Provide options to set task names, descriptions, deadlines, priority levels, and tags/categories. <br />
+  useEffect(() => {
+    fetch(`http://localhost:5000/allApplyJob?email=rhabir664@gmail.com`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        setAllApplayJobs(data);
+      });
+  }, [currentUserEmail]);
 
-                <strong>Task List:</strong> Display a list of all tasks, sorted by due date or priority. Include options for users to filter and sort tasks according to their preferences. <br />
+  const { data: allClients = [] } = useQuery({
+    queryKey: ["allClients"],
+    queryFn: async () => {
+      const res = await axios("https://biomed-server.vercel.app/clients");
+      return res.data;
+    },
+  });
 
-                <strong>Task Details:</strong> Clicking on a task should expand to show task details, including the description, due date, priority, status, and any attached files or notes. <br />
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 6;
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
 
-                <strong>Task Status Updates:</strong> Enable users to mark tasks as completed or in progress. Implement a simple way to change the task status directly from the overview. <br />
+  return (
+    <div className="px-10 py-6 bg-gray-100 min-h-screen flex flex-col">
+      {/* Title Section */}
+      <DashboardTitle
+        title={"All Task Overview"}
+        slogan={"Ready to jump back in?"}
+      />
 
-                <strong>Task Reminders:</strong> Allow users to set reminders for upcoming task deadlines. Send notifications via email or in-app alerts. <br />
-
-                <strong>Task Sorting and Filtering:</strong> Offer options to sort tasks by due date, priority, category, or completion status. Allow users to filter tasks by specific criteria, such as tags or labels. <br />
-
-                <strong>Task Notes and Comments:</strong> Allow users to add notes or comments to tasks for collaboration and additional context. <br />
-
-                <p className='my-3 text-red-600'><strong>Information:</strong></p>
-
-                <strong> Task Title:</strong> Display the task title prominently for quick identification. <br />
-
-                <strong>Task Description:</strong> Provide a brief task description to remind users of the task purpose. <br />
-
-                <strong>Due Date:</strong> Clearly show the due date or deadline for each task.<br />
-
-                <strong>Priority:</strong> Use visual cues like color-coding or icons to indicate task priority.<br />
-
-                <strong>Status:</strong> Display the current status of each task (e.g., not started, in progress, completed).<br />
-
-                <strong>Tags or Categories:</strong> Show any tags or categories associated with each task for easy organization.<br />
-
-                <p className='my-3 text-red-600'><strong>UI Design:</strong></p>
-
-                <strong> Clean and Intuitive Layout:</strong> Keep the design simple and user-friendly with a clean layout that focuses on task information.<br />
-
-                <strong>Color-Coding:</strong> Use color-coding for task priorities or categories to make it easy for users to identify important tasks.<br />
-
-                <strong>Icons and Symbols:</strong> Incorporate icons and symbols for task actions (e.g., edit, delete, complete) to improve usability.<br />
-
-                <strong> Responsive Design:</strong> Ensure the dashboard is responsive, so it works well on both desktop and mobile devices.<br />
-
-                <strong>Drag-and-Drop:</strong> Implement a drag-and-drop feature to allow users to rearrange tasks or change their priorities easily.<br />
-
-                <strong> Search Functionality:</strong> Include a search bar to help users find specific tasks quickly.<br />
-
-                <strong>Graphs and Charts:</strong> Consider adding visual representations of task completion rates or progress over time.<br />
-
-                <strong>  Customization: </strong>  Allow users to customize the dashboard appearance or choose between different display modes (e.g., list view, card view).<br />
-
-                <strong>Task Thumbnails:</strong> For a card view, use task thumbnails or images when relevant, especially for visual tasks.<br />
-
-                <strong>Task Actions:</strong> Include action buttons (e.g., edit, delete) that appear on hover or when a task is selected.<br />
-
-                Remember to conduct user testing and gather feedback to refine your dashboard functionality and design to meet your user needs and preferences effectively. Additionally, consider data security and privacy measures when handling task-related information on your platform.</h2>
+      <div className="bg-white shadow-md p-4 md:p-8 mx-2 md:mx-10 rounded-2xl">
+        <h2 className="text-lg md:text-xl font-semibold pb-6 md:pb-10">
+          Task Overview
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50 text-green-400">
+              <tr>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg px-3 md:ps-5">
+                  Company Name
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Job tile
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {allApplayJobs
+                ?.slice(startIndex, endIndex)
+                ?.map((client, index) => (
+                  <tr key={index}>
+                    <td className="py-2 md:py-4">
+                      <div className="flex items-center">
+                        <img
+                          src={client?.appliedjobdata?.image}
+                          alt="Job"
+                          className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
+                        />
+                        <div>
+                          <p className="font-semibold text-base md:text-lg">
+                            {client?.appliedjobdata?.title}
+                          </p>
+                        </div>
+                      </div>
+                    </td>
+                    <td className="py-2 md:py-4">
+                      {client?.appliedjobdata?.email}
+                    </td>
+                    <td className="py-2 md:py-4 ">
+                      <div className="flex space-x-1 md:space-x-2">
+                        <span className="bg-gray-100 ml-6 p-1 md:p-2 rounded-lg">
+                          <Link to={`dashboard/task-overview/${client?._id}`}>
+                            <FaEye className="w-3 h-3 md:w-4 md:h-4 cursor-pointer" />
+                          </Link>
+                        </span>
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+            </tbody>
+          </table>
         </div>
-    );
+      </div>
+      <div className="flex justify-center mt-7">
+        <button
+          className={`mr-5 ${currentPage === 1 ? "cursor-not-allowed" : ""}`}
+          onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <FaArrowLeft />
+        </button>
+        <div className="flex">
+          {Array.from({
+            length: Math.ceil(allClients.length / rowsPerPage),
+          }).map((_, index) => (
+            <button
+              key={index}
+              className={`mx-3 py-3 px-4 rounded-lg ${
+                currentPage === index + 1
+                  ? "bg-green-400 text-white"
+                  : "bg-gray-200 text-gray-600 hover:bg-green-400 hover:text-white"
+              } `}
+              onClick={() => setCurrentPage(index + 1)}
+              disabled={currentPage === index + 1}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+        <button
+          className={`ml-2 ${
+            endIndex >= allClients.length ? "cursor-not-allowed" : ""
+          }`}
+          onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+          disabled={endIndex >= allClients.length}
+        >
+          <FaArrowRight />
+        </button>
+      </div>
+      <div className="my-10 md:my-20 text-center text-gray-600 text-xs md:text-base">
+        © 2023 Biomed LTD. All Rights Reserved.
+      </div>
+    </div>
+  );
 };
 
 export default TaskOverview;

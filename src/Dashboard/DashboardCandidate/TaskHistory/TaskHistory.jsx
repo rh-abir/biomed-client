@@ -1,8 +1,13 @@
-import React, { useState } from "react";
-import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
-import { FaArrowLeft, FaArrowRight, FaEye, FaRegTrashAlt } from "react-icons/fa";
-import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useState } from "react";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaEye,
+  FaRegTrashAlt,
+} from "react-icons/fa";
+import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
 const TaskHistory = () => {
   const { data: allClients = [] } = useQuery({
@@ -21,7 +26,10 @@ const TaskHistory = () => {
   return (
     <div className="px-10 py-6 bg-gray-100 min-h-screen flex flex-col">
       {/* Title Section */}
-      <DashboardTitle title={"Complete Tasks"} slogan={"Ready to jump back in?"} />
+      <DashboardTitle
+        title={"Complete Tasks"}
+        slogan={"Ready to jump back in?"}
+      />
 
       <div className="bg-white shadow-md p-4 md:p-8 mx-2 md:mx-10 rounded-2xl">
         <h2 className="text-lg md:text-xl font-semibold pb-6 md:pb-10">
@@ -35,7 +43,7 @@ const TaskHistory = () => {
                   Task Name
                 </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-lg">
-                    Due Date
+                  Due Date
                 </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-lg">
                   Status
@@ -85,7 +93,7 @@ const TaskHistory = () => {
           onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
           disabled={currentPage === 1}
         >
-          <FaArrowLeft   />
+          <FaArrowLeft />
         </button>
         <div className="flex">
           {Array.from({
