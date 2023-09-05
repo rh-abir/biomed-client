@@ -13,9 +13,9 @@ import Swal from "sweetalert2";
 import axios from "axios";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
-
 const BrowseTasksDetails = () => {
   const { myProfileData, user } = useContext(AuthContext);
+  console.log(myProfileData);
   const {
     _id,
     country,
