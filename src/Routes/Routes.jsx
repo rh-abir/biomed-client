@@ -8,6 +8,7 @@ import PostBlog from "../Dashboard/DashboardAdmin/PostBlog/PostBlog";
 import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
 import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTasks";
 import CandidateHome from "../Dashboard/DashboardCandidate/CandidateHome/CandidateHome";
+import Feedback from "../Dashboard/DashboardCandidate/Feedback/Feedback";
 import EditProfile from "../Dashboard/DashboardCandidate/MyProfile/EditProfile/EditProfile";
 import MyProfile from "../Dashboard/DashboardCandidate/MyProfile/MyProfile";
 import ShortlistedTasks from "../Dashboard/DashboardCandidate/ShortlistedTasks/ShortlistedTasks";
@@ -122,6 +123,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/task-details",
         element: <TaskDetails />,
+      },
+      {
+        path: "/dashboard/feedback",
+        element: <Feedback />,
       },
       {
         path: "/dashboard/task-submission",
