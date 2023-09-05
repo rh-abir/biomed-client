@@ -9,7 +9,7 @@ const SearchForm = () => {
     useEffect(() => {
         const SearchResults = async () => {
             if (search !== '') {
-                const response = await fetch(`http://localhost:5000/jobSearchByTitle/${search}/${industry}`);
+                const response = await fetch(`https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`);
                 const data = await response.json();
                 console.log(data); // Log the results to the console
             }
