@@ -1,0 +1,38 @@
+[
+  {
+    "_id": 1,
+    "feedback": "Efficiently input and organize market research data to support strategic decision-making.",
+    "user_image": "https://i.ibb.co/q0djqz2/ceo-m.jpg",
+    "user_name": "Alexandra"
+  },
+  {
+    "_id": 2,
+    "feedback": "Polish and refine written content to ensure clarity, accuracy, and proper formatting.",
+    "user_image": "https://i.ibb.co/m8fwGfV/applicants-1.jpg",
+    "user_name": "John"
+  },
+  {
+    "_id": 3,
+    "feedback": "Conceptualize and create visually appealing designs for impactful social media posts.",
+    "user_image": "https://i.ibb.co/B6tqYjC/applicants-2.jpg",
+    "user_name": "Michelle"
+  },
+  {
+    "_id": 4,
+    "feedback": "Build an engaging website landing page that effectively communicates your brand.",
+    "user_image": "https://i.ibb.co/GCNkB5D/applicants-4.jpg",
+    "user_name": "David"
+  },
+  {
+    "_id": 5,
+    "feedback": "Develop a language learning quiz to enhance Spanish vocabulary acquisition.",
+    "user_image": "https://i.ibb.co/6FVrBQd/applicants-3.jpg",
+    "user_name": "Emily"
+  },
+  {
+    "_id": 6,
+    "feedback": "Provide efficient email management and communication support as a virtual assistant.",
+    "user_image": "https://i.ibb.co/qjS78cb/applicants-6.jpg",
+    "user_name": "Anderson"
+  }
+]

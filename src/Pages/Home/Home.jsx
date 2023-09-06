@@ -2,10 +2,10 @@ import React from "react";
 import AboutUs from "./AboutUs/AboutUs";
 import Banner from "./Banner/Banner";
 import FrequentlyAskQuestion from "./FrequentlyAskQuestion/FrequentlyAskQuestion";
-import PreferenceJobs from "./PreferenceJobs/PreferenceJobs";
 import RecentJob from "./RecentJob/RecentJob";
 import TopCompany from "./TopCompany/TopCompany";
 import TrendingTasks from "./TrendingTasks/TrendingTasks";
+import UserTestimonials from "./UserTestimonials/UserTestimonials";
 import Categorys from "./categorys/Categorys";
 
 const Home = () => {
@@ -17,7 +17,7 @@ const Home = () => {
       <RecentJob />
       <AboutUs />
       <TopCompany />
-      <PreferenceJobs />
+      <UserTestimonials />
       <FrequentlyAskQuestion />
     </div>
   );
