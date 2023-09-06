@@ -13,7 +13,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 
 const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
   const { myProfileData, user } = useContext(AuthContext);
-  const { _id, title, deadline } = showInfoCompany;
+  const { taskId, _id, title, deadline } = showInfoCompany;
 
   const {
     register,
@@ -33,15 +33,11 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
         const applyJob = {
           downloadPdf: downloadUrl,
           coverLetter: data?.coverLetter,
-          ...myProfileData,
-          deadline,
-          title,
-          taskId: _id,
-          email: user?.email,
+          isApplied: true,
         };
 
         axios
-          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .put(`http://localhost:5000/appliedjob/${_id}`, applyJob)
           .then((response) => {
             console.log(response);
             reset();

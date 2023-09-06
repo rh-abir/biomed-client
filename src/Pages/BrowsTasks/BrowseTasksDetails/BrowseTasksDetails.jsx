@@ -242,12 +242,6 @@ const BrowseTasksDetails = () => {
           </div>
         </section>
       </Container>
-
-      <ApplyModal
-        closeModal={closeApplyModal}
-        isOpen={isOpenApply}
-        showInfoCompany={showInfoCompany}
-      />
     </div>
   );
 };
