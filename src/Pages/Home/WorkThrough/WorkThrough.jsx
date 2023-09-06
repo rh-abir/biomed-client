@@ -17,7 +17,7 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-blue-500">
+                        <span className="text-2xl font-bold text-blue-600">
                             Sign-Up
                         </span>
                     }
@@ -33,7 +33,7 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-red-500">
+                        <span className="text-2xl font-bold text-red-600">
                             Task-Submission
                         </span>
                     }
@@ -49,7 +49,7 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-orange-500">
+                        <span className="text-2xl font-bold text-orange-600">
                             Task-Evaluation
                         </span>
                     }
@@ -65,7 +65,7 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-indigo-500">
+                        <span className="text-2xl font-bold text-indigo-600">
                             Feedback
                         </span>
                     }
@@ -81,7 +81,7 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     date={
-                        <span className="text-2xl font-bold text-purple-500">
+                        <span className="text-2xl font-bold text-purple-600">
                             Results
                         </span>
                     }
@@ -97,7 +97,7 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     date={
-                        <span className="text-2xl font-bold text-teal-500">
+                        <span className="text-2xl font-bold text-teal-600">
                             Payment
                         </span>
                     }
@@ -113,7 +113,7 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     date={
-                        <span className="text-2xl font-bold text-pink-500">
+                        <span className="text-2xl font-bold text-pink-600">
                             Support
                         </span>
                     }
