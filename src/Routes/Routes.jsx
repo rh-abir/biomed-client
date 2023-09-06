@@ -120,12 +120,13 @@ const router = createBrowserRouter([
         path: "/dashboard/task-overview",
         element: <TaskOverview />,
       },
+      // {
+      //   path: "/dashboard/jobsDatail/:id",
+      //   element: <BrowseTasksDetails />,
+      //   loader: ({ params }) =>
+      //     fetch(`http://localhost:5000/allApplyJob/${params.id}`),
+      // },
 
-      // dashboard/task-overview details page
-      {
-        path: "/dashboard/task-overview/:id",
-        element: <div>This is detail page</div>,
-      },
       {
         path: "/dashboard/task-details",
         element: <TaskDetails />,
