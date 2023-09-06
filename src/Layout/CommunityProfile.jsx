@@ -1,7 +1,7 @@
 import React from "react";
 import { Outlet } from "react-router-dom";
-import CommunityLeftSidebar from "../Community/Shared/CommunityLeftSidebar/CommunityLeftSidebar";
 import CommunityNavbar from "../Community/Shared/CommunityNavbar/CommunityNavbar";
+import CommunityRightSidebar from "../Community/Shared/CommunityRightSidebar/CommunityRightSidebar";
 
 
 const CommunityProfile = () => {
@@ -10,7 +10,7 @@ const CommunityProfile = () => {
       <CommunityNavbar />
       <div className="grid grid-cols-7">
         <div className="col-span-2">
-          <CommunityLeftSidebar />
+          <CommunityRightSidebar />
         </div>
         <div className="col-span-5">
           <Outlet />

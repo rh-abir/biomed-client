@@ -1,13 +1,12 @@
-import React from "react";
-import DashboardTitle from "../../../../components/DashboardTitle/DashboardTitle";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../../../../Provider/AuthProvider";
+import React, { useContext } from "react";
 import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { Link } from "react-router-dom";
-import canvas from "../../../../assets/placeholder.jpg"
- 
+import { AuthContext } from "../../../../Provider/AuthProvider";
+import canvas from "../../../../assets/placeholder.jpg";
+import DashboardTitle from "../../../../components/DashboardTitle/DashboardTitle";
+
 const InstructorView = () => {
   const { user } = useContext(AuthContext);
 

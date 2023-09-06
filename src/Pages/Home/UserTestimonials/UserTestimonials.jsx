@@ -7,37 +7,39 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
-import TrendingSlide from "../TrendingTasks/TrendingSlide/TrendingSlide";
+import TestimonialItem from "./TestimonialItem/TestimonialItem";
 
-const PreferenceJobs = () => {
-  const { isLoading, data: preference = [] } = useQuery({
-    queryKey: ["preference"],
+const UserTestimonials = () => {
+  const { isLoading, data: feadback = [] } = useQuery({
+    queryKey: ["feadback"],
     queryFn: async () => {
-      const res = await axios("/TrendingTasksData/trendingTasks.json");
+      const res = await axios("http://localhost:5000/testimonials");
       return res.data;
     },
   });
 
   if (isLoading) {
     return <div>Loading...</div>;
-  } 
+  }
 
   return (
     <div className="dark:bg-gray-800 bg-[#f4fdf4] py-10">
       <Container className="dark:bg-gray-800">
         <SectionTitle
-          heading={"Preference Jobs"}
-          text={"Here is your preference jobs"}
+          heading={"User Testimonials"}
+          text={
+            "Discover how our platform has transformed tasks and projects for our users."
+          }
         />
         <Swiper
           spaceBetween={30}
           freeMode={true}
           autoplay={{
-            delay: 3000,
+            delay: 4000,
             disableOnInteraction: false,
           }}
           slidesPerView={4}
-          loop={true} 
+          loop={true}
           pagination={{ clickable: true }}
           modules={[Autoplay, Pagination]}
           className="mySwiper"
@@ -49,16 +51,13 @@ const PreferenceJobs = () => {
               slidesPerView: 2,
             },
             1024: {
-              slidesPerView: 3, 
-            },
-            1440: {
-              slidesPerView: 4, 
+              slidesPerView: 3,
             },
           }}
         >
-          {preference.map((pre, index) => (
+          {feadback.map((pre, index) => (
             <SwiperSlide key={index}>
-              <TrendingSlide task={pre} />
+              <TestimonialItem task={pre} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -67,4 +66,4 @@ const PreferenceJobs = () => {
   );
 };
 
-export default PreferenceJobs;
+export default UserTestimonials;

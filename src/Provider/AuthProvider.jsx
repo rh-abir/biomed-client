@@ -1,3 +1,5 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -12,8 +14,6 @@ import {
 import React, { createContext, useEffect, useState } from "react";
 import { getAdminRole, getClientRole, getModeratorRole } from "../api/auth";
 import app from "../firebase/firebase.config";
-import axios from "axios";
-import { useQuery } from "@tanstack/react-query";
 
 const auth = getAuth(app);
 
@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
   const [adminRole, setAdminRole] = useState(null);
   const [moderatorRole, setModeratorRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
-  const [jobsSidebarToggle, setJobsSidebarToggle] = useState(false);
+  const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -104,16 +104,15 @@ const AuthProvider = ({ children }) => {
   });
 
   // get single job using email
-  const { data: manageJobs = [], isLoading } = useQuery({
+  const { data: manageJobs = [] } = useQuery({
     queryKey: ["manageJobs"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/jobs/${user?.email}`
+        `https://biomed-server.vercel.app/jobs/souravh093@gmail.com`
       );
       return res.data;
     },
   });
-
 
   const authInfo = {
     user,
@@ -125,7 +124,7 @@ const AuthProvider = ({ children }) => {
     clientRole,
     setClientRole,
     dashboardToggle,
-    jobsSidebarToggle,
+    tasksSidebarToggle,
     setLoading,
     createUser,
     loginUser,
@@ -134,13 +133,12 @@ const AuthProvider = ({ children }) => {
     resetPassword,
     googleLoginUser,
     setDashboardToggle,
-    setJobsSidebarToggle,
+    setTasksSidebarToggle,
     // my profile data sharing
     myProfileData,
 
     // manage jobs single job
     manageJobs,
-    isLoading
   };
 
   return (

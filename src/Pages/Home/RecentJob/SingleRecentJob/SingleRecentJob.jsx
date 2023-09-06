@@ -6,7 +6,7 @@ import { BsCurrencyDollar } from "react-icons/bs";
 import { AiOutlinePlus } from "react-icons/ai";
 const SingleRecentJob = ({ job }) => {
   const {
-    // logo,
+    logo,
     location,
     company_name,
     job_type,
@@ -20,7 +20,7 @@ const SingleRecentJob = ({ job }) => {
     <div className="bg-white shadow-lg p-4 rounded-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
       <div className="flex justify-between border-b-2">
         <img
-          src=""
+          src={logo}
           className="rounded-full p-4 object-cover object-center"
         />
         <div className="p-2">

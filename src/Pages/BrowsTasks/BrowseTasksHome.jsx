@@ -2,8 +2,8 @@
 import clsx from "clsx";
 import { useRef, useState } from "react";
 import { LoadingPosts } from "../../LoadingPost";
-import TaskCard from "./TaskCard/TaskCard";
 import useLazyLoad from "../../hook/useLazyLoad";
+import TaskCard from "./TaskCard/TaskCard";
 
 const NUM_PER_PAGE = 2;
 
@@ -31,7 +31,7 @@ const BrowseTasksHome = ({ browseJobsData }) => {
   const { data } = useLazyLoad({ triggerRef, onGrabData });
   return (
     <>
-      {/* job card */}
+      {/* Task card */}
       <div className="grid md:grid-cols-2 gap-5 mb-6">
         {data.map((jobsdata) => (
           <TaskCard key={jobsdata._id} task={jobsdata} />

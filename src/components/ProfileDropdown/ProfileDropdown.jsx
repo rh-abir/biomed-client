@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext, useRef, useState } from "react";
+import { AiFillEdit, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
 import { FaAlignJustify } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
-import { AiFillEdit, AiFillHome, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
 
 const ProfileDropdown = () => {
   const {
@@ -89,7 +89,7 @@ const ProfileDropdown = () => {
                   ? "/dashboard/company-profile"
                   : "/dashboard/editProfile"
               }
-              className="px-10 py-2 w-full dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer flex items-center gap-2" 
+              className="px-10 py-2 w-full dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
             >
               <AiFillEdit />
               Edit Profile

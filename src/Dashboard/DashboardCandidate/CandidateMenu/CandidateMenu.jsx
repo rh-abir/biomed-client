@@ -1,14 +1,18 @@
 import React, { useContext } from "react";
 import {
-  AiOutlineClose,
-  AiOutlineHome,
-  AiOutlineLogout,
-  AiOutlineUser,
-  AiOutlineUnorderedList,
-  AiOutlineInfoCircle,
   AiOutlineCheckCircle,
-  AiOutlineHistory
+  AiOutlineClose,
+  AiOutlineHistory,
+  AiOutlineHome,
+  AiOutlineInfoCircle,
+  AiOutlineLogout,
+  AiOutlineUnorderedList,
+  AiOutlineUser
 } from "react-icons/ai";
+
+
+import { RiMessage2Line } from "react-icons/ri";
+import { VscFeedback } from "react-icons/vsc";
 
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
@@ -88,9 +92,28 @@ const CandidateMenu = () => {
             <AiOutlineHistory /> Task History
           </Link>
         </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+
+          <Link
+            onClick={() => setDashboardToggle(false)}
+            className="flex items-center gap-3"
+          >
+            <RiMessage2Line /> Messages
+          </Link>
+        </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+
+          <Link
+          to="/dashboard/feedback"
+            onClick={() => setDashboardToggle(false)}
+            className="flex items-center gap-3"
+          >
+            <VscFeedback /> Feedback
+          </Link>
+        </li>
         <li
           onClick={handleLogout}
-          className="hover:bg-red-400 transition py-5 px-3 rounded-md dark:text-white text-gray-600"
+          className="hover:bg-red-400 hover:text-white transition py-5 px-3 rounded-md dark:text-white text-gray-600"
         >
           <Link className="flex items-center gap-3">
             <AiOutlineLogout /> Logout
