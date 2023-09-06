@@ -10,8 +10,8 @@ import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
 import TestimonialItem from "./TestimonialItem/TestimonialItem";
 
 const UserTestimonials = () => {
-  const { isLoading, data: feadback = [] } = useQuery({
-    queryKey: ["feadback"],
+  const { isLoading, data: testimonials = [] } = useQuery({
+    queryKey: ["testimonials"],
     queryFn: async () => {
       const res = await axios("http://localhost:5000/testimonials");
       return res.data;
@@ -55,9 +55,9 @@ const UserTestimonials = () => {
             },
           }}
         >
-          {feadback.map((pre, index) => (
+          {testimonials.map((userFeedback, index) => (
             <SwiperSlide key={index}>
-              <TestimonialItem task={pre} />
+              <TestimonialItem userFeedback={userFeedback} />
             </SwiperSlide>
           ))}
         </Swiper>
