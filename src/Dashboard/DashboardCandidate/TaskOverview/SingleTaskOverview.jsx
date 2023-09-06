@@ -2,6 +2,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { Button } from "@mui/material";
 import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 
 const SingleTaskOverview = ({ client }) => {
   const { appliedjobdata } = client;
@@ -32,6 +33,7 @@ const SingleTaskOverview = ({ client }) => {
         <p className="font-semibold text-base md:text-sm">
           <Button variant="outlined" className="w-6 h-6 text-[#5ADE80]">
             Submit
+            <ApplyModal />
           </Button>
         </p>
       </td>
