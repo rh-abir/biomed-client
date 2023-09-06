@@ -10,9 +10,10 @@ import {
   AiOutlineUser
 } from "react-icons/ai";
 
-import { PiBagSimpleBold } from "react-icons/pi";
+
 import { RiMessage2Line } from "react-icons/ri";
 import { VscFeedback } from "react-icons/vsc";
+
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
@@ -53,15 +54,6 @@ const CandidateMenu = () => {
             className="flex items-center gap-3"
           >
             <AiOutlineUser /> My Profile
-          </Link>
-        </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
-            onClick={() => setDashboardToggle(false)}
-            to="/dashboard/applied-tasks"
-            className="flex items-center gap-3"
-          >
-            <PiBagSimpleBold /> Applied Tasks
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">

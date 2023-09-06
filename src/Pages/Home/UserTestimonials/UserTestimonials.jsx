@@ -24,7 +24,7 @@ const UserTestimonials = () => {
 
   return (
     <div className="dark:bg-gray-800 bg-[#f4fdf4] py-10">
-      <Container>
+      <Container className="dark:bg-gray-800">
         <SectionTitle
           heading={"User Testimonials"}
           text={
@@ -38,7 +38,7 @@ const UserTestimonials = () => {
             delay: 4000,
             disableOnInteraction: false,
           }}
-          slidesPerView={3}
+          slidesPerView={4}
           loop={true}
           pagination={{ clickable: true }}
           modules={[Autoplay, Pagination]}

@@ -1,7 +1,7 @@
 import React from "react";
+import faqimg from "../../../assets/faq.svg";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
-import faqimg from "../../../assets/faq.svg";
 
 const FrequentlyAskQuestion = () => {
   return (
@@ -17,8 +17,8 @@ const FrequentlyAskQuestion = () => {
                 <summary className="flex justify-between items-center font-medium text-xl cursor-pointer list-none">
                   <span>
                     {" "}
-                    <strong className="text-3xl">Q.</strong> What is the purpose
-                    of the Task Evaluation Platform?
+                    <strong className="text-3xl">Q.</strong> What is purpose of
+                    the Task Evaluation Platform?
                   </span>
                   <span className="transition group-open:rotate-180">
                     <svg

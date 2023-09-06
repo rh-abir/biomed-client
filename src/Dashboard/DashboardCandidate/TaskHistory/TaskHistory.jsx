@@ -1,62 +1,133 @@
-import React from 'react';
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useState } from "react";
+import {
+  FaArrowLeft,
+  FaArrowRight,
+  FaEye,
+  FaRegTrashAlt,
+} from "react-icons/fa";
+import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
 const TaskHistory = () => {
-    return (
-        <div className='text-xl p-10'>
-            <h2>The Task History section is essential for tracking and reviewing the changes and actions associated with a specific task over time. Here are key elements and functionalities to include in the task history section: <br />
+  const { data: allClients = [] } = useQuery({
+    queryKey: ["allClients"],
+    queryFn: async () => {
+      const res = await axios("https://biomed-server.vercel.app/clients");
+      return res.data;
+    },
+  });
 
-                <p className='my-3 text-red-600'><strong>Functionalities:</strong></p>
+  const [currentPage, setCurrentPage] = useState(1);
+  const rowsPerPage = 6;
+  const startIndex = (currentPage - 1) * rowsPerPage;
+  const endIndex = startIndex + rowsPerPage;
 
-                <strong>Activity Log:</strong> Display a chronological list of activities, changes, and actions related to the task. Each entry should include a timestamp to indicate when the activity occurred. <br />
+  return (
+    <div className="px-10 py-6 bg-gray-100 min-h-screen flex flex-col">
+      {/* Title Section */}
+      <DashboardTitle
+        title={"Complete Tasks"}
+        slogan={"Ready to jump back in?"}
+      />
 
-                <strong>Activity Details:</strong> For each activity log entry, provide a clear and concise description of the action taken or change made to the task. Include details such as who performed the action and what was modified. <br />
-
-                <strong>User Attribution:</strong>Clearly indicate which user (by name or username) initiated each action or change in the task history. <br />
-
-                <strong>Filter and Search:</strong> Implement filtering options and a search bar to allow users to narrow down and find specific activities or changes within the task history.<br />
-
-                <strong>Types of Activities:</strong> Categorize activities into different types (e.g., task creation, status updates, comments added, attachments added) and use icons or color coding to distinguish them.. <br />
-
-                <strong>Version Control (if applicable):</strong> If tasks have multiple versions or revisions, show a history of changes with the ability to compare versions side by side.. <br />
-
-                <strong>Comment Threads (if applicable):</strong> If comments are part of the task history, display threaded conversations for a clear view of discussions and interactions related to the task.<br />
-
-
-
-                <strong> Action Links (if applicable):</strong>If certain activities involve actions like editing the task, reverting changes, or responding to comments, provide links or buttons to perform these actions directly from the history log.<br />
-
-                <strong>Privacy and Permissions:</strong> Ensure that users can only access task history entries relevant to their role or permissions. Protect sensitive information from unauthorized access. <br />
-
-                <strong>Export and Download:</strong> Allow users to export the task history log, either in a downloadable format (e.g., CSV, PDF) or for printing purposes.<br />
-
-                <strong>Audit Trail (if applicable):</strong> - If your platform requires a detailed audit trail for compliance purposes, record all actions and changes comprehensively.<br />
-
-
-
-                <p className='my-3 text-red-600'><strong>UI Design for Task History:</strong></p>
-
-                <strong> Clear Layout: </strong> Design a clean and organized layout for the task history section, with activities presented in a clear and easy-to-read format.<br />
-
-                <strong>Timestamps:</strong> Ensure that timestamps are prominently displayed and easily distinguishable from activity descriptions.<br />
-
-                <strong>Icons and Symbols:</strong> Use icons and symbols to represent different types of activities and actions, making the log visually informative..<br />
-
-                <strong> Expandable Entries:</strong> Implement expand/collapse functionality for individual activity log entries to save screen space and reduce clutter.<br />
-
-                <strong>Pagination or Infinite Scroll: </strong> Consider how users will navigate through a long task history and provide a convenient way to access older entries.<br />
-
-                <strong> Search and Filter Options: </strong>Make search and filtering tools easily accessible and user-friendly..<br />
-
-                <strong>Privacy Controls: </strong> Implement appropriate privacy controls to ensure that users only see history entries they have permission to access..<br />
-
-                <strong>  Color Coding:  </strong>   Use color coding to highlight important events or changes in the task history.<br />
-
-                <strong>Print-Friendly Format: </strong>  If users need to print or share the task history, provide a print-friendly view option.<br />
-
-
-                Remember to conduct user testing to refine the design and functionality of the task history section based on user feedback and needs. Task history is a valuable feature for tracking the evolution of tasks and maintaining transparency in task management.</h2>
+      <div className="bg-white shadow-md p-4 md:p-8 mx-2 md:mx-10 rounded-2xl">
+        <h2 className="text-lg md:text-xl font-semibold pb-6 md:pb-10">
+          This task are completed
+        </h2>
+        <div className="overflow-x-auto">
+          <table className="min-w-full divide-y divide-gray-200">
+            <thead className="bg-gray-50 text-green-400">
+              <tr>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg px-3 md:ps-5">
+                  Task Name
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Due Date
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Status
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Action
+                </th>
+              </tr>
+            </thead>
+            <tbody className="bg-white divide-y divide-gray-200">
+              {allClients?.slice(startIndex, endIndex)?.map((client) => (
+                <tr key={client._id}>
+                  <td className="py-2 md:py-4">
+                    <div className="flex items-center">
+                      <img
+                        src={client.image}
+                        alt="Job"
+                        className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
+                      />
+                      <div>
+                        <p className="font-semibold text-base md:text-lg">
+                          {client.name}
+                        </p>
+                      </div>
+                    </div>
+                  </td>
+                  <td className="py-2 md:py-4">{client.email}</td>
+                  <td className="py-2 md:py-4">
+                    <div className="flex space-x-1 md:space-x-2">
+                      <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
+                        <FaEye className="w-3 h-3 md:w-4 md:h-4" />
+                      </span>
+                      <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
+                        <FaRegTrashAlt className="w-3 h-3 md:w-4 md:h-4" />
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
-    );
+      </div>
+      <div className="flex justify-center mt-7">
+        <button
+          className={`mr-5 ${currentPage === 1 ? "cursor-not-allowed" : ""}`}
+          onClick={() => setCurrentPage((prevPage) => prevPage - 1)}
+          disabled={currentPage === 1}
+        >
+          <FaArrowLeft />
+        </button>
+        <div className="flex">
+          {Array.from({
+            length: Math.ceil(allClients.length / rowsPerPage),
+          }).map((_, index) => (
+            <button
+              key={index}
+              className={`mx-3 py-3 px-4 rounded-lg ${
+                currentPage === index + 1
+                  ? "bg-green-400 text-white"
+                  : "bg-gray-200 text-gray-600 hover:bg-green-400 hover:text-white"
+              } `}
+              onClick={() => setCurrentPage(index + 1)}
+              disabled={currentPage === index + 1}
+            >
+              {index + 1}
+            </button>
+          ))}
+        </div>
+        <button
+          className={`ml-2 ${
+            endIndex >= allClients.length ? "cursor-not-allowed" : ""
+          }`}
+          onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
+          disabled={endIndex >= allClients.length}
+        >
+          <FaArrowRight />
+        </button>
+      </div>
+      <div className="my-10 md:my-20 text-center text-gray-600 text-xs md:text-base">
+        © 2023 Biomed LTD. All Rights Reserved.
+      </div>
+    </div>
+  );
 };
 
 export default TaskHistory;

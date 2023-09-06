@@ -117,7 +117,7 @@ const TaskForm = () => {
         ]).then(([dataImage1, dataImage2]) => {
           const currentData = {
             title: data.name,
-            companyName: data.company,
+            companyName: data.companyName,
             email: user?.email,
             description: data.description,
             username: data.username,
@@ -135,6 +135,7 @@ const TaskForm = () => {
             logo: dataImage1.data.data.display_url,
             thumbnail: dataImage2.data.data.display_url,
             attachment: downloadUrl,
+            time: new Date(),
           };
           axios
             .post("https://biomed-server.vercel.app/jobs", currentData)
@@ -261,16 +262,34 @@ const TaskForm = () => {
           )}
         </div>
 
-        <div className="mb-4">
-          <label htmlFor="name">Task Title</label>
-          <input
-            type="text"
-            id="name"
-            placeholder="Enter title"
-            className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
-            {...register("name", { required: "Title is required" })}
-          />
-          {errors.name && <p className="text-red-500">{errors.name.message}</p>}
+        <div className="grid grid-cols-2 gap-5">
+          <div className="mb-4">
+            <label htmlFor="name">Task Title</label>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter title"
+              className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+              {...register("name", { required: "Title is required" })}
+            />
+            {errors.name && (
+              <p className="text-red-500">{errors.name.message}</p>
+            )}
+          </div>
+
+          <div className="mb-4">
+            <label htmlFor="name">Company Name (optional) </label>
+            <input
+              type="text"
+              id="companyName"
+              placeholder="Enter title"
+              className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+              {...register("companyName")}
+            />
+            {errors.companyName && (
+              <p className="text-red-500">{errors.companyName.message}</p>
+            )}
+          </div>
         </div>
 
         <div className="grid lg:grid-cols-2 gap-5 lg:gap-5">
@@ -476,7 +495,7 @@ const TaskForm = () => {
           className="bg-primary px-10 py-3 text-lg font-semibold rounded-md text-gray-50 mt-10"
           type="submit"
         >
-          Add Job
+          Add Task
         </button>
       </form>
     </div>

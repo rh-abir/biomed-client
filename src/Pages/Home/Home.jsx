@@ -6,6 +6,7 @@ import RecentJob from "./RecentJob/RecentJob";
 import TopCompany from "./TopCompany/TopCompany";
 import TrendingTasks from "./TrendingTasks/TrendingTasks";
 import UserTestimonials from "./UserTestimonials/UserTestimonials";
+import WorkThrough from "./WorkThrough/WorkThrough";
 import Categorys from "./categorys/Categorys";
 
 const Home = () => {
@@ -18,6 +19,8 @@ const Home = () => {
       <AboutUs />
       <TopCompany />
       <UserTestimonials />
+      <PreferenceJobs />
+      <WorkThrough />
       <FrequentlyAskQuestion />
     </div>
   );
