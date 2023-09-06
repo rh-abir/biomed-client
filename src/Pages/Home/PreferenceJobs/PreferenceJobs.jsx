@@ -20,7 +20,7 @@ const PreferenceJobs = () => {
 
   if (isLoading) {
     return <div>Loading...</div>;
-  } 
+  }
 
   return (
     <div className="dark:bg-gray-800 bg-[#f4fdf4] py-10">
@@ -37,7 +37,7 @@ const PreferenceJobs = () => {
             disableOnInteraction: false,
           }}
           slidesPerView={4}
-          loop={true} 
+          loop={true}
           pagination={{ clickable: true }}
           modules={[Autoplay, Pagination]}
           className="mySwiper"
@@ -49,10 +49,10 @@ const PreferenceJobs = () => {
               slidesPerView: 2,
             },
             1024: {
-              slidesPerView: 3, 
+              slidesPerView: 3,
             },
             1440: {
-              slidesPerView: 4, 
+              slidesPerView: 4,
             },
           }}
         >
