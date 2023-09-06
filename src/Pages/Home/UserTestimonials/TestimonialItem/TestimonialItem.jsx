@@ -1,13 +1,12 @@
 import React from "react";
 import quoteImg from '../../../../assets/quote/quote.png';
 
-const TestimonialItem = ({ task }) => {
-    // const {user} = useContext(AuthContext);
+const TestimonialItem = ({ userFeedback }) => {
   const {
     user_image,
     user_name,
     feedback
-  } = task;
+  } = userFeedback;
 
   
 
