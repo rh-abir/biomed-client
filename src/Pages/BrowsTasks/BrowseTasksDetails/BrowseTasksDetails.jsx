@@ -40,6 +40,7 @@ const BrowseTasksDetails = () => {
   };
 
   const [isOpenApply, setIsOpenApply] = useState(false);
+  const [applied, setApplied] = useState(false);
 
   const closeApplyModal = () => {
     setIsOpenApply(false);
@@ -73,6 +74,7 @@ const BrowseTasksDetails = () => {
           .post("https://biomed-server.vercel.app/appliedjob", applyJob)
           .then((response) => {
             if (response.data.acknowledged) {
+              setApplied(true);
               Swal.fire("Applied", "Your are successfully apply.", "success");
             }
           })
@@ -215,8 +217,11 @@ const BrowseTasksDetails = () => {
 
                 <div className="my-5">
                   <button
+                    disabled={applied}
                     onClick={handleApply}
-                    className="bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition cursor-pointer "
+                    className={`bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition  ${
+                      applied && "bg-red-300 hover:bg-red-200 cursor-not-allowed"
+                    }`}
                   >
                     Apply Now
                   </button>
