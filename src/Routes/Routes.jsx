@@ -119,6 +119,12 @@ const router = createBrowserRouter([
         path: "/dashboard/task-overview",
         element: <TaskOverview />,
       },
+
+      // dashboard/task-overview details page
+      {
+        path: "/dashboard/task-overview/:id",
+        element: <div>This is detail page</div>,
+      },
       {
         path: "/dashboard/task-details",
         element: <TaskDetails />,

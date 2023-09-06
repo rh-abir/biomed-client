@@ -7,7 +7,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
-import TrendingSlide from "../TrendingTasks/TrendingSlide/TrendingSlide";
+import PreferenceItem from "./PreferenceItem/PreferenceItem";
 
 const PreferenceJobs = () => {
   const { isLoading, data: preference = [] } = useQuery({
@@ -26,8 +26,8 @@ const PreferenceJobs = () => {
     <div className="dark:bg-gray-800 bg-[#f4fdf4] py-10">
       <Container className="dark:bg-gray-800">
         <SectionTitle
-          heading={"Preference Jobs"}
-          text={"Here is your preference jobs"}
+          heading={"User Testimonials"}
+          text={"Discover how our platform has transformed tasks and projects for our users."}
         />
         <Swiper
           spaceBetween={30}
@@ -58,7 +58,7 @@ const PreferenceJobs = () => {
         >
           {preference.map((pre, index) => (
             <SwiperSlide key={index}>
-              <TrendingSlide task={pre} />
+              <PreferenceItem task={pre} />
             </SwiperSlide>
           ))}
         </Swiper>

@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import { AiOutlineShareAlt, AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BiBriefcaseAlt } from "react-icons/bi";
@@ -7,15 +8,14 @@ import { LiaBusinessTimeSolid } from "react-icons/lia";
 import { PiBriefcaseThin } from "react-icons/pi";
 import { TbHomeDot } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 import Container from "../../../components/Shared/Container/Container";
-import Swal from "sweetalert2";
-import axios from "axios";
-import { AuthContext } from "../../../Provider/AuthProvider";
-
 
 const BrowseTasksDetails = () => {
   const { myProfileData, user } = useContext(AuthContext);
+  console.log(myProfileData);
   const {
     _id,
     country,

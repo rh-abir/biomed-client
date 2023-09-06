@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
 import {
-  AiOutlineClose,
-  AiOutlineHome,
-  AiOutlineLogout,
-  AiOutlineUser,
-  AiOutlineUnorderedList,
-  AiOutlineInfoCircle,
   AiOutlineCheckCircle,
-  AiOutlineHistory
+  AiOutlineClose,
+  AiOutlineHistory,
+  AiOutlineHome,
+  AiOutlineInfoCircle,
+  AiOutlineLogout,
+  AiOutlineUnorderedList,
+  AiOutlineUser,
 } from "react-icons/ai";
 
 import { Link, useNavigate } from "react-router-dom";

@@ -23,7 +23,7 @@ const Header = () => {
   const roleModalHandler = (email) => {
     becomeClient(email).then(() => {
       setClientRole(true);
-      toast.success("You are client now, Post Jobs!");
+      toast.success("You are client now, Post Tasks!");
       navigate("/dashboard/post-task");
       closeRoleModal();
     });
@@ -125,10 +125,10 @@ const Header = () => {
                 <ul className="flex flex-col text-2xl gap-3 items-center xl:hidden">
                   <MenuItem name={"Home"} path={"/"} />
                   <MenuItem
-                    name={"Browse Jobs"}
-                    path={"/browseJobs/browseJobs-home"}
+                    name={"Browse Tasks"}
+                    path={"/browseTasks/browseTasks-home"}
                   />
-                  <MenuItem name={"Top Jobs"} path={"/"} />
+                  <MenuItem name={"Top Tasks"} path={"/"} />
                   <MenuItem name={"Blog"} path={"/blogs"} />
                   <MenuItem name={"Community"} path={"/community"} />
                 </ul>
