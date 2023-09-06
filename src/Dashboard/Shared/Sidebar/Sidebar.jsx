@@ -10,7 +10,7 @@ const Sidebar = () => {
 
   console.log(adminRole, clientRole, moderatorRole);
   return (
-    <div className="fixed dark:bg-gray-800 dark:text-white">
+    <div className="sticky top-[100px] overflow-x-scroll dark:bg-gray-800 dark:text-white">
       {adminRole ? (
         <AdminMenu />
       ) : clientRole ? (

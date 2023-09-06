@@ -7,13 +7,13 @@ import { Autoplay, Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
-import PreferenceItem from "./PreferenceItem/PreferenceItem";
+import TestimonialItem from "./TestimonialItem/TestimonialItem";
 
-const PreferenceJobs = () => {
-  const { isLoading, data: preference = [] } = useQuery({
-    queryKey: ["preference"],
+const UserTestimonials = () => {
+  const { isLoading, data: testimonials = [] } = useQuery({
+    queryKey: ["testimonials"],
     queryFn: async () => {
-      const res = await axios("/TrendingTasksData/trendingTasks.json");
+      const res = await axios("http://localhost:5000/testimonials");
       return res.data;
     },
   });
@@ -27,16 +27,18 @@ const PreferenceJobs = () => {
       <Container className="dark:bg-gray-800">
         <SectionTitle
           heading={"User Testimonials"}
-          text={"Discover how our platform has transformed tasks and projects for our users."}
+          text={
+            "Discover how our platform has transformed tasks and projects for our users."
+          }
         />
         <Swiper
           spaceBetween={30}
           freeMode={true}
           autoplay={{
-            delay: 3000,
+            delay: 4000,
             disableOnInteraction: false,
           }}
-          slidesPerView={3}
+          slidesPerView={4}
           loop={true}
           pagination={{ clickable: true }}
           modules={[Autoplay, Pagination]}
@@ -50,12 +52,12 @@ const PreferenceJobs = () => {
             },
             1024: {
               slidesPerView: 3,
-            }
+            },
           }}
         >
-          {preference.map((pre, index) => (
+          {testimonials.map((userFeedback, index) => (
             <SwiperSlide key={index}>
-              <PreferenceItem task={pre} />
+              <TestimonialItem userFeedback={userFeedback} />
             </SwiperSlide>
           ))}
         </Swiper>
@@ -64,4 +66,4 @@ const PreferenceJobs = () => {
   );
 };
 
-export default PreferenceJobs;
+export default UserTestimonials;

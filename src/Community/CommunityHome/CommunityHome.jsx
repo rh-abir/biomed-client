@@ -3,7 +3,7 @@ import CommunityFeed from "../Shared/CommunityFeed/CommunityFeed";
 
 const CommunityHome = () => {
   return (
-    <div>
+    <div className="bg-[#5bbb7b]">
       <CommunityFeed/>
     </div>
   );
