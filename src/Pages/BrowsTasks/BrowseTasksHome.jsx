@@ -31,7 +31,7 @@ const BrowseTasksHome = ({ browseJobsData }) => {
   const { data } = useLazyLoad({ triggerRef, onGrabData });
   return (
     <>
-      {/* job card */}
+      {/* Task card */}
       <div className="grid md:grid-cols-2 gap-5 mb-6">
         {data.map((jobsdata) => (
           <TaskCard key={jobsdata._id} task={jobsdata} />
