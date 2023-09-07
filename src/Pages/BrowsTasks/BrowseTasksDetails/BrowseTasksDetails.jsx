@@ -13,8 +13,8 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 import Container from "../../../components/Shared/Container/Container";
 
 const BrowseTasksDetails = () => {
-  const { myProfileData, user } = useContext(AuthContext);
-  console.log(myProfileData);
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const {
     _id,
     country,
@@ -61,7 +61,9 @@ const BrowseTasksDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         const applyJob = {
-          ...myProfileData,
+          name: user?.displayName,
+          image: user?.photoURL,
+          email: user?.email,
           deadline,
           title,
           companyName,
@@ -77,7 +79,6 @@ const BrowseTasksDetails = () => {
           grading,
           isApplied: true,
           taskId: _id,
-          email: user?.email,
         };
 
         axios
@@ -118,7 +119,7 @@ const BrowseTasksDetails = () => {
               <img
                 className="w-full h-[500px] object-cover"
                 src={thumbnail}
-                alt=""
+                alt="browser details thumbnail"
               />
             </div>
 

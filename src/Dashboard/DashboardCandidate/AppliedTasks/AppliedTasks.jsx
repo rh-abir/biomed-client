@@ -150,7 +150,7 @@ const AppliedTasks = () => {
         </button>
       </div>
       <div className="my-10 md:my-20 text-center text-gray-600 text-xs md:text-base">
-        © 2023 Biomed by ib-themes. All Rights Reserved.
+        © 2023 Biomed. All Rights Reserved.
       </div>
     </div>
   );

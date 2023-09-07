@@ -31,7 +31,11 @@ const TaskCard = ({ task }) => {
 
       <div className="flex items-center gap-5 mb-5">
         <div>
-          <img className="w-20 object-contain" src={logo} alt="logo" />
+          <img
+            className="w-16 h-16 bg-gray-50  object-cover rounded-full"
+            src={logo}
+            alt="logo"
+          />
         </div>
         <div>
           <h2 className="text-xl font-semibold text-gray-600">

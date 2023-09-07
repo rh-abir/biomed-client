@@ -128,7 +128,7 @@ const ManageJob = () => {
         </div>
       </div>
       <p className="text-center mt-20">
-        © 2023 Biomed by <span className="text-[#1967d2]">ib-themes.</span> All
+        © 2023 Biomed by All
         Right Reserved.
       </p>
     </div>

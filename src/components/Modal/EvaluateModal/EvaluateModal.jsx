@@ -1,17 +1,18 @@
+import React, { useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import axios from "axios";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import React, { Fragment } from "react";
+import { Fragment } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
-import { AiFillCloseCircle } from "react-icons/ai";
-import { v4 } from "uuid";
 import { storage } from "../../../firebase/firebase.config";
-import useTasktData from "../../../hooks/useTasktData";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { v4 } from "uuid";
+import { toast } from "react-hot-toast";
+import axios from "axios";
+import { AiFillCloseCircle } from "react-icons/ai";
+import CreatableSelect from "react-select/creatable";
 
-const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
-  const { _id, title, deadline } = showInfoCompany;
-
+const EvaluateModal = ({ closeModal, isOpen, applicantInfo }) => {
+  console.log(applicantInfo);
+  const [pointsOptions, setPointsOptions] = useState(null);
   const {
     register,
     handleSubmit,
@@ -19,29 +20,50 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
     reset,
   } = useForm();
 
-  const [, refetch] = useTasktData();
+  const points = [
+    { value: "1", label: "1 points" },
+    { value: "2", label: "2 points" },
+    { value: "3", label: "3 points" },
+    { value: "4", label: "4 points" },
+    { value: "5", label: "5 points" },
+  ];
+
+  const customStyles = {
+    control: (provided) => ({
+      ...provided,
+      border: "none",
+      boxShadow: "none",
+      "&:hover": {
+        border: "none",
+      },
+    }),
+  };
 
   const onSubmit = (data) => {
     const resumeFile = data.resume[0];
 
     if (resumeFile == null) return;
 
-    const resumeRef = ref(storage, `resume/${resumeFile.name + v4()}`);
+    const resumeRef = ref(storage, `report/${resumeFile.name + v4()}`);
     uploadBytes(resumeRef, resumeFile).then(() => {
       getDownloadURL(resumeRef).then((downloadUrl) => {
-        const applyJob = {
-          downloadPdf: downloadUrl,
-          coverLetter: data?.coverLetter,
-          isApplied: false,
+        const evaluateTask = {
+          downloadEvaluate: downloadUrl,
+          feedback: data?.feedback,
+          isEvaluate: true,
+          point: pointsOptions,
+          ...applicantInfo
         };
 
         axios
-          .put(`http://localhost:5000/appliedjob/${_id}`, applyJob)
+          .post(
+            `http://localhost:5000/evaluateTask`,
+            evaluateTask
+          )
           .then((response) => {
             console.log(response);
             reset();
-            toast.success("Applied Success");
-            refetch();
+            toast.success("Evaluate Successfully");
             closeModal();
           })
           .catch((error) => {
@@ -87,12 +109,35 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                     <AiFillCloseCircle />
                   </button>
                 </div>
+                <div className="text-xl mb-3">
+                  <span className="font-semibold">Evaluate Task:</span>{" "}
+                  {applicantInfo?.title}
+                </div>
                 <Dialog.Title
                   as="h3"
                   className=" bg-gray-100 py-10 px-5 rounded-lg leading-6 text-gray-900"
                 >
-                  <div className="text-xl font-semibold">{title}</div>
-                  <h3 className="">{deadline}</h3>
+                  <div className="flex items-center gap-2">
+                    <div>
+                      <img
+                        className="w-16 h-16 object-cover rounded-full"
+                        src={applicantInfo?.image}
+                        alt=""
+                      />
+                    </div>
+                    <div>
+                      <div className="text-xl font-semibold">
+                        {applicantInfo?.name
+                          ? applicantInfo?.name
+                          : "Name not found"}
+                      </div>
+                      <h3 className="">
+                        {applicantInfo?.email
+                          ? applicantInfo?.email
+                          : "email not found"}
+                      </h3>
+                    </div>
+                  </div>
                 </Dialog.Title>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
@@ -103,7 +148,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                       className="block text-gray-700 text-sm font-bold mb-2"
                       htmlFor="resume"
                     >
-                      Upload Submitted file
+                      Upload Evaluate Report
                     </label>
                     <input
                       type="file"
@@ -113,15 +158,27 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                     />
                   </div>
                   <div className="mb-4">
+                    <div className="mb-4">
+                      <label htmlFor="qualification">Point Option</label>
+
+                      <CreatableSelect
+                        className="w-full px-4 py-2 dark:bg-slate-700 bg-gray-100 border rounded-md focus:ring focus:ring-blue-300"
+                        defaultValue={pointsOptions}
+                        onChange={setPointsOptions}
+                        options={points}
+                        styles={customStyles}
+                      />
+                    </div>
+
                     <label
                       className="block text-gray-700 text-sm font-bold mb-2"
                       htmlFor="coverLetter"
                     >
-                      Your opinion
+                      Give this user feedback
                     </label>
                     <textarea
                       rows="10"
-                      {...register("coverLetter")}
+                      {...register("feedback")}
                       className="border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                     />
                   </div>
@@ -130,7 +187,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                       type="submit"
                       className="bg-primary hover:bg-hover text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     >
-                      Summit Application
+                      Evaluate Task
                     </button>
                   </div>
                 </form>
@@ -143,4 +200,4 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
   );
 };
 
-export default ApplyModal;
+export default EvaluateModal;

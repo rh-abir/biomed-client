@@ -107,8 +107,8 @@ const AuthProvider = ({ children }) => {
   const { data: manageJobs = [] } = useQuery({
     queryKey: ["manageJobs"],
     queryFn: async () => {
-      const res = await axios(
-        `https://biomed-server.vercel.app/jobs/souravh093@gmail.com`
+      const res = await axios.get(
+        `https://biomed-server.vercel.app/jobs/${user?.email}`
       );
       return res.data;
     },
