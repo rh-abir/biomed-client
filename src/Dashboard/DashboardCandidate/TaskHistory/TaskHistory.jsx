@@ -1,22 +1,13 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React, { useState } from "react";
-import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaEye,
-  FaRegTrashAlt,
-} from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
+import useTasktData from "../../../hooks/useEmailgetData";
+import SingleTaskHistory from "./SingleTaskHistory";
 
 const TaskHistory = () => {
-  const { data: allClients = [] } = useQuery({
-    queryKey: ["allClients"],
-    queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/clients");
-      return res.data;
-    },
-  });
+  const [allApplayJobs] = useTasktData();
+
+  console.log(allApplayJobs);
 
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
@@ -43,10 +34,13 @@ const TaskHistory = () => {
                   Task Name
                 </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-lg">
-                  Due Date
+                  Download Report
                 </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-lg">
-                  Status
+                  Rating
+                </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg">
+                  Feedback
                 </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-lg">
                   Action
@@ -54,35 +48,14 @@ const TaskHistory = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {allClients?.slice(startIndex, endIndex)?.map((client) => (
-                <tr key={client._id}>
-                  <td className="py-2 md:py-4">
-                    <div className="flex items-center">
-                      <img
-                        src={client.image}
-                        alt="Job"
-                        className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
-                      />
-                      <div>
-                        <p className="font-semibold text-base md:text-lg">
-                          {client.name}
-                        </p>
-                      </div>
-                    </div>
-                  </td>
-                  <td className="py-2 md:py-4">{client.email}</td>
-                  <td className="py-2 md:py-4">
-                    <div className="flex space-x-1 md:space-x-2">
-                      <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
-                        <FaEye className="w-3 h-3 md:w-4 md:h-4" />
-                      </span>
-                      <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
-                        <FaRegTrashAlt className="w-3 h-3 md:w-4 md:h-4" />
-                      </span>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              {allApplayJobs
+                ?.slice(startIndex, endIndex)
+                ?.map((client, index) => (
+                  <SingleTaskHistory
+                    key={index}
+                    client={client}
+                  ></SingleTaskHistory>
+                ))}
             </tbody>
           </table>
         </div>
@@ -97,7 +70,7 @@ const TaskHistory = () => {
         </button>
         <div className="flex">
           {Array.from({
-            length: Math.ceil(allClients.length / rowsPerPage),
+            length: Math.ceil(allApplayJobs.length / rowsPerPage),
           }).map((_, index) => (
             <button
               key={index}
@@ -115,10 +88,10 @@ const TaskHistory = () => {
         </div>
         <button
           className={`ml-2 ${
-            endIndex >= allClients.length ? "cursor-not-allowed" : ""
+            endIndex >= allApplayJobs.length ? "cursor-not-allowed" : ""
           }`}
           onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
-          disabled={endIndex >= allClients.length}
+          disabled={endIndex >= allApplayJobs.length}
         >
           <FaArrowRight />
         </button>

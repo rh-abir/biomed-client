@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
-const useEmailgetData = () => {
+const useTasktData = () => {
   const user = useContext(AuthContext);
   const currentUserEmail = user.user.email;
 
@@ -19,4 +19,4 @@ const useEmailgetData = () => {
   return [allApplayJobs, refetch];
 };
 
-export default useEmailgetData;
+export default useTasktData;

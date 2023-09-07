@@ -8,7 +8,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { v4 } from "uuid";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { storage } from "../../../firebase/firebase.config";
-import useEmailgetData from "../../../hooks/useEmailgetData";
+import useTasktData from "../../../hooks/useEmailgetData";
 
 const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
   const { myProfileData, user } = useContext(AuthContext);
@@ -21,7 +21,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
     reset,
   } = useForm();
 
-  const [, refetch] = useEmailgetData();
+  const [, refetch] = useTasktData();
 
   const onSubmit = (data) => {
     const resumeFile = data.resume[0];
