@@ -10,12 +10,11 @@ import { TbHomeDot } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 import Container from "../../../components/Shared/Container/Container";
 
 const BrowseTasksDetails = () => {
-  const { myProfileData, user } = useContext(AuthContext);
-  console.log(myProfileData);
+  const { user } = useContext(AuthContext);
+  console.log(user)
   const {
     _id,
     country,
@@ -62,7 +61,9 @@ const BrowseTasksDetails = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         const applyJob = {
-          ...myProfileData,
+          name: user?.displayName,
+          image: user?.photoURL,
+          email: user?.email,
           deadline,
           title,
           companyName,
@@ -78,7 +79,6 @@ const BrowseTasksDetails = () => {
           grading,
           isApplyed: true,
           taskId: _id,
-          email: user?.email,
         };
 
         axios
@@ -119,7 +119,7 @@ const BrowseTasksDetails = () => {
               <img
                 className="w-full h-[500px] object-cover"
                 src={thumbnail}
-                alt=""
+                alt="browser details thumbnail"
               />
             </div>
 

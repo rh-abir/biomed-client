@@ -40,6 +40,7 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 
 const router = createBrowserRouter([
   {
@@ -124,9 +125,8 @@ const router = createBrowserRouter([
       //   path: "/dashboard/jobsDatail/:id",
       //   element: <BrowseTasksDetails />,
       //   loader: ({ params }) =>
-      //     fetch(`http://localhost:5000/allApplyJob/${params.id}`),
+      //     fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),
       // },
-
       {
         path: "/dashboard/task-details",
         element: <TaskDetails />,
@@ -147,9 +147,16 @@ const router = createBrowserRouter([
         path: "/dashboard/applied-tasks",
         element: <AppliedTasks></AppliedTasks>,
       },
+      // dashboard client
       {
         path: "/dashboard/post-task",
         element: <PostTask />,
+      },
+      {
+        path: "/dashboard/tasksApplied/:id",
+        element: <TaskApplied />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),
       },
       {
         path: "/dashboard/instructor-profile",

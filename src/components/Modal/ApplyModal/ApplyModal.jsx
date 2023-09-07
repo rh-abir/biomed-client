@@ -7,13 +7,10 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
-  const { myProfileData, user } = useContext(AuthContext);
-  const { taskId, _id, title, deadline } = showInfoCompany;
+  const { _id, title, deadline } = showInfoCompany;
 
   const {
     register,
