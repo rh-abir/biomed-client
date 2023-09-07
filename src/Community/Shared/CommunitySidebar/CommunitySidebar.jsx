@@ -1,11 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
-import { AiOutlineQuestionCircle } from "react-icons/ai";
 import { BiBriefcase, BiSolidMessageDetail } from "react-icons/bi";
-import { MdRssFeed } from "react-icons/md";
+import { MdOutlineContentCopy, MdRssFeed } from "react-icons/md";
 import { Link } from "react-router-dom";
-import "./CommunityRightSidebar.css";
+import "./CommunitySidebar.css";
 
 // Sidebar Items Data
 const sidebarItems = [
@@ -21,17 +20,17 @@ const sidebarItems = [
   },
   {
     icon: <BiBriefcase className="mr-1 text-2xl" />,
-    text: "Jobs",
-    link: "/browseJobs/browseJobs-home",
+    text: "Tasks",
+    link: "/browseTasks/browseTasks-home",
   },
   {
-    icon: <AiOutlineQuestionCircle className="mr-1 text-2xl" />,
-    text: "Questions",
-    link: "/",
+    icon: <MdOutlineContentCopy className="mr-1 text-2xl" />,
+    text: "Contents",
+    link: "/blogs",
   },
 ];
 
-const CommunityRightSidebar = () => {
+const CommunitySidebar = () => {
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
@@ -57,7 +56,7 @@ const CommunityRightSidebar = () => {
         </div>
         <hr className="sidebarHr" />
         {/* Sidebar Friends */}
-         <h3 className="mb-4 text-lg font-semibold">Friends</h3>
+         <h3 className="mb-4 text-lg font-semibold">Users</h3>
         <ul className="space-y-4">
           {allUsers?.map((user) => (
             <li key={user._id} className="flex items-center cursor-pointer">
@@ -71,4 +70,4 @@ const CommunityRightSidebar = () => {
   );
 };
 
-export default CommunityRightSidebar;
+export default CommunitySidebar;
