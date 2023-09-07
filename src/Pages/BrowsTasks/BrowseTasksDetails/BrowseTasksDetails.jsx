@@ -10,7 +10,6 @@ import { TbHomeDot } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 import Container from "../../../components/Shared/Container/Container";
 
 const BrowseTasksDetails = () => {
@@ -76,7 +75,7 @@ const BrowseTasksDetails = () => {
           startDate,
           attachment,
           grading,
-          isApplyed: true,
+          isApplied: true,
           taskId: _id,
           email: user?.email,
         };
@@ -231,7 +230,8 @@ const BrowseTasksDetails = () => {
                     disabled={applied}
                     onClick={handleApply}
                     className={`bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition  ${
-                      applied && "bg-red-300 hover:bg-red-200 cursor-not-allowed"
+                      applied &&
+                      "bg-red-300 hover:bg-red-200 cursor-not-allowed"
                     }`}
                   >
                     Apply Now
