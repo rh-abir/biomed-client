@@ -1,29 +1,3 @@
-.topbarLeft {
-  flex: 3;
-}
-
-.topbarCenter {
-  flex: 5;
-}
-
-.topbarRight {
-  flex: 4;
-}
-
-@media (max-width: 425px) {
-  .topbarLeft {
-    flex: none;
-  }
-
-  .topbarCenter {
-    flex: 5;
-  }
-
-  .topbarRight {
-    flex: none;
-  }
-}
-
 .topbarIconItem {
   cursor: pointer;
   position: relative;
