@@ -9,14 +9,14 @@ import {
   BsFillEmojiFrownFill,
 } from "react-icons/bs";
 import { FcLike } from "react-icons/fc";
-
 import { GoComment } from "react-icons/go";
 import { GrMoreVertical } from "react-icons/gr";
+import { PiShareFatLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../Provider/AuthProvider";
-import "./Post.css";
+import "./Posts.css";
 
-const Post = () => {
+const Posts = () => {
   const { user } = useContext(AuthContext);
 
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -56,31 +56,34 @@ const Post = () => {
     }
   };
 
-
-
   const { isLoading, data: posts = [] } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
-      const res = await axios("/postsData/posts.json");
+      const res = await axios("http://localhost:5000/posts");
       return res.data;
     },
   });
+
+
+// To see recent post at the top
+  const reversedPosts = [...posts].reverse();
+
   console.log(posts);
   if (isLoading) {
     return <div>Loading...</div>;
   }
   return (
     <div>
-      {posts.map((post) => (
+      {reversedPosts.map((post) => (
         <div className="post" key={post._id}>
           <div className="postWrapper">
             <div className="postTop">
               <div className="postTopLeft">
                 <Link to={"/community/community-profile"}>
                   <div className="flex items-center">
-                    <span
+                    <div
                       title="View Profile"
-                      className="md:mx-2 w-8 h-8 md:w-10 md:h-10 rounded-full overflow-hidden cursor-pointer"
+                      className="w-8 h-8 rounded-full overflow-hidden cursor-pointer"
                     >
                       <img
                         referrerPolicy="no-referrer"
@@ -90,38 +93,47 @@ const Post = () => {
                         alt="Profile"
                         className="w-full h-full object-cover"
                       />
-                    </span>
-                    <span className="text-sm md:text-lg mx-2">
+                    </div>
+                    <div className="text-sm md:text-lg mx-2">
                       {updateData?.name2
                         ? updateData?.name2
                         : user?.displayName}
-                    </span>
+                    </div>
+
+                    <div className="text-sm md:text-lg mx-2 font-semibold">
+                      {post.title}
+                    </div>
                   </div>
                 </Link>
-                <span className="text-xs md:text-sm">{post.date}</span>
               </div>
               <div className="postTopRight">
                 <GrMoreVertical className="text-xl cursor-pointer" />
               </div>
             </div>
-            <div className="postCenter">
-              <span className="postText">{post.desc}</span>
+            <div className="flex py-4 px-1 gap-4">
               <img
-                className="w-full h-[300px] md:h-[550px] lg:h-[350px] xl:h-[500px] object-cover"
-                src={post.photo}
+                className="w-40 h-36 object-cover rounded-md"
+                src="https://i.ibb.co/tYHfK8p/beautiful-sunset.jpg"
                 alt="Post Image"
               />
+              <span className="postText">
+                {post.desc && post.desc.length > 50 ? (
+                  <>
+                    {post.desc.slice(0, 500)}...
+                    <button className="font-semibold">See more</button>
+                  </>
+                ) : (
+                  post.desc
+                )}
+              </span>
             </div>
-            <div className="flex items-center justify-between mx-2">
+            <div className="flex items-center justify-between mx-1">
               <div className="flex items-center">
                 <BiSolidLike className="text-xs md:text-2xl lg:text-xl text-blue-700 cursor-pointer" />
                 <FcLike className="text-xs md:text-2xl lg:text-xl cursor-pointer" />
                 <span className="text-xs md:text-base lg:text-sm ms-1">
                   {post.like} people like it
                 </span>
-              </div>
-              <div className="text-xs md:text-base lg:text-sm">
-                {post.comment} comments
               </div>
             </div>
           </div>
@@ -132,7 +144,7 @@ const Post = () => {
               onMouseLeave={closeDropdown}
               className="absolute md:-mt-10 -mt-6 bg-white border border-teal-100 p-2 rounded-2xl"
             >
-              <div className="flex   gap-5">
+              <div className="flex cursor-pointer gap-5">
                 <BiSolidLike
                   onClick={() => setLike("Like")}
                   className="text-3xl md:text-4xl text-blue-400  hover:text-blue-700 cursor-pointer"
@@ -148,18 +160,24 @@ const Post = () => {
             </div>
           )}
           <hr className="postHr" />
-          <div className="flex items-center justify-around">
+          <div className="flex items-center justify-between py-3 px-4">
             <div
               onMouseEnter={toggleDropdown}
               onMouseLeave={toggleDropdown}
               className="flex items-center gap-1 text-sm md:text-lg cursor-pointer"
             >
-              <BiLike />
-              <span>Like</span>
+              <BiLike className="md:text-xl" />
+              <span className="text-sm">Like</span>
             </div>
-            <div className="flex items-center gap-1 text-sm md:text-lg cursor-pointer">
-              <GoComment />
-              <span>Comment</span>
+            <div className="flex items-center gap-2 md:gap-4">
+              <div className="flex items-center gap-1 text-sm md:text-lg cursor-pointer">
+                <GoComment className="md:text-xl" />
+                <span className="text-sm">Comment</span>
+              </div>
+              <div className="flex items-center gap-1 text-sm md:text-lg cursor-pointer">
+                <PiShareFatLight className="md:text-xl" />
+                <span className="text-sm">Share</span>
+              </div>
             </div>
           </div>
         </div>
@@ -168,4 +186,4 @@ const Post = () => {
   );
 };
 
-export default Post;
+export default Posts;

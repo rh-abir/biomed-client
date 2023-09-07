@@ -77,7 +77,7 @@ const BrowseTasksDetails = () => {
           startDate,
           attachment,
           grading,
-          isApplied: false,
+          isApplied: true,
           taskId: _id,
         };
 

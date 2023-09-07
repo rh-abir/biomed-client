@@ -41,6 +41,7 @@ import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
+import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 
 const router = createBrowserRouter([
   {
@@ -78,6 +79,12 @@ const router = createBrowserRouter([
         element: <BrowseTasksDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/singlejob/${params.id}`),
+      },
+      {
+        path: "/specificCategory/:title",
+        element: <SpecificCategory />,
+        loader: ({ params }) =>
+          fetch(`/categorysData/categorys.json/${params.title}`),
       },
       {
         path: "/terms",
@@ -122,7 +129,7 @@ const router = createBrowserRouter([
         element: <TaskOverview />,
       },
       // {
-      //   path: "/dashboard/jobsDatail/:id",
+      //   path: "/jobsDatail/:id",
       //   element: <BrowseTasksDetails />,
       //   loader: ({ params }) =>
       //     fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),

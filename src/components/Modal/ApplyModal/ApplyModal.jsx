@@ -1,13 +1,13 @@
-import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import { useForm } from "react-hook-form";
-import { storage } from "../../../firebase/firebase.config";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { v4 } from "uuid";
-import { toast } from "react-hot-toast";
 import axios from "axios";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import React, { Fragment } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { v4 } from "uuid";
+import { storage } from "../../../firebase/firebase.config";
+import useTasktData from "../../../hooks/useTasktData";
 
 const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
   const { _id, title, deadline } = showInfoCompany;
@@ -18,6 +18,8 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
     // formState: { errors },
     reset,
   } = useForm();
+
+  const [, refetch] = useTasktData();
 
   const onSubmit = (data) => {
     const resumeFile = data.resume[0];
@@ -30,7 +32,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
         const applyJob = {
           downloadPdf: downloadUrl,
           coverLetter: data?.coverLetter,
-          isApplied: true,
+          isApplied: false,
         };
 
         axios
@@ -38,7 +40,8 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
           .then((response) => {
             console.log(response);
             reset();
-            toast.success("Applied Successfully");
+            toast.success("Applied Success");
+            refetch();
             closeModal();
           })
           .catch((error) => {

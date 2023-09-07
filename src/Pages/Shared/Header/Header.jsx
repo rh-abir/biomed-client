@@ -70,7 +70,7 @@ const Header = () => {
                   />
                   <MenuItem name={"Top Tasks"} path={"/"} />
                   <MenuItem name={"Blog"} path={"/blogs"} />
-                  <MenuItem name={"Community"} path={"/community"} />
+                  <MenuItem name={"Community Forum"} path={"/community"} />
                 </ul>
               </div>
             </div>
@@ -130,7 +130,7 @@ const Header = () => {
                   />
                   <MenuItem name={"Top Tasks"} path={"/"} />
                   <MenuItem name={"Blog"} path={"/blogs"} />
-                  <MenuItem name={"Community"} path={"/community"} />
+                  <MenuItem name={"Community Forum"} path={"/community"} />
                 </ul>
               </div>
             </div>
