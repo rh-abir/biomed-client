@@ -1,32 +1,20 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
+import useEmailgetData from "../../../hooks/useEmailgetData";
+
 import SingleTaskOverview from "./SingleTaskOverview";
 
 const TaskOverview = () => {
-  const user = useContext(AuthContext);
-  const currentUserEmail = user.user.email;
+  const [allApplayJobs] = useEmailgetData();
 
-  const [allApplayJobs, setAllApplayJobs] = useState([]);
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/allApplyJob?email=${currentUserEmail}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setAllApplayJobs(data);
-      });
-  }, [currentUserEmail]);
-
-  const { data: allClients = [] } = useQuery({
-    queryKey: ["allClients"],
-    queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/clients");
-      return res.data;
-    },
-  });
+  // const { data: allClients = [] } = useQuery({
+  //   queryKey: ["allClients"],
+  //   queryFn: async () => {
+  //     const res = await axios("https://biomed-server.vercel.app/clients");
+  //     return res.data;
+  //   },
+  // });
 
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
@@ -64,9 +52,6 @@ const TaskOverview = () => {
                 <th className="py-3 md:py-5 text-left text-base md:text-sm">
                   Preview Application
                 </th>
-                <th className="py-3 md:py-5 text-left text-base md:text-sm">
-                  Delate Application
-                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -92,7 +77,7 @@ const TaskOverview = () => {
         </button>
         <div className="flex">
           {Array.from({
-            length: Math.ceil(allClients.length / rowsPerPage),
+            length: Math.ceil(allApplayJobs.length / rowsPerPage),
           }).map((_, index) => (
             <button
               key={index}
@@ -110,10 +95,10 @@ const TaskOverview = () => {
         </div>
         <button
           className={`ml-2 ${
-            endIndex >= allClients.length ? "cursor-not-allowed" : ""
+            endIndex >= allApplayJobs.length ? "cursor-not-allowed" : ""
           }`}
           onClick={() => setCurrentPage((prevPage) => prevPage + 1)}
-          disabled={endIndex >= allClients.length}
+          disabled={endIndex >= allApplayJobs.length}
         >
           <FaArrowRight />
         </button>

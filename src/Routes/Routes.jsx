@@ -121,7 +121,7 @@ const router = createBrowserRouter([
         element: <TaskOverview />,
       },
       // {
-      //   path: "/dashboard/jobsDatail/:id",
+      //   path: "/jobsDatail/:id",
       //   element: <BrowseTasksDetails />,
       //   loader: ({ params }) =>
       //     fetch(`http://localhost:5000/allApplyJob/${params.id}`),
