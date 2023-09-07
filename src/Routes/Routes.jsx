@@ -39,6 +39,7 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 
 const router = createBrowserRouter([
   {
@@ -76,6 +77,12 @@ const router = createBrowserRouter([
         element: <BrowseTasksDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/singlejob/${params.id}`),
+      },
+      {
+        path: "/specificCategory/:title",
+        element: <SpecificCategory />,
+        loader: ({ params }) =>
+          fetch(`/categorysData/categorys.json/${params.title}`),
       },
       {
         path: "/terms",
