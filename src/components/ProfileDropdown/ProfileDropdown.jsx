@@ -86,7 +86,7 @@ const ProfileDropdown = () => {
             <Link
               to={
                 clientRole
-                  ? "/dashboard/company-profile"
+                  ? "/dashboard/instructor-profile"
                   : "/dashboard/editProfile"
               }
               className="px-10 py-2 w-full dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer flex items-center gap-2"

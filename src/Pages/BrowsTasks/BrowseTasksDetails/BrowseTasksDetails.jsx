@@ -14,7 +14,7 @@ import Container from "../../../components/Shared/Container/Container";
 
 const BrowseTasksDetails = () => {
   const { user } = useContext(AuthContext);
-  console.log(user)
+  console.log(user);
   const {
     _id,
     country,
@@ -77,7 +77,7 @@ const BrowseTasksDetails = () => {
           startDate,
           attachment,
           grading,
-          isApplyed: true,
+          isApplied: false,
           taskId: _id,
         };
 
@@ -231,7 +231,8 @@ const BrowseTasksDetails = () => {
                     disabled={applied}
                     onClick={handleApply}
                     className={`bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition  ${
-                      applied && "bg-red-300 hover:bg-red-200 cursor-not-allowed"
+                      applied &&
+                      "bg-red-300 hover:bg-red-200 cursor-not-allowed"
                     }`}
                   >
                     Apply Now
