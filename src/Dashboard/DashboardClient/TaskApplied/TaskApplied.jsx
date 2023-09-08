@@ -110,7 +110,7 @@ const TaskApplied = () => {
                       {applicant?.appliedjobdata.deadline}
                     </td>
                     <td className="py-2 md:py-4">Active</td>
-                    {applicant?.appliedjobdata?.downloadPdf &&
+                    {applicant?.appliedjobdata?.downloadPdf ||
                     !applicant?.appliedjobdata?.downloadEvaluate ? (
                       <td className="py-2 md:py-4">
                         <button
