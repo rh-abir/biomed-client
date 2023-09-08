@@ -17,10 +17,12 @@ const SingleTaskOverview = ({ client }) => {
   const {
     deadline,
     companyName,
-
+    logo,
+    image,
     title,
     taskId,
   } = appliedjobdata;
+  console.log(appliedjobdata)
 
   const showInfoCompany = {
     _id,
@@ -34,9 +36,8 @@ const SingleTaskOverview = ({ client }) => {
       {client?.appliedjobdata?.isApplied ? (
         <tr>
           <td className="py-2 md:py-4">
-            <p className="font-semibold text-base md:text-sm">
-              {companyName ? "" : "hello"}
-            </p>
+            <img className="w-16 h-16 rounded-full object-cover ml-5" src={logo} alt="" />
+
           </td>
           <td className="py-2 md:py-4">
             <p className="font-semibold text-base md:text-sm">{title}</p>

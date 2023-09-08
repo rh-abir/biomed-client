@@ -6,7 +6,7 @@ const Banner = () => {
   return (
     <div className="bg-green-200 pt-10">
       <Container>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 items-center md:min-h-[calc(100vh-20px)]">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 my-10 items-center md:min-h-[calc(100vh-20px)]">
         <div>
           <div className="flex flex-col h-full justify-center">
             <h1 className="md:text-3xl lg:text-6xl text-2xl py-5 md:mt-4 font-semibold dark:text-slate-200 text-slate-700">

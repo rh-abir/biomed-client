@@ -38,7 +38,7 @@ const TaskOverview = () => {
             <thead className="bg-gray-50 text-green-400">
               <tr>
                 <th className="py-3 md:py-5 text-left text-base md:text-sm px-3 md:ps-5">
-                  Company Name
+                  Company Logo
                 </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-sm px-3 md:ps-5">
                   Job Title
