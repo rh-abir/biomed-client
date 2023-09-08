@@ -32,6 +32,8 @@ const BrowseTasksDetails = () => {
     grading,
   } = useLoaderData();
 
+  console.log(country)
+
   const showInfoCompany = {
     _id,
     title,
