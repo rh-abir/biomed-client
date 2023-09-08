@@ -12,9 +12,6 @@ const SingleTaskOverview = ({ client }) => {
     setIsOpenApply(false);
   };
 
-  const openApplyModal = () => {
-    setIsOpenApply(true);
-  };
   const { appliedjobdata, _id } = client;
 
   const {
