@@ -6,7 +6,6 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { CiPaperplane } from "react-icons/ci";
-import { FaRegBookmark } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { PiBagSimpleBold } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
@@ -68,11 +67,11 @@ const ClientMenu = () => {
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
           <Link
-            to="/dashboard/all-applications"
+            to="/dashboard/evaluate-applicants"
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
           >
-            <IoIosPaper /> All Applications
+            <IoIosPaper /> Evaluate Applicant
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">

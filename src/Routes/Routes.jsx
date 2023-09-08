@@ -42,6 +42,7 @@ import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
+import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
 
 const router = createBrowserRouter([
   {
@@ -192,6 +193,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/client-message",
         element: <ClientMessage />,
+      },
+      {
+        path: "/dashboard/evaluate-applicants",
+        element: <EvaluateApplicants />,
       },
 
       // dashboard admin

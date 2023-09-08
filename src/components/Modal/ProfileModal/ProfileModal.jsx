@@ -6,7 +6,6 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 
 const ProfileModal = ({ closeModal, isOpen, email }) => {
-  console.log(email);
   const { data: user = {} } = useQuery({
     queryKey: ["user", email],
     queryFn: async () => {
@@ -57,10 +56,10 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
                 </div>
                 <Dialog.Title
                   as="h3"
-                  className=" bg-gray-100 py-10 px-5 rounded-lg leading-6 text-gray-900"
-                ></Dialog.Title>
+                  className=" bg-gray-100 py-10 px-5 rounded-lg leading-6 text-2xl font-semibold text-gray-900"
+                >User Profile</Dialog.Title>
                 {user ? (
-                  <div className="bg-white p-6 rounded-lg shadow-lg">
+                  <div className="bg-white p-6 rounded-lg">
                     <div className="flex items-center">
                       <img
                         src={user?.image}

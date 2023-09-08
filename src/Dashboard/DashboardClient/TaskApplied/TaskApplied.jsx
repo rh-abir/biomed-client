@@ -1,14 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useState } from "react";
-import {
-  FaArrowLeft,
-  FaArrowRight,
-  FaEye,
-  FaRegTrashAlt,
-} from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import placeholder from "../../../assets/placeholder.jpg";
 import EvaluateModal from "../../../components/Modal/EvaluateModal/EvaluateModal";
 import ProfileModal from "../../../components/Modal/ProfileModal/ProfileModal";
@@ -24,6 +19,8 @@ const TaskApplied = () => {
       return res.data;
     },
   });
+
+  console.log(applicants);
 
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
@@ -82,7 +79,7 @@ const TaskApplied = () => {
                     View Profile
                   </th>
                   <th className="py-3 md:py-5 text-left text-base md:text-lg">
-                    Action
+                    Download
                   </th>
                 </tr>
               </thead>
@@ -113,17 +110,26 @@ const TaskApplied = () => {
                       {applicant?.appliedjobdata.deadline}
                     </td>
                     <td className="py-2 md:py-4">Active</td>
-                    <td className="py-2 md:py-4">
-                      <button
-                        onClick={() => {
-                          setApplicantInfo(applicant?.appliedjobdata);
-                          setIsOpenEvaluate(true);
-                        }}
-                        className="bg-primary text-gray-50 px-5 py-1 rounded-md"
-                      >
-                        Evaluate
-                      </button>
-                    </td>
+                    {applicant?.appliedjobdata?.downloadPdf &&
+                    !applicant?.appliedjobdata?.downloadEvaluate ? (
+                      <td className="py-2 md:py-4">
+                        <button
+                          onClick={() => {
+                            setApplicantInfo(applicant);
+                            setIsOpenEvaluate(true);
+                          }}
+                          className="bg-primary text-gray-50 px-5 py-1 rounded-md"
+                        >
+                          Evaluate
+                        </button>
+                      </td>
+                    ) : (
+                      <td className="py-2 md:py-4">
+                        <button className="bg-green-200 text-gray-400 px-5 py-1 rounded-md cursor-not-allowed">
+                          Evaluate
+                        </button>
+                      </td>
+                    )}
                     <td className="py-2 md:py-4">
                       <button
                         onClick={() => {
@@ -135,16 +141,23 @@ const TaskApplied = () => {
                         Profile
                       </button>
                     </td>
-                    <td className="py-2 md:py-4">
-                      <div className="flex space-x-1 md:space-x-2">
-                        <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
-                          <FaEye className="w-3 h-3 md:w-4 md:h-4" />
+                    {applicant?.appliedjobdata?.downloadPdf ? (
+                      <td className="py-2 md:py-4">
+                        <Link
+                          to={applicant?.appliedjobdata?.downloadPdf}
+                          target="_blank"
+                          className="bg-primary text-gray-50 px-5 py-1 rounded-md"
+                        >
+                          Submitted File
+                        </Link>
+                      </td>
+                    ) : (
+                      <td>
+                        <span className="bg-green-200 text-gray-400 px-5 py-1 rounded-md cursor-not-allowed">
+                          Submitted File
                         </span>
-                        <span className="bg-gray-100 p-1 md:p-2 rounded-lg">
-                          <FaRegTrashAlt className="w-3 h-3 md:w-4 md:h-4" />
-                        </span>
-                      </div>
-                    </td>
+                      </td>
+                    )}
                   </tr>
                 ))}
               </tbody>
