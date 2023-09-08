@@ -41,7 +41,7 @@ const Blogs = () => {
       const dataSkip = blogs.slice(page === 1 ? 0 : skip - limit, skip); // If page value is 1 it's starting value will 0 and end value will limit * page, but if page value is 2 then it will skip previous value.
       setPageData(dataSkip);
     }
-  }, [blogs]);
+  }, [blogs, page]);
 
   return (
     <div className="pt-20">

@@ -1,28 +1,16 @@
-import React, { useContext, useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
-import CreatableSelect from "react-select/creatable";
-import axios from "axios";
-// import { saveClient } from "../../../../api/auth";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-hot-toast";
 import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useContext } from "react";
+import { BiEdit } from "react-icons/bi";
+import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { TfiWorld } from "react-icons/tfi";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { saveClient } from "../../../api/auth";
-
-const imageToken = import.meta.env.VITE_UPLOAD_TOKEN;
+import canvas from "../../../assets/placeholder.jpg";
+import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
 const CompanyForm = () => {
   const { user } = useContext(AuthContext);
-  const [teamOptions, setTeamOptions] = useState(null);
-  const [allowOptions, setAllowOptions] = useState(null);
-  const navigate = useNavigate();
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    setValue,
-  } = useForm();
 
   const { data: companyView = [] } = useQuery({
     queryKey: ["companyView"],
@@ -34,316 +22,139 @@ const CompanyForm = () => {
     },
   });
 
-  const { updateData } = companyView;
-
-  useEffect(() => {
-    if (updateData) {
-      setValue("companyName", updateData?.companyName || "");
-      setValue("email", user?.email || "");
-      setValue("number", updateData?.number || "");
-      setValue("website", updateData?.website || "");
-      setValue("aboutCompany", updateData?.aboutCompany || "");
-      setValue("facebook", updateData?.facebook || "");
-      setValue("twitter", updateData?.twitter || "");
-      setValue("linkedin", updateData?.linkedin || "");
-      setValue("github", updateData?.github || "");
-      setValue("country", updateData?.country || "");
-      setValue("city", updateData?.city || "");
-      setValue("address", updateData?.address || "");
-
-      if (updateData?.teamSize) {
-        setTeamOptions({ value: updateData.teamSize, label: updateData.teamSize });
-      }
-
-      if (updateData?.allow) {
-        setAllowOptions({ value: updateData.allow, label: updateData.allow });
-      }
-    }
-  }, [updateData, user, setValue]);
-
-  const onSubmit = (data) => {
-    const imageUrl = `https://api.imgbb.com/1/upload?key=${imageToken}`;
-    const formData = new FormData();
-    formData.append("image", data.image[0]);
-
-    axios
-      .post(imageUrl, formData)
-      .then((dataImage) => {
-        const clientProfile = {
-          companyName: data?.companyName,
-          companyEmail: data?.email,
-          companyPhone: data?.number,
-          website: data?.website,
-          teamSize: teamOptions?.label,
-          allow: allowOptions?.label,
-          aboutCompany: data?.aboutCompany,
-          facebook: data?.facebook,
-          twitter: data?.twitter,
-          linkedin: data?.linkedin,
-          github: data?.github,
-          country: data?.country,
-          city: data?.city,
-          address: data?.address,
-          image: dataImage?.data?.data?.display_url,
-        };
-        return saveClient(user, clientProfile);
-      })
-      .then((response) => {
-        console.log(response);
-        if (response.modifiedCount === 1) {
-          toast.success("Profile updated successfully");
-          navigate("/dashboard/company-view");
-        } else {
-          toast.error("Failed to update Profile. Please try again.");
-        }
-      })
-      .catch((error) => {
-        toast.error(error.message);
-      });
-  };
-
-  const customStyles = {
-    control: (provided) => ({
-      ...provided,
-      border: "none",
-      boxShadow: "none",
-      "&:hover": {
-        border: "none",
-      },
-    }),
-  };
-
-  const teamSize = [
-    { value: "smallTeam", label: "Small Team (1-10 members)" },
-    { value: "mediumTeam", label: "Medium Team (11-50 members)" },
-    { value: "largeTeam", label: "Large Team (51-100 members)" },
-    { value: "enterpriseTeam", label: "Enterprise Team (100+ members)" },
-    { value: "crossFunctionalTeam", label: "Cross-Functional Team" },
-  ];
-
-  const allowToSearch = [
-    { value: "yes", label: "Yes" },
-    { value: "no", label: "No" },
-  ];
+  const { email, updateData } = companyView;
 
   return (
-    <div className="mt-10">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div className="mb-4">
-          <label htmlFor="image" className="block mb-1">
-            Upload Company Logo
-          </label>
-          <input
-            type="file"
-            id="image"
-            className="block w-full border dark:border-gray-500 text-gray-500 file:mr-4 file:py-4 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-gray-200 file:text-gray-700 dark:file:bg-gray-700 dark:file:text-gray-200 hover:file:bg-gray-100"
-            {...register("image", {
-              required: "Upload logo is required",
-              validate: {
-                fileSize: (file) =>
-                  file[0]?.size < 1048576 || "Image size must be less than 1MB",
-                fileType: (file) =>
-                  /jpeg|png|gif/.test(file[0]?.type) ||
-                  "Unsupported image format (jpeg/png/gif only)",
-              },
-            })}
-          />
-          {errors.image && <p className="text-red-500">{errors.image.message}</p>}
-        </div>
-        <div className="grid grid-cols-2 gap-10">
-          <div className="mb-4">
-            <label htmlFor="companyName">Company name (optional)</label>
-            <input
-              type="text"
-              id="companyName"
-              placeholder="Enter title"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none dark:bg-gray-700 dark:border-gray-500"
-              {...register("companyName")}
-            />
-          </div>
-        </div>
-      <div
-        key={myProfileData._id}
-        className="bg-white dark:bg-gray-800 dark:text-white p-6 rounded-md my-6"
-      >
-        {/* Image Section */}
-        <div className="md:flex justify-between">
-          <div className="md:flex gap-6 items-center">
-            <div className="mb-3 md:mb-0">
-              <img
-                className="rounded-full h-32 w-32 mx-auto md:mx-0"
-                src={
-                  updateData?.image ? updateData?.image : myProfileData?.image
-                }
-                alt=""
-              />
-              <Link to="/dashboard/editProfile">
-                <p className="lg:hidden flex items-center justify-center gap-1 text-xl cursor-pointer text-primary pt-2 md:mt-0">
+    <div className="min-h-screen p-6">
+      <DashboardTitle title={"My Profile!"} slogan={"Ready to jump back in?"} />
+      <div className="bg-white dark:bg-gray-800 min-h-screen">
+        <div className="p-10">
+          <div className="bg-white dark:bg-gray-800 rounded-lg">
+            <div className="md:flex justify-between items-center">
+              <div className="flex flex-col items-center md:flex-row md:space-x-4 space-y-2 md:space-y-0">
+                <img
+                  src={updateData?.image ? updateData?.image : canvas}
+                  alt="Company Logo"
+                  className="w-16 h-16 rounded-full object-cover border"
+                />
+                <Link
+                  to={"/dashboard/editProfile"}
+                  className="mb-5 flex justify-end"
+                >
+                  <button className="bg-primary px-3 py-1 rounded-md text-gray-200 hover:bg-hover md:hidden flex items-center gap-1">
+                    <BiEdit /> <span>Edit</span>
+                  </button>
+                </Link>
+              </div>
+              <Link
+                to={"/dashboard/editProfile"}
+                className="mb-5 flex justify-end"
+              >
+                <button className="bg-primary px-4 py-2 rounded-md text-gray-200 hover:bg-hover hidden md:flex items-center gap-1">
                   <BiEdit /> <span>Edit</span>
-                </p>
+                </button>
               </Link>
             </div>
-            <div className="space-y-3">
-              <p className="flex flex-col text-sm">
-                Full Name{" "}
-                <span className="text-xl">
-                  {updateData?.name2 ? updateData?.name2 : myProfileData?.name}
-                </span>
+
+            <div className="my-6 dark:text-gray-200">
+              <h2>
+                <span className="text-lg font-semibold">Name:</span>{" "}
+                {updateData?.name2 ? updateData?.name2 : user?.displayName}
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Email: {email ? email : "none"}
               </p>
-              <p className="flex flex-col text-sm">
-                Email Address{" "}
-                <span className="text-xl">
-                  {updateData?.email ? updateData?.email : myProfileData?.email}
-                </span>
+              <p className="text-gray-600 dark:text-gray-300">
+                Phone: {updateData?.phone ? updateData?.phone : "none"}
               </p>
             </div>
+            <div>
+              <h2 className="text-lg font-semibold mb-2 dark:text-gray-200">
+                About Me
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                {updateData?.description ? updateData?.description : "none"}
+              </p>
+            </div>
+            <div className="mt-6">
+              <h2 className="text-lg dark:text-gray-200 font-semibold mb-2">
+                Personal Information
+              </h2>
+              <div className="md:flex items-center md:space-x-10">
+                <div className="mb-2">
+                  <h2 className="text-sm font-semibold dark:text-gray-200">
+                    Country
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {updateData?.country ? updateData?.country : "none"}
+                  </p>
+                </div>
+                <div className="mb-2">
+                  <h2 className="text-sm font-semibold dark:text-gray-200">
+                    Age
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {updateData?.age ? updateData?.age : "none"}
+                  </p>
+                </div>
+                <div className="mb-2">
+                  <h2 className="text-sm font-semibold dark:text-gray-200">
+                    Language
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {updateData?.language ? updateData?.language : "none"}
+                  </p>
+                </div>
+                <div className="mb-2">
+                  <h2 className="text-sm font-semibold dark:text-gray-200">
+                    Education
+                  </h2>
+                  <p className="text-gray-600 dark:text-gray-300">
+                    {updateData?.education ? updateData?.education : "none"}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
-
-          <div className="mb-4">
-            <label htmlFor="number">Phone Number</label>
-            <input
-              type="text"
-              id="number"
-              defaultValue={updateData?.number || ""}
-              placeholder="+88011888822"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("number")}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="website">Website</label>
-            <input
-              type="text"
-              id="website"
-              defaultValue={updateData?.website || ""}
-              placeholder="Enter Website link"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("website")}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="teamSize">Team Size</label>
-            <CreatableSelect
-              className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:ring focus:ring-blue-300"
-              defaultValue={teamOptions}
-              onChange={setTeamOptions}
-              options={teamSize}
-              styles={customStyles}
-            />
-          </div>
-
-          <div className="mb-4">
-            <label htmlFor="allow">Allow In Search & Listing</label>
-            <CreatableSelect
-              className="w-full px-4 py-2 bg-gray-100 border rounded-md focus:ring focus:ring-blue-300"
-              defaultValue={allowOptions}
-              onChange={setAllowOptions}
-              options={allowToSearch}
-              styles={customStyles}
-            />
-          </div>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="aboutCompany">About Company</label>
-          <textarea
-            id="aboutCompany"
-            placeholder="Enter About Company"
-            defaultValue={updateData?.aboutCompany || ""}
-            className="w-full h-60 px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-            {...register("aboutCompany")}
-          ></textarea>
-        </div>
-
-        <div className="grid grid-cols-2 gap-10">
-          <div className="mb-4">
-            <label htmlFor="facebook">Facebook</label>
-            <input
-              type="text"
-              id="facebook"
-              defaultValue={updateData?.facebook || ""}
-              placeholder="Enter Facebook Account Link"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("facebook")}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="twitter">Twitter</label>
-            <input
-              type="text"
-              id="twitter"
-              defaultValue={updateData?.twitter || ""}
-              placeholder="Enter Twitter Account Link"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("twitter")}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="linkedin">Linkedin</label>
-            <input
-              type="text"
-              id="linkedin"
-              defaultValue={updateData?.linkedin || ""}
-              placeholder="Enter Linkedin Account Link"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("linkedin")}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="github">Github</label>
-            <input
-              type="text"
-              id="github"
-              defaultValue={updateData?.github || ""}
-              placeholder="Enter Github account Link"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("github")}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="country">Country</label>
-            <input
-              type="text"
-              id="country"
-              defaultValue={updateData?.country || ""}
-              placeholder="Enter country name"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("country")}
-            />
-          </div>
-          <div className="mb-4">
-            <label htmlFor="city">City</label>
-            <input
-              type="text"
-              id="city"
-              defaultValue={updateData?.city || ""}
-              placeholder="Enter city name"
-              className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-              {...register("city")}
-            />
+          <div className="mt-6">
+            <h2 className="text-lg dark:text-gray-200 font-semibold mb-2">
+              Social
+            </h2>
+            <div className="flex space-x-4">
+              <a
+                href={updateData?.facebook ? updateData?.facebook : null}
+                className="text-blue-500 text-2xl"
+              >
+                <FaFacebookF />
+              </a>
+              <a
+                href={updateData?.twitter ? updateData?.twitter : null}
+                className="text-blue-400 text-2xl"
+              >
+                <FaTwitter />
+              </a>
+              <a
+                href={updateData?.linkedin ? updateData?.linkedin : null}
+                className="text-blue-700 text-2xl"
+              >
+                <FaLinkedin />
+              </a>
+              <a
+                href={updateData?.github ? updateData?.github : null}
+                className="text-gray-600 text-2xl"
+              >
+                <FaGithub />
+              </a>
+              <a
+                href={updateData?.website ? updateData?.website : null}
+                className="text-gray-600 text-2xl"
+              >
+                <TfiWorld />
+              </a>
+            </div>
           </div>
         </div>
-        <div className="mb-4">
-          <label htmlFor="address">Complete Address</label>
-          <input
-            type="text"
-            id="address"
-            defaultValue={updateData?.address || ""}
-            placeholder="Enter address"
-            className="w-full px-5 py-4 bg-[#F1F5F9] rounded-md outline-none"
-            {...register("address")}
-          />
-        </div>
-
-        <button
-          className="bg-primary px-10 py-3 text-lg font-semibold rounded-md text-gray-50 mt-10"
-          type="submit"
-        >
-          Save Profile
-        </button>
-        </div>
-      </form>
+      </div>
     </div>
   );
 };

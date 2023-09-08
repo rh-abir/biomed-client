@@ -1,13 +1,19 @@
 import React, { useContext } from "react";
 import {
+  AiOutlineCheckCircle,
   AiOutlineClose,
+  AiOutlineHistory,
   AiOutlineHome,
+  AiOutlineInfoCircle,
   AiOutlineLogout,
-  AiOutlineUser,
+  AiOutlineUnorderedList,
+  AiOutlineUser
 } from "react-icons/ai";
 
-import { PiBagSimpleBold} from "react-icons/pi";
+
 import { RiMessage2Line } from "react-icons/ri";
+import { VscFeedback } from "react-icons/vsc";
+
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
@@ -53,15 +59,39 @@ const CandidateMenu = () => {
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
-            to="/dashboard/applied-tasks"
+            to="/dashboard/task-overview"
             className="flex items-center gap-3"
           >
-            <PiBagSimpleBold /> Applied Tasks
+            <AiOutlineUnorderedList /> Task Overview
           </Link>
         </li>
-    
-       
-      
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+          <Link
+            onClick={() => setDashboardToggle(false)}
+            to="/dashboard/task-details"
+            className="flex items-center gap-3"
+          >
+            <AiOutlineInfoCircle /> Task Details
+          </Link>
+        </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+          <Link
+            onClick={() => setDashboardToggle(false)}
+            to="/dashboard/task-submission"
+            className="flex items-center gap-3"
+          >
+            <AiOutlineCheckCircle /> Task Submission
+          </Link>
+        </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+          <Link
+            onClick={() => setDashboardToggle(false)}
+            to="/dashboard/task-history"
+            className="flex items-center gap-3"
+          >
+            <AiOutlineHistory /> Task History
+          </Link>
+        </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
 
           <Link
@@ -71,9 +101,19 @@ const CandidateMenu = () => {
             <RiMessage2Line /> Messages
           </Link>
         </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+
+          <Link
+          to="/dashboard/feedback"
+            onClick={() => setDashboardToggle(false)}
+            className="flex items-center gap-3"
+          >
+            <VscFeedback /> Feedback
+          </Link>
+        </li>
         <li
           onClick={handleLogout}
-          className="hover:bg-red-400 transition py-5 px-3 rounded-md dark:text-white text-gray-600"
+          className="hover:bg-red-400 hover:text-white transition py-5 px-3 rounded-md dark:text-white text-gray-600"
         >
           <Link className="flex items-center gap-3">
             <AiOutlineLogout /> Logout

@@ -2,15 +2,40 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext } from "react";
 import { AiOutlineHome } from "react-icons/ai";
-import { BiMessageDetail, BiSearchAlt2 } from "react-icons/bi";
+import { BiSearchAlt2 } from "react-icons/bi";
+import { FiArrowLeft } from "react-icons/fi";
 import { MdNotifications } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import logo from "../../../assets/White_logo.png";
+import logo from "../../../assets/logo.png";
 import "./CommunityNavbar.css";
 
 const CommunityNavbar = () => {
   const { user } = useContext(AuthContext);
+
+  // Define a function to determine which icon to display based on the route
+  const location = useLocation();
+  const getIcon = () => {
+    if (location.pathname === "/community") {
+      return (
+        <Link to="/" title="Back to Home" className="topbarIconItem md:hidden">
+          <AiOutlineHome className="text-3xl text-gray-600" />
+        </Link>
+      );
+    } else if (location.pathname === "/community/community-profile") {
+      return (
+        <Link
+          to="/community"
+          title="Back to Community"
+          className="topbarIconItem md:hidden"
+        >
+          <FiArrowLeft className="text-3xl text-gray-600" />
+        </Link>
+      );
+    }
+    return null;
+  };
+
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile", user?.email],
     queryFn: async () => {
@@ -24,20 +49,20 @@ const CommunityNavbar = () => {
   const { updateData } = myProfileData;
   return (
     <>
-      <nav className="px-2 md:px-0 h-14 w-full bg-[#5bbb7b] flex items-center justify-evenly sticky top-0 z-50">
+      <nav className="px-2 md:px-0 h-14 w-full bg-white flex items-center justify-between sticky top-0 z-50">
         {/* Navbar Left SIde */}
-        <div className="topbarLeft">
+        <div>
           {/* Logo section for large devices */}
-          <span className="hidden md:block ml-5 cursor-pointer">
+          <span title="Biomed Home"  className="hidden md:block ml-5 cursor-pointer">
             <Link to="/">
               <img className="w-40" src={logo} alt="" />
             </Link>
           </span>
           {/* Profile section for small devices */}
           <div className="flex justify-center items-center">
-            <Link to={"/"}>
-              <div className="topbarIconItem md:hidden">
-                <AiOutlineHome className="text-3xl text-white" />
+            <Link to={"/community"}>
+              <div title="Back to Home" className="topbarIconItem md:hidden">
+                {getIcon()} {/* Render the dynamic icon */}
               </div>
             </Link>
             <Link to={"/community/community-profile"}>
@@ -56,32 +81,27 @@ const CommunityNavbar = () => {
           </div>
         </div>
         {/* Navbar Center SIde */}
-        <div className="topbarCenter">
-          <div className="w-11/12 md:w-full h-8 bg-white rounded-full flex items-center">
-            <BiSearchAlt2 className="text-2xl mt-1 ml-2" />
-            <input
-              type="text"
-              placeholder="Search for friends or post"
-              className="border-none w-11/12 md:w-full focus:outline-none rounded-full px-1"
-            />
+        <div className="flex justify-center items-center gap-4">
+          {/* Icons section */}
+          <Link to={"/community"}>
+            <div title="Community Home" className="topbarIconItem hidden md:block">
+              <AiOutlineHome className="text-[26px] text-gray-700" />
+            </div>
+          </Link>
+          <div title="Notifications" className="topbarIconItem">
+            <MdNotifications className="text-[26px] text-gray-700" />
+            <span className="topbarIconBadge">1</span>
           </div>
         </div>
         {/* Navbar Right SIde */}
-        <div className="topbarRight flex items-center justify-around text-white">
-          {/* Text section */}
-          <div className="gap-2 text-base hidden md:flex">
-            <Link to={"/community"}>Homepage</Link>
-          </div>
-          {/* Icons section */}
-          <div className="flex justify-center items-center gap-4">
-            <div className="topbarIconItem">
-              <BiMessageDetail />
-              <span className="topbarIconBadge">1</span>
-            </div>
-            <div className="topbarIconItem hidden md:block">
-              <MdNotifications />
-              <span className="topbarIconBadge">1</span>
-            </div>
+        <div className="flex items-center justify-around text-gray-600 ms-4 md:mx-4 gap-6">
+          <div className="w-full h-8 bg-slate-200 rounded-full flex items-center ">
+            <BiSearchAlt2 className="text-2xl mt-1 ml-2" />
+            <input
+              type="text"
+              placeholder="Search"
+              className="border-none w-full focus:outline-none rounded-full px-1  bg-slate-200"
+            />
           </div>
           {/* Profile section for large devices */}
           <Link to={"/community/community-profile"}>
