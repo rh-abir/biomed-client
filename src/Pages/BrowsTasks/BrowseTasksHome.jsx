@@ -5,7 +5,7 @@ const BrowseTasksHome = ({ browseJobsData }) => {
     <>
       {/* Task card */}
       <div className="grid md:grid-cols-2 gap-5 mb-6">
-        {browseJobsData.map((jobsdata) => (
+        {browseJobsData?.map((jobsdata) => (
           <TaskCard key={jobsdata._id} task={jobsdata} />
         ))}
       </div>

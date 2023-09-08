@@ -11,7 +11,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import CreatableSelect from "react-select/creatable";
 
 const EvaluateModal = ({ closeModal, isOpen, applicantInfo }) => {
-  console.log(applicantInfo);
+  console.log(applicantInfo)
   const [pointsOptions, setPointsOptions] = useState(null);
   const {
     register,
@@ -52,12 +52,11 @@ const EvaluateModal = ({ closeModal, isOpen, applicantInfo }) => {
           feedback: data?.feedback,
           isEvaluate: true,
           point: pointsOptions,
-          ...applicantInfo
         };
 
         axios
-          .post(
-            `http://localhost:5000/evaluateTask`,
+          .put(
+            `http://localhost:5000/appliedjob/${applicantInfo?._id}`,
             evaluateTask
           )
           .then((response) => {
@@ -111,7 +110,7 @@ const EvaluateModal = ({ closeModal, isOpen, applicantInfo }) => {
                 </div>
                 <div className="text-xl mb-3">
                   <span className="font-semibold">Evaluate Task:</span>{" "}
-                  {applicantInfo?.title}
+                  {applicantInfo?.appliedjobdata.title}
                 </div>
                 <Dialog.Title
                   as="h3"
@@ -121,19 +120,19 @@ const EvaluateModal = ({ closeModal, isOpen, applicantInfo }) => {
                     <div>
                       <img
                         className="w-16 h-16 object-cover rounded-full"
-                        src={applicantInfo?.image}
+                        src={applicantInfo?.appliedjobdata.image}
                         alt=""
                       />
                     </div>
                     <div>
                       <div className="text-xl font-semibold">
-                        {applicantInfo?.name
-                          ? applicantInfo?.name
+                        {applicantInfo?.appliedjobdata.name
+                          ? applicantInfo?.appliedjobdata.name
                           : "Name not found"}
                       </div>
                       <h3 className="">
-                        {applicantInfo?.email
-                          ? applicantInfo?.email
+                        {applicantInfo?.appliedjobdata.email
+                          ? applicantInfo?.appliedjobdata.email
                           : "email not found"}
                       </h3>
                     </div>
