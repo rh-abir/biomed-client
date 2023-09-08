@@ -41,6 +41,9 @@ const AllUsers = () => {
                 <th className="py-3 md:py-5 text-left text-base md:text-lg px-3 md:ps-5">
                   Image
                 </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-lg px-3 md:ps-5">
+                  
+                </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-lg">
                   Email
                 </th>
@@ -56,20 +59,18 @@ const AllUsers = () => {
               {allUsers?.slice(startIndex, endIndex)?.map((user) => (
                 <tr key={user._id}>
                   <td className="py-2 md:py-4">
-                    <div className="flex items-center">
                       <img
                         src={user.image}
                         alt="Job"
                         className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
                       />
-                      <div>
-                        <p className="font-semibold text-base md:text-lg">
+                  </td>
+                  <td>
+                  <p className="font-semibold xl:text-lg md:text-xs text-xs px-3">
                           {user.name}
                         </p>
-                      </div>
-                    </div>
                   </td>
-                  <td className="py-2 md:py-4">{user.email}</td>
+                  <td className="py-2 xl:text-lg md:text-sm text-xs md:py-4">{user.email}</td>
                   <td className="py-2 md:py-4">
                     <button
                       onClick={() =>
@@ -83,7 +84,7 @@ const AllUsers = () => {
                           }
                         })
                       }
-                      className="bg-primary hover:bg-hover text-gray-50 px-3 py-2 rounded-md"
+                      className="bg-primary hover:bg-hover text-gray-50 xl:text-sm text-xs px-2 xl:mx-0 md:mx-3 mx-3 py-2 rounded-md"
                     >
                       Make Moderator
                     </button>
