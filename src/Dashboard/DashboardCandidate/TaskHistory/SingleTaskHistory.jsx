@@ -41,6 +41,8 @@ const SingleTaskHistory = ({ client }) => {
     });
   };
 
+  console.log(client?.appliedjobdata?.downloadEvaluate);
+
   return (
     <>
       {!client?.appliedjobdata?.isApplied ? (
@@ -51,7 +53,31 @@ const SingleTaskHistory = ({ client }) => {
             </div>
           </td>
 
-          <td className="py-2 md:py-4">Download</td>
+          <td className="py-2 md:py-4">
+            {appliedjobdata.isEvaluate ? (
+              <Link
+                to={client?.appliedjobdata?.downloadEvaluate}
+                target="_blank"
+              >
+                <button className="bg-primary px-3 py-2 hover:bg-hover rounded-md text-gray-100 hover:text-gray-50 transition">
+                  Download
+                </button>
+              </Link>
+            ) : (
+              <Link
+                to={client?.appliedjobdata?.downloadEvaluate}
+                target="_blank"
+              >
+                <button
+                  disabled={true}
+                  className={`bg-green-300 px-3 py-2 rounded-md text-gray-100 hover:text-gray-50 transition cursor-not-allowed`}
+                >
+                  Download
+                </button>
+              </Link>
+            )}
+          </td>
+
           <td className="py-2 md:py-4">Rating</td>
           <td className="py-2 md:py-4">Feedback</td>
           <td className="py-2 md:py-4">
