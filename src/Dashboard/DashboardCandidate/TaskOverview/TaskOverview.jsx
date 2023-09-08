@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
-import useTasktData from "../../../hooks/useEmailgetData";
+import useTasktData from "../../../hooks/useTasktData";
 import SingleTaskOverview from "./SingleTaskOverview";
 
 const TaskOverview = () => {
