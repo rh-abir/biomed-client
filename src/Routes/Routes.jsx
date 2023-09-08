@@ -133,7 +133,7 @@ const router = createBrowserRouter([
       //   path: "/jobsDatail/:id",
       //   element: <BrowseTasksDetails />,
       //   loader: ({ params }) =>
-      //     fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),
+      //     fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
       // },
       {
         path: "/dashboard/task-details",
@@ -164,7 +164,7 @@ const router = createBrowserRouter([
         path: "/dashboard/tasksApplied/:id",
         element: <TaskApplied />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),
+          fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
       },
       {
         path: "/dashboard/instructor-profile",

@@ -48,7 +48,7 @@ const SharePostForm = () => {
     //     toast.error(error.message);
     //   });
     //------------------------------
-    fetch("http://localhost:5000/posts", {
+    fetch("https://biomed-server.vercel.app/posts", {
       method: "POST",
       headers: {
         "content-type": "application/json",

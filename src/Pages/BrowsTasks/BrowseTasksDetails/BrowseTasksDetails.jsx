@@ -94,7 +94,7 @@ const BrowseTasksDetails = () => {
           });
       }
 
-      axios.put(`http://localhost:5000/jobs/${_id}/apply`).then(() => {});
+      axios.put(`https://biomed-server.vercel.app/jobs/${_id}/apply`).then(() => {});
     });
   };
 

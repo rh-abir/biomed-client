@@ -10,7 +10,7 @@ const useTasktData = () => {
     queryKey: ["allApplyJob", currentUserEmail],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:5000/allApplyJob?email=${currentUserEmail}`
+        `https://biomed-server.vercel.app/allApplyJob?email=${currentUserEmail}`
       );
       return res.json();
     },
