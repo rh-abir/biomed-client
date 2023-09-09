@@ -1,14 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useContext, useRef, useState } from "react";
-import { AiFillHeart } from "react-icons/ai";
+import React, { useContext, useState } from "react";
 import { BiLike, BiSolidLike } from "react-icons/bi";
-import {
-  BsEmojiDizzyFill,
-  BsFillEmojiAngryFill,
-  BsFillEmojiFrownFill,
-} from "react-icons/bs";
-import { FcLike } from "react-icons/fc";
 import { GoComment } from "react-icons/go";
 import { GrMoreVertical } from "react-icons/gr";
 import { PiShareFatLight } from "react-icons/pi";
@@ -18,12 +11,15 @@ import "./Posts.css";
 
 const Posts = () => {
   const { user } = useContext(AuthContext);
+  const [like, setLike] = useState(0);
+  const [isLiked, setIsLiked] = useState(false);
 
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef(null);
-  const timeoutRef = useRef(null);
-  const [like, setLike] = useState(null);
-  const [love, setLove] = useState(null);
+  //likeHandler
+
+  const likeHandler = () => {
+    setLike(isLiked ? like - 1 : like + 1);
+    setIsLiked(!isLiked);
+  };
 
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile", user?.email],
@@ -37,25 +33,6 @@ const Posts = () => {
 
   const { updateData } = myProfileData;
 
-  const openDropdown = () => {
-    clearTimeout(timeoutRef.current);
-    setIsDropdownOpen(true);
-  };
-
-  const closeDropdown = () => {
-    timeoutRef.current = setTimeout(() => {
-      setIsDropdownOpen(false);
-    }, 2000);
-  };
-
-  const toggleDropdown = () => {
-    if (isDropdownOpen) {
-      closeDropdown();
-    } else {
-      openDropdown();
-    }
-  };
-
   const { isLoading, data: posts = [] } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
@@ -64,8 +41,7 @@ const Posts = () => {
     },
   });
 
-
-// To see recent post at the top
+  // To see recent post at the top
   const reversedPosts = [...posts].reverse();
 
   console.log(posts);
@@ -113,7 +89,7 @@ const Posts = () => {
             <div className="flex py-4 px-1 gap-4">
               <img
                 className="w-40 h-36 object-cover rounded-md"
-                src="https://i.ibb.co/tYHfK8p/beautiful-sunset.jpg"
+                src={post.photo ? post.photo : "No image found"}
                 alt="Post Image"
               />
               <span className="postText">
@@ -130,45 +106,33 @@ const Posts = () => {
             <div className="flex items-center justify-between mx-1">
               <div className="flex items-center">
                 <BiSolidLike className="text-xs md:text-2xl lg:text-xl text-blue-700 cursor-pointer" />
-                <FcLike className="text-xs md:text-2xl lg:text-xl cursor-pointer" />
-                <span className="text-xs md:text-base lg:text-sm ms-1">
-                  {post.like} people like it
+                <span className="text-xs md:text-base lg:text-sm ms-1 flex items-center gap-2">
+                  {like ? like : 0} <span>people like it</span>
                 </span>
               </div>
             </div>
           </div>
-          {isDropdownOpen && (
-            <div
-              ref={dropdownRef}
-              onMouseEnter={openDropdown}
-              onMouseLeave={closeDropdown}
-              className="absolute md:-mt-10 -mt-6 bg-white border border-teal-100 p-2 rounded-2xl"
-            >
-              <div className="flex cursor-pointer gap-5">
-                <BiSolidLike
-                  onClick={() => setLike("Like")}
-                  className="text-3xl md:text-4xl text-blue-400  hover:text-blue-700 cursor-pointer"
-                />
-                <AiFillHeart
-                  onClick={() => setLove("Love")}
-                  className="text-3xl md:text-4xl text-red-400 hover:text-rose-500"
-                />
-                <BsFillEmojiAngryFill className="text-3xl text-orange-300 hover:text-orange-600 mt-1 md:text-3xl" />
-                <BsEmojiDizzyFill className="text-3xl text-orange-300 hover:text-orange-600 mt-1 " />
-                <BsFillEmojiFrownFill className="text-3xl text-orange-300 hover:text-orange-600 mt-1 " />
-              </div>
-            </div>
-          )}
           <hr className="postHr" />
           <div className="flex items-center justify-between py-3 px-4">
-            <div
-              onMouseEnter={toggleDropdown}
-              onMouseLeave={toggleDropdown}
+            {/* <button
+              onClick={likeHandler}
               className="flex items-center gap-1 text-sm md:text-lg cursor-pointer"
             >
               <BiLike className="md:text-xl" />
               <span className="text-sm">Like</span>
-            </div>
+            </button> */}
+
+            <button
+              onClick={likeHandler}
+              className="flex items-center gap-1 text-sm md:text-lg cursor-pointer"
+            >
+              {isLiked ? (
+                <BiSolidLike className="text-xl text-blue-700 cursor-pointer" />
+              ) : (
+                <BiLike className="md:text-xl" />
+              )}
+              <span className="text-sm">Like</span>
+            </button>
             <div className="flex items-center gap-2 md:gap-4">
               <div className="flex items-center gap-1 text-sm md:text-lg cursor-pointer">
                 <GoComment className="md:text-xl" />

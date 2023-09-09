@@ -4,7 +4,6 @@ import React, { useContext } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FiArrowLeft } from "react-icons/fi";
-import { MdNotifications } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import logo from "../../../assets/logo.png";
@@ -53,7 +52,10 @@ const CommunityNavbar = () => {
         {/* Navbar Left SIde */}
         <div>
           {/* Logo section for large devices */}
-          <span title="Biomed Home"  className="hidden md:block ml-5 cursor-pointer">
+          <span
+            title="Biomed Home"
+            className="hidden md:block ml-5 cursor-pointer"
+          >
             <Link to="/">
               <img className="w-40" src={logo} alt="" />
             </Link>
@@ -78,19 +80,6 @@ const CommunityNavbar = () => {
                 />
               </div>
             </Link>
-          </div>
-        </div>
-        {/* Navbar Center SIde */}
-        <div className="flex justify-center items-center gap-4">
-          {/* Icons section */}
-          <Link to={"/community"}>
-            <div title="Community Home" className="topbarIconItem hidden md:block">
-              <AiOutlineHome className="text-[26px] text-gray-700" />
-            </div>
-          </Link>
-          <div title="Notifications" className="topbarIconItem">
-            <MdNotifications className="text-[26px] text-gray-700" />
-            <span className="topbarIconBadge">1</span>
           </div>
         </div>
         {/* Navbar Right SIde */}

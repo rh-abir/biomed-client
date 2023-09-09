@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
-import CommunityProfileHome from "../Community/CommunityProfileHome/CommunityProfileHome";
+import CommunityProfileHome from "../Community/ComunityPages/CommunityProfileHome/CommunityProfileHome";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
@@ -19,10 +19,12 @@ import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskS
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
+import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
 import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
 import InstructorView from "../Dashboard/DashboardClient/InstructorProfile/InstructorView/InstructorView";
 import ManageTask from "../Dashboard/DashboardClient/ManageTask/ManageTask";
 import PostTask from "../Dashboard/DashboardClient/PostTask/PostTask";
+import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 import Community from "../Layout/Community";
 import CommunityProfile from "../Layout/CommunityProfile";
 import Dashboard from "../Layout/Dashboard";
@@ -38,11 +40,8 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
-import Terms from "../components/Terms/Terms";
-import PrivateRoute from "./PrivateRoute";
-import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
-import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
+import Terms from "../components/Terms/Terms";
 
 const router = createBrowserRouter([
   {
@@ -225,11 +224,7 @@ const router = createBrowserRouter([
   // Community Routes
   {
     path: "/community",
-    element: (
-      <PrivateRoute>
-        <Community />
-      </PrivateRoute>
-    ),
+    element: <Community />,
     children: [
       {
         path: "/community",

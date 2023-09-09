@@ -1,10 +1,10 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext } from "react";
-import { AuthContext } from "../../Provider/AuthProvider";
-import coverBg from "../../assets/profile_bg/whitel-wall.jpg";
-import Posts from "../Shared/CommunityFeed/Posts/Posts";
-import SharePostForm from "../Shared/CommunityFeed/SharePostForm/SharePostForm";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import coverBg from "../../../assets/profile_bg/whitel-wall.jpg";
+import Posts from "../../Shared/CommunityFeed/Posts/Posts";
+import SharePostForm from "../../Shared/CommunityFeed/SharePostForm/SharePostForm";
 
 const CommunityProfileHome = () => {
   const { user } = useContext(AuthContext);

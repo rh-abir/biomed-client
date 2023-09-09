@@ -1,13 +1,15 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { toast } from "react-hot-toast";
+import toast from "react-hot-toast";
 import { MdPermMedia } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { v4 } from "uuid";
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import { storage } from "../../../../firebase/firebase.config";
 import "./SharePostForm.css";
-// const imageToken = import.meta.env.VITE_UPLOAD_TOKEN;
 
 const SharePostForm = () => {
   const [loading, setLoading] = useState(false);
@@ -27,46 +29,39 @@ const SharePostForm = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    // const imageUrl = `https://api.imgbb.com/1/upload?key=${imageToken}`;
-    // const formData = new FormData();
-    // formData.append("image", data.image);
 
-    // axios
-    //   .post(imageUrl, formData)
-    //   .then((dataImage) => {
-    //     const postData = {
-    //       title: data?.title,
-    //       desc: data?.desc,
-    //       image: dataImage?.data?.data?.display_url,
-    //     };
-    //     return postData;
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     toast.error(error.message);
-    //   });
-    //------------------------------
-    fetch("http://localhost:5000/posts", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        toast.success("Your post uploaded successfully");
-        reset();
+    const photoFile = data.photo[0];
+
+    if (photoFile == null) return;
+
+    const photoRef = ref(storage, `photos/${photoFile.name + v4()}`);
+    uploadBytes(photoRef, photoFile)
+      .then(() => {
+        return getDownloadURL(photoRef);
       })
-      .catch((error) => {
-        console.log(error);
-        toast.error("Opps... post uploading faild");
-      })
-      .finally(() => {
-        setLoading(false);
+      .then((downloadUrl) => {
+        data.photo = downloadUrl;
+
+        fetch("http://localhost:5000/posts", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+          .then((res) => res.json())
+          .then((result) => {
+            console.log(result);
+            toast.success("Your post uploaded successfully");
+            reset();
+          })
+          .catch((error) => {
+            console.log(error);
+            toast.error("Oops... post uploading failed");
+          })
+          .finally(() => {
+            setLoading(false);
+          });
       });
   };
 
