@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
 import CommunityProfileHome from "../Community/ComunityPages/CommunityProfileHome/CommunityProfileHome";
+import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
@@ -230,8 +231,15 @@ const router = createBrowserRouter([
         path: "/community",
         element: <CommunityHome />,
       },
+      {
+        path: "/community/postDetails/:id",
+        element: <PostDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/posts/${params.id}`),
+      },
     ],
   },
+
   {
     path: "/community/community-profile",
     element: <CommunityProfile />,
