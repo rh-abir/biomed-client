@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
+import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
 import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
 import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
 import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
