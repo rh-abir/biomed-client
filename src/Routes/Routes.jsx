@@ -43,6 +43,9 @@ import PrivateRoute from "./PrivateRoute";
 import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
+import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
+import AdminForm from "../Dashboard/DashboardAdmin/AdminProfile/AdminForm/AdminForm";
+import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 
 const router = createBrowserRouter([
   {
@@ -164,7 +167,9 @@ const router = createBrowserRouter([
         path: "/dashboard/tasksApplied/:id",
         element: <TaskApplied />,
         loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
+          fetch(
+            `https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`
+          ),
       },
       {
         path: "/dashboard/instructor-profile",
@@ -219,6 +224,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/post-blog",
         element: <PostBlog />,
+      },
+      {
+        path: "/dashboard/admin-profile",
+        element: <AdminProfile />,
+      },
+      {
+        path: "/dashboard/admin-profile-edit",
+        element: <AdminProfileEdit />,
       },
     ],
   },
