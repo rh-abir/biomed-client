@@ -1,11 +1,20 @@
+import axios from "axios";
+import { useContext, useState } from "react";
 import { AiOutlineClockCircle, AiOutlineFileDone } from "react-icons/ai";
 import { BsBookmarkPlus } from "react-icons/bs";
 import { FaIndustry } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const TaskCard = ({ task }) => {
+  const [isbookMark, setIsbookMark] = useState(false);
+
+  const { user } = useContext(AuthContext);
+  const BookMarkUserEmail = user?.email;
+
   const {
     logo,
     title,
@@ -18,14 +27,36 @@ const TaskCard = ({ task }) => {
     deadline,
   } = task;
 
+  const BookMarkData = { task, BookMarkUserEmail };
+
+  // console.log(task);
+
+  const handleBookmark = () => {
+    setIsbookMark(!isbookMark);
+
+    if (!isbookMark) {
+      axios.post("http://localhost:5000/bookmark", BookMarkData).then((res) => {
+        if (res.data.acknowledged) {
+          toast.success("Successfully toasted!");
+        }
+      });
+    }
+  };
+
   return (
     <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full">
       <div className="flex items-center justify-between mb-5">
         <div className="text-3xl font-bold text-gray-600">
           <h2>{title}</h2>
         </div>
-        <div>
-          <BsBookmarkPlus className="text-xl md:text-2xl" />
+        <div className=" cursor-pointer" onClick={handleBookmark}>
+          {isbookMark ? (
+            <button className="cursor-not-allowed" disabled={true}>
+              <BsBookmarkPlus className="text-xl md:text-2xl text-red-400 " />
+            </button>
+          ) : (
+            <BsBookmarkPlus className="text-xl md:text-2xl" />
+          )}
         </div>
       </div>
 

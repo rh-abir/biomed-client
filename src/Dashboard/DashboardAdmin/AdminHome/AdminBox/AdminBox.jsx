@@ -2,7 +2,12 @@ import React from "react";
 import { BiBriefcase, BiMessageDetail } from "react-icons/bi";
 import { FaRegFileAlt } from "react-icons/fa";
 import { GoBookmark } from "react-icons/go";
-const ClientBox = () => {
+import useGetData from "../../../../hooks/useGetData";
+const AdminBox = () => {
+  const postTask = useGetData("jobs");
+  const application = useGetData("applidejobs");
+  const evaluate = useGetData("evaluateTasks");
+
   return (
     <div className="mt-6 dark:bg-gray-800 dark:text-white space-y-8 md:space-y-0 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center gap-6">
       {/* box-1 */}
@@ -11,7 +16,9 @@ const ClientBox = () => {
           <BiBriefcase className="text-blue-800  text-5xl" />
         </div>
         <div>
-          <p className="text-blue-800 text-4xl font-semibold text-end">22</p>
+          <p className="text-blue-800 text-4xl font-semibold text-end">
+            {postTask[0].length}
+          </p>
           <p>Posted Tasks</p>
         </div>
       </div>
@@ -21,7 +28,9 @@ const ClientBox = () => {
           <FaRegFileAlt className="text-red-700 text-5xl" />
         </div>
         <div>
-          <p className="text-red-700 text-4xl font-semibold text-end">9382</p>
+          <p className="text-red-700 text-4xl font-semibold text-end">
+            {application[0].length}
+          </p>
           <p>Application</p>
         </div>
       </div>
@@ -41,7 +50,9 @@ const ClientBox = () => {
           <GoBookmark className="text-green-700  text-5xl" />
         </div>
         <div>
-          <p className="text-green-700 text-4xl font-semibold text-end">32</p>
+          <p className="text-green-700 text-4xl font-semibold text-end">
+            {evaluate[0].length}
+          </p>
           <p>Shortlist</p>
         </div>
       </div>
@@ -49,4 +60,4 @@ const ClientBox = () => {
   );
 };
 
-export default ClientBox;
+export default AdminBox;
