@@ -3,16 +3,16 @@ import { Link } from "react-router-dom";
 
 const TrendingSlide = ({ task }) => {
   return (
-    <div className="border rounded-xl w-full h-[470px]">
+    <div className="border rounded-xl w-full h-[470px] dark:border-gray-700 dark:hover:border-slate-600">
       <img className="rounded-t-xl w-full" src={task.task_image} alt="" />
       <div className="p-2 h-100 overflow-hidden space-y-2">
         <h2 className="text-base text-gray-500 pt-4">{task.task_title}</h2>
         <Link to="/">
-          <p className="mb-4 text-xl font-semibold hover:text-[#5BBB7B] hover:underline duration-500 cursor-pointer">
+          <p className="mb-4 text-xl font-semibold dark:text-gray-300 hover:text-[#5BBB7B] hover:underline duration-300 cursor-pointer">
             {`${task.task_text.slice(0, 60)}...`}
           </p>
         </Link>
-        <hr className="mx-4 border border-gray-300" />
+        <hr className="mx-4 border dark:border-gray-700 border-gray-300" />
       </div>
 
       <div className="p-3 flex items-center justify-between">

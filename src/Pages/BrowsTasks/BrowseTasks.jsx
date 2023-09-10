@@ -35,7 +35,7 @@ const BrowseTasks = () => {
         >
           <HiOutlineMenuAlt3 /> Menu
         </button>
-        <div className="grid grid-cols-4 lg:grid-cols-10 xl:grid-cols-4 pt-[20px]">
+        <div className="grid grid-cols-4 gap-5 lg:grid-cols-10 xl:grid-cols-4 pt-[20px]">
           <aside
             className={`col-span-3 lg:col-span-3 xl:col-span-1 lg:block hidden sticky top-[100px] h-screen mb-[300px] overflow-y-scroll`}
           >

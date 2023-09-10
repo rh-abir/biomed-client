@@ -35,7 +35,7 @@ const TrendingTasks = () => {
         heading={"Trending Tasks"}
         text={"Most viewed and all-time top Tasks"}
       />
-      <div className="w-full px-4 mx-auto">
+      <div className="w-full mx-auto">
         <Swiper
           spaceBetween={30}
           freeMode={true}
