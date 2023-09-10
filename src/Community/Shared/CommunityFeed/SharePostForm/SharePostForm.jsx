@@ -27,27 +27,7 @@ const SharePostForm = () => {
 
   const onSubmit = async (data) => {
     setLoading(true);
-    // const imageUrl = `https://api.imgbb.com/1/upload?key=${imageToken}`;
-    // const formData = new FormData();
-    // formData.append("image", data.image);
-
-    // axios
-    //   .post(imageUrl, formData)
-    //   .then((dataImage) => {
-    //     const postData = {
-    //       title: data?.title,
-    //       desc: data?.desc,
-    //       image: dataImage?.data?.data?.display_url,
-    //     };
-    //     return postData;
-    //   })
-    //   .then((response) => {
-    //     console.log(response);
-    //   })
-    //   .catch((error) => {
-    //     toast.error(error.message);
-    //   });
-    //------------------------------
+    
     fetch("https://biomed-server.vercel.app/posts", {
       method: "POST",
       headers: {
