@@ -10,6 +10,7 @@ const Loader = () => {
       flex-col 
       justify-center 
       items-center 
+      dark:bg-gray-700
     "
     >
       <HashLoader size={100} color="#5BBB7B" />

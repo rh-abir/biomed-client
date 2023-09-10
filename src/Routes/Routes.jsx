@@ -45,6 +45,9 @@ import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import BlogsHome from "../Pages/Blogs/BlogsHome/BlogsHome";
+import AboutDetails from "../Pages/Home/AboutUs/AboutDetails/AboutDetails";
+import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 
 const router = createBrowserRouter([
   {
@@ -59,12 +62,18 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
-      },
-      {
-        path: "/blogDetails/:id",
-        element: <BlogDetails />,
-        loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+        children: [
+          {
+            path: "/blogs",
+            element: <BlogsHome />,
+          },
+          {
+            path: "/blogs/blogDetails/:id",
+            element: <BlogDetails />,
+            loader: ({ params }) =>
+              fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+          },
+        ],
       },
 
       {
@@ -101,6 +110,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
+      {
+        path: "/about-details",
+        element: <AboutDetails />,
+      },
     ],
   },
   {
@@ -118,6 +131,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin-home",
         element: <AdminHome />,
+      },
+      {
+        path: "/dashboard/client-home",
+        element: <ClientHome />,
       },
       {
         path: "/dashboard/candidate-home",
