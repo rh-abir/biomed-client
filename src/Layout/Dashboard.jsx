@@ -10,9 +10,9 @@ const Dashboard = () => {
     useContext(AuthContext);
 
   if (adminRole === null || clientRole === null || moderatorRole === null) {
-    return <Loader />
+    return <Loader />;
   }
-  
+
   return (
     <div>
       <Navbar />
@@ -24,7 +24,7 @@ const Dashboard = () => {
         </aside>
 
         {dashboardToggle && (
-          <aside>
+          <aside className="lg:hidden">
             <Sidebar />
           </aside>
         )}

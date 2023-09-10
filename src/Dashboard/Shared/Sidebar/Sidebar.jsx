@@ -9,7 +9,7 @@ const Sidebar = () => {
   const { clientRole, adminRole, moderatorRole } = useContext(AuthContext);
 
   return (
-    <div className="sticky top-[100px] overflow-x-scroll dark:bg-gray-800 dark:text-white">
+    <div className="fixed top-[100px] z-40 overflow-x-scroll dark:bg-gray-800 dark:text-white">
       {adminRole ? (
         <AdminMenu />
       ) : clientRole ? (
