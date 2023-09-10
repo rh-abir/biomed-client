@@ -66,7 +66,7 @@ const InstructorForm = () => {
         console.log(response);
         if (response.modifiedCount === 1) {
           toast.success("Profile updated successfully");
-          navigate("/dashboard/company-view");
+          navigate("/dashboard/instructor-view");
         } else {
           toast.error("Failed to update Profile. Please try again.");
         }

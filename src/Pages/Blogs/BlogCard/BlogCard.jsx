@@ -12,7 +12,7 @@ const BlogCard = ({ blogItems }) => {
   });
  
   return (
-    <Link to={`/blogDetails/${_id}`}>
+    <Link to={`/blogs/blogDetails/${_id}`}>
       <div className="w-90 mx-auto sm:w-96 h-full bg-black relative hover:ring-4 ring-green-400 rounded-2xl">
 			<div className=" aspect-w-1 aspect-h-1 h-full ">
 				<img

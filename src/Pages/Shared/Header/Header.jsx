@@ -14,7 +14,8 @@ import "./Header.css";
 import MenuItem from "./MenuItem/MenuItem";
 
 const Header = () => {
-  const { user, clientRole, setClientRole } = useContext(AuthContext);
+  const { user, clientRole, setClientRole, adminRole } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [roleModal, setRoleModal] = useState(false);
   const [scrolling, setScrolling] = useState(false);
@@ -74,7 +75,7 @@ const Header = () => {
               </div>
             </div>
             <div className="hidden xl:flex items-center gap-10">
-              {!clientRole && (
+              {!(clientRole || adminRole) && (
                 <button
                   onClick={() => setRoleModal(true)}
                   disabled={!user}
@@ -85,6 +86,7 @@ const Header = () => {
                   Create a Task
                 </button>
               )}
+
               <div>
                 {user ? (
                   <ProfileDropdown />
@@ -115,13 +117,13 @@ const Header = () => {
 
         {toggle && (
           <div
-            className={`absolute flex flex-col items-center ${
+            className={`absolute flex flex-col xl:hidden items-center ${
               toggle && "animated-slideIn"
-            } bg-[#80faa9] w-full py-5 animate-fadeIn`}
+            } bg-gray-100 dark:bg-slate-700 shadow-md  py-5 animate-fadeIn right-0 px-16 rounded-md`}
           >
             <div className="flex justify-center items-center gap-16 xl:hidden">
               <div className="mb-10">
-                <ul className="flex flex-col text-2xl gap-3 items-center xl:hidden">
+                <ul className="flex flex-col text-2xl gap-3  xl:hidden">
                   <MenuItem name={"Home"} path={"/"} />
                   <MenuItem
                     name={"Browse Tasks"}
@@ -145,7 +147,7 @@ const Header = () => {
                     !user ? "cursor-not-allowed" : "cursor-pointer"
                   } text-primary font-normal xl:font-medium hover:text-hover`}
                 >
-                  Post a Job
+                  Create a Task
                 </button>
               )}
               <div>

@@ -17,11 +17,11 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-blue-600">
+                        <span className="text-2xl font-bold">
                             Sign-Up
                         </span>
                     }
-                    iconStyle={{ background: 'rgb(0, 128, 64)', color: '#fff' }}
+                    iconStyle={{ background: '#5BBB7B', color: '#fff' }}
                     icon={<AiOutlineUser />}
                 >
                     <h3 className="text-xl font-bold">Creating Your Account</h3>
@@ -33,11 +33,11 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-red-600">
+                        <span className="text-2xl font-bold">
                             Task-Submission
                         </span>
                     }
-                    iconStyle={{ background: 'rgb(19, 172, 83)', color: '#fff' }}
+                    iconStyle={{ background: '#5BBB7B', color: '#fff' }}
                     icon={<AiOutlineCheckCircle />}
                 >
                     <h3 className="text-xl font-bold">Uploading Tasks</h3>
@@ -49,11 +49,11 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-orange-600">
+                        <span className="text-2xl font-bold">
                             Task-Evaluation
                         </span>
                     }
-                    iconStyle={{ background: 'rgb(0, 168, 133)', color: '#fff' }}
+                    iconStyle={{ background: '#5BBB7B', color: '#fff' }}
                     icon={<AiOutlineCheck />}
                 >
                     <h3 className="text-xl font-bold">Our Assessment Process</h3>
@@ -65,11 +65,11 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--work"
                     date={
-                        <span className="text-2xl font-bold text-indigo-600">
+                        <span className="text-2xl font-bold ">
                             Feedback
                         </span>
                     }
-                    iconStyle={{ background: 'rgb(0, 128, 128)', color: '#fff' }}
+                    iconStyle={{ background: '#5BBB7B', color: '#fff' }}
                     icon={<AiOutlineStar />}
                 >
                     <h3 className="text-xl font-bold">Receiving Feedback</h3>
@@ -81,11 +81,11 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     date={
-                        <span className="text-2xl font-bold text-purple-600">
+                        <span className="text-2xl font-bold ">
                             Results
                         </span>
                     }
-                    iconStyle={{ background: 'rgb(35, 155, 86)', color: '#fff' }}
+                    iconStyle={{ background: '#5BBB7B', color: '#fff' }}
                     icon={<AiOutlineFileDone />}
                 >
                     <h3 className="text-xl font-bold">Accessing Your Evaluation Results</h3>
@@ -97,11 +97,11 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     date={
-                        <span className="text-2xl font-bold text-teal-600">
+                        <span className="text-2xl font-bold">
                             Payment
                         </span>
                     }
-                    iconStyle={{ background: 'rgb(36, 121, 137)', color: '#fff' }}
+                    iconStyle={{ background: '#5BBB7B', color: '#fff' }}
                     icon={<AiOutlineDollarCircle />}
                 >
                     <h3 className="text-xl font-bold">Payment Options</h3>
@@ -113,11 +113,11 @@ const WorkThrough = () => {
                 <VerticalTimelineElement
                     className="vertical-timeline-element--education"
                     date={
-                        <span className="text-2xl font-bold text-pink-600">
+                        <span className="text-2xl font-bold">
                             Support
                         </span>
                     }
-                    iconStyle={{ background: 'rgb(70, 130, 180)', color: '#fff' }}
+                    iconStyle={{ background: '#5BBB7B', color: '#fff' }}
                     icon={<AiOutlineQuestionCircle />}
                 >
                     <h3 className="text-xl font-bold">Customer Support</h3>
