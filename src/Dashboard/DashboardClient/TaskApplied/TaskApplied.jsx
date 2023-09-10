@@ -11,7 +11,7 @@ import ProfileModal from "../../../components/Modal/ProfileModal/ProfileModal";
 const TaskApplied = () => {
   const { id } = useParams();
   const { data: applicants = [] } = useQuery({
-    queryKey: ["allClients"],
+    queryKey: ["taskApplied"],
     queryFn: async () => {
       const res = await axios(
         `https://biomed-server.vercel.app/applyTaskInstructor/${id}`

@@ -68,7 +68,6 @@ const Header = () => {
                     name={"Browse Tasks"}
                     path={"/browseTasks/browseTasks-home"}
                   />
-                  <MenuItem name={"Top Tasks"} path={"/"} />
                   <MenuItem name={"Blog"} path={"/blogs"} />
                   <MenuItem name={"Community Forum"} path={"/community"} />
                 </ul>

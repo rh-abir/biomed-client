@@ -1,5 +1,5 @@
 import React from "react";
-import { BounceLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 
 const Loader = () => {
   return (
@@ -12,7 +12,7 @@ const Loader = () => {
       items-center 
     "
     >
-      <BounceLoader size={100} color="#5BBB7B" />
+      <HashLoader size={100} color="#5BBB7B" />
     </div>
   );
 };

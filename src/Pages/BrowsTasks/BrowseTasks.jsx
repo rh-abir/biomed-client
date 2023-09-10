@@ -12,7 +12,7 @@ const BrowseTasks = () => {
   const { tasksSidebarToggle: tasksSidebarToggle, setTasksSidebarToggle } =
     useContext(AuthContext);
   const { user } = useContext(AuthContext);
-  const [jobsData, setFilterData] = useState();
+  const [jobsData, setFilterData] = useState([]);
   const { data: browseJobsData, isLoading } = useQuery({
     queryKey: ["jobs", user?.email],
     queryFn: async () => {
@@ -25,7 +25,6 @@ const BrowseTasks = () => {
   }
   const filteredData = (data) => {
     setFilterData(data);
-    console.log(data);
   };
   return (
     <div className="pt-20">

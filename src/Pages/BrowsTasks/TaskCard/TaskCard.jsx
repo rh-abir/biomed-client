@@ -16,7 +16,14 @@ const TaskCard = ({ task }) => {
     industry,
     startDate,
     deadline,
+    date,
+    appliedCount,
   } = task;
+
+  const currentDate = new Date();
+  const taskDate = new Date(date);
+  const timeDifference = currentDate - taskDate;
+  const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
 
   return (
     <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full">
@@ -55,11 +62,13 @@ const TaskCard = ({ task }) => {
         </div>
         <div className="flex gap-2 items-center text-base xl:text-lg text-gray-500 font-semibold">
           <AiOutlineClockCircle className="md:text-2xl lg:text-base xl:text-3xl text-primary" />{" "}
-          {2} days ago
+          {daysAgo === 0
+            ? "Today"
+            : `${daysAgo} ${daysAgo === 1 ? "day" : "days"} ago`}
         </div>
         <div className="flex gap-2 items-center text-base xl:text-lg text-gray-500 font-semibold">
           <AiOutlineFileDone className="md:text-2xl lg:text-base xl:text-3xl text-primary" />{" "}
-          {5} Applied
+          {appliedCount ? appliedCount : "No"} Applied
         </div>
       </div>
 
