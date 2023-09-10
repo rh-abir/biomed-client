@@ -25,7 +25,7 @@ const BrowseTasks = () => {
   }
   const filteredData = (data) => {
     setFilterData(data);
-    console.log(data);
+    // console.log(data);
   };
   return (
     <div className="pt-20">
