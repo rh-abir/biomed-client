@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
-import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
+import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
+import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
+import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
@@ -30,11 +32,13 @@ import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import BlogDetails from "../Pages/Blogs/BlogDetails/BlogDetails";
 import Blogs from "../Pages/Blogs/Blogs";
+import BlogsHome from "../Pages/Blogs/BlogsHome/BlogsHome";
 import BrowseTasks from "../Pages/BrowsTasks/BrowseTasks";
 import BrowseTasksDetails from "../Pages/BrowsTasks/BrowseTasksDetails/BrowseTasksDetails";
 import BrowseTasksHome from "../Pages/BrowsTasks/BrowseTasksHome";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AboutDetails from "../Pages/Home/AboutUs/AboutDetails/AboutDetails";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
@@ -55,12 +59,18 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
-      },
-      {
-        path: "/blogDetails/:id",
-        element: <BlogDetails />,
-        loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+        children: [
+          {
+            path: "/blogs",
+            element: <BlogsHome />,
+          },
+          {
+            path: "/blogs/blogDetails/:id",
+            element: <BlogDetails />,
+            loader: ({ params }) =>
+              fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+          },
+        ],
       },
 
       {
@@ -77,7 +87,7 @@ const router = createBrowserRouter([
         path: "/tasksDatail/:id",
         element: <BrowseTasksDetails />,
         loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/singlejob/${params.id}`),
+          fetch(`https://biomed-server.vercel.app/job/${params.id}`),
       },
       {
         path: "/specificCategory/:title",
@@ -97,6 +107,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
+      {
+        path: "/about-details",
+        element: <AboutDetails />,
+      },
     ],
   },
   {
@@ -111,6 +125,10 @@ const router = createBrowserRouter([
     path: "/dashboard",
     element: <Dashboard />,
     children: [
+      {
+        path: "/dashboard/admin-home",
+        element: <AdminHome />,
+      },
       {
         path: "/dashboard/client-home",
         element: <ClientHome />,
@@ -131,7 +149,7 @@ const router = createBrowserRouter([
       //   path: "/jobsDatail/:id",
       //   element: <BrowseTasksDetails />,
       //   loader: ({ params }) =>
-      //     fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),
+      //     fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
       // },
       {
         path: "/dashboard/task-details",
@@ -162,7 +180,9 @@ const router = createBrowserRouter([
         path: "/dashboard/tasksApplied/:id",
         element: <TaskApplied />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),
+          fetch(
+            `https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`
+          ),
       },
       {
         path: "/dashboard/instructor-profile",
@@ -217,6 +237,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/post-blog",
         element: <PostBlog />,
+      },
+      {
+        path: "/dashboard/admin-profile",
+        element: <AdminProfile />,
+      },
+      {
+        path: "/dashboard/admin-profile-edit",
+        element: <AdminProfileEdit />,
       },
     ],
   },

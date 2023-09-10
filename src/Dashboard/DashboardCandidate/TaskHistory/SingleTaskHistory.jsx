@@ -26,7 +26,7 @@ const SingleTaskHistory = ({ client }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/taskdelete/${id}`)
+          .delete(`https://biomed-server.vercel.app/taskdelete/${id}`)
           .then((response) => {
             console.log(response);
             refetch();

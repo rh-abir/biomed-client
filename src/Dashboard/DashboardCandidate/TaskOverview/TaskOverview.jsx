@@ -8,14 +8,6 @@ import SingleTaskOverview from "./SingleTaskOverview";
 const TaskOverview = () => {
   const [allApplayJobs] = useTasktData();
 
-  // const { data: allClients = [] } = useQuery({
-  //   queryKey: ["allClients"],
-  //   queryFn: async () => {
-  //     const res = await axios("https://biomed-server.vercel.app/clients");
-  //     return res.data;
-  //   },
-  // });
-
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
   const startIndex = (currentPage - 1) * rowsPerPage;
@@ -38,7 +30,7 @@ const TaskOverview = () => {
             <thead className="bg-gray-50 text-green-400">
               <tr>
                 <th className="py-3 md:py-5 text-left text-base md:text-sm px-3 md:ps-5">
-                  Company Name
+                  Company Logo
                 </th>
                 <th className="py-3 md:py-5 text-left text-base md:text-sm px-3 md:ps-5">
                   Job Title

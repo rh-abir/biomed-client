@@ -6,7 +6,6 @@ import { FaIndustry } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 
 const SpecificCategoryDetails = ({ singleData }) => {
-    console.log('from category......', singleData)
     const {
         logo,
         title,

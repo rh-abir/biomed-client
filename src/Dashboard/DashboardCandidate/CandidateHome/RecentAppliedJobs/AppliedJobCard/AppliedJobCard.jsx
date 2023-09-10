@@ -3,12 +3,9 @@ import { PiMoneyLight } from "react-icons/pi";
 import { SlLocationPin } from "react-icons/sl";
 
 const AppliedJobCard = ({ appliedJob }) => {
-  console.log(appliedJob);
   const { name, image, company, applied_time, job_type, location, salary } =
     appliedJob;
 
-
-    console.log(job_type);
   return (
     <div className="xl:flex gap-4 mb-2 border w-full px-5 py-5 lg:py-10 rounded-xl">
       <div>

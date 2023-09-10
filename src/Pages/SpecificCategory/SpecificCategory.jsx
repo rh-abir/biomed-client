@@ -8,16 +8,16 @@ const SpecificCategory = () => {
 
     const [specificCategoryData, setSpecificCategoryData] = useState([]);
     useEffect(() => {
-        fetch(`http://localhost:5000/categoryjobs/?industry=${title}`)
+        fetch(`https://biomed-server.vercel.app/categoryjobs/?industry=${title}`)
             .then((res) => res.json())
             .then((data) => setSpecificCategoryData(data));
     }, [title]);
 
     return (
-        <div className='pt-32'>
+        <div className='py-32'>
             <Container>
                 <div className="grid md:grid-cols-2 gap-5 mb-6">
-                    {specificCategoryData.map((singleData) => (
+                    {specificCategoryData?.map((singleData) => (
                         <SpecificCategoryDetails key={singleData._id} singleData={singleData} />
                     ))}
                 </div>

@@ -59,7 +59,7 @@ const ProfileDropdown = () => {
   };
 
   return (
-    <div className="relative inline-block">
+    <div className=" relative  inline-block">
       <div
         onMouseEnter={toggleDropdown}
         onMouseLeave={toggleDropdown}
@@ -80,7 +80,7 @@ const ProfileDropdown = () => {
           ref={dropdownRef}
           onMouseEnter={openDropdown}
           onMouseLeave={closeDropdown}
-          className="absolute top-full right-0 mt-2 dark:bg-gray-800 bg-white border border-gray-300 shadow-md rounded-md"
+          className="absolute top-full right-0 mt-2 dark:bg-gray-800 dark:text-gray-50 bg-white border border-gray-300 shadow-md rounded-md"
         >
           <ul className="flex flex-col">
             <Link
@@ -98,7 +98,7 @@ const ProfileDropdown = () => {
             <Link
               to={
                 adminRole
-                  ? "/dashboard/client-home"
+                  ? "/dashboard/admin-home"
                   : moderatorRole
                   ? "/dashboard/client-home"
                   : clientRole

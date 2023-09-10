@@ -30,47 +30,49 @@ const TrendingTasks = () => {
   }
 
   return (
-    <Container>
-      <SectionTitle
-        heading={"Trending Tasks"}
-        text={"Most viewed and all-time top Tasks"}
-      />
-      <div className="w-full px-4 mx-auto">
-        <Swiper
-          spaceBetween={30}
-          freeMode={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: false,
-          }}
-          loop={true}
-          pagination={{ clickable: true }}
-          navigation={true}
-          modules={[Autoplay, FreeMode, Navigation, Pagination]}
-          className="mySwiper"
-          breakpoints={{
-            640: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-            1920: {
-              slidesPerView: 4,
-            },
-          }}
-        >
-          {tasks.map((task) => (
-            <SwiperSlide key={task._id}>
-              <TrendingSlide task={task} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
-    </Container>
+    <section className="lg:my-20">
+      <Container>
+        <SectionTitle
+          heading={"Trending Tasks"}
+          text={"Most viewed and all-time top Tasks"}
+        />
+        <div className="w-full mx-auto">
+          <Swiper
+            spaceBetween={30}
+            freeMode={true}
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
+            }}
+            loop={true}
+            pagination={{ clickable: true }}
+            navigation={true}
+            modules={[Autoplay, FreeMode, Navigation, Pagination]}
+            className="mySwiper"
+            breakpoints={{
+              640: {
+                slidesPerView: 1,
+              },
+              768: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+              1920: {
+                slidesPerView: 4,
+              },
+            }}
+          >
+            {tasks.map((task) => (
+              <SwiperSlide key={task._id}>
+                <TrendingSlide task={task} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </Container>
+    </section>
   );
 };
 

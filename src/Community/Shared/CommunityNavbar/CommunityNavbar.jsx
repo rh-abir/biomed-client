@@ -57,7 +57,7 @@ const CommunityNavbar = () => {
             className="hidden md:block ml-5 cursor-pointer"
           >
             <Link to="/">
-              <img className="w-40" src={logo} alt="" />
+              <img className="w-40" src={logo} alt="logo for community forum" />
             </Link>
           </span>
           {/* Profile section for small devices */}

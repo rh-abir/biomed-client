@@ -14,7 +14,7 @@ const FeedbackForm = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch("http://localhost:5000/postFeedback", {
+    fetch("https://biomed-server.vercel.app/postFeedback", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -7,9 +7,8 @@ import {
   AiOutlineInfoCircle,
   AiOutlineLogout,
   AiOutlineUnorderedList,
-  AiOutlineUser
+  AiOutlineUser,
 } from "react-icons/ai";
-
 
 import { RiMessage2Line } from "react-icons/ri";
 import { VscFeedback } from "react-icons/vsc";
@@ -38,7 +37,7 @@ const CandidateMenu = () => {
         </button>
       </div>
       <ul className="text-xl">
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/candidate-home"}
@@ -47,7 +46,7 @@ const CandidateMenu = () => {
             <AiOutlineHome /> Dashboard
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/my-profile"}
@@ -56,25 +55,25 @@ const CandidateMenu = () => {
             <AiOutlineUser /> My Profile
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-overview"
             className="flex items-center gap-3"
           >
-            <AiOutlineUnorderedList /> Task Overview
+            <AiOutlineUnorderedList /> My Applied
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-details"
             className="flex items-center gap-3"
           >
-            <AiOutlineInfoCircle /> Task Details
+            <AiOutlineInfoCircle /> My BookMark
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-submission"
@@ -83,7 +82,7 @@ const CandidateMenu = () => {
             <AiOutlineCheckCircle /> Task Submission
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-history"
@@ -92,8 +91,7 @@ const CandidateMenu = () => {
             <AiOutlineHistory /> Task History
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
@@ -101,10 +99,9 @@ const CandidateMenu = () => {
             <RiMessage2Line /> Messages
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
           <Link
-          to="/dashboard/feedback"
+            to="/dashboard/feedback"
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
           >
@@ -113,7 +110,7 @@ const CandidateMenu = () => {
         </li>
         <li
           onClick={handleLogout}
-          className="hover:bg-red-400 hover:text-white transition py-5 px-3 rounded-md dark:text-white text-gray-600"
+          className="hover:bg-red-400 hover:text-white transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600"
         >
           <Link className="flex items-center gap-3">
             <AiOutlineLogout /> Logout

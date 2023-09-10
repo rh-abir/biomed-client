@@ -11,10 +11,10 @@ import ProfileModal from "../../../components/Modal/ProfileModal/ProfileModal";
 const TaskApplied = () => {
   const { id } = useParams();
   const { data: applicants = [] } = useQuery({
-    queryKey: ["allClients"],
+    queryKey: ["taskApplied"],
     queryFn: async () => {
       const res = await axios(
-        `http://localhost:5000/applyTaskInstructor/${id}`
+        `https://biomed-server.vercel.app/applyTaskInstructor/${id}`
       );
       return res.data;
     },

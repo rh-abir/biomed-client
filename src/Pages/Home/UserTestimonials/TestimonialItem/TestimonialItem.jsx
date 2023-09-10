@@ -1,32 +1,31 @@
-import React from "react";
-import quoteImg from '../../../../assets/quote/quote.png';
+import React, { useState } from "react";
+import { Rating } from "@smastrom/react-rating";
+import "@smastrom/react-rating/style.css";
+import { ImQuotesLeft } from "react-icons/im";
 
 const TestimonialItem = ({ userFeedback }) => {
-  const {
-    user_image,
-    user_name,
-    feedback
-  } = userFeedback;
-
-  
-
+  const { user_image, user_name, feedback } = userFeedback;
+  const [rating, setRating] = useState(4);
   return (
-    <div className="bg-white hover:bg-green-200 duration-500 cursor-pointer dark:bg-gray-800 shadow-md rounded-lg overflow-hidden w-full h-[350px]">
-      <div className="p-4 text-center">
-        <div className="mt-4">
+    <div className="my-20">
+      <div className="px-3 py-16 flex h-[450px] items-center flex-col bg-white dark:bg-gray-700 rounded-lg">
+        <div className="absolute top-5">
           <img
-            className="w-12 h-12 mx-auto mb-2 object-cover"
-            src={quoteImg}
-            alt="Testimonials Icon"
+            className="w-40 h-40 object-cover rounded-full bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-800"
+            src={user_image}
+            alt="testimonial-image"
           />
-          <h2 className="text-xl font-semibold">{user_name}</h2>
-          <p className="text-gray-600 mt-2">{feedback}</p>
         </div>
-        <img
-          className="w-24 h-24 mx-auto rounded-full mt-4"
-          src={user_image}
-          alt="Profile"
-        />
+        <h2 className="pt-16 text-2xl font-bold pb-3">{user_name}</h2>
+        <div className="mb-6">
+          <Rating style={{ maxWidth: 160 }} value={rating} readOnly />
+        </div>
+        <div className="text-5xl text-primary">
+          <ImQuotesLeft />
+        </div>
+        <div>
+          <p className="text-center">{feedback}</p>
+        </div>
       </div>
     </div>
   );

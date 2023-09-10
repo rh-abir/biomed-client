@@ -135,6 +135,7 @@ const TaskForm = () => {
             logo: dataImage1.data.data.display_url,
             thumbnail: dataImage2.data.data.display_url,
             attachment: downloadUrl,
+            date: new Date()
           };
           axios
             .post("https://biomed-server.vercel.app/jobs", currentData)
