@@ -26,7 +26,12 @@ const SharePostForm = () => {
   });
 
   const { updateData } = myProfileData;
-  const { register, handleSubmit, reset } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+    reset,
+  } = useForm();
 
   const createPostMutation = useMutation(
     async (data) => {
@@ -108,7 +113,7 @@ const SharePostForm = () => {
           />
           <div className="flex justify-between items-center px-2 cursor-pointer">
             {/* Post Items  */}
-            <div className="flex items-center cursor-pointer">
+            <div className="flex items-center cursor-pointer gap-1">
               <MdPermMedia className="shareIcon text-red-500" />
               <label htmlFor="photo" className="shareOptionText">
                 Photo or Video
@@ -117,8 +122,13 @@ const SharePostForm = () => {
                 style={{ display: "none" }}
                 type="file"
                 id="photo"
-                {...register("photo")}
+                {...register("photo", {
+                  required: "Please upload an image",
+                })}
               />
+              {errors?.photo && (
+                <span className="text-red-500">{errors?.photo.message}</span>
+              )}
             </div>
             {/* Share Button  */}
             <button

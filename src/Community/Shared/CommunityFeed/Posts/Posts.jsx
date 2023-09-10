@@ -4,7 +4,6 @@ import React, { useContext, useState } from "react";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import { GoComment } from "react-icons/go";
 import { GrMoreVertical } from "react-icons/gr";
-import { PiShareFatLight } from "react-icons/pi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import "./Posts.css";
@@ -86,7 +85,7 @@ const Posts = () => {
                   </Link>
                 </div>
                 <div className="postTopRight">
-                  <GrMoreVertical className="text-xl cursor-pointer" />
+                <GrMoreVertical className="text-xl cursor-pointer" />
                 </div>
               </div>
               <div className="flex flex-col md:flex-row py-4 px-1 gap-4">
@@ -117,7 +116,7 @@ const Posts = () => {
             </div>
           </Link>
           <hr className="postHr" />
-          <div className="flex items-center justify-between py-3 px-4">
+          <div className="flex items-center justify-between py-3 px-6">
             <button
               onClick={likeHandler}
               className="flex items-center gap-1 text-sm md:text-lg cursor-pointer"
@@ -129,17 +128,13 @@ const Posts = () => {
               )}
               <span className="text-sm">Like</span>
             </button>
-            <div className="flex items-center gap-2 md:gap-4">
+            <div>
               <Link to={`/community/postDetails/${post._id}`}>
                 <div className="flex items-center gap-1 text-sm md:text-lg cursor-pointer">
                   <GoComment className="md:text-xl" />
                   <span className="text-sm">Comment</span>
                 </div>
               </Link>
-              <div className="flex items-center gap-1 text-sm md:text-lg cursor-pointer">
-                <PiShareFatLight className="md:text-xl" />
-                <span className="text-sm">Share</span>
-              </div>
             </div>
           </div>
         </div>
