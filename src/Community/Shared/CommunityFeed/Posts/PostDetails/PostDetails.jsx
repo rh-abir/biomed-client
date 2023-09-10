@@ -15,7 +15,6 @@ const PostDetails = () => {
   const [isLiked, setIsLiked] = useState(false);
 
   //   likeHandler
-
   const likeHandler = () => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
@@ -33,7 +32,7 @@ const PostDetails = () => {
 
   const { updateData } = myProfileData;
 
-  const { photo, title, desc, _id,  } = useLoaderData();
+  const { photo, title, desc, _id  } = useLoaderData();
   return (
     <div className="post-container">
       <div className="flex items-center justify-between px-4 pt-3">
@@ -58,7 +57,8 @@ const PostDetails = () => {
           </Link>
           <div className="text-sm md:text-lg mx-2 font-semibold hidden md:block">{title}</div>
         </div>
-        <PostDropdown  postId={_id} refetchFunction={refetch} />
+        {/* Dropdown */}
+        <PostDropdown  postId={_id} refetchFunction={refetch} photo={photo} title={title} desc={desc} />
       </div>
       <div className="px-4 py-2">
       <div className="text-sm md:text-lg font-semibold md:hidden">{title}</div>

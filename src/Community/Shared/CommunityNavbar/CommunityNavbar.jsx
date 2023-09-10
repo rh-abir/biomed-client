@@ -10,7 +10,7 @@ import logo from "../../../assets/logo.png";
 import "./CommunityNavbar.css";
 
 const CommunityNavbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, adminRole, clientRole } = useContext(AuthContext);
 
   // Define a function to determine which icon to display based on the route
   const location = useLocation();
@@ -67,7 +67,13 @@ const CommunityNavbar = () => {
                 {getIcon()} {/* Render the dynamic icon */}
               </div>
             </Link>
-            <Link to={"/community/community-profile"}>
+            <Link
+              to={
+                clientRole
+                  ? "/dashboard/instructor-view"
+                  : "/dashboard/my-profile"
+              }
+            >
               <div
                 title="View Profile"
                 className="mx-2 w-9 h-9 rounded-full overflow-hidden cursor-pointer border-[3px] border-black/50 md:hidden"
@@ -93,7 +99,11 @@ const CommunityNavbar = () => {
             />
           </div>
           {/* Profile section for large devices */}
-          <Link to={"/community/community-profile"}>
+          <Link to={
+                clientRole
+                  ? "/dashboard/instructor-view"
+                  : "/dashboard/my-profile"
+              }>
             <div
               title="View Profile"
               className="hidden md:block w-9 h-9 rounded-full overflow-hidden cursor-pointer border-[3px] border-black/50"

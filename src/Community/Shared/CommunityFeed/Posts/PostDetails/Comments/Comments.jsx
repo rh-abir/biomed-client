@@ -51,7 +51,7 @@ const Comments = () => {
           </button>
         </form>
       </div>
-      <h2 className="text-center py-4">No comments yet</h2>
+      <h2 className="text-center py-4">No comments yet!</h2>
     </div>
   );
 };

@@ -88,7 +88,7 @@ const SharePostForm = () => {
             <Link to={"/community/community-profile"}>
               <div
                 title="View Profile"
-                className="md:mx-2 w-10 h-10  rounded-full overflow-hidden cursor-pointer"
+                className="md:mx-2 w-10 h-10 rounded-full overflow-hidden cursor-pointer"
               >
                 <img
                   referrerPolicy="no-referrer"

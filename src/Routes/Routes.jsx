@@ -1,6 +1,5 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
-import CommunityProfileHome from "../Community/ComunityPages/CommunityProfileHome/CommunityProfileHome";
 import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
@@ -27,7 +26,6 @@ import ManageTask from "../Dashboard/DashboardClient/ManageTask/ManageTask";
 import PostTask from "../Dashboard/DashboardClient/PostTask/PostTask";
 import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 import Community from "../Layout/Community";
-import CommunityProfile from "../Layout/CommunityProfile";
 import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import BlogDetails from "../Pages/Blogs/BlogDetails/BlogDetails";
@@ -236,17 +234,6 @@ const router = createBrowserRouter([
         element: <PostDetails />,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/posts/${params.id}`),
-      },
-    ],
-  },
-
-  {
-    path: "/community/community-profile",
-    element: <CommunityProfile />,
-    children: [
-      {
-        path: "/community/community-profile",
-        element: <CommunityProfileHome />,
       },
     ],
   },
