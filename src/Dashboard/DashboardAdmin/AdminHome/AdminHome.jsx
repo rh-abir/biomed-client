@@ -1,5 +1,6 @@
 import React from "react";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
+import AdminApplications from "./AdminApplication/AdminApplications";
 import AdminBox from "./AdminBox/AdminBox";
 import AdminNotifications from "./AdminNotifications/AdminNotifications";
 import AdminProfileViews from "./AdminProfileViews/AdminProfileViews";
@@ -19,7 +20,7 @@ const AdminHome = () => {
       </div>
 
       {/* Recent Applicants Section */}
-      {/* <AdminApplications /> */}
+      <AdminApplications />
     </div>
   );
 };
