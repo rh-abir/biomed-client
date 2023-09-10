@@ -8,14 +8,6 @@ import SingleTaskOverview from "./SingleTaskOverview";
 const TaskOverview = () => {
   const [allApplayJobs] = useTasktData();
 
-  // const { data: allClients = [] } = useQuery({
-  //   queryKey: ["allClients"],
-  //   queryFn: async () => {
-  //     const res = await axios("https://biomed-server.vercel.app/clients");
-  //     return res.data;
-  //   },
-  // });
-
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
   const startIndex = (currentPage - 1) * rowsPerPage;

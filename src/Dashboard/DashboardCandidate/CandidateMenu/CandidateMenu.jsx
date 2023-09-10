@@ -7,9 +7,8 @@ import {
   AiOutlineInfoCircle,
   AiOutlineLogout,
   AiOutlineUnorderedList,
-  AiOutlineUser
+  AiOutlineUser,
 } from "react-icons/ai";
-
 
 import { RiMessage2Line } from "react-icons/ri";
 import { VscFeedback } from "react-icons/vsc";
@@ -62,7 +61,7 @@ const CandidateMenu = () => {
             to="/dashboard/task-overview"
             className="flex items-center gap-3"
           >
-            <AiOutlineUnorderedList /> Task Overview
+            <AiOutlineUnorderedList /> My Applied
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
@@ -71,7 +70,7 @@ const CandidateMenu = () => {
             to="/dashboard/task-details"
             className="flex items-center gap-3"
           >
-            <AiOutlineInfoCircle /> Task Details
+            <AiOutlineInfoCircle /> My BookMark
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
@@ -93,7 +92,6 @@ const CandidateMenu = () => {
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-
           <Link
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
@@ -102,9 +100,8 @@ const CandidateMenu = () => {
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-
           <Link
-          to="/dashboard/feedback"
+            to="/dashboard/feedback"
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
           >
