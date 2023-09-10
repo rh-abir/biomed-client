@@ -1,12 +1,11 @@
-import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import React, { Fragment } from "react";
+import { AiFillCloseCircle } from "react-icons/ai";
 
 const ProfileModal = ({ closeModal, isOpen, email }) => {
-  const { data: user = {} } = useQuery({
+  const { data: user = {}, refetch } = useQuery({
     queryKey: ["user", email],
     queryFn: async () => {
       const res = await axios.get(
@@ -57,7 +56,9 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
                 <Dialog.Title
                   as="h3"
                   className=" bg-gray-100 py-10 px-5 rounded-lg leading-6 text-2xl font-semibold text-gray-900"
-                >User Profile</Dialog.Title>
+                >
+                  User Profile
+                </Dialog.Title>
                 {user ? (
                   <div className="bg-white p-6 rounded-lg">
                     <div className="flex items-center">
@@ -86,23 +87,55 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
                         Contact Information
                       </h3>
                       <ul className="list-disc list-inside text-gray-700">
-                        <li>Phone: {user?.updateData?.phone}</li>
-                        <li>Email: {user?.updateData?.email}</li>
+                        <li>
+                          Phone:{" "}
+                          {user?.updateData?.phone
+                            ? user?.updateData?.phone
+                            : "01xxx-xxxxxx"}
+                        </li>
+                        <li>
+                          Email:{" "}
+                          {user?.updateData?.email
+                            ? user?.updateData?.email
+                            : "example@gmail.com"}
+                        </li>
                         <li>
                           Website:{" "}
-                          <a href={user?.updateData?.website} className="text-blue-500">
-                            {user.website}
+                          <a
+                            href={user?.updateData?.website}
+                            className="text-blue-500"
+                          >
+                            {user?.website ? user?.website : "www.exapmle.com"}
                           </a>
                         </li>
-                        <li>Country: {user?.updateData?.country}</li>
-                        <li>City: {user?.updateData?.city}</li>
-                        <li>Language: {user?.updateData?.language}</li>
+                        <li>
+                          Country:{" "}
+                          {user?.updateData?.country
+                            ? user?.updateData?.country
+                            : "no country  "}
+                        </li>
+                        <li>
+                          City:{" "}
+                          {user?.updateData?.city
+                            ? user?.updateData?.city
+                            : "no city "}
+                        </li>
+                        <li>
+                          Language:{" "}
+                          {user?.updateData?.language
+                            ? user?.updateData?.language
+                            : "no language"}
+                        </li>
                       </ul>
                     </div>
 
                     <div className="mt-4">
                       <h3 className="text-xl font-semibold">Education</h3>
-                      <p className="text-gray-700">{user?.updateData?.education}</p>
+                      <p className="text-gray-700">
+                        {user?.updateData?.education
+                          ? user?.updateData?.education
+                          : "empty "}
+                      </p>
                     </div>
 
                     {/* Social Media Links */}
