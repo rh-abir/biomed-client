@@ -23,7 +23,7 @@ const UserTestimonials = () => {
   }
 
   return (
-    <div className="dark:bg-gray-800 bg-[#f4fdf4] py-10">
+    <div className="dark:bg-gray-800 bg-[#BBF7D0] py-28">
       <Container className="dark:bg-gray-800">
         <SectionTitle
           heading={"User Testimonials"}
@@ -32,7 +32,7 @@ const UserTestimonials = () => {
           }
         />
         <Swiper
-          spaceBetween={30}
+          spaceBetween={50}
           freeMode={true}
           autoplay={{
             delay: 4000,

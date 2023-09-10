@@ -43,6 +43,8 @@ import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
+import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 
 const router = createBrowserRouter([
   {
@@ -221,6 +223,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/post-blog",
         element: <PostBlog />,
+      },
+      {
+        path: "/dashboard/admin-profile",
+        element: <AdminProfile />,
+      },
+      {
+        path: "/dashboard/admin-profile-edit",
+        element: <AdminProfileEdit />,
       },
     ],
   },

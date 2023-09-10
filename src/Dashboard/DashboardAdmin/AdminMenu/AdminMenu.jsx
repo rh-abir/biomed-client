@@ -40,7 +40,7 @@ const AdminMenu = () => {
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
-            to={"/dashboard/company-view"}
+            to={"/dashboard/admin-profile"}
             className="flex items-center gap-3 dark:text-white"
           >
             <AiFillProfile /> Admin Profile

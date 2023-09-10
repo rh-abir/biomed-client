@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const SingleCategory = ({ items }) => {
     const { icon, service_number, sub_title, title } = items;
     return (
-        <div className='border px-9 py-10 hover:border-slate-600 rounded-md transition'>
+        <div className='border px-9 py-10 hover:border-slate-600 dark:border-gray-700 dark:hover:border-slate-600 rounded-md transition'>
             <Link to={`/specificCategory/${title}`}>
                 <div className='mb-6'>
                     <img className='w-[50px] h-[50px]' src={icon} alt="" />

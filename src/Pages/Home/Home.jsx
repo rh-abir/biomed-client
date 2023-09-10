@@ -7,7 +7,8 @@ import TopCompany from "./TopCompany/TopCompany";
 import TrendingTasks from "./TrendingTasks/TrendingTasks";
 import UserTestimonials from "./UserTestimonials/UserTestimonials";
 import WorkThrough from "./WorkThrough/WorkThrough";
-import Categorys from "./categorys/Categorys";
+import Categorys from "./categorys/categorys";
+
 
 const Home = () => {
   return (

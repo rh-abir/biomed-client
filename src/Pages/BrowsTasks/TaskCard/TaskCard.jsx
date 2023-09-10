@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const TaskCard = ({ task }) => {
+  const { adminRole, clientRole } = useContext(AuthContext);
   const [isbookMark, setIsbookMark] = useState(false);
 
   const { user } = useContext(AuthContext);
@@ -25,8 +26,16 @@ const TaskCard = ({ task }) => {
     industry,
     startDate,
     deadline,
+    date,
+    appliedCount,
   } = task;
 
+  const currentDate = new Date();
+  const taskDate = new Date(date);
+  const timeDifference = currentDate - taskDate;
+  const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  const isDisabled = adminRole || clientRole;
   const BookMarkData = { task, BookMarkUserEmail };
 
   // console.log(task);
@@ -86,11 +95,13 @@ const TaskCard = ({ task }) => {
         </div>
         <div className="flex gap-2 items-center text-base xl:text-lg text-gray-500 font-semibold">
           <AiOutlineClockCircle className="md:text-2xl lg:text-base xl:text-3xl text-primary" />{" "}
-          {2} days ago
+          {daysAgo === 0
+            ? "Today"
+            : `${daysAgo} ${daysAgo === 1 ? "day" : "days"} ago`}
         </div>
         <div className="flex gap-2 items-center text-base xl:text-lg text-gray-500 font-semibold">
           <AiOutlineFileDone className="md:text-2xl lg:text-base xl:text-3xl text-primary" />{" "}
-          {5} Applied
+          {appliedCount ? appliedCount : "No"} Applied
         </div>
       </div>
 
@@ -113,14 +124,28 @@ const TaskCard = ({ task }) => {
 
       <div className="mt-auto grid grid-cols-2 gap-5">
         <Link
-          className="flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg"
+          className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
+            isDisabled ? "cursor-not-allowed" : ""
+          }`}
           to={`/tasksDatail/${_id}`}
+          onClick={(e) => {
+            if (isDisabled) {
+              e.preventDefault(); 
+            }
+          }}
         >
           Apply Now
         </Link>
         <Link
-          className="flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg"
+          className={`flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg ${
+            isDisabled ? "cursor-not-allowed" : ""
+          }`}
           to={`/tasksDatail/${_id}`}
+          onClick={(e) => {
+            if (isDisabled) {
+              e.preventDefault(); 
+            }
+          }}
         >
           View Details
         </Link>

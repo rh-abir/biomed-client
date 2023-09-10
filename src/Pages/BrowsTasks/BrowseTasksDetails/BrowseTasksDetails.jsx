@@ -30,26 +30,12 @@ const BrowseTasksDetails = () => {
     title,
     attachment,
     grading,
+    appliedCount,
   } = useLoaderData();
 
-  console.log(country)
+  console.log(country);
 
-  const showInfoCompany = {
-    _id,
-    title,
-    deadline,
-  };
-
-  const [isOpenApply, setIsOpenApply] = useState(false);
   const [applied, setApplied] = useState(false);
-
-  const closeApplyModal = () => {
-    setIsOpenApply(false);
-  };
-
-  const openApplyModal = () => {
-    setIsOpenApply(true);
-  };
 
   const handleApply = () => {
     Swal.fire({
@@ -96,14 +82,16 @@ const BrowseTasksDetails = () => {
           });
       }
 
-      axios.put(`https://biomed-server.vercel.app/jobs/${_id}/apply`).then(() => {});
+      axios
+        .put(`https://biomed-server.vercel.app/jobs/${_id}/apply`)
+        .then(() => {});
     });
   };
 
   return (
     <div className="pt-20">
       <Container>
-        <section className="my-10 ">
+        <section className="my-10">
           <div className="flex items-center justify-between gap-5">
             <h1 className="text-center md:text-xl font-semibold text-[#666]">
               {jobType} Based: {title}
@@ -116,16 +104,20 @@ const BrowseTasksDetails = () => {
               Download Attachment
             </Link>
           </div>
-          <div className=" mx-auto border rounded-lg mt-7">
-            <div className="pb-10">
-              <img
-                className="w-full h-[500px] object-cover"
-                src={thumbnail}
-                alt="browser details thumbnail"
-              />
+          <div className="grid lg:grid-cols-2">
+            <div>
+              <div className=" mx-auto rounded-lg mt-7">
+                <div className="pb-10">
+                  <img
+                    className="w-full h-[500px] object-cover rounded-lg"
+                    src={thumbnail}
+                    alt="browser details thumbnail"
+                  />
+                </div>
+              </div>
             </div>
 
-            <div className="px-7">
+            <div className="px-7 py-7">
               <div className="mb-5 flex justify-between">
                 <div>
                   <h2 className=" text-lg font-semibold text-[#666]">
@@ -143,7 +135,7 @@ const BrowseTasksDetails = () => {
 
               <div className="flex items-center gap-2 my-3 ">
                 <TbHomeDot></TbHomeDot>
-                <p>{jobType}</p>
+                <p>Task Type: {jobType}</p>
               </div>
 
               <div className="flex gap-16 my-4 justify-between items-center">
@@ -173,7 +165,7 @@ const BrowseTasksDetails = () => {
               <div className="flex justify-between mb-5">
                 <div className="flex items-center gap-2">
                   <AiOutlineUsergroupAdd></AiOutlineUsergroupAdd>
-                  <p>{4} applicants</p>
+                  <p>{appliedCount ? appliedCount : "No"} applicants</p>
                 </div>
                 <div className="flex gap-5">
                   <BsBookmarkPlus></BsBookmarkPlus>
@@ -184,7 +176,9 @@ const BrowseTasksDetails = () => {
               <hr />
 
               <div className="mt-5">
-                <h3>How to grading</h3>
+                <h3 className="text-xl font-semibold text-primary">
+                  How to grading
+                </h3>
 
                 <p>{grading}</p>
 
@@ -204,13 +198,17 @@ const BrowseTasksDetails = () => {
                 </div>
 
                 <div className="mt-4">
-                  <h4>About the job</h4>
+                  <h4 className="text-xl font-semibold text-primary">
+                    About the task
+                  </h4>
                   <p>Key responsibilities:</p>
                   <p>{description}</p>
                 </div>
 
                 <div>
-                  <h3 className="mb-3 mt-5">Skill(s) required</h3>
+                  <h3 className="mb-3 mt-5 text-xl font-semibold text-primary ">
+                    Skill(s) required
+                  </h3>
                   {skills
                     ? skills.map((skill, index) => (
                         <span
@@ -224,7 +222,9 @@ const BrowseTasksDetails = () => {
                 </div>
 
                 <div className="mt-5">
-                  <h3>Number of openings</h3>
+                  <h3 className="text-xl font-semibold text-primary">
+                    Number of openings
+                  </h3>
                   <p>{3}</p>
                 </div>
 

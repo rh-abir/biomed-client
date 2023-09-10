@@ -125,7 +125,7 @@ const TasksSidebar = ({ browseJobsData, getData }) => {
           <h2 className="mt-5">Job type</h2>
           <div className="w-full mt-2 md:mt-0">
             <Select
-              className="text-sm dark:bg-slate-700"
+              className="text-sm dark dark:bg-slate-700"
               isSearchable={false}
               options={options}
               defaultValue={value}

@@ -17,7 +17,7 @@ const Categorys = () => {
         heading="Browse talent by category"
         text="Get some Inspirations from 1800+ skills"
       ></SectionTitle>
-      <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {categorysData?.map((items, index) => (
           <SingleCategory items={items} key={index}></SingleCategory>
         ))}
