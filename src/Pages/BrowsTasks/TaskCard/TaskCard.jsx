@@ -1,11 +1,14 @@
+import { useContext } from "react";
 import { AiOutlineClockCircle, AiOutlineFileDone } from "react-icons/ai";
 import { BsBookmarkPlus } from "react-icons/bs";
 import { FaIndustry } from "react-icons/fa";
 import { MdLocationOn } from "react-icons/md";
 
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const TaskCard = ({ task }) => {
+  const { adminRole, clientRole } = useContext(AuthContext);
   const {
     logo,
     title,
@@ -24,6 +27,8 @@ const TaskCard = ({ task }) => {
   const taskDate = new Date(date);
   const timeDifference = currentDate - taskDate;
   const daysAgo = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+
+  const isDisabled = adminRole || clientRole;
 
   return (
     <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full">
@@ -91,14 +96,28 @@ const TaskCard = ({ task }) => {
 
       <div className="mt-auto grid grid-cols-2 gap-5">
         <Link
-          className="flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg"
+          className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
+            isDisabled ? "cursor-not-allowed" : ""
+          }`}
           to={`/tasksDatail/${_id}`}
+          onClick={(e) => {
+            if (isDisabled) {
+              e.preventDefault(); 
+            }
+          }}
         >
           Apply Now
         </Link>
         <Link
-          className="flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg"
+          className={`flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg ${
+            isDisabled ? "cursor-not-allowed" : ""
+          }`}
           to={`/tasksDatail/${_id}`}
+          onClick={(e) => {
+            if (isDisabled) {
+              e.preventDefault(); 
+            }
+          }}
         >
           View Details
         </Link>
