@@ -14,10 +14,10 @@ const SpecificCategory = () => {
     }, [title]);
 
     return (
-        <div className='pt-32'>
+        <div className='py-32'>
             <Container>
                 <div className="grid md:grid-cols-2 gap-5 mb-6">
-                    {specificCategoryData.map((singleData) => (
+                    {specificCategoryData?.map((singleData) => (
                         <SpecificCategoryDetails key={singleData._id} singleData={singleData} />
                     ))}
                 </div>
