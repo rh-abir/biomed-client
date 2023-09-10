@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { MdPermMedia } from "react-icons/md";
@@ -14,6 +14,7 @@ import "./SharePostForm.css";
 const SharePostForm = () => {
   const { user } = useContext(AuthContext);
   const queryClient = useQueryClient();
+  const [loading, setLoading] = useState(false);
 
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile", user?.email],
@@ -35,6 +36,7 @@ const SharePostForm = () => {
 
   const createPostMutation = useMutation(
     async (data) => {
+      setLoading(true);
       const photoFile = data.photo[0];
 
       if (photoFile == null) return;
@@ -65,9 +67,11 @@ const SharePostForm = () => {
         queryClient.invalidateQueries("posts");
         toast.success("Your post uploaded successfully");
         reset();
+        setLoading(false);
       },
       onError: () => {
         toast.error("Oops... post uploading failed");
+        setLoading(false);
       },
     }
   );
@@ -135,7 +139,7 @@ const SharePostForm = () => {
               type="submit"
               className="border-0 rounded-md bg-green-600 font-normal text-white text-sm md:text-base cursor-pointer px-2 py-1 md:px-4 md:py-2"
             >
-              Share
+              {loading ? "Sharing..." : "Share"}
             </button>
           </div>
         </form>
