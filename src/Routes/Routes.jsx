@@ -2,6 +2,8 @@ import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
 import CommunityProfileHome from "../Community/CommunityProfileHome/CommunityProfileHome";
 import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
+import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
+import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
@@ -43,8 +45,6 @@ import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
-import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
-import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 
 const router = createBrowserRouter([
   {
@@ -116,7 +116,7 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "/dashboard/client-home",
+        path: "/dashboard/admin-home",
         element: <AdminHome />,
       },
       {
