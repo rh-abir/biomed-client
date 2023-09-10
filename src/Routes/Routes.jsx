@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
 import CommunityProfileHome from "../Community/CommunityProfileHome/CommunityProfileHome";
+import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
@@ -17,7 +18,6 @@ import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory
 import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
 import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
-import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
 import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
 import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
@@ -115,7 +115,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/client-home",
-        element: <ClientHome />,
+        element: <AdminHome />,
       },
       {
         path: "/dashboard/candidate-home",
