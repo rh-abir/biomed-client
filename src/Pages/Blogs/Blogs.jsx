@@ -16,7 +16,6 @@ const Blogs = () => {
 
 
 
-
   return (
     <div className="pt-20">
       <Container>

@@ -129,12 +129,12 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "/dashboard/client-home",
-        element: <ClientHome />,
-      },
-      {
         path: "/dashboard/admin-home",
         element: <AdminHome />,
+      },
+      {
+        path: "/dashboard/client-home",
+        element: <ClientHome />,
       },
       {
         path: "/dashboard/candidate-home",
