@@ -53,7 +53,7 @@ const TaskCard = ({ task }) => {
   };
 
   return (
-    <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full">
+    <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full dark:border-slate-700 dark:hover:border-slate-600">
       <div className="flex items-center justify-between mb-5">
         <div className="text-3xl font-bold text-gray-600">
           <h2>{title}</h2>

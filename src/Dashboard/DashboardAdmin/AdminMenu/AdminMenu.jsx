@@ -31,7 +31,7 @@ const AdminMenu = () => {
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
-            to={"/dashboard/client-home"}
+            to={"/dashboard/admin-home"}
             className="flex items-center gap-3 dark:text-white "
           >
             <AiOutlineHome /> Dashboard

@@ -1,8 +1,8 @@
 import React from "react";
 import { BiBriefcase, BiMessageDetail } from "react-icons/bi";
 import { FaRegFileAlt } from "react-icons/fa";
-import { GoBookmark } from "react-icons/go";
 import useGetData from "../../../../hooks/useGetData";
+import { AiOutlineFileDone } from "react-icons/ai";
 const AdminBox = () => {
   const postTask = useGetData("jobs");
   const application = useGetData("applidejobs");
@@ -47,13 +47,13 @@ const AdminBox = () => {
       {/* box-4 */}
       <div className="p-8 flex justify-between w-full dark:bg-gray-800 bg-white rounded-lg items-center shadow-sm border-0">
         <div className="bg-green-100 p-4 rounded-lg">
-          <GoBookmark className="text-green-700  text-5xl" />
+          <AiOutlineFileDone className="text-green-700  text-5xl" />
         </div>
         <div>
           <p className="text-green-700 text-4xl font-semibold text-end">
             {evaluate[0].length}
           </p>
-          <p>Shortlist</p>
+          <p>Evaluated</p>
         </div>
       </div>
     </div>
