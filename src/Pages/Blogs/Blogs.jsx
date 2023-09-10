@@ -19,7 +19,7 @@ const Blogs = () => {
   return (
     <div className="pt-20">
       <Container>
-        <div className="grid grid-cols-4 gap-10">
+        <div className="grid lg:grid-cols-4 gap-10">
           <div className="col-span-3">
             <Outlet />
           </div>

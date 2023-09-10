@@ -28,7 +28,7 @@ const AdminMenu = () => {
         </button>
       </div>
       <ul className="text-xl">
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/admin-home"}
@@ -37,7 +37,7 @@ const AdminMenu = () => {
             <AiOutlineHome /> Dashboard
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/admin-profile"}
@@ -46,7 +46,7 @@ const AdminMenu = () => {
             <AiFillProfile /> Admin Profile
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/all-users"}
@@ -55,7 +55,7 @@ const AdminMenu = () => {
             <AiOutlineUser /> All Users
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/all-client"}
@@ -64,7 +64,7 @@ const AdminMenu = () => {
             <AiOutlineUser /> All Clients
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/post-blog"
@@ -73,7 +73,7 @@ const AdminMenu = () => {
             <BsFillSignpostFill /> Post A New Blog
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/social-media"
@@ -82,7 +82,7 @@ const AdminMenu = () => {
             <BsFillSignpostFill /> Social Media
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             to="/dashboard/manage-jobs"
             onClick={() => setDashboardToggle(false)}
@@ -91,7 +91,7 @@ const AdminMenu = () => {
             <PiBagSimpleBold /> Manage Blogs
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             to="/dashboard/all-moderator"
             onClick={() => setDashboardToggle(false)}
@@ -102,7 +102,7 @@ const AdminMenu = () => {
         </li>
         <li
           onClick={handleDashboardLogout}
-          className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white"
+          className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600"
         >
           <Link className="flex items-center gap-3">
             <AiOutlineLogout /> Logout

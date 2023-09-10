@@ -19,17 +19,17 @@ const ClientMenu = () => {
     logoutUser().then(() => navigate("/"));
   };
   return (
-    <div className="px-10 py-5 dark:bg-gray-800 dark:text-white h-screen bg-white relative z-50">
+    <div className="px-10 py-5 dark:bg-gray-800 dark:text-white h-screen bg-white relative z-50 w-full">
       <div className="flex justify-end lg:hidden ">
         <button
-          className="bg-primary p-2 rounded-full text-white hover:bg-hover mb-3"
+          className="bg-primary p-2 rounded-full text-white hover:bg-hover  mb-3"
           onClick={() => setDashboardToggle(false)}
         >
           <AiOutlineClose />
         </button>
       </div>
       <ul className="text-xl">
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/client-home"}
@@ -38,7 +38,7 @@ const ClientMenu = () => {
             <AiOutlineHome /> Dashboard
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/instructor-view"}
@@ -47,7 +47,7 @@ const ClientMenu = () => {
             <AiOutlineUser /> Instructor Profile
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/post-task"}
@@ -56,7 +56,7 @@ const ClientMenu = () => {
             <CiPaperplane /> Create A New Task
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             to="/dashboard/manage-task"
             onClick={() => setDashboardToggle(false)}
@@ -65,7 +65,7 @@ const ClientMenu = () => {
             <PiBagSimpleBold /> Manage Task
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             to="/dashboard/evaluate-applicants"
             onClick={() => setDashboardToggle(false)}
@@ -74,7 +74,7 @@ const ClientMenu = () => {
             <IoIosPaper /> Evaluate Applicant
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white">
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             to={"/dashboard/client-message"}
             onClick={() => setDashboardToggle(false)}
@@ -85,7 +85,7 @@ const ClientMenu = () => {
         </li>
         <li
           onClick={handleDashboardLogout}
-          className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white"
+          className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600"
         >
           <Link className="flex items-center gap-3">
             <AiOutlineLogout /> Logout
