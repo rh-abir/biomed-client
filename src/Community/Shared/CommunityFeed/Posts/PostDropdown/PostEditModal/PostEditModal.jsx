@@ -1,35 +1,65 @@
-import React from "react";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { v4 } from "uuid";
+import { storage } from "../../../../../../firebase/firebase.config";
 
 const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
+  const [loading, setLoading] = useState(false);
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate()
+  const queryClient = useQueryClient();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const updatePostMutation = useMutation(
+    async (data) => {
+      setLoading(true);
+      const photoFile = data.photo[0];
 
-    fetch(`http://localhost:5000/posts/${postId}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-        if (result.modifiedCount > 0) {
-          Swal.fire("Success", "Post updated successfully", "success");
-          closeEditModal()
-        }
-      })
-      .catch((error) => {
-        console.log(error);
-        Swal.fire("Error", "Failed to update post. Please try again.", "error");
+      if (photoFile == null) return;
+
+      const photoRef = ref(storage, `photos/${photoFile.name + v4()}`);
+      await uploadBytes(photoRef, photoFile);
+      const downloadUrl = await getDownloadURL(photoRef);
+
+      data.photo = downloadUrl;
+
+      const response = await fetch(`http://localhost:5000/posts/${postId}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
-  };
 
-  // Function to close the edit modal
+      if (!response.ok) {
+        throw new Error("Failed to create a new post");
+      }
+
+      return response.json();
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries("posts");
+        Swal.fire("Success", "Post updated successfully", "success");
+        setLoading(false);
+        // closeEditModal();
+        navigate("/community")
+      },
+      onError: () => {
+        Swal.fire("Error", "Failed to update post. Please try again.", "error");
+        setLoading(false);
+      },
+    }
+  );
+
+  const onSubmit = async (data) => {
+    updatePostMutation.mutate(data);
+  };
+  
+// Close modal functionality
   const closeEditModal = () => {
     setIsEditModalOpen(false);
   };
@@ -68,7 +98,7 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
             className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 duration-500"
             type="submit"
           >
-            Save
+            {loading ? "Saving..." : "Save"}
           </button>
           <button
             onClick={closeEditModal}
