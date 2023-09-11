@@ -73,9 +73,9 @@ export const becomeClient = async (email) => {
 };
 
 // become a instructor
-export const becomeModerator = async (email) => {
+export const becomeAdmin = async (email) => {
   const updateRole = {
-    moderator: true,
+    admin: true,
   };
 
   const res = await fetch(`https://biomed-server.vercel.app/users/${email}`, {

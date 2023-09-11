@@ -9,7 +9,7 @@ import {
   FaRegTrashAlt,
 } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { becomeModerator } from "../../../api/auth";
+import { becomeAdmin } from "../../../api/auth";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 import EvaluateModal from "../../../components/Modal/EvaluateModal/EvaluateModal";
 import ProfileModal from "../../../components/Modal/ProfileModal/ProfileModal";
@@ -121,7 +121,7 @@ const AllUsers = () => {
                       <td className="py-2 md:py-4">
                         <button
                           onClick={() =>
-                            becomeModerator(user.email).then((data) => {
+                            becomeAdmin(user.email).then((data) => {
                               console.log(data);
                               if (data.modifiedCount === 1) {
                                 refetch();
@@ -133,7 +133,7 @@ const AllUsers = () => {
                           }
                           className="bg-primary hover:bg-hover text-gray-50 xl:text-sm text-xs px-2 xl:mx-0 md:mx-3 mx-3 py-2 rounded-md"
                         >
-                          Make Moderator
+                          Make Admin
                         </button>
                       </td>
                       <td className="py-2 md:py-4">
