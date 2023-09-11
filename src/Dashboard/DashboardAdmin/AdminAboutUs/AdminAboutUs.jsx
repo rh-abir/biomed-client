@@ -3,9 +3,11 @@ import axios from "axios";
 import React from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
 const AdminAboutUs = () => {
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -39,6 +41,7 @@ const AdminAboutUs = () => {
         if (data.modifiedCount > 0) {
           reset();
           toast.success("Updated Successfully");
+          navigate('/')
         } else {
           toast.error("Update Faild");
         }
@@ -53,12 +56,12 @@ const AdminAboutUs = () => {
       return res?.data;
     },
   });
-  
-  console.log("About data", aboutUs[0]?.descOne);
-  
+
+  // console.log("About data", aboutUs[0]?.descOne);
+
   return (
-    <div className="px-10 py-6 bg-gray-100 min-h-screen">
-      <DashboardTitle title={"About Us"} slogan={"Update Info"} />
+    <div className="px-10 py-6 bg-gray-100 dark:bg-slate-800 dark:text-white min-h-screen">
+      <DashboardTitle title={"About Us"} slogan={"Update About Info"} />
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="mb-4">
           <label htmlFor="descOne">Description 1</label>
@@ -66,7 +69,7 @@ const AdminAboutUs = () => {
             type="text"
             id="descOne"
             placeholder="Enter Description"
-            className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+            className="w-full px-5 py-4 dark:bg-slate-800 dark:text-white bg-slate-100 border border-gray-300 focus:border-green-600 transition rounded-md outline-none mt-1"
             defaultValue={aboutUs[0]?.descOne}
             {...register("descOne")}
           />
@@ -80,7 +83,7 @@ const AdminAboutUs = () => {
             type="text"
             id="descTwo"
             placeholder="Enter Description"
-            className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+            className="w-full px-5 py-4 dark:bg-slate-800 dark:text-white bg-slate-100 border border-gray-300 focus:border-green-600 transition rounded-md outline-none mt-1"
             defaultValue={aboutUs[0]?.descTwo}
             {...register("descTwo")}
           />
@@ -94,7 +97,7 @@ const AdminAboutUs = () => {
             type="text"
             id="pointOne"
             placeholder="Enter Point"
-            className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+            className="w-full px-5 py-4 dark:bg-slate-800 dark:text-white bg-slate-100 border border-gray-300 focus:border-green-600 transition rounded-md outline-none mt-1"
             defaultValue={aboutUs[0]?.pointOne}
             {...register("pointOne")}
           />
@@ -108,7 +111,7 @@ const AdminAboutUs = () => {
             type="text"
             id="pointTwo"
             placeholder="Enter Point"
-            className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+            className="w-full px-5 py-4 dark:bg-slate-800 dark:text-white bg-slate-100 border border-gray-300 focus:border-green-600 transition rounded-md outline-none mt-1"
             defaultValue={aboutUs[0]?.pointTwo}
             {...register("pointTwo")}
           />
@@ -122,7 +125,7 @@ const AdminAboutUs = () => {
             type="text"
             id="pointThree"
             placeholder="Enter Point"
-            className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+            className="w-full px-5 py-4 dark:bg-slate-800 dark:text-white bg-slate-100 border border-gray-300 focus:border-green-600 transition rounded-md outline-none mt-1"
             defaultValue={aboutUs[0]?.pointThree}
             {...register("pointThree")}
           />
