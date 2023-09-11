@@ -114,7 +114,9 @@ const AuthProvider = ({ children }) => {
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/users/${user?.email}`);
+      const res = await axios(
+        `https://biomed-server.vercel.app/users/${user?.email}`
+      );
       return res.data;
     },
   });
@@ -123,7 +125,9 @@ const AuthProvider = ({ children }) => {
   const { data: manageJobs = [] } = useQuery({
     queryKey: ["manageJobs"],
     queryFn: async () => {
-      const res = await axios.get(`https://biomed-server.vercel.app/jobs/${user?.email}`);
+      const res = await axios.get(
+        `https://biomed-server.vercel.app/jobs/${user?.email}`
+      );
       return res.data;
     },
   });
