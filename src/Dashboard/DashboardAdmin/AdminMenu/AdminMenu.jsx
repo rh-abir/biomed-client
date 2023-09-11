@@ -1,15 +1,18 @@
 import React, { useContext } from "react";
 import {
-  AiFillProfile,
   AiOutlineClose,
   AiOutlineHome,
-  AiOutlineLogout,
-  AiOutlineUser,
+  AiOutlineLogout
 } from "react-icons/ai";
-import { BsFillPeopleFill, BsFillSignpostFill } from "react-icons/bs";
+import { BsFillPeopleFill, BsFillSignpostFill, BsMicrosoftTeams } from "react-icons/bs";
+import { FaUsers } from "react-icons/fa";
+import { FaUsersGear } from "react-icons/fa6";
+import { HiOutlineUsers } from "react-icons/hi2";
+import { ImProfile } from "react-icons/im";
+import { RiChatSettingsLine } from "react-icons/ri";
+import { TbSocial } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { PiBagSimpleBold } from "react-icons/pi";
 
 const AdminMenu = () => {
   const navigate = useNavigate();
@@ -43,7 +46,7 @@ const AdminMenu = () => {
             to={"/dashboard/admin-profile"}
             className="flex items-center gap-3 dark:text-white"
           >
-            <AiFillProfile /> Admin Profile
+            <ImProfile /> Admin Profile
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
@@ -52,7 +55,7 @@ const AdminMenu = () => {
             to={"/dashboard/all-users"}
             className="flex items-center gap-3 dark:text-white"
           >
-            <AiOutlineUser /> All Users
+            <FaUsers /> All Users
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600">
@@ -61,7 +64,16 @@ const AdminMenu = () => {
             to={"/dashboard/all-client"}
             className="flex items-center gap-3 dark:text-white"
           >
-            <AiOutlineUser /> All Clients
+            <HiOutlineUsers /> All Clients
+          </Link>
+        </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+          <Link
+            to="/dashboard/all-moderator"
+            onClick={() => setDashboardToggle(false)}
+            className="flex items-center gap-3"
+          >
+            <BsFillPeopleFill /> All Moderator
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
@@ -79,7 +91,7 @@ const AdminMenu = () => {
             to="/dashboard/social-media"
             className="flex items-center gap-3"
           >
-            <BsFillSignpostFill /> Social Media
+            <TbSocial /> Social Media
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
@@ -88,16 +100,26 @@ const AdminMenu = () => {
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
           >
-            <PiBagSimpleBold /> Manage Blogs
+            <RiChatSettingsLine /> Manage Blogs
+          </Link>
+        </li>
+        
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+          <Link
+            to="/dashboard/about-us"
+            onClick={() => setDashboardToggle(false)}
+            className="flex items-center gap-3"
+          >
+            <FaUsersGear className="text-2xl" /> About Us
           </Link>
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
-            to="/dashboard/all-moderator"
+            to="/dashboard/team-member"
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
           >
-            <BsFillPeopleFill /> All Moderator
+            <BsMicrosoftTeams className="text-2xl" /> Add A Team Member
           </Link>
         </li>
         <li
