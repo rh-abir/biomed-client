@@ -6,10 +6,10 @@ import {
   AiOutlineLogout,
   AiOutlineUser,
 } from "react-icons/ai";
-import { BsFillPeopleFill, BsFillSignpostFill } from "react-icons/bs";
+import { BsFillSignpostFill } from "react-icons/bs";
+import { PiBagSimpleBold } from "react-icons/pi";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import { PiBagSimpleBold } from "react-icons/pi";
 
 const AdminMenu = () => {
   const navigate = useNavigate();
@@ -91,15 +91,7 @@ const AdminMenu = () => {
             <PiBagSimpleBold /> Manage Blogs
           </Link>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
-          <Link
-            to="/dashboard/all-moderator"
-            onClick={() => setDashboardToggle(false)}
-            className="flex items-center gap-3"
-          >
-            <BsFillPeopleFill /> All Moderator
-          </Link>
-        </li>
+
         <li
           onClick={handleDashboardLogout}
           className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600"
