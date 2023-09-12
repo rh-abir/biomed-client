@@ -6,10 +6,9 @@ import { AuthContext } from "../Provider/AuthProvider";
 import Loader from "../components/Loader/Loader";
 
 const Dashboard = () => {
-  const { clientRole, adminRole, moderatorRole, dashboardToggle } =
-    useContext(AuthContext);
+  const { clientRole, adminRole, dashboardToggle } = useContext(AuthContext);
 
-  if (adminRole === null || clientRole === null || moderatorRole === null) {
+  if (adminRole === null || clientRole === null) {
     return <Loader />;
   }
 
