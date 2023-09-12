@@ -96,7 +96,7 @@ const Register = () => {
                   type="text"
                   id="name"
                   placeholder="Enter your name"
-                  className="w-full p-2 border-b border-gray-300 rounded outline-none"
+                  className="w-full p-2 border-b border-gray-300 dark:text-gray-700 rounded outline-none"
                   {...register("name", { required: "Name is required" })}
                 />
                 {errors.name && (
@@ -112,7 +112,7 @@ const Register = () => {
                   type="email"
                   id="email"
                   placeholder="Enter your email"
-                  className="w-full p-2 border-b border-gray-300 rounded outline-none"
+                  className="w-full p-2 border-b border-gray-300 dark:text-gray-700 rounded outline-none"
                   {...register("email", {
                     required: "Email is required",
                     pattern: {
@@ -134,7 +134,7 @@ const Register = () => {
                   type={toggle ? "text" : "password"}
                   id="password"
                   placeholder="Enter your password"
-                  className="w-full p-2 border-b border-gray-300 rounded outline-none"
+                  className="w-full p-2 border-b border-gray-300 dark:text-gray-700 rounded outline-none"
                   {...register("password", {
                     required: "Password is required",
                     pattern: {
@@ -170,7 +170,7 @@ const Register = () => {
                   type={toggle2 ? "text" : "password"}
                   id="confirmPassword"
                   placeholder="Confirm your password"
-                  className="w-full p-2 border-b border-gray-300 rounded outline-none"
+                  className="w-full p-2 border-b border-gray-300 dark:text-gray-700 rounded outline-none"
                   {...register("confirmPassword", {
                     required: "Confirm Password is required",
                     validate: (value) =>
