@@ -49,7 +49,7 @@ const AboutUs = () => {
                 <p>Enhancing job seeker and employer interactions.</p>
               </div>
             </div>
-            <Link to="/">
+            <Link to="/about-details">
               <button className="flex items-center justify-center gap-1 text-[#5BBB7B] border-[3px] border-[#5BBB7B] hover:bg-[#5BBB7B] hover:text-white hover:border-[#5BBB7B] rounded px-2 py-2 md:px-5 md:py-3 duration-500 text-sm md:text-lg font-semibold">
                 More About Us <BsArrowUpRight className="mt-1" />
               </button>

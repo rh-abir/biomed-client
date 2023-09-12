@@ -8,7 +8,7 @@ const TestimonialItem = ({ userFeedback }) => {
   const [rating, setRating] = useState(4);
   return (
     <div className="my-20">
-      <div className="px-3 py-16 flex items-center flex-col bg-white dark:bg-gray-700 rounded-lg">
+      <div className="px-3 py-16 flex h-[450px] items-center flex-col bg-white dark:bg-gray-700 rounded-lg">
         <div className="absolute top-5">
           <img
             className="w-40 h-40 object-cover rounded-full bg-gray-50 dark:bg-gray-800 border-2 border-gray-200 dark:border-gray-800"
@@ -23,7 +23,7 @@ const TestimonialItem = ({ userFeedback }) => {
         <div className="text-5xl text-primary">
           <ImQuotesLeft />
         </div>
-        <div className="mt-auto">
+        <div>
           <p className="text-center">{feedback}</p>
         </div>
       </div>

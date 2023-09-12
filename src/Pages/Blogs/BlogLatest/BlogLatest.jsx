@@ -12,7 +12,7 @@ const BlogLatest = ({ data }) => {
 
       <div>
         <Link
-          to={`/blogDetails/${data?._id}`}
+          to={`/blogs/blogDetails/${data?._id}`}
           className="text-lg transition duration-200 leading-3  hover:text-primary font-semibold "
         >
           {data.title}

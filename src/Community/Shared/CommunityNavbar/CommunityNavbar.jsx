@@ -4,14 +4,13 @@ import React, { useContext } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FiArrowLeft } from "react-icons/fi";
-import { MdNotifications } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import logo from "../../../assets/logo.png";
 import "./CommunityNavbar.css";
 
 const CommunityNavbar = () => {
-  const { user } = useContext(AuthContext);
+  const { user, adminRole, clientRole } = useContext(AuthContext);
 
   // Define a function to determine which icon to display based on the route
   const location = useLocation();
@@ -53,7 +52,10 @@ const CommunityNavbar = () => {
         {/* Navbar Left SIde */}
         <div>
           {/* Logo section for large devices */}
-          <span title="Biomed Home"  className="hidden md:block ml-5 cursor-pointer">
+          <span
+            title="Biomed Home"
+            className="hidden md:block ml-5 cursor-pointer"
+          >
             <Link to="/">
               <img className="w-40" src={logo} alt="logo for community forum" />
             </Link>
@@ -65,7 +67,13 @@ const CommunityNavbar = () => {
                 {getIcon()} {/* Render the dynamic icon */}
               </div>
             </Link>
-            <Link to={"/community/community-profile"}>
+            <Link
+              to={
+                clientRole
+                  ? "/dashboard/instructor-view"
+                  : "/dashboard/my-profile"
+              }
+            >
               <div
                 title="View Profile"
                 className="mx-2 w-9 h-9 rounded-full overflow-hidden cursor-pointer border-[3px] border-black/50 md:hidden"
@@ -80,19 +88,6 @@ const CommunityNavbar = () => {
             </Link>
           </div>
         </div>
-        {/* Navbar Center SIde */}
-        <div className="flex justify-center items-center gap-4">
-          {/* Icons section */}
-          <Link to={"/community"}>
-            <div title="Community Home" className="topbarIconItem hidden md:block">
-              <AiOutlineHome className="text-[26px] text-gray-700" />
-            </div>
-          </Link>
-          <div title="Notifications" className="topbarIconItem">
-            <MdNotifications className="text-[26px] text-gray-700" />
-            <span className="topbarIconBadge">1</span>
-          </div>
-        </div>
         {/* Navbar Right SIde */}
         <div className="flex items-center justify-around text-gray-600 ms-4 md:mx-4 gap-6">
           <div className="w-full h-8 bg-slate-200 rounded-full flex items-center ">
@@ -104,7 +99,11 @@ const CommunityNavbar = () => {
             />
           </div>
           {/* Profile section for large devices */}
-          <Link to={"/community/community-profile"}>
+          <Link to={
+                clientRole
+                  ? "/dashboard/instructor-view"
+                  : "/dashboard/my-profile"
+              }>
             <div
               title="View Profile"
               className="hidden md:block w-9 h-9 rounded-full overflow-hidden cursor-pointer border-[3px] border-black/50"

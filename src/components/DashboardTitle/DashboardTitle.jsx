@@ -11,7 +11,7 @@ const DashboardTitle = ({ title, slogan }) => {
 
       <button
         onClick={() => setDashboardToggle(true)}
-        className="text-base text-primary hover:text-green-600 flex items-center gap-2 bg-slate-200 hover:bg-slate-300 duration-500 px-6 py-3 rounded-md mt-6 lg:hidden"
+        className="text-base text-primary hover:text-green-600 dark:bg-gray-800 dark:text-gray-100 flex items-center gap-2 bg-slate-200 hover:bg-slate-300 duration-500 px-6 py-3 rounded-md mt-6 lg:hidden"
       >
         <HiOutlineMenuAlt3 /> Menu
       </button>

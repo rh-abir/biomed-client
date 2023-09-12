@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineClockCircle, AiOutlineFileDone } from "react-icons/ai";
 import { BsBookmarkPlus } from "react-icons/bs";
 import { FaIndustry } from "react-icons/fa";
@@ -40,26 +40,45 @@ const TaskCard = ({ task }) => {
 
   // console.log(task);
 
+  const [bookmarkedTasks, setBookmarkedTasks] = useState([]);
+
+  useEffect(() => {
+    // Load existing bookmarks from localStorage when the component mounts
+    const storedBookmarks = localStorage.getItem("bookmarks");
+    if (storedBookmarks) {
+      setBookmarkedTasks(JSON.parse(storedBookmarks));
+    }
+  }, []);
+
   const handleBookmark = () => {
-    setIsbookMark(!isbookMark);
+    setIsbookMark(true);
 
     if (!isbookMark) {
       axios.post("http://localhost:5000/bookmark", BookMarkData).then((res) => {
         if (res.data.acknowledged) {
-          toast.success("Successfully toasted!");
+          const taskIdToAdd = _id;
+
+          toast.success("Successfully Bookmark!");
+          // Check if the task ID is not already in the bookmarkedTasks array
+          if (!bookmarkedTasks.includes(taskIdToAdd)) {
+            const updatedBookmarks = [...bookmarkedTasks, taskIdToAdd];
+            setBookmarkedTasks(updatedBookmarks);
+
+            localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
+          }
         }
       });
     }
   };
 
   return (
-    <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full">
+    <div className="border p-7 flex flex-col hover:border-hover transition rounded-md w-full dark:border-slate-700 dark:hover:border-slate-600">
       <div className="flex items-center justify-between mb-5">
         <div className="text-3xl font-bold text-gray-600">
           <h2>{title}</h2>
         </div>
         <div className=" cursor-pointer" onClick={handleBookmark}>
-          {isbookMark ? (
+          {bookmarkedTasks.includes(_id) ? (
             <button className="cursor-not-allowed" disabled={true}>
               <BsBookmarkPlus className="text-xl md:text-2xl text-red-400 " />
             </button>
@@ -130,7 +149,7 @@ const TaskCard = ({ task }) => {
           to={`/tasksDatail/${_id}`}
           onClick={(e) => {
             if (isDisabled) {
-              e.preventDefault(); 
+              e.preventDefault();
             }
           }}
         >
@@ -143,7 +162,7 @@ const TaskCard = ({ task }) => {
           to={`/tasksDatail/${_id}`}
           onClick={(e) => {
             if (isDisabled) {
-              e.preventDefault(); 
+              e.preventDefault();
             }
           }}
         >

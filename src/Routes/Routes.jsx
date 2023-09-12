@@ -1,7 +1,9 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
-import CommunityProfileHome from "../Community/CommunityProfileHome/CommunityProfileHome";
+import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
 import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
+import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
+import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
@@ -18,6 +20,7 @@ import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory
 import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverview";
 import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
+import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
 import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
 import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
 import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
@@ -26,25 +29,23 @@ import ManageTask from "../Dashboard/DashboardClient/ManageTask/ManageTask";
 import PostTask from "../Dashboard/DashboardClient/PostTask/PostTask";
 import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 import Community from "../Layout/Community";
-import CommunityProfile from "../Layout/CommunityProfile";
 import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import BlogDetails from "../Pages/Blogs/BlogDetails/BlogDetails";
 import Blogs from "../Pages/Blogs/Blogs";
+import BlogsHome from "../Pages/Blogs/BlogsHome/BlogsHome";
 import BrowseTasks from "../Pages/BrowsTasks/BrowseTasks";
 import BrowseTasksDetails from "../Pages/BrowsTasks/BrowseTasksDetails/BrowseTasksDetails";
 import BrowseTasksHome from "../Pages/BrowsTasks/BrowseTasksHome";
 import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
+import AboutDetails from "../Pages/Home/AboutUs/AboutDetails/AboutDetails";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
-import PrivateRoute from "./PrivateRoute";
-import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
-import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 
 const router = createBrowserRouter([
   {
@@ -59,12 +60,18 @@ const router = createBrowserRouter([
       {
         path: "/blogs",
         element: <Blogs />,
-      },
-      {
-        path: "/blogDetails/:id",
-        element: <BlogDetails />,
-        loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+        children: [
+          {
+            path: "/blogs",
+            element: <BlogsHome />,
+          },
+          {
+            path: "/blogs/blogDetails/:id",
+            element: <BlogDetails />,
+            loader: ({ params }) =>
+              fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+          },
+        ],
       },
 
       {
@@ -101,6 +108,10 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>,
       },
+      {
+        path: "/about-details",
+        element: <AboutDetails />,
+      },
     ],
   },
   {
@@ -116,8 +127,12 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       {
-        path: "/dashboard/client-home",
+        path: "/dashboard/admin-home",
         element: <AdminHome />,
+      },
+      {
+        path: "/dashboard/client-home",
+        element: <ClientHome />,
       },
       {
         path: "/dashboard/candidate-home",
@@ -237,25 +252,17 @@ const router = createBrowserRouter([
   // Community Routes
   {
     path: "/community",
-    element: (
-      <PrivateRoute>
-        <Community />
-      </PrivateRoute>
-    ),
+    element: <Community />,
     children: [
       {
         path: "/community",
         element: <CommunityHome />,
       },
-    ],
-  },
-  {
-    path: "/community/community-profile",
-    element: <CommunityProfile />,
-    children: [
       {
-        path: "/community/community-profile",
-        element: <CommunityProfileHome />,
+        path: "/community/postDetails/:id",
+        element: <PostDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/posts/${params.id}`),
       },
     ],
   },
