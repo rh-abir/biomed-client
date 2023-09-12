@@ -7,6 +7,7 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
+import { AiOutlineEnvironment, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Loader from "../../../components/Loader/Loader";
 
@@ -54,30 +55,31 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between mb-8">
           {/*"Pages" section */}
           <div>
-            <p className="font-semibold text-xl">Pages</p>
+            <p className="font-semibold text-xl">Reach Us</p>
             <div className="mt-3 md:mt-4">
-              <p>About Us</p>
-              <p>Become Seller</p>
-              <p>
-                <Link to={"/"}>Blogs</Link>
-              </p>
-              <Link to="/terms">Terms of Service</Link>
+              <div className="flex items-center">
+                <AiOutlinePhone className="text-2xl" />
+                <p className="ms-2">+8801993881454</p>
+              </div>
+              <div className="flex items-center py-1"><AiOutlineMail className="text-2xl" />
+                <p className="ms-2">commandos701@gmail.com</p>
+              </div>
+              <div className="flex items-center"><AiOutlineEnvironment className="text-2xl" />
+                <p className="ms-2">
+                  45 Sadar Road, Barisal, Bangladesh
+                </p>
+              </div>
             </div>
           </div>
 
           {/*"Categories" section */}
           <div className="mt-3 md:mt-0">
-            <p className="font-semibold text-xl">Categories</p>
+            <p className="font-semibold text-xl">Company</p>
             <div className="mt-3 md:mt-4">
-              <p>Design & Creative</p>
-              <p>Development & IT</p>
-              <p>Music & Audio</p>
-              <p>Programming & Tech</p>
-              <p>Digital Marketing</p>
-              <p>Finance & Accounting</p>
-              <p>Writing & Translation</p>
-              <p>Trending</p>
-              <p>Lifestyle</p>
+              <Link to='/blogs'><p>Blogs</p></Link>
+              <p>About Us</p>
+              <p>Privacy Policy</p>
+              <p>Latest Updates</p>
             </div>
           </div>
 
@@ -85,13 +87,10 @@ const Footer = () => {
           <div className="mt-3 md:mt-0">
             <p className="font-semibold text-xl mb-3">Support</p>
             <div>
-              <p>Help & Support</p>
-              <p>FAQ Freeio</p>
-              <Link to="contact">
-                <p>Contact Us</p>
-              </Link>
-              <p>Services</p>
+              <p>FAQs</p>
+              <Link to="/contact"><p>Contact Us</p></Link>
               <Link to="/terms">Terms of Service</Link>
+              <p>Platform Walkthrough</p>
             </div>
           </div>
 
@@ -100,7 +99,7 @@ const Footer = () => {
             <p className="font-semibold text-xl mb-3">Subscribe</p>
             <div className="md:p-4 p-3 w-full border-2 md:rounded-xl rounded flex flex-col md:flex-row md:gap-5">
               <input
-                className="md:flex-grow py-2 px-3 rounded focus:outline-none focus:ring-2 focus:ring-blue-500 mb-2 md:mb-0"
+                className="bg-gray-900 md:flex-grow py-2 px-3 rounded focus:outline-none focus:ring-green-300 mb-2 md:mb-0"
                 type="email"
                 placeholder="Your email address"
               />
