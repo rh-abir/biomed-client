@@ -25,13 +25,13 @@ const TeamMemberCard = ({ teamMember }) => {
       </div>
       <div className="p-4 border-t mx-8 mt-2">
         <div className="flex justify-center items-center space-x-2">
-          <a href={facebook} className="text-blue-500 text-xl">
+          <a href={facebook} target="_blank" className="text-blue-500 text-xl">
             <FaFacebookF />
           </a>
-          <a href={linkedin} className="text-blue-700 dark:bg-white text-xl">
+          <a href={linkedin} target="_blank" className="text-blue-700 dark:bg-white text-xl">
             <FaLinkedin />
           </a>
-          <a href={github} className="text-gray-800 dark:bg-white text-xl dark:rounded-full">
+          <a href={github} target="_blank" className="text-gray-800 dark:bg-white text-xl dark:rounded-full">
             <FaGithub />
           </a>
         </div>

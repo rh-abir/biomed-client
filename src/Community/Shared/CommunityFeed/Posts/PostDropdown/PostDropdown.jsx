@@ -9,7 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import PostEditModal from "./PostEditModal/PostEditModal";
 
-const PostDropdown = ({ postId, refetchFunction, photo, title, desc }) => {
+const PostDropdown = ({ postId, photo, title, desc }) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const dropdownRef = useRef(null);
@@ -57,7 +57,6 @@ const PostDropdown = ({ postId, refetchFunction, photo, title, desc }) => {
             Swal.fire("Deleted!", "Your post has been deleted.", "success");
             navigate("/community");
           }
-          refetchFunction();
         });
       }
     });

@@ -1,10 +1,10 @@
 import React, { useContext } from "react";
+import { AiOutlineClose, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
 import {
-  AiOutlineClose,
-  AiOutlineHome,
-  AiOutlineLogout
-} from "react-icons/ai";
-import { BsFillPeopleFill, BsFillSignpostFill, BsMicrosoftTeams } from "react-icons/bs";
+  BsFillPeopleFill,
+  BsFillSignpostFill,
+  BsMicrosoftTeams,
+} from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
 import { HiOutlineUsers } from "react-icons/hi2";
@@ -87,15 +87,6 @@ const AdminMenu = () => {
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
-            onClick={() => setDashboardToggle(false)}
-            to="/dashboard/social-media"
-            className="flex items-center gap-3"
-          >
-            <TbSocial /> Social Media
-          </Link>
-        </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
-          <Link
             to="/dashboard/manage-jobs"
             onClick={() => setDashboardToggle(false)}
             className="flex items-center gap-3"
@@ -103,7 +94,16 @@ const AdminMenu = () => {
             <RiChatSettingsLine /> Manage Blogs
           </Link>
         </li>
-        
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+          <Link
+            onClick={() => setDashboardToggle(false)}
+            to="/dashboard/social-media"
+            className="flex items-center gap-3"
+          >
+            <TbSocial /> Social Media
+          </Link>
+        </li>
+
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <Link
             to="/dashboard/about-us"
