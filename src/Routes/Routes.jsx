@@ -39,6 +39,7 @@ import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverv
 import TaskDetails from "../Dashboard/DashboardCandidate/TaskDetails/TaskDetails";
 import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import TaskHistory from "../Dashboard/DashboardCandidate/TaskHistory/TaskHistory";
+import LeaderBoard from "../Dashboard/DashboardCandidate/LeaderBoard/LeaderBoard";
 
 const router = createBrowserRouter([
   {
@@ -130,6 +131,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/task-history",
         element: <TaskHistory />,
+      },
+      {
+        path: "/dashboard/leaderboard",
+        element: <LeaderBoard/>,
       },
       {
         path: "/dashboard/applied-tasks",

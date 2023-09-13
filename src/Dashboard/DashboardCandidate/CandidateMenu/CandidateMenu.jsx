@@ -9,7 +9,7 @@ import {
   AiOutlineCheckCircle,
   AiOutlineHistory
 } from "react-icons/ai";
-
+import { MdOutlineLeaderboard } from "react-icons/md";
 import { PiBagSimpleBold } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
 import { Link, useNavigate } from "react-router-dom";
@@ -97,6 +97,15 @@ const CandidateMenu = () => {
             className="flex items-center gap-3"
           >
             <AiOutlineHistory /> Task History
+          </Link>
+        </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
+          <Link
+            onClick={() => setDashboardToggle(false)}
+            to="/dashboard/leaderboard"
+            className="flex items-center gap-3"
+          >
+            <MdOutlineLeaderboard /> Leader Board
           </Link>
         </li>
 
