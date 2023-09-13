@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
 import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
+import AddTeamMember from "../Dashboard/DashboardAdmin/AddTeamMember/AddTeamMember";
+import AdminAboutUs from "../Dashboard/DashboardAdmin/AdminAboutUs/AdminAboutUs";
 import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
 import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
 import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
@@ -47,6 +49,7 @@ import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import Privacy from "../Pages/Privacy/Privacy";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -87,7 +90,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/tasksDatail/:id",
-        element: <BrowseTasksDetails />,
+        element: (
+          <PrivateRoute>
+            <BrowseTasksDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/job/${params.id}`),
       },
@@ -251,6 +258,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin-profile-edit",
         element: <AdminProfileEdit />,
+      },
+      {
+        path: "/dashboard/about-us",
+        element: <AdminAboutUs />,
+      },
+      {
+        path: "/dashboard/team-member",
+        element: <AddTeamMember />,
       },
     ],
   },

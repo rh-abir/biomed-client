@@ -6,10 +6,11 @@ import { GoComment } from "react-icons/go";
 import { GrMoreVertical } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import canvas from "../../../../assets/placeholder.jpg";
 import "./Posts.css";
 
 const Posts = () => {
-  const { user } = useContext(AuthContext);
+  const { user, clientRole } = useContext(AuthContext);
   const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
 
@@ -19,18 +20,6 @@ const Posts = () => {
     setLike(isLiked ? like - 1 : like + 1);
     setIsLiked(!isLiked);
   };
-
-  const { data: myProfileData = [] } = useQuery({
-    queryKey: ["profile", user?.email],
-    queryFn: async () => {
-      const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
-      );
-      return res.data;
-    },
-  });
-
-  const { updateData } = myProfileData;
 
   const { isLoading, data: posts = [] } = useQuery({
     queryKey: ["posts"],
@@ -50,12 +39,18 @@ const Posts = () => {
   return (
     <div>
       {reversedPosts.map((post) => (
-        <div className="post" key={post._id}>
-          <Link to={`/community/postDetails/${post._id}`}>
+        <div className="post" key={post?._id}>
+          <Link to={`/community/postDetails/${post?._id}`}>
             <div className="postWrapper">
               <div className="postTop">
                 <div className="postTopLeft">
-                  <Link to={"/community/community-profile"}>
+                  <Link
+                    to={
+                      clientRole
+                        ? "/dashboard/instructor-view"
+                        : "/dashboard/my-profile"
+                    }
+                  >
                     <div className="flex items-center">
                       <div
                         title="View Profile"
@@ -64,18 +59,16 @@ const Posts = () => {
                         <img
                           referrerPolicy="no-referrer"
                           src={
-                            updateData?.image
-                              ? updateData?.image
-                              : user?.photoURL
+                            post?.image ? post?.image : canvas
                           }
                           alt="Profile"
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="text-sm md:text-lg mx-2">
-                        {updateData?.name2
-                          ? updateData?.name2
-                          : user?.displayName}
+                        {post?.name
+                          ? post?.name
+                          : "Unknown User"}
                       </div>
 
                       <div className="text-sm md:text-lg mx-2 font-semibold">
@@ -84,9 +77,11 @@ const Posts = () => {
                     </div>
                   </Link>
                 </div>
-                <div className="postTopRight">
-                <GrMoreVertical className="text-xl cursor-pointer" />
-                </div>
+                {user?.email === post?.email && (
+                  <div className="postTopRight">
+                    <GrMoreVertical className="text-xl cursor-pointer" />
+                  </div>
+                )}
               </div>
               <div className="flex flex-col md:flex-row py-4 px-1 gap-4">
                 <img

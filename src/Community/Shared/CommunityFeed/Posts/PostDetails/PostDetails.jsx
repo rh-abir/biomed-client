@@ -1,18 +1,17 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
 import React, { useContext, useState } from "react";
 import { BiLike, BiSolidLike } from "react-icons/bi";
 import { GoComment } from "react-icons/go";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
+import canva from "../../../../../assets/placeholder.jpg";
 import PostDropdown from "../PostDropdown/PostDropdown";
 import Comments from "./Comments/Comments";
 import "./PostDetails.css";
 
 const PostDetails = () => {
-  const { user } = useContext(AuthContext);
   const [like, setLike] = useState(0);
   const [isLiked, setIsLiked] = useState(false);
+  const { user } = useContext(AuthContext);
 
   //   likeHandler
   const likeHandler = () => {
@@ -20,19 +19,7 @@ const PostDetails = () => {
     setIsLiked(!isLiked);
   };
 
-  const { data: myProfileData = [], refetch } = useQuery({
-    queryKey: ["profile", user?.email],
-    queryFn: async () => {
-      const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
-      );
-      return res.data;
-    },
-  });
-
-  const { updateData } = myProfileData;
-
-  const { photo, title, desc, _id  } = useLoaderData();
+  const { name, email, image, photo, title, desc, _id } = useLoaderData();
   return (
     <div className="post-container">
       <div className="flex items-center justify-between px-4 pt-3">
@@ -45,24 +32,30 @@ const PostDetails = () => {
               >
                 <img
                   referrerPolicy="no-referrer"
-                  src={updateData?.image ? updateData?.image : user?.photoURL}
+                  src={image ? image : canva}
                   alt="Profile"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="text-sm md:text-lg mx-2">
-                {updateData?.name2 ? updateData?.name2 : user?.displayName}
+                {name ? name : "Unknown User"}
               </div>
             </div>
           </Link>
-          <div className="text-sm md:text-lg mx-2 font-semibold hidden md:block">{title}</div>
+          <div className="text-sm md:text-lg mx-2 font-semibold hidden md:block">
+            {title}
+          </div>
         </div>
         {/* Dropdown */}
-        <PostDropdown  postId={_id} refetchFunction={refetch} photo={photo} title={title} desc={desc} />
+        {user?.email === email && (
+          <PostDropdown postId={_id} photo={photo} title={title} desc={desc} />
+        )}
       </div>
       <div className="px-4 py-2">
-      <div className="text-sm md:text-lg font-semibold md:hidden">{title}</div>
-      <p className="text-sm md:text-lg">{desc}</p>
+        <div className="text-sm md:text-lg font-semibold md:hidden">
+          {title}
+        </div>
+        <p className="text-sm md:text-lg">{desc}</p>
       </div>
 
       <img className="w-11/12 mx-auto pt-10" src={photo} alt="Posted Image" />

@@ -55,6 +55,7 @@ const ProfileDropdown = () => {
     logoutUser().then(() => {
       setClientRole(null);
       navigate("/");
+      window.location.reload();
     });
   };
 
