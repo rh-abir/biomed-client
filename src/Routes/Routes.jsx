@@ -50,6 +50,7 @@ import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import Privacy from "../Pages/Privacy/Privacy";
 import PrivateRoute from "./PrivateRoute";
+import LeaderBoard from "../Dashboard/DashboardCandidate/LeaderBoard/LeaderBoard";
 
 const router = createBrowserRouter([
   {
@@ -179,6 +180,10 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/task-history",
         element: <TaskHistory />,
+      },
+      {
+        path: "/dashboard/leaderboard",
+        element: <LeaderBoard/>,
       },
       {
         path: "/dashboard/applied-tasks",
