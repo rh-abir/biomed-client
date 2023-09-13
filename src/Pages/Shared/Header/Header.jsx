@@ -75,7 +75,7 @@ const Header = () => {
               </div>
             </div>
             <div className="hidden xl:flex items-center gap-10">
-              {!(clientRole || adminRole) && (
+              {!(adminRole || clientRole) && (
                 <button
                   onClick={() => setRoleModal(true)}
                   disabled={!user}

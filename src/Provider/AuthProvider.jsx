@@ -22,7 +22,7 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [clientRole, setClientRole] = useState(null);
   const [adminRole, setAdminRole] = useState(null);
   const [moderatorRole, setModeratorRole] = useState(null);
@@ -83,6 +83,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       return unsubscribe();
@@ -114,7 +115,9 @@ const AuthProvider = ({ children }) => {
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/users/${user?.email}`);
+      const res = await axios(
+        `https://biomed-server.vercel.app/users/${user?.email}`
+      );
       return res.data;
     },
   });
@@ -123,7 +126,9 @@ const AuthProvider = ({ children }) => {
   const { data: manageJobs = [] } = useQuery({
     queryKey: ["manageJobs"],
     queryFn: async () => {
-      const res = await axios.get(`https://biomed-server.vercel.app/jobs/${user?.email}`);
+      const res = await axios.get(
+        `https://biomed-server.vercel.app/jobs/${user?.email}`
+      );
       return res.data;
     },
   });
