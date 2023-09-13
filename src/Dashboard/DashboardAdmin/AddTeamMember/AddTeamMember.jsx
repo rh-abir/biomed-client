@@ -3,7 +3,6 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import { useNavigate } from "react-router-dom";
 import { v4 } from "uuid";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 import { storage } from "../../../firebase/firebase.config";
@@ -11,7 +10,7 @@ import { storage } from "../../../firebase/firebase.config";
 const AddTeamMember = () => {
   const [loading, setLoading] = useState(false);
   const queryClient = useQueryClient();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -56,7 +55,7 @@ const AddTeamMember = () => {
         toast.success("Team member added successfully");
         reset();
         setLoading(false);
-        navigate("/about-details")
+        // navigate("/about-details")
       },
       onError: () => {
         toast.error("Oops... Team member added failed");

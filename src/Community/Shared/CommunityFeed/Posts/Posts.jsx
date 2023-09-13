@@ -24,7 +24,7 @@ const Posts = () => {
   const { isLoading, data: posts = [] } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
-      const res = await axios("http://localhost:5000/posts");
+      const res = await axios(`http://localhost:5000/posts`);
       return res.data;
     },
   });
@@ -58,17 +58,13 @@ const Posts = () => {
                       >
                         <img
                           referrerPolicy="no-referrer"
-                          src={
-                            post?.image ? post?.image : canvas
-                          }
+                          src={post?.image ? post?.image : canvas}
                           alt="Profile"
                           className="w-full h-full object-cover"
                         />
                       </div>
                       <div className="text-sm md:text-lg mx-2">
-                        {post?.name
-                          ? post?.name
-                          : "Unknown User"}
+                        {post?.name ? post?.name : "Unknown User"}
                       </div>
 
                       <div className="text-sm md:text-lg mx-2 font-semibold">
