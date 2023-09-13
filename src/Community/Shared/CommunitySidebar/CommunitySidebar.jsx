@@ -34,7 +34,7 @@ const CommunitySidebar = () => {
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const res = await axios("http://localhost:5000/allusers");
+      const res = await axios("https://biomed-server.vercel.app/allusers");
       return res.data;
     },
   });

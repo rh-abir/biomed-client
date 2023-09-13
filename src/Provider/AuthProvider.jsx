@@ -65,7 +65,7 @@ const AuthProvider = ({ children }) => {
   //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
   //     setUser(currentUser);
   //     if(currentUser){
-  //       axios.post('http://localhost:5000/jwt', {email: currentUser.email})
+  //       axios.post('https://biomed-server.vercel.app/jwt', {email: currentUser.email})
   //       .then(data =>{
   //           localStorage.setItem('access-token', data.data.token)
   //           setLoading(false);
@@ -116,7 +116,7 @@ const AuthProvider = ({ children }) => {
     queryKey: ["profile"],
     queryFn: async () => {
       const res = await axios(
-        `http://localhost:5000/users/${user?.email}`
+        `https://biomed-server.vercel.app/users/${user?.email}`
       );
       return res.data;
     },
@@ -127,7 +127,7 @@ const AuthProvider = ({ children }) => {
     queryKey: ["manageJobs"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/jobs/${user?.email}`
+        `https://biomed-server.vercel.app/jobs/${user?.email}`
       );
       return res.data;
     },

@@ -9,7 +9,7 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
     queryKey: ["user", email],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/users/${email}`
+        `https://biomed-server.vercel.app/users/${email}`
       );
       return res.data;
     },

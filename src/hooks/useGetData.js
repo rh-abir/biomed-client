@@ -4,7 +4,7 @@ const useGetData = (url) => {
   const { data: mydata = [], refetch } = useQuery({
     queryKey: ["data", url],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/${url}`);
+      const res = await fetch(`https://biomed-server.vercel.app/${url}`);
       return res.json();
     },
   });

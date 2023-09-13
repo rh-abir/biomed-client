@@ -6,7 +6,7 @@ import TrendingSlide from "../TrendingTasks/TrendingSlide/TrendingSlide";
 const RecentJob = () => {
   const [recentJob, SetRecentJob] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5000/recenttask")
+    fetch("https://biomed-server.vercel.app/recenttask")
       .then((res) => res.json())
       .then((data) => SetRecentJob(data));
   }, []);

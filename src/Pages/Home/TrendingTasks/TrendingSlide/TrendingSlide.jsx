@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton"; 
 const TrendingSlide = ({ task }) => {
   return (
     <div className="border rounded-xl w-full h-[470px] dark:border-gray-700 dark:hover:border-slate-600 flex flex-col">
@@ -10,9 +10,15 @@ const TrendingSlide = ({ task }) => {
         alt=""
       />
       <div className="p-2 h-100 overflow-hidden space-y-2">
-        <h2 className="text-base text-gray-500 pt-4 line-clamp-1">
-          {task.title}
-        </h2>
+        {/* Title */}
+        <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+          {task.title ? (
+            <h2 className="text-base text-gray-500 pt-4">{task.title}</h2>
+          ) : (
+            <Skeleton height={20} width={200} />
+          )}
+        </SkeletonTheme>
+
         <Link to="/">
           <p className="mb-4 text-xl font-semibold dark:text-gray-300 hover:text-[#5BBB7B] hover:underline duration-300 cursor-pointer">
             {`${task.description.slice(0, 60)}...`}
@@ -23,12 +29,23 @@ const TrendingSlide = ({ task }) => {
 
       <div className="p-3 flex items-center justify-between mt-auto">
         <div className="flex items-center gap-2 hover:text-[#5BBB7B] duration-500 cursor-pointer">
-          <img
-            className="h-8 w-8 rounded-full object-cover"
-            src={task.logo}
-            alt=""
-          />
-          <p className="text-lg">{task.username}</p>
+          {/* CEO Image */}
+          <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+            {task.logo ? (
+              <img className="h-8 w-8 rounded-full" src={task.logo} alt="" />
+            ) : (
+              <Skeleton circle={true} height={32} width={32} />
+            )}
+          </SkeletonTheme>
+
+          {/* CEO Name */}
+          <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+            {task.username ? (
+              <p className="text-lg">{task.username}</p>
+            ) : (
+              <Skeleton height={20} width={100} />
+            )}
+          </SkeletonTheme>
         </div>
         <Link
           to={`/tasksDatail/${task?._id}`}

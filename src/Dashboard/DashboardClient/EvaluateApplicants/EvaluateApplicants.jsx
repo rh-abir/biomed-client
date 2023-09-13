@@ -13,7 +13,7 @@ const EvaluateApplicants = () => {
   const { data: evaluateTask = [] } = useQuery({
     queryKey: ["evaluateTask"],
     queryFn: async () => {
-      const res = await axios(`http://localhost:5000/evaluateTasks`);
+      const res = await axios(`https://biomed-server.vercel.app/evaluateTasks`);
       return res.data;
     },
   });

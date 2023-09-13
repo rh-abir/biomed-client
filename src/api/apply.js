@@ -9,7 +9,7 @@ export const postApplyJobs = (user, applyJob) => {
   };
 
   axios
-    .post("http://localhost:5000/apply-jobs", apply)
+    .post("https://biomed-server.vercel.app/apply-jobs", apply)
     .then((response) => {
       console.log("Response:", response.data);
     })

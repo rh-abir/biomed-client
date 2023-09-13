@@ -11,7 +11,7 @@ const ManageTask = () => {
     queryKey: ["manageJobs"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/jobs/${user?.email}`
+        `https://biomed-server.vercel.app/jobs/${user?.email}`
       );
       return res.data;
     },

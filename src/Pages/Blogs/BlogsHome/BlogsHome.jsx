@@ -14,7 +14,7 @@ const BlogsHome = () => {
 
 
   const getBlogs = async () => {
-    const respnse = await axios.get("http://localhost:5000/blogs");
+    const respnse = await axios.get("https://biomed-server.vercel.app/blogs");
     setBlogs(respnse.data);
   };
 

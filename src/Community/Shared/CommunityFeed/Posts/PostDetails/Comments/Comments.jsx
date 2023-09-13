@@ -18,7 +18,7 @@ const Comments = () => {
     queryKey: ["profile", user?.email],
     queryFn: async () => {
       const res = await axios(
-        `http://localhost:5000/users/${user?.email}`
+        `https://biomed-server.vercel.app/users/${user?.email}`
       );
       return res.data;
     },

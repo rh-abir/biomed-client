@@ -52,7 +52,7 @@ const PostDropdown = ({ postId, photo, title, desc }) => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/posts/${postId}`).then((res) => {
+        axios.delete(`https://biomed-server.vercel.app/posts/${postId}`).then((res) => {
           if (res.data.deletedCount >= 0) {
             Swal.fire("Deleted!", "Your post has been deleted.", "success");
             navigate("/community");

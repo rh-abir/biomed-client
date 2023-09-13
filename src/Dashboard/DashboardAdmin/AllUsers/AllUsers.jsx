@@ -19,7 +19,7 @@ const AllUsers = () => {
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const res = await axios("http://localhost:5000/allusers");
+      const res = await axios("https://biomed-server.vercel.app/allusers");
       return res.data;
     },
   });
@@ -54,7 +54,7 @@ const AllUsers = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:5000/user?email=${email}`)
+          .delete(`https://biomed-server.vercel.app/user?email=${email}`)
           .then((res) => {
             if (res?.data?.acknowledged) {
               refetch();

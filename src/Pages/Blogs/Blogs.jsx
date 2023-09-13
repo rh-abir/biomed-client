@@ -8,7 +8,7 @@ const Blogs = () => {
   const { data: bloglatest = [] } = useQuery({
     queryKey: ["blogLatest"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/blogslatest");
+      const res = await axios.get("https://biomed-server.vercel.app/blogslatest");
       return res.data;
     },
   });
