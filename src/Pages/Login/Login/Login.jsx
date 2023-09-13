@@ -1,12 +1,10 @@
-import React, { useState } from "react";
-import loginImg from "../../../assets/login/login.jpg";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { FcGoogle } from "react-icons/fc";
-import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
 import { toast } from "react-hot-toast";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { FcGoogle } from "react-icons/fc";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import { saveUser } from "../../../api/auth";
 
 const Login = () => {
@@ -99,7 +97,7 @@ const Login = () => {
                   type="email"
                   id="email"
                   placeholder="Enter your email address"
-                  className="w-full p-2 border-b border-gray-300 rounded outline-none"
+                  className="w-full p-2 border-b border-gray-300 dark:text-gray-700 rounded outline-none"
                   {...register("email", {
                     required: "Email is required",
                   })}
@@ -117,7 +115,7 @@ const Login = () => {
                   type={toggle ? "text" : "password"}
                   id="password"
                   placeholder="Enter your password"
-                  className="w-full p-2 border-b text-gray-600 border-gray-300 rounded outline-none"
+                  className="w-full p-2 border-b text-gray-600 border-gray-300 dark:text-gray-700 rounded outline-none"
                   {...register("password", {
                     required: "Password is required",
                   })}

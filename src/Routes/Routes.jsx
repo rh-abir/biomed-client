@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
 import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
+import AddTeamMember from "../Dashboard/DashboardAdmin/AddTeamMember/AddTeamMember";
+import AdminAboutUs from "../Dashboard/DashboardAdmin/AdminAboutUs/AdminAboutUs";
 import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
 import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
 import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
@@ -246,6 +248,14 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/admin-profile-edit",
         element: <AdminProfileEdit />,
+      },
+      {
+        path: "/dashboard/about-us",
+        element: <AdminAboutUs />,
+      },
+      {
+        path: "/dashboard/team-member",
+        element: <AddTeamMember />,
       },
     ],
   },

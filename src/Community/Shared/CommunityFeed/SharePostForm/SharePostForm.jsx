@@ -12,7 +12,7 @@ import { storage } from "../../../../firebase/firebase.config";
 import "./SharePostForm.css";
 
 const SharePostForm = () => {
-  const { user } = useContext(AuthContext);
+  const { user, clientRole } = useContext(AuthContext);
   const queryClient = useQueryClient();
   const [loading, setLoading] = useState(false);
 
@@ -46,13 +46,19 @@ const SharePostForm = () => {
       const downloadUrl = await getDownloadURL(photoRef);
 
       data.photo = downloadUrl;
+      const communityData = {
+        ...data,
+        name: user?.displayName,
+        email: user?.email,
+        image: user?.photoURL,
+      };
 
-      const response = await fetch("http://localhost:5000/posts", {
+      const response = await fetch("http://localhost:5000/communityPosts", {
         method: "POST",
         headers: {
           "content-type": "application/json",
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify(communityData),
       });
 
       if (!response.ok) {
@@ -77,6 +83,7 @@ const SharePostForm = () => {
 
   const onSubmit = async (data) => {
     createPostMutation.mutate(data);
+    console.log("Post data", data);
   };
 
   return (
@@ -84,7 +91,13 @@ const SharePostForm = () => {
       <div className="p-1 md:p-2">
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="flex">
-            <Link to={"/community/community-profile"}>
+            <Link
+              to={
+                clientRole
+                  ? "/dashboard/instructor-view"
+                  : "/dashboard/my-profile"
+              }
+            >
               <div
                 title="View Profile"
                 className="md:mx-2 w-10 h-10 rounded-full overflow-hidden cursor-pointer"
@@ -97,6 +110,16 @@ const SharePostForm = () => {
                 />
               </div>
             </Link>
+            <div>
+              <input
+                className="border-b-2 w-11/12 md:w-full focus:outline-none px-1 pt-1 hidden"
+                placeholder="email"
+                rows={3}
+                cols={20}
+                defaultValue={user?.email}
+                {...register("email")}
+              />
+            </div>
             <div>
               <input
                 className="border-b-2 w-11/12 md:w-full focus:outline-none px-1 pt-1"
