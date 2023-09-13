@@ -20,7 +20,7 @@ const TrendingTasks = () => {
   const { isLoading, data: tasks = [] } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios("/TrendingTasksData/trendingTasks.json");
+      const res = await axios("http://localhost:5000/trendingtask");
       return res.data;
     },
   });

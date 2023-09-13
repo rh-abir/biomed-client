@@ -72,7 +72,7 @@ const router = createBrowserRouter([
             path: "/blogs/blogDetails/:id",
             element: <BlogDetails />,
             loader: ({ params }) =>
-              fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+              fetch(`http://localhost:5000/blogs/${params.id}`),
           },
         ],
       },
@@ -95,7 +95,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/job/${params.id}`),
+          fetch(`http://localhost:5000/job/${params.id}`),
       },
       {
         path: "/specificCategory/:title",
@@ -157,7 +157,7 @@ const router = createBrowserRouter([
       //   path: "/jobsDatail/:id",
       //   element: <BrowseTasksDetails />,
       //   loader: ({ params }) =>
-      //     fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
+      //     fetch(`http://localhost:5000/applyTaskInstructor/${params.id}`),
       // },
       {
         path: "/dashboard/task-details",
@@ -189,7 +189,7 @@ const router = createBrowserRouter([
         element: <TaskApplied />,
         loader: ({ params }) =>
           fetch(
-            `https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`
+            `http://localhost:5000/applyTaskInstructor/${params.id}`
           ),
       },
       {

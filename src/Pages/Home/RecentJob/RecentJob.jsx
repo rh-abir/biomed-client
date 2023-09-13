@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
-import SingleRecentJob from "./SingleRecentJob/SingleRecentJob";
+import TrendingSlide from "../TrendingTasks/TrendingSlide/TrendingSlide";
 
 const RecentJob = () => {
   const [recentJob, SetRecentJob] = useState([]);
   useEffect(() => {
-    fetch("recentJobData/recentJob.json")
+    fetch("http://localhost:5000/recenttask")
       .then((res) => res.json())
       .then((data) => SetRecentJob(data));
   }, []);
@@ -20,8 +20,8 @@ const RecentJob = () => {
           ></SectionTitle>
         </div>
         <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {recentJob.map((job) => (
-            <SingleRecentJob key={job.id} job={job}></SingleRecentJob>
+          {recentJob.map((task) => (
+            <TrendingSlide key={task?._id} task={task} />
           ))}
         </div>
       </Container>

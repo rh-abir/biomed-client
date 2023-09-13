@@ -7,7 +7,7 @@ const RecentApplicants = () => {
   const { isLoading, data: applicants = [] } = useQuery({
     queryKey: ["applicants"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/applicants");
+      const res = await axios("http://localhost:5000/applicants");
       return res.data;
     },
   });

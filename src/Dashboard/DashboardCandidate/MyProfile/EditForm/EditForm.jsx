@@ -63,7 +63,7 @@ const EditForm = () => {
     queryKey: ["profile"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
+        `http://localhost:5000/users/${user?.email}`
       );
       return res?.data;
     },

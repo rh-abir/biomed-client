@@ -17,7 +17,7 @@ const AllClients = () => {
   const { data: allClients = [], refetch } = useQuery({
     queryKey: ["allClients"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/clients");
+      const res = await axios("http://localhost:5000/clients");
       return res.data;
     },
   });

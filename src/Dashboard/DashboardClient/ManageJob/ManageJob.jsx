@@ -36,7 +36,7 @@ const ManageJob = () => {
   const { data: manageJobsData, isLoading } = useQuery({
     queryKey: ["manage", user?.email],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/jobs`);
+      const res = await axios(`http://localhost:5000/jobs`);
       return res.data;
     },
   });

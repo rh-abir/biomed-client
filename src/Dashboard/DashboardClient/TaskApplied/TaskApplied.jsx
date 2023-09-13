@@ -14,7 +14,7 @@ const TaskApplied = () => {
     queryKey: ["taskApplied"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/applyTaskInstructor/${id}`
+        `http://localhost:5000/applyTaskInstructor/${id}`
       );
       return res.data;
     },

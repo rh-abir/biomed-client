@@ -81,7 +81,7 @@ const BrowseTasksDetails = () => {
         };
 
         axios
-          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .post("http://localhost:5000/appliedjob", applyJob)
           .then((response) => {
             if (response.data.acknowledged) {
               setApplied(true);
@@ -94,7 +94,7 @@ const BrowseTasksDetails = () => {
       }
 
       axios
-        .put(`https://biomed-server.vercel.app/jobs/${_id}/apply`)
+        .put(`http://localhost:5000/jobs/${_id}/apply`)
         .then(() => {});
     });
   };

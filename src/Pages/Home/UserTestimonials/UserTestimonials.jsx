@@ -13,7 +13,7 @@ const UserTestimonials = () => {
   const { isLoading, data: testimonials = [] } = useQuery({
     queryKey: ["testimonials"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/testimonials");
+      const res = await axios("http://localhost:5000/testimonials");
       return res.data;
     },
   });

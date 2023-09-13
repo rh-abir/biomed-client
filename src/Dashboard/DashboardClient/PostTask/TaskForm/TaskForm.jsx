@@ -138,7 +138,7 @@ const TaskForm = () => {
             date: new Date()
           };
           axios
-            .post("https://biomed-server.vercel.app/jobs", currentData)
+            .post("http://localhost:5000/jobs", currentData)
             .then((data) => {
               if (data.data.insertedId) {
                 reset();
