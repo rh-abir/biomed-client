@@ -46,6 +46,7 @@ import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
+import Privacy from "../Pages/Privacy/Privacy";
 
 const router = createBrowserRouter([
   {
@@ -99,6 +100,10 @@ const router = createBrowserRouter([
       {
         path: "/terms",
         element: <Terms></Terms>,
+      },
+      {
+        path: "/privacy",
+        element: <Privacy />
       },
       {
         path: "/registerclient",

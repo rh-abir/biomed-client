@@ -22,6 +22,7 @@ const Footer = () => {
       return res.data;
     },
   });
+  console.log(socialMedia);
 
   if (isLoading) {
     return <Loader />;
@@ -33,7 +34,7 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between me-5">
           <div className="flex gap-8 mb-6 md:mb-0">
             <Link to="/terms">Terms of Service</Link>
-            <p>Privacy Policy</p>
+            <Link to='/privacy'><p>Privacy Policy</p></Link>
           </div>
           <div className="flex gap-5 items-center">
             <p>Follow Us</p>
@@ -78,7 +79,7 @@ const Footer = () => {
             <div className="mt-3 md:mt-4">
               <Link to='/blogs'><p>Blogs</p></Link>
               <p>About Us</p>
-              <p>Privacy Policy</p>
+              <Link to='/privacy'><p>Privacy Policy</p></Link>
               <p>Latest Updates</p>
             </div>
           </div>
