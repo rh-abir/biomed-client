@@ -12,7 +12,7 @@ import "./CommunityNavbar.css";
 
 const CommunityNavbar = () => {
   const [searchText, setSerchText] = useState("");
-  const { user, adminRole, clientRole } = useContext(AuthContext);
+  const { user, adminRole, setSearchPosts,clientRole } = useContext(AuthContext);
 
   // Define a function to determine which icon to display based on the route
   const location = useLocation();
@@ -49,14 +49,12 @@ const CommunityNavbar = () => {
 
   const { updateData } = myProfileData;
 
-  // Search Functionality
+
+  // Search handler
   const handleSearch = () => {
-    fetch(`http://localhost:5000/postSearch/${searchText}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("search data", data);
-      });
-  };
+    setSearchPosts(searchText)
+  }
+
 
   return (
     <>
