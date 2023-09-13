@@ -4,6 +4,8 @@ import Footer from "../Pages/Shared/Footer/Footer";
 import Header from "../Pages/Shared/Header/Header";
 
 const Root = () => {
+
+
   return (
     <>
       <div className="dark:bg-gray-800">
