@@ -1,5 +1,5 @@
 import React from "react";
-import { BounceLoader } from "react-spinners";
+import { HashLoader } from "react-spinners";
 
 const Loader = () => {
   return (
@@ -10,9 +10,10 @@ const Loader = () => {
       flex-col 
       justify-center 
       items-center 
+      dark:bg-gray-700
     "
     >
-      <BounceLoader size={100} color="#5BBB7B" />
+      <HashLoader size={100} color="#5BBB7B" />
     </div>
   );
 };

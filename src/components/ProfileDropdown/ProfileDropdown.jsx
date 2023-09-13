@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext, useRef, useState } from "react";
+import { AiFillEdit, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
 import { FaAlignJustify } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Provider/AuthProvider";
@@ -54,11 +55,12 @@ const ProfileDropdown = () => {
     logoutUser().then(() => {
       setClientRole(null);
       navigate("/");
+      window.location.reload();
     });
   };
 
   return (
-    <div className=" relative inline-block">
+    <div className=" relative  inline-block">
       <div
         onMouseEnter={toggleDropdown}
         onMouseLeave={toggleDropdown}
@@ -79,24 +81,25 @@ const ProfileDropdown = () => {
           ref={dropdownRef}
           onMouseEnter={openDropdown}
           onMouseLeave={closeDropdown}
-          className="absolute top-full right-0 mt-2 dark:bg-gray-800 bg-white border border-gray-300 shadow-md rounded-md"
+          className="absolute top-full right-0 mt-2 dark:bg-gray-800 dark:text-gray-50 bg-white border border-gray-300 shadow-md rounded-md"
         >
           <ul className="flex flex-col">
             <Link
               to={
                 clientRole
-                  ? "/dashboard/company-profile"
+                  ? "/dashboard/instructor-profile"
                   : "/dashboard/editProfile"
               }
-              className="px-10 py-2 w-full dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer"
+              className="px-10 py-2 w-full dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
             >
+              <AiFillEdit />
               Edit Profile
             </Link>
 
             <Link
               to={
                 adminRole
-                  ? "/dashboard/client-home"
+                  ? "/dashboard/admin-home"
                   : moderatorRole
                   ? "/dashboard/client-home"
                   : clientRole
@@ -104,14 +107,15 @@ const ProfileDropdown = () => {
                   : "/dashboard/candidate-home"
               }
             >
-              <li className="px-10 py-2 w-full  dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer">
-                Dashboard
+              <li className="px-10 py-2 w-full dark:hover:bg-slate-600 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+                <AiOutlineHome /> Dashboard
               </li>
             </Link>
             <li
               onClick={logoutHandler}
-              className="px-10 py-2 w-full mt-auto  dark:hover:bg-red-500 hover:bg-gray-100  cursor-pointer"
+              className="px-10 py-2 w-full mt-auto  dark:hover:bg-red-500 hover:bg-gray-100  cursor-pointer flex items-center gap-2"
             >
+              <AiOutlineLogout />
               Logout
             </li>
           </ul>

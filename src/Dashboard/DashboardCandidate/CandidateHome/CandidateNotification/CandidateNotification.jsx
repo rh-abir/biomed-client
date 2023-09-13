@@ -11,7 +11,6 @@ const CandidateNotification = () => {
       return res.data;
     },
   });
- console.log(candidateNotifications);
   if (isLoading) {
     return <div>Loading...</div>;
   }

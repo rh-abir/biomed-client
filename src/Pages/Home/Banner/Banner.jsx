@@ -6,7 +6,7 @@ import SearchForm from "../../Shared/Header/SearchForm/SearchForm";
 const Banner = () => {
 
   return (
-    <div className="bg-green-200 pt-10">
+    <div className="bg-green-200 dark:bg-gray-800 pt-10">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10 items-center md:min-h-[calc(100vh-104px)]">
           <div>

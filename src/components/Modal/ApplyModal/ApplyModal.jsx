@@ -1,19 +1,16 @@
-import React from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Fragment } from "react";
-import { useForm } from "react-hook-form";
-import { storage } from "../../../firebase/firebase.config";
-import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { v4 } from "uuid";
-import { toast } from "react-hot-toast";
 import axios from "axios";
-import { useContext } from "react";
-import { AuthContext } from "../../../Provider/AuthProvider";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import React, { Fragment } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { AiFillCloseCircle } from "react-icons/ai";
+import { v4 } from "uuid";
+import { storage } from "../../../firebase/firebase.config";
+import useTasktData from "../../../hooks/useTasktData";
 
 const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
-  const { myProfileData, user } = useContext(AuthContext);
-  const { _id, title, companyName } = showInfoCompany;
+  const { _id, title, deadline } = showInfoCompany;
 
   const {
     register,
@@ -21,6 +18,8 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
     // formState: { errors },
     reset,
   } = useForm();
+
+  const [, refetch] = useTasktData();
 
   const onSubmit = (data) => {
     const resumeFile = data.resume[0];
@@ -33,19 +32,16 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
         const applyJob = {
           downloadPdf: downloadUrl,
           coverLetter: data?.coverLetter,
-          ...myProfileData,
-          companyName,
-          title,
-          companyId: _id,
-          email: user?.email
+          isApplied: false,
         };
 
         axios
-          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .put(`https://biomed-server.vercel.app/appliedjob/${_id}`, applyJob)
           .then((response) => {
             console.log(response);
             reset();
-            toast.success("Applied Successfully");
+            toast.success("Applied Success");
+            refetch();
             closeModal();
           })
           .catch((error) => {
@@ -96,7 +92,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                   className=" bg-gray-100 py-10 px-5 rounded-lg leading-6 text-gray-900"
                 >
                   <div className="text-xl font-semibold">{title}</div>
-                  <h3 className="">{companyName}</h3>
+                  <h3 className="">{deadline}</h3>
                 </Dialog.Title>
                 <form
                   onSubmit={handleSubmit(onSubmit)}
@@ -107,7 +103,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
                       className="block text-gray-700 text-sm font-bold mb-2"
                       htmlFor="resume"
                     >
-                      Upload Submitted file 
+                      Upload Submitted file
                     </label>
                     <input
                       type="file"

@@ -1,18 +1,18 @@
 import React, { useContext } from "react";
 import {
-  AiOutlineClose,
-  AiOutlineHome,
-  AiOutlineLogout,
-  AiOutlineUser,
-  AiOutlineUnorderedList,
-  AiOutlineInfoCircle,
   AiOutlineCheckCircle,
-  AiOutlineHistory
+  AiOutlineClose,
+  AiOutlineHistory,
+  AiOutlineHome,
+  AiOutlineInfoCircle,
+  AiOutlineLogout,
+  AiOutlineUnorderedList,
+  AiOutlineUser,
 } from "react-icons/ai";
-import { MdOutlineLeaderboard } from "react-icons/md";
-import { PiBagSimpleBold } from "react-icons/pi";
 import { RiMessage2Line } from "react-icons/ri";
-import { Link, useNavigate } from "react-router-dom";
+import { VscFeedback } from "react-icons/vsc";
+
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const CandidateMenu = () => {
@@ -36,93 +36,128 @@ const CandidateMenu = () => {
         </button>
       </div>
       <ul className="text-xl">
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/candidate-home"}
-            className="flex items-center gap-3"
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
           >
             <AiOutlineHome /> Dashboard
-          </Link>
+          </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/my-profile"}
-            className="flex items-center gap-3"
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
           >
             <AiOutlineUser /> My Profile
-          </Link>
+          </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
-            onClick={() => setDashboardToggle(false)}
-            to="/dashboard/applied-tasks"
-            className="flex items-center gap-3"
-          >
-            <PiBagSimpleBold /> Applied Tasks
-          </Link>
-        </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-overview"
-            className="flex items-center gap-3"
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
           >
-            <AiOutlineUnorderedList /> Task Overview
-          </Link>
+            <AiOutlineUnorderedList /> My Applied
+          </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-details"
-            className="flex items-center gap-3"
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
           >
-            <AiOutlineInfoCircle /> Task Details
-          </Link>
+            <AiOutlineInfoCircle /> My BookMark
+          </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-submission"
-            className="flex items-center gap-3"
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
           >
             <AiOutlineCheckCircle /> Task Submission
-          </Link>
+          </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-history"
-            className="flex items-center gap-3"
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
           >
             <AiOutlineHistory /> Task History
-          </Link>
+          </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-          <Link
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
             onClick={() => setDashboardToggle(false)}
-            to="/dashboard/leaderboard"
-            className="flex items-center gap-3"
-          >
-            <MdOutlineLeaderboard /> Leader Board
-          </Link>
-        </li>
-
-
-
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600">
-
-          <Link
-            onClick={() => setDashboardToggle(false)}
-            className="flex items-center gap-3"
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
           >
             <RiMessage2Line /> Messages
-          </Link>
+          </NavLink>
+        </li>
+        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md dark:text-white text-gray-600 dark:hover:bg-gray-600">
+          <NavLink
+            to="/dashboard/feedback"
+            onClick={() => setDashboardToggle(false)}
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white${
+                isActive
+                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  : "text-gray-700"
+              }`
+            }
+          >
+            <VscFeedback /> Feedback
+          </NavLink>
         </li>
         <li
           onClick={handleLogout}
-          className="hover:bg-red-400 transition py-5 px-3 rounded-md dark:text-white text-gray-600"
+          className="hover:bg-red-500 hover:text-white transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-red-500"
         >
           <Link className="flex items-center gap-3">
             <AiOutlineLogout /> Logout

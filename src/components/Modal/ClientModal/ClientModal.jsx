@@ -39,8 +39,13 @@ const ClientModal = ({ isOpen, closeModal, modalHandler, email }) => {
                 </Dialog.Title>
                 <div className="mt-2">
                   <p className="text-sm text-gray-500">
-                    Please read all the <Link to={"/terms"} className="text-primary">terms & conditions</Link> before
-                    becoming a Instructor.
+                    Please read all the{" "}
+                    <button onClick={() => closeModal()}>
+                      <Link to={"/terms"} className="text-primary">
+                        terms & conditions
+                      </Link>{" "}
+                    </button>
+                    before becoming a Instructor.
                   </p>
                 </div>
                 <hr className="mt-8 " />

@@ -13,8 +13,6 @@ const RecentAppliedJobs = () => {
     },
   });
 
-  console.log(appliedJobs);
-
   if (isLoading) {
     return <div>Loading...</div>;
   }

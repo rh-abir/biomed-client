@@ -3,16 +3,8 @@ import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton"; 
 const TrendingSlide = ({ task }) => {
   return (
-    <div className="border rounded-xl w-full h-[470px]">
-      {/* Image */}
-      <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
-        {task.task_image ? (
-          <img className="rounded-t-xl w-full" src={task.task_image} alt="" />
-        ) : (
-          <Skeleton height={200} />
-        )}
-      </SkeletonTheme>
-
+    <div className="border rounded-xl w-full h-[470px] dark:border-gray-700 dark:hover:border-slate-600">
+      <img className="rounded-t-xl w-full" src={task.task_image} alt="" />
       <div className="p-2 h-100 overflow-hidden space-y-2">
         {/* Title */}
         <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
@@ -24,18 +16,11 @@ const TrendingSlide = ({ task }) => {
         </SkeletonTheme>
 
         <Link to="/">
-          {/* Text */}
-          <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
-            {task.task_text ? (
-              <p className="mb-4 text-xl font-semibold hover:text-[#5BBB7B] hover:underline duration-500 cursor-pointer">
-                {`${task.task_text.slice(0, 60)}...`}
-              </p>
-            ) : (
-              <Skeleton height={40} width={300} />
-            )}
-          </SkeletonTheme>
+          <p className="mb-4 text-xl font-semibold dark:text-gray-300 hover:text-[#5BBB7B] hover:underline duration-300 cursor-pointer">
+            {`${task.task_text.slice(0, 60)}...`}
+          </p>
         </Link>
-        <hr className="mx-4 border border-gray-300" />
+        <hr className="mx-4 border dark:border-gray-700 border-gray-300" />
       </div>
 
       <div className="p-3 flex items-center justify-between">

@@ -2,11 +2,13 @@ import React from "react";
 import AboutUs from "./AboutUs/AboutUs";
 import Banner from "./Banner/Banner";
 import FrequentlyAskQuestion from "./FrequentlyAskQuestion/FrequentlyAskQuestion";
-import PreferenceJobs from "./PreferenceJobs/PreferenceJobs";
 import RecentJob from "./RecentJob/RecentJob";
 import TopCompany from "./TopCompany/TopCompany";
 import TrendingTasks from "./TrendingTasks/TrendingTasks";
-import Categorys from "./categorys/Categorys";
+import UserTestimonials from "./UserTestimonials/UserTestimonials";
+import WorkThrough from "./WorkThrough/WorkThrough";
+import Categorys from "./categorys/categorys";
+
 
 const Home = () => {
   return (
@@ -17,7 +19,8 @@ const Home = () => {
       <RecentJob />
       <AboutUs />
       <TopCompany />
-      <PreferenceJobs />
+      <UserTestimonials />
+      <WorkThrough />
       <FrequentlyAskQuestion />
     </div>
   );
