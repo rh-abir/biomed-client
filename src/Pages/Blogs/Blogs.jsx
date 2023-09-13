@@ -5,16 +5,15 @@ import BlogLatest from "./BlogLatest/BlogLatest";
 import { Outlet } from "react-router-dom";
 
 const Blogs = () => {
-
   const { data: bloglatest = [] } = useQuery({
     queryKey: ["blogLatest"],
     queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/blogslatest");
+      const res = await axios.get(
+        "https://biomed-server.vercel.app/blogslatest"
+      );
       return res.data;
     },
   });
-
-
 
   return (
     <div className="pt-20">
@@ -64,7 +63,6 @@ const Blogs = () => {
             </div>
           </div>
         </div>
-        
       </Container>
     </div>
   );

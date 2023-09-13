@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useState } from "react";
 import { AiOutlineShareAlt, AiOutlineUsergroupAdd } from "react-icons/ai";
-import { BiBriefcaseAlt } from "react-icons/bi";
+import { BiBriefcaseAlt, BiSolidCopyAlt } from "react-icons/bi";
 import { BsBookmarkPlus, BsHourglassSplit } from "react-icons/bs";
 import { FiPlayCircle } from "react-icons/fi";
 import { LiaBusinessTimeSolid } from "react-icons/lia";
@@ -11,8 +11,19 @@ import { Link, useLoaderData } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Container from "../../../components/Shared/Container/Container";
+import copy from "clipboard-copy";
+import toast from "react-hot-toast";
+import {
+  FacebookShareButton,
+  FacebookIcon,
+  LinkedinShareButton,
+  TwitterShareButton,
+  TwitterIcon,
+  LinkedinIcon,
+} from "react-share";
 
 const BrowseTasksDetails = () => {
+  const shareUrl = window.location.href;
   const { user } = useContext(AuthContext);
   console.log(user);
   const {
@@ -88,6 +99,19 @@ const BrowseTasksDetails = () => {
     });
   };
 
+  const [seeLink, setSeeLink] = useState(false);
+
+  const handleCopyLink = () => {
+    const postLink = window.location.href;
+    copy(postLink)
+      .then(() => {
+        // setCopySuccess(true);
+        toast.success("Successfully copy linked");
+        setSeeLink(false);
+      })
+      .catch((error) => console.error("Copy failed: ", error));
+  };
+
   return (
     <div className="pt-20">
       <Container>
@@ -134,28 +158,28 @@ const BrowseTasksDetails = () => {
               </div>
 
               <div className="flex items-center gap-2 my-3 ">
-                <TbHomeDot></TbHomeDot>
+                <TbHomeDot />
                 <p>Task Type: {jobType}</p>
               </div>
 
               <div className="flex gap-16 my-4 justify-between items-center">
                 <div>
                   <div className="flex items-center gap-2">
-                    <FiPlayCircle></FiPlayCircle>
+                    <FiPlayCircle />
                     <p className="text-sm">START DATE</p>
                   </div>
                   <p>{startDate}</p>
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <BiBriefcaseAlt></BiBriefcaseAlt>
+                    <BiBriefcaseAlt />
                     <p>EXPERIENCE</p>
                   </div>
                   <p>{experience}</p>
                 </div>
                 <div>
                   <div className="flex items-center gap-2">
-                    <BsHourglassSplit></BsHourglassSplit>
+                    <BsHourglassSplit />
                     <p>APPLY BY</p>
                   </div>
                   <p>{deadline}</p>
@@ -164,12 +188,41 @@ const BrowseTasksDetails = () => {
 
               <div className="flex justify-between mb-5">
                 <div className="flex items-center gap-2">
-                  <AiOutlineUsergroupAdd></AiOutlineUsergroupAdd>
+                  <AiOutlineUsergroupAdd />
                   <p>{appliedCount ? appliedCount : "No"} applicants</p>
                 </div>
                 <div className="flex gap-5">
-                  <BsBookmarkPlus></BsBookmarkPlus>
-                  <AiOutlineShareAlt></AiOutlineShareAlt>
+                  <BsBookmarkPlus className="text-3xl" />
+                  <div className="relative">
+                    <AiOutlineShareAlt
+                      onClick={() => {
+                        setSeeLink(!seeLink);
+                      }}
+                      className="text-3xl cursor-pointer"
+                    />
+                    {seeLink && (
+                      <div className="absolute -right-12 flex gap-2 items-center py-2 px-3 bg-gray-200 rounded-lg mt-3 w-52">
+                        <button onClick={handleCopyLink}>
+                          <BiSolidCopyAlt className="text-4xl" />
+                        </button>
+                        <div className="flex gap-2 items-center">
+                          <FacebookShareButton
+                            url={shareUrl}
+                            quote={title}
+                            hashtag={"#task"}
+                          >
+                            <FacebookIcon size={40} round={true} />
+                          </FacebookShareButton>
+                          <LinkedinShareButton url={shareUrl} title={title}>
+                            <LinkedinIcon size={40} round={true} />
+                          </LinkedinShareButton>
+                          <TwitterShareButton url={shareUrl} hashtag={"#task"}>
+                            <TwitterIcon size={40} round={true} />
+                          </TwitterShareButton>
+                        </div>
+                      </div>
+                    )}
+                  </div>
                 </div>
               </div>
 
@@ -183,15 +236,15 @@ const BrowseTasksDetails = () => {
                 <p>{grading}</p>
 
                 <div className="mt-4 border px-5 py-3 rounded-xl">
-                  <h5 className="">Activity on Internshala</h5>
+                  <h5 className="">Activity on Internal</h5>
                   <div className="flex gap-7">
                     <div className="flex items-center gap-2">
-                      <LiaBusinessTimeSolid></LiaBusinessTimeSolid>
+                      <LiaBusinessTimeSolid />
                       <p>{country}</p>
                     </div>
 
                     <div className="flex items-center gap-2">
-                      <PiBriefcaseThin></PiBriefcaseThin>
+                      <PiBriefcaseThin />
                       <p>{country}</p>
                     </div>
                   </div>
