@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
-import CommunityProfileHome from "../Community/CommunityProfileHome/CommunityProfileHome";
+import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
+import AddTeamMember from "../Dashboard/DashboardAdmin/AddTeamMember/AddTeamMember";
+import AdminAboutUs from "../Dashboard/DashboardAdmin/AdminAboutUs/AdminAboutUs";
 import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
 import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
 import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
@@ -28,7 +30,6 @@ import ManageTask from "../Dashboard/DashboardClient/ManageTask/ManageTask";
 import PostTask from "../Dashboard/DashboardClient/PostTask/PostTask";
 import TaskApplied from "../Dashboard/DashboardClient/TaskApplied/TaskApplied";
 import Community from "../Layout/Community";
-import CommunityProfile from "../Layout/CommunityProfile";
 import Dashboard from "../Layout/Dashboard";
 import Root from "../Layout/Root";
 import BlogDetails from "../Pages/Blogs/BlogDetails/BlogDetails";
@@ -87,7 +88,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/tasksDatail/:id",
-        element: <BrowseTasksDetails />,
+        element: (
+          <PrivateRoute>
+            <BrowseTasksDetails />
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/job/${params.id}`),
       },
@@ -244,30 +249,30 @@ const router = createBrowserRouter([
         path: "/dashboard/admin-profile-edit",
         element: <AdminProfileEdit />,
       },
+      {
+        path: "/dashboard/about-us",
+        element: <AdminAboutUs />,
+      },
+      {
+        path: "/dashboard/team-member",
+        element: <AddTeamMember />,
+      },
     ],
   },
   // Community Routes
   {
     path: "/community",
-    element: (
-      <PrivateRoute>
-        <Community />
-      </PrivateRoute>
-    ),
+    element: <Community />,
     children: [
       {
         path: "/community",
         element: <CommunityHome />,
       },
-    ],
-  },
-  {
-    path: "/community/community-profile",
-    element: <CommunityProfile />,
-    children: [
       {
-        path: "/community/community-profile",
-        element: <CommunityProfileHome />,
+        path: "/community/postDetails/:id",
+        element: <PostDetails />,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/posts/${params.id}`),
       },
     ],
   },

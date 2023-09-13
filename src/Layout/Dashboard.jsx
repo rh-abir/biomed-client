@@ -3,14 +3,9 @@ import { Outlet } from "react-router-dom";
 import Navbar from "../Dashboard/Shared/Navbar/Navbar";
 import Sidebar from "../Dashboard/Shared/Sidebar/Sidebar";
 import { AuthContext } from "../Provider/AuthProvider";
-import Loader from "../components/Loader/Loader";
 
 const Dashboard = () => {
-  const { clientRole, adminRole, dashboardToggle } = useContext(AuthContext);
-
-  if (adminRole === null || clientRole === null) {
-    return <Loader />;
-  }
+  const { dashboardToggle } = useContext(AuthContext);
 
   return (
     <div>
