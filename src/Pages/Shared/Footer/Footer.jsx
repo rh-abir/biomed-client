@@ -78,7 +78,7 @@ const Footer = () => {
             <p className="font-semibold text-xl">Company</p>
             <div className="mt-3 md:mt-4">
               <Link to='/blogs'><p>Blogs</p></Link>
-              <p>About Us</p>
+              <Link>About Us</Link>
               <Link to='/privacy'><p>Privacy Policy</p></Link>
               <p>Latest Updates</p>
             </div>
