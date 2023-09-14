@@ -1,16 +1,18 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { AiOutlineHome } from "react-icons/ai";
 import { BiSearchAlt2 } from "react-icons/bi";
 import { FiArrowLeft } from "react-icons/fi";
+import { MdSend } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import logo from "../../../assets/logo.png";
 import "./CommunityNavbar.css";
 
 const CommunityNavbar = () => {
-  const { user, adminRole, clientRole } = useContext(AuthContext);
+  const [searchText, setSerchText] = useState("");
+  const { user, adminRole, setSearchPosts,clientRole } = useContext(AuthContext);
 
   // Define a function to determine which icon to display based on the route
   const location = useLocation();
@@ -46,6 +48,14 @@ const CommunityNavbar = () => {
   });
 
   const { updateData } = myProfileData;
+
+
+  // Search handler
+  const handleSearch = () => {
+    setSearchPosts(searchText)
+  }
+
+
   return (
     <>
       <nav className="px-2 md:px-0 h-14 w-full bg-white flex items-center justify-between sticky top-0 z-50">
@@ -95,10 +105,14 @@ const CommunityNavbar = () => {
           <div className="w-full h-8 bg-slate-200 rounded-full flex items-center ">
             <BiSearchAlt2 className="text-2xl mt-1 ml-2" />
             <input
+              onChange={(e) => setSerchText(e.target.value)}
               type="text"
               placeholder="Search"
               className="border-none w-full focus:outline-none rounded-full px-1  bg-slate-200"
             />
+            <button onClick={handleSearch}>
+              <MdSend className="text-xl me-2" />
+            </button>
           </div>
           {/* Profile section for large devices */}
           <Link

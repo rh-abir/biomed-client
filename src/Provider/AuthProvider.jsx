@@ -27,6 +27,8 @@ const AuthProvider = ({ children }) => {
   const [adminRole, setAdminRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
+  const [searchPosts, setSearchPosts] = useState("");
+  const [getPosts, setGetPosts] = useState([]);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -125,6 +127,16 @@ const AuthProvider = ({ children }) => {
     },
   });
 
+  // Search Functionality
+  useEffect(() => {
+    fetch(`http://localhost:5000/postSearch/${searchPosts}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGetPosts(data);
+        console.log("search data", data);
+      });
+  }, [searchPosts]);
+
   const authInfo = {
     user,
     loading,
@@ -145,7 +157,9 @@ const AuthProvider = ({ children }) => {
     setTasksSidebarToggle,
     // my profile data sharing
     myProfileData,
-
+    searchPosts,
+    setSearchPosts,
+    getPosts,
     // manage jobs single job
     manageJobs,
   };

@@ -30,15 +30,15 @@ const AdminMenu = () => {
           <AiOutlineClose />
         </button>
       </div>
-      <ul className="text-xl">
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+      <ul className="text-xl space-y-2">
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/admin-home"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -46,14 +46,14 @@ const AdminMenu = () => {
             <AiOutlineHome /> Dashboard
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/admin-profile"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -61,14 +61,14 @@ const AdminMenu = () => {
             <ImProfile /> Admin Profile
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/all-users"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -76,14 +76,14 @@ const AdminMenu = () => {
             <FaUsers /> All Users
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/all-client"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -91,14 +91,14 @@ const AdminMenu = () => {
             <HiOutlineUsers /> All Clients
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             to="/dashboard/all-moderator"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -106,14 +106,14 @@ const AdminMenu = () => {
             <BsFillPeopleFill /> All Moderator
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/post-blog"
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -121,14 +121,14 @@ const AdminMenu = () => {
             <BsFillSignpostFill /> Post A New Blog
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             to={"/dashboard/admin-home"}
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -136,14 +136,14 @@ const AdminMenu = () => {
             <RiChatSettingsLine /> Manage Blogs
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/social-media"
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -152,14 +152,14 @@ const AdminMenu = () => {
           </NavLink>
         </li>
 
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             to="/dashboard/about-us"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -167,14 +167,14 @@ const AdminMenu = () => {
             <FaUsersGear className="text-2xl" /> About Us
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li >
           <NavLink
             to="/dashboard/team-member"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }

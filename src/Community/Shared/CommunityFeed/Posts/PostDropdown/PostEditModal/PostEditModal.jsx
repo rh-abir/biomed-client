@@ -9,8 +9,12 @@ import { storage } from "../../../../../../firebase/firebase.config";
 
 const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
   const [loading, setLoading] = useState(false);
-  const { register, handleSubmit } = useForm();
-  const navigate = useNavigate()
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
 
   const updatePostMutation = useMutation(
@@ -46,7 +50,7 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
         Swal.fire("Success", "Post updated successfully", "success");
         setLoading(false);
         // closeEditModal();
-        navigate("/community")
+        navigate("/community");
       },
       onError: () => {
         Swal.fire("Error", "Failed to update post. Please try again.", "error");
@@ -58,8 +62,8 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
   const onSubmit = async (data) => {
     updatePostMutation.mutate(data);
   };
-  
-// Close modal functionality
+
+  // Close modal functionality
   const closeEditModal = () => {
     setIsEditModalOpen(false);
   };
@@ -73,27 +77,43 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
             <input
               type="file"
               name="photo"
-              {...register("photo")}
               className="w-full px-5 py-4 bg-slate-100 border focus:border-green-600 transition rounded-md outline-none"
+              {...register("photo", {
+                required: "Please upload an image",
+              })}
             />
+            {errors?.photo && (
+              <span className="text-red-500">{errors?.photo.message}</span>
+            )}
+
             {/* title field */}
             <input
               type="text"
               name="title"
               placeholder="Title"
               defaultValue={title || ""}
-              {...register("title")}
-              //   onChange={handleInputChange}
               className="w-full px-5 py-4 bg-slate-100 border focus:border-green-600 transition rounded-md outline-none"
+              {...register("title", {
+                required: "Please add title",
+              })}
             />
+            {errors?.title && (
+              <span className="text-red-500">{errors?.title.message}</span>
+            )}
           </div>
           <textarea
             name="description"
             placeholder="Description"
             defaultValue={desc || ""}
-            {...register("desc")}
             className="w-full px-5 py-4 bg-slate-100 border focus:border-green-600 transition rounded-md outline-none"
+            {...register("description", {
+              required: "Please add description",
+            })}
           />
+          {errors?.description && (
+            <span className="text-red-500">{errors?.description.message}</span>
+          )}
+
           <button
             className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 duration-500"
             type="submit"
