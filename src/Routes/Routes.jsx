@@ -22,7 +22,6 @@ import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverv
 import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
-import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
 import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
 import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
 import InstructorView from "../Dashboard/DashboardClient/InstructorProfile/InstructorView/InstructorView";
@@ -45,6 +44,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
+import MessageHome from "../Pages/Messaging/pages/MessageHome";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
@@ -117,6 +117,10 @@ const router = createBrowserRouter([
       {
         path: "/about-details",
         element: <AboutDetails />,
+      },
+      {
+        path: "/nofication/message",
+        element: <MessageHome />,
       },
     ],
   },
@@ -215,10 +219,7 @@ const router = createBrowserRouter([
         path: "/dashboard/editProfile",
         element: <EditProfile />,
       },
-      {
-        path: "/dashboard/client-message",
-        element: <ClientMessage />,
-      },
+
       {
         path: "/dashboard/evaluate-applicants",
         element: <EvaluateApplicants />,
