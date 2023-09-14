@@ -22,7 +22,21 @@ const Footer = () => {
       return res.data;
     },
   });
-  console.log(socialMedia);
+  console.log(socialMedia)
+
+  const [email, setEmail] = React.useState("");
+  const [subscriptionMessage, setSubscriptionMessage] = React.useState("");
+  const [isSubscribed, setIsSubscribed] = React.useState(false);
+
+  const handleSubscription = () => {
+    if (email.trim() === "") {
+      setSubscriptionMessage("Please provide your email.");
+    } else {
+      setSubscriptionMessage("Successfully subscribed!");
+      setEmail("");
+      setIsSubscribed(true);
+    }
+  };
 
   if (isLoading) {
     return <Loader />;
@@ -54,7 +68,7 @@ const Footer = () => {
         </div>
         <hr className="h-px mt-10 mb-6 border-0 bg-gray-600"></hr>
         <div className="flex flex-col md:flex-row justify-between mb-8">
-          {/*"Pages" section */}
+          {/* "Pages" section */}
           <div>
             <p className="font-semibold text-xl">Reach Us</p>
             <div className="mt-3 md:mt-4">
@@ -73,7 +87,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/*"Categories" section */}
+          {/* "Categories" section */}
           <div className="mt-3 md:mt-0">
             <p className="font-semibold text-xl">Company</p>
             <div className="mt-3 md:mt-4">
@@ -84,7 +98,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/*"Support" section */}
+          {/* "Support" section */}
           <div className="mt-3 md:mt-0">
             <p className="font-semibold text-xl mb-3">Support</p>
             <div>
@@ -95,7 +109,7 @@ const Footer = () => {
             </div>
           </div>
 
-          {/*"Subscribe" section */}
+          {/* "Subscribe" section */}
           <div className="mt-4 md:mt-0 me-5">
             <p className="font-semibold text-xl mb-3">Subscribe</p>
             <div className="md:p-4 p-3 w-full border-2 md:rounded-xl rounded flex flex-col md:flex-row md:gap-5">
@@ -103,11 +117,22 @@ const Footer = () => {
                 className="bg-gray-900 md:flex-grow py-2 px-3 rounded focus:outline-none focus:ring-green-300 mb-2 md:mb-0"
                 type="email"
                 placeholder="Your email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
-              <button className="text-white p-2 rounded-md bg-primary transition duration-300 w-full md:w-auto">
-                Send
+              <button
+                className="text-white p-2 rounded-md bg-primary transition duration-300 w-full md:w-auto"
+                onClick={handleSubscription}
+                disabled={isSubscribed}
+              >
+                {isSubscribed ? "Subscribed" : "Send"}
               </button>
             </div>
+            {subscriptionMessage && (
+              <p className={`mt-2 ${isSubscribed ? 'text-green-600 text-xl' : 'text-red-600 text-xl'}`}>
+                {subscriptionMessage}
+              </p>
+            )}
           </div>
         </div>
         <hr className="h-px mb-10 border-0 bg-gray-600"></hr>

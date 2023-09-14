@@ -123,7 +123,7 @@ const AdminMenu = () => {
         </li>
         <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
           <NavLink
-           to={"/dashboard/admin-home"}
+            to={"/dashboard/admin-home"}
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
               `flex items-center gap-3 dark:text-white${
@@ -186,9 +186,7 @@ const AdminMenu = () => {
           onClick={handleDashboardLogout}
           className="hover:bg-red-500 hover:text-white transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-red-500"
         >
-          <NavLink
-            className="flex gap-2 items-center"
-          >
+          <NavLink className="flex gap-2 items-center">
             <AiOutlineLogout /> Logout
           </NavLink>
         </li>

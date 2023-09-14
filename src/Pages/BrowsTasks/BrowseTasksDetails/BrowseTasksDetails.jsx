@@ -1,5 +1,7 @@
 import axios from "axios";
+import copy from "clipboard-copy";
 import { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { AiOutlineShareAlt, AiOutlineUsergroupAdd } from "react-icons/ai";
 import { BiBriefcaseAlt, BiSolidCopyAlt } from "react-icons/bi";
 import { BsBookmarkPlus, BsHourglassSplit } from "react-icons/bs";
@@ -8,19 +10,17 @@ import { LiaBusinessTimeSolid } from "react-icons/lia";
 import { PiBriefcaseThin } from "react-icons/pi";
 import { TbHomeDot } from "react-icons/tb";
 import { Link, useLoaderData } from "react-router-dom";
+import {
+  FacebookIcon,
+  FacebookShareButton,
+  LinkedinIcon,
+  LinkedinShareButton,
+  TwitterIcon,
+  TwitterShareButton,
+} from "react-share";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import Container from "../../../components/Shared/Container/Container";
-import copy from "clipboard-copy";
-import toast from "react-hot-toast";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  LinkedinShareButton,
-  TwitterShareButton,
-  TwitterIcon,
-  LinkedinIcon,
-} from "react-share";
 
 const BrowseTasksDetails = () => {
   const shareUrl = window.location.href;
@@ -28,6 +28,7 @@ const BrowseTasksDetails = () => {
   console.log(user);
   const {
     _id,
+    email,
     country,
     deadline,
     companyName,
@@ -42,7 +43,6 @@ const BrowseTasksDetails = () => {
     attachment,
     grading,
     appliedCount,
-    email
   } = useLoaderData();
 
   console.log(country);
@@ -80,10 +80,11 @@ const BrowseTasksDetails = () => {
           grading,
           isApplied: true,
           taskId: _id,
+          message: [{ text: `${user?.displayName} is Applied` }],
         };
 
         axios
-          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .post("http://localhost:5000/appliedjob", applyJob)
           .then((response) => {
             if (response.data.acknowledged) {
               setApplied(true);

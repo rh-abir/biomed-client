@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { FaRegArrowAltCircleUp } from "react-icons/fa";
+import { animateScroll as scroll } from "react-scroll";
 import faqimg from "../../../assets/faq.svg";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
-import { FaRegArrowAltCircleUp } from "react-icons/fa";
-import { animateScroll as scroll } from 'react-scroll';
 
 const FrequentlyAskQuestion = () => {
   const [faq, setFaq] = useState([]);
@@ -21,13 +21,12 @@ const FrequentlyAskQuestion = () => {
       <Container>
         <div className="dark:bg-gray-800 bg-white mb-10">
           <div>
-            <SectionTitle heading="Frequently Asked Questions (FAQ)">
-            </SectionTitle>
+            <SectionTitle heading="Frequently Asked Questions (FAQ)"></SectionTitle>
           </div>
           <div className="grid lg:grid-cols-2 gap-10">
             <div className="grid divide-y divide-neutral-200 max-w-2xl mt-4">
-              {faq.map((n) => (
-                <div className="py-5" key={n.id}>
+              {faq.map((n, index) => (
+                <div className="py-5" key={index}>
                   <details className="group">
                     <summary className="flex justify-between items-center font-medium text-xl cursor-pointer list-none">
                       <span>
@@ -62,11 +61,15 @@ const FrequentlyAskQuestion = () => {
               <img className="w-[600px]" src={faqimg} alt="" />
             </div>
           </div>
-
         </div>
       </Container>
       <div className="flex justify-end">
-        <button onClick={() => scroll.scrollToTop({ duration: 500, smooth: true })} className='m-3 text-center text-2xl text-primary p-2 rounded-full dark:bg-gray-200 bg-gray-800'><FaRegArrowAltCircleUp></FaRegArrowAltCircleUp></button>
+        <button
+          onClick={() => scroll.scrollToTop({ duration: 500, smooth: true })}
+          className="m-3 text-center text-2xl text-primary p-2 rounded-full dark:bg-gray-200 bg-gray-800"
+        >
+          <FaRegArrowAltCircleUp></FaRegArrowAltCircleUp>
+        </button>
       </div>
     </>
   );
