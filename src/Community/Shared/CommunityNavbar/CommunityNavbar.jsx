@@ -69,7 +69,9 @@ const CommunityNavbar = () => {
             </Link>
             <Link
               to={
-                clientRole
+                adminRole
+                  ? "/dashboard/admin-profile"
+                  : clientRole
                   ? "/dashboard/instructor-view"
                   : "/dashboard/my-profile"
               }
@@ -99,11 +101,15 @@ const CommunityNavbar = () => {
             />
           </div>
           {/* Profile section for large devices */}
-          <Link to={
-                clientRole
-                  ? "/dashboard/instructor-view"
-                  : "/dashboard/my-profile"
-              }>
+          <Link
+            to={
+              adminRole
+                ? "/dashboard/admin-profile"
+                : clientRole
+                ? "/dashboard/instructor-view"
+                : "/dashboard/my-profile"
+            }
+          >
             <div
               title="View Profile"
               className="hidden md:block w-9 h-9 rounded-full overflow-hidden cursor-pointer border-[3px] border-black/50"

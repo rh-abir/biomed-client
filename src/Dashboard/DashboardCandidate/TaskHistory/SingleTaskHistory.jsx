@@ -41,7 +41,7 @@ const SingleTaskHistory = ({ client }) => {
     });
   };
 
-  console.log(client?.appliedjobdata?.downloadEvaluate);
+  // console.log(client?.appliedjobdata?.downloadEvaluate);
 
   return (
     <>

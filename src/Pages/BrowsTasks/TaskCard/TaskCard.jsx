@@ -54,7 +54,7 @@ const TaskCard = ({ task }) => {
     setIsbookMark(true);
 
     if (!isbookMark) {
-      axios.post("https://biomed-server.vercel.app/bookmark", BookMarkData).then((res) => {
+      axios.post("http://localhost:5000/bookmark", BookMarkData).then((res) => {
         if (res.data.acknowledged) {
           const taskIdToAdd = _id;
 
