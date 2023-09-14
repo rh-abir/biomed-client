@@ -3,10 +3,12 @@ import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 
-const SingleTaskOverview = ({ client }) => {
+const SingleTaskOverview = ({ client, isLoading }) => {
   const [isOpenApply, setIsOpenApply] = useState(false);
 
   console.log();
+
+  
 
   const closeApplyModal = () => {
     setIsOpenApply(false);
@@ -14,15 +16,7 @@ const SingleTaskOverview = ({ client }) => {
 
   const { appliedjobdata, _id } = client;
 
-  const {
-    deadline,
-    companyName,
-    logo,
-    image,
-    title,
-    taskId,
-  } = appliedjobdata;
-  console.log(appliedjobdata)
+  const { deadline, companyName, logo, image, title, taskId, attachment } = appliedjobdata;
 
   const showInfoCompany = {
     _id,
@@ -36,8 +30,11 @@ const SingleTaskOverview = ({ client }) => {
       {client?.appliedjobdata?.isApplied ? (
         <tr>
           <td className="py-2 md:py-4">
-            <img className="w-16 h-16 rounded-full object-cover ml-5" src={logo} alt="" />
-
+            <img
+              className="w-16 h-16 rounded-full object-cover ml-5"
+              src={logo}
+              alt=""
+            />
           </td>
           <td className="py-2 md:py-4">
             <p className="font-semibold text-base md:text-sm">{title}</p>
@@ -49,7 +46,7 @@ const SingleTaskOverview = ({ client }) => {
             <p className="font-semibold text-base md:text-sm">
               <button
                 onClick={() => setIsOpenApply(true)}
-                className="w-6 h-6 text-[#5ADE80]"
+                className="px-3 py-1 rounded-md text-gray-100 hover:bg-hover bg-primary"
               >
                 Submit
               </button>
@@ -63,6 +60,11 @@ const SingleTaskOverview = ({ client }) => {
                 </Link>
               </span>
             </div>
+          </td>
+          <td className="py-2 md:py-4 ">
+            <Link to={attachment} target="_blank" className="px-3 py-1 rounded-md text-gray-100 hover:bg-hover bg-primary">
+              Download
+            </Link>
           </td>
         </tr>
       ) : (

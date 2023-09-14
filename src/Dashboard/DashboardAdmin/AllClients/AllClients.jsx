@@ -12,12 +12,14 @@ import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 import EvaluateModal from "../../../components/Modal/EvaluateModal/EvaluateModal";
 import ProfileModal from "../../../components/Modal/ProfileModal/ProfileModal";
 import NoUserClient from "../../../components/Shared/NoUserClient/NoUserClient";
+import { useAxiosSecure } from "../../../components/hook/useAxiosSecure";
 
 const AllClients = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { data: allClients = [], refetch } = useQuery({
     queryKey: ["allClients"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/clients");
+      const res = await axiosSecure("/clients");
       return res.data;
     },
   });
