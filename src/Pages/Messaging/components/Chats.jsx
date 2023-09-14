@@ -1,22 +1,24 @@
-const Chats = () => {
-  return (
-    <div className="chats">
-      <div className="userChat">
-        <img src="https://i.ibb.co/Fx1DFPf/rh-abir.jpg" alt="" />
-        <div className="userChatInfo">
-          <span>Jane</span>
-          <p>Hello</p>
-        </div>
-      </div>
+import { Link } from "react-scroll";
+import useMessageData from "../../../hooks/useMessageData";
 
-      <div className="userChat">
-        <img src="https://i.ibb.co/Fx1DFPf/rh-abir.jpg" alt="" />
-        <div className="userChatInfo">
-          <span>Jane</span>
-          <p>Hello</p>
+const Chats = () => {
+  const [getApplayMessage, refetch] = useMessageData();
+
+  const { email, image, name, message } = getApplayMessage[0]?.appliedjobdata;
+
+  const messageText = message[0]?.text;
+
+  return (
+    <Link to={`/messagedetails/${email}`}>
+      <div className="chats">
+        <div className="userChat">
+          <img src={image} alt="" />
+          <div className="userChatInfo">
+            <span>{name}</span>
+          </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

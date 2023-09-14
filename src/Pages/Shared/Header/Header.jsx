@@ -11,6 +11,7 @@ import Dark from "../../../components/Dark/Dark";
 import ClientModal from "../../../components/Modal/ClientModal/ClientModal";
 import ProfileDropdown from "../../../components/ProfileDropdown/ProfileDropdown";
 import Container from "../../../components/Shared/Container/Container";
+import useMessageData from "../../../hooks/useMessageData";
 import "./Header.css";
 import MenuItem from "./MenuItem/MenuItem";
 
@@ -50,6 +51,10 @@ const Header = () => {
     };
   }, []);
 
+  const [getApplayMessage, refetch] = useMessageData();
+
+  console.log(getApplayMessage);
+
   return (
     <div
       className={`fixed w-full bg-green-200 z-50 transition-all ease-in-out duration-200 ${
@@ -82,7 +87,7 @@ const Header = () => {
                   <div className="relative cursor-pointer">
                     <IoMdNotificationsOutline className="text-2xl font-bold" />
                     <span className="absolute bottom-3 -right-2 text-gray-100 z-10 bg-[#4bd674] p-1 w-5 h-5 rounded-full flex items-center justify-center">
-                      0
+                      {getApplayMessage ? 1 : 0}
                     </span>
                   </div>
                 </Link>
