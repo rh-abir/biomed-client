@@ -53,7 +53,7 @@ const Header = () => {
 
   const [getApplayMessage, refetch] = useMessageData();
 
-  console.log(getApplayMessage);
+  // console.log(getApplayMessage);
 
   return (
     <div

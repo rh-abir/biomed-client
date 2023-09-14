@@ -2,12 +2,16 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React from "react";
 import {
+  AiOutlineEnvironment,
+  AiOutlineMail,
+  AiOutlinePhone,
+} from "react-icons/ai";
+import {
   FaFacebookF,
   FaInstagram,
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
-import { AiOutlineEnvironment, AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import Loader from "../../../components/Loader/Loader";
 
@@ -22,7 +26,7 @@ const Footer = () => {
       return res.data;
     },
   });
-  console.log(socialMedia)
+  // console.log(socialMedia)
 
   const [email, setEmail] = React.useState("");
   const [subscriptionMessage, setSubscriptionMessage] = React.useState("");
@@ -48,7 +52,9 @@ const Footer = () => {
         <div className="flex flex-col md:flex-row justify-between me-5">
           <div className="flex gap-8 mb-6 md:mb-0">
             <Link to="/terms">Terms of Service</Link>
-            <Link to='/privacy'><p>Privacy Policy</p></Link>
+            <Link to="/privacy">
+              <p>Privacy Policy</p>
+            </Link>
           </div>
           <div className="flex gap-5 items-center">
             <p>Follow Us</p>
@@ -76,13 +82,13 @@ const Footer = () => {
                 <AiOutlinePhone className="text-2xl" />
                 <p className="ms-2">+8801993881454</p>
               </div>
-              <div className="flex items-center py-1"><AiOutlineMail className="text-2xl" />
+              <div className="flex items-center py-1">
+                <AiOutlineMail className="text-2xl" />
                 <p className="ms-2">commandos701@gmail.com</p>
               </div>
-              <div className="flex items-center"><AiOutlineEnvironment className="text-2xl" />
-                <p className="ms-2">
-                  45 Sadar Road, Barisal, Bangladesh
-                </p>
+              <div className="flex items-center">
+                <AiOutlineEnvironment className="text-2xl" />
+                <p className="ms-2">45 Sadar Road, Barisal, Bangladesh</p>
               </div>
             </div>
           </div>
@@ -91,9 +97,13 @@ const Footer = () => {
           <div className="mt-3 md:mt-0">
             <p className="font-semibold text-xl">Company</p>
             <div className="mt-3 md:mt-4">
-              <Link to='/blogs'><p>Blogs</p></Link>
+              <Link to="/blogs">
+                <p>Blogs</p>
+              </Link>
               <Link>About Us</Link>
-              <Link to='/privacy'><p>Privacy Policy</p></Link>
+              <Link to="/privacy">
+                <p>Privacy Policy</p>
+              </Link>
               <p>Latest Updates</p>
             </div>
           </div>
@@ -103,7 +113,9 @@ const Footer = () => {
             <p className="font-semibold text-xl mb-3">Support</p>
             <div>
               <p>FAQs</p>
-              <Link to="/contact"><p>Contact Us</p></Link>
+              <Link to="/contact">
+                <p>Contact Us</p>
+              </Link>
               <Link to="/terms">Terms of Service</Link>
               <p>Platform Walkthrough</p>
             </div>
@@ -129,7 +141,13 @@ const Footer = () => {
               </button>
             </div>
             {subscriptionMessage && (
-              <p className={`mt-2 ${isSubscribed ? 'text-green-600 text-xl' : 'text-red-600 text-xl'}`}>
+              <p
+                className={`mt-2 ${
+                  isSubscribed
+                    ? "text-green-600 text-xl"
+                    : "text-red-600 text-xl"
+                }`}
+              >
                 {subscriptionMessage}
               </p>
             )}
