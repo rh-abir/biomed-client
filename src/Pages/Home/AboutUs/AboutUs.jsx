@@ -15,7 +15,7 @@ const AboutUs = () => {
     },
   });
 
-  console.log("Home About data", aboutUs[0]?.descOne);
+  // console.log("Home About data", aboutUs[0]?.descOne);
 
   return (
     <Container>

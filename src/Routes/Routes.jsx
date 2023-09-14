@@ -7,7 +7,6 @@ import AdminHome from "../Dashboard/DashboardAdmin/AdminHome/AdminHome";
 import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile";
 import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
-import AllModerator from "../Dashboard/DashboardAdmin/AllModerator/AllModerator";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
 import PostBlog from "../Dashboard/DashboardAdmin/PostBlog/PostBlog";
 import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
@@ -23,7 +22,6 @@ import TaskOverview from "../Dashboard/DashboardCandidate/TaskOverview/TaskOverv
 import TaskSubmission from "../Dashboard/DashboardCandidate/TaskSubmission/TaskSubmission";
 import AllApplications from "../Dashboard/DashboardClient/AllApplications/AllApplications";
 import ClientHome from "../Dashboard/DashboardClient/ClientHome/ClientHome";
-import ClientMessage from "../Dashboard/DashboardClient/ClientMessage/ClientMessage";
 import EvaluateApplicants from "../Dashboard/DashboardClient/EvaluateApplicants/EvaluateApplicants";
 import InstructorProfile from "../Dashboard/DashboardClient/InstructorProfile/InstructorProfile";
 import InstructorView from "../Dashboard/DashboardClient/InstructorProfile/InstructorView/InstructorView";
@@ -46,6 +44,7 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
+import MessageHome from "../Pages/Messaging/pages/MessageHome";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import Privacy from "../Pages/Privacy/Privacy";
@@ -124,6 +123,10 @@ const router = createBrowserRouter([
       {
         path: "/about-details",
         element: <AboutDetails />,
+      },
+      {
+        path: "/nofication/message",
+        element: <MessageHome />,
       },
     ],
   },
@@ -226,10 +229,7 @@ const router = createBrowserRouter([
         path: "/dashboard/editProfile",
         element: <EditProfile />,
       },
-      {
-        path: "/dashboard/client-message",
-        element: <ClientMessage />,
-      },
+
       {
         path: "/dashboard/evaluate-applicants",
         element: <EvaluateApplicants />,
@@ -243,10 +243,6 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-client",
         element: <AllClients />,
-      },
-      {
-        path: "/dashboard/all-moderator",
-        element: <AllModerator />,
       },
       {
         path: "/dashboard/social-media",
