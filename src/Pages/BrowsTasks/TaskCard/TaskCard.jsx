@@ -203,36 +203,35 @@ const TaskCard = ({ task }) => {
       <div className="line-clamp-3 mb-5">{description}</div>
 
       <div className="mt-auto grid grid-cols-2 gap-5">
-        {!isDisabled ? <Link
-          disabled={applied}
-          onClick={handleApply}
-          className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
-            applied && "bg-red-300 hover:bg-red-200 cursor-not-allowed"
-          }`}
-        >
-          Apply Now
-        </Link> : <div
-          className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
-            isDisabled ? "cursor-not-allowed" : ""
-          }`}
-          onClick={(e) => {
-            if (isDisabled) {
-              e.preventDefault();
-            }
-          }}
-        >
-          Apply Now
-        </div>}
+        {!isDisabled ? (
+          <Link
+            disabled={applied}
+            onClick={handleApply}
+            className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
+              applied && "bg-red-300 hover:bg-red-200 cursor-not-allowed"
+            }`}
+          >
+            Apply Now
+          </Link>
+        ) : (
+          <div
+            className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
+              isDisabled ? "cursor-not-allowed" : ""
+            }`}
+            onClick={(e) => {
+              if (isDisabled) {
+                e.preventDefault();
+              }
+            }}
+          >
+            Apply Now
+          </div>
+        )}
         <Link
-          className={`flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg ${
-            isDisabled ? "cursor-not-allowed" : ""
-          }`}
+          className={
+            "flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg"
+          }
           to={`/tasksDatail/${_id}`}
-          onClick={(e) => {
-            if (isDisabled) {
-              e.preventDefault();
-            }
-          }}
         >
           View Details
         </Link>
