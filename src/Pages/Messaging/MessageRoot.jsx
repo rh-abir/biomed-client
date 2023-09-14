@@ -1,8 +1,7 @@
 import React from "react";
+import { Outlet } from "react-router-dom";
 import MessageNavbar from "./MessageNabvar/MessageNavbar";
 import MessageSidebar from "./MessageSidebar/MessageSidebar";
-import { Outlet } from "react-router-dom";
-import MessageSend from "./MessageSend/MessageSend";
 
 const MessageRoot = () => {
   return (
@@ -16,9 +15,6 @@ const MessageRoot = () => {
         </div>
         <div className="col-span-5 flex flex-col">
           <Outlet />
-          <div className="mt-auto">
-            <MessageSend />
-          </div>
         </div>
       </div>
     </div>
