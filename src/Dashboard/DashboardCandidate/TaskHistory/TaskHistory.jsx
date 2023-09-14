@@ -5,14 +5,16 @@ import useTasktData from "../../../hooks/useTasktData";
 import SingleTaskHistory from "./SingleTaskHistory";
 
 const TaskHistory = () => {
-  const [allApplayJobs] = useTasktData();
-
-  console.log(allApplayJobs);
+  const [allApplayJobs, loading] = useTasktData();
 
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
   const startIndex = (currentPage - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
+
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <div className="px-10 py-6 bg-gray-100 min-h-screen flex flex-col">

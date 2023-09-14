@@ -8,9 +8,7 @@ const Blogs = () => {
   const { data: bloglatest = [] } = useQuery({
     queryKey: ["blogLatest"],
     queryFn: async () => {
-      const res = await axios.get(
-        "https://biomed-server.vercel.app/blogslatest"
-      );
+      const res = await axios.get("https://biomed-server.vercel.app/blogslatest");
       return res.data;
     },
   });
@@ -22,7 +20,7 @@ const Blogs = () => {
           <div className="col-span-3">
             <Outlet />
           </div>
-          <div className="col-span-1 mt-10">
+          <div className="col-span-1 my-10">
             <div>
               <h2 className="font-semibold mb-5 text-xl">Latest Blog</h2>
               <div className="flex flex-col gap-8">

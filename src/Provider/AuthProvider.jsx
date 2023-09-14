@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
-import { getAdminRole, getClientRole, getModeratorRole } from "../api/auth";
+import { getAdminRole, getClientRole } from "../api/auth";
 import app from "../firebase/firebase.config";
 
 const auth = getAuth(app);
@@ -22,10 +22,9 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [clientRole, setClientRole] = useState(null);
   const [adminRole, setAdminRole] = useState(null);
-  const [moderatorRole, setModeratorRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
   const [searchPosts, setSearchPosts] = useState("");
@@ -85,6 +84,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       return unsubscribe();
@@ -95,13 +95,6 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       getAdminRole(user?.email).then((data) => setAdminRole(data));
-    }
-  }, [user]);
-
-  // moderator role
-  useEffect(() => {
-    if (user) {
-      getModeratorRole(user?.email).then((data) => setModeratorRole(data));
     }
   }, [user]);
 
@@ -147,8 +140,6 @@ const AuthProvider = ({ children }) => {
   const authInfo = {
     user,
     loading,
-    moderatorRole,
-    setModeratorRole,
     adminRole,
     setAdminRole,
     clientRole,

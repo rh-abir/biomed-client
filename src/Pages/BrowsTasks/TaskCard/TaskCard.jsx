@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AiOutlineClockCircle, AiOutlineFileDone } from "react-icons/ai";
 import { BsBookmarkPlus } from "react-icons/bs";
 import { FaIndustry } from "react-icons/fa";
@@ -47,32 +47,13 @@ const TaskCard = ({ task }) => {
 
   // console.log(task);
 
-  const [bookmarkedTasks, setBookmarkedTasks] = useState([]);
-
-  useEffect(() => {
-    // Load existing bookmarks from localStorage when the component mounts
-    const storedBookmarks = localStorage.getItem("bookmarks");
-    if (storedBookmarks) {
-      setBookmarkedTasks(JSON.parse(storedBookmarks));
-    }
-  }, []);
-
   const handleBookmark = () => {
     setIsbookMark(true);
 
     if (!isbookMark) {
       axios.post("http://localhost:5000/bookmark", BookMarkData).then((res) => {
         if (res.data.acknowledged) {
-          const taskIdToAdd = _id;
-
           toast.success("Successfully Bookmark!");
-          // Check if the task ID is not already in the bookmarkedTasks array
-          if (!bookmarkedTasks.includes(taskIdToAdd)) {
-            const updatedBookmarks = [...bookmarkedTasks, taskIdToAdd];
-            setBookmarkedTasks(updatedBookmarks);
-
-            localStorage.setItem("bookmarks", JSON.stringify(updatedBookmarks));
-          }
         }
       });
     }
@@ -139,7 +120,7 @@ const TaskCard = ({ task }) => {
           <h2>{title}</h2>
         </div>
         <div className=" cursor-pointer" onClick={handleBookmark}>
-          {bookmarkedTasks.includes(_id) ? (
+          {isbookMark ? (
             <button className="cursor-not-allowed" disabled={true}>
               <BsBookmarkPlus className="text-xl md:text-2xl text-red-400 " />
             </button>

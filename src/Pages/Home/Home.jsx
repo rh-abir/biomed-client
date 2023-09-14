@@ -11,6 +11,7 @@ import Categorys from "./categorys/categorys";
 
 
 const Home = () => {
+
   return (
     <div className="dark:bg-gray-800 dark:text-white md:pt-5">
       <Banner />

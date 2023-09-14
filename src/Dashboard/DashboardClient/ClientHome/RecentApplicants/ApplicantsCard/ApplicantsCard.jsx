@@ -2,31 +2,29 @@ import React from "react";
 import { AiOutlineCloseCircle } from "react-icons/ai";
 import { BsCheck2 } from "react-icons/bs";
 import { LiaEyeSolid, LiaTrashAltSolid } from "react-icons/lia";
-import { PiMoneyLight } from "react-icons/pi";
 import { SlLocationPin } from "react-icons/sl";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const ApplicantsCard = ({ applicant }) => {
-  const { image, name, position, location, pay_per_hour } = applicant;
+  const { appliedjobdata } = applicant;
+  console.log(appliedjobdata);
+
   return (
     <div className="xl:flex gap-4 mb-2 border w-full px-5 py-5 lg:py-10 rounded-xl">
       <div>
         <img
-          className="rounded-full h-28 w-28 mb-2 xl:mb-0"
-          src={image}
+          className="rounded-full h-28 w-28 mb-2 xl:mb-0 object-cover bg-gray-50"
+          src={appliedjobdata?.image}
           alt=""
         />
       </div>
       <div>
-        <h3 className="text-xl font-semibold">{name}</h3>
-        <p className="text-base text-blue-700 mb-2">{position}</p>
+        <h3 className="text-xl font-semibold">{appliedjobdata?.name}</h3>
+        <p className="text-base text-blue-700 mb-2">{appliedjobdata?.email}</p>
         <div className="md:flex items-center gap-4">
           <p className="flex items-center gap-1">
             <SlLocationPin />
-            <span>{location}</span>
-          </p>
-          <p className="flex items-center gap-1">
-            <PiMoneyLight /> <span>${pay_per_hour} / hour</span>
+            <span>{appliedjobdata?.country}</span>
           </p>
         </div>
         <div className="space-x-2 md:space-x-3 pt-4">

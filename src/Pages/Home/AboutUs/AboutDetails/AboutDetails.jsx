@@ -9,7 +9,7 @@ const AboutDetails = () => {
   const { data: aboutUs = [] } = useQuery({
     queryKey: ["aboutUs"],
     queryFn: async () => {
-      const res = await axios("http://localhost:5000/aboutDetails");
+      const res = await axios("https://biomed-server.vercel.app/aboutDetails");
       return res?.data;
     },
   });

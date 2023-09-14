@@ -10,12 +10,12 @@ const AboutUs = () => {
   const { data: aboutUs = [] } = useQuery({
     queryKey: ["aboutUs"],
     queryFn: async () => {
-      const res = await axios("http://localhost:5000/aboutDetails");
+      const res = await axios("https://biomed-server.vercel.app/aboutDetails");
       return res?.data;
     },
   });
 
-  console.log("Home About data", aboutUs[0]?.descOne);
+  // console.log("Home About data", aboutUs[0]?.descOne);
 
   return (
     <Container>

@@ -1,17 +1,18 @@
 /* eslint-disable no-unused-vars */
 import React, { useEffect, useRef, useState } from 'react';
+import SearchData from './SearchData/SearchData';
+import { Link } from 'react-router-dom';
 
 const SearchForm = () => {
     const [search, setSearch] = useState('')
     const [industry, setIndustry] = useState('');
-
-    console.log(search)
+    const [SearchResult, setSearchResult] = useState([])
     useEffect(() => {
         const SearchResults = async () => {
             if (search !== '') {
                 const response = await fetch(`https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`);
                 const data = await response.json();
-                console.log(data); // Log the results to the console
+                setSearchResult(data) // Log the results to the console
             }
         };
 
@@ -64,12 +65,12 @@ const SearchForm = () => {
                             </select>
                         </div>
                         <div className="flex-shrink">
-                            <button
+                            <Link to=''><button
                                 type="submit"
                                 className="px-10 w-full py-4 bg-primary text-white rounded-md hover:bg-hover focus:outline-none focus:ring focus:border-focus focus:ring-opacity-50 "
                             >
                                 Search
-                            </button>
+                            </button></Link>
                         </div>
                     </div>
                 </form>

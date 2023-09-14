@@ -3,8 +3,9 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const useTasktData = () => {
-  const user = useContext(AuthContext);
-  const currentUserEmail = user.user.email;
+  const { user, loading } = useContext(AuthContext);
+
+  const currentUserEmail = user.email;
 
   const { data: allApplayJobs = [], refetch } = useQuery({
     queryKey: ["allApplyJob", currentUserEmail],
@@ -16,7 +17,7 @@ const useTasktData = () => {
     },
   });
 
-  return [allApplayJobs, refetch];
+  return [allApplayJobs, refetch, loading];
 };
 
 export default useTasktData;

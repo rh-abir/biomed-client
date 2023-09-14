@@ -24,7 +24,7 @@ const Posts = () => {
   const { isLoading, data: posts = [] } = useQuery({
     queryKey: ["posts"],
     queryFn: async () => {
-      const res = await axios(`http://localhost:5000/posts`);
+      const res = await axios("https://biomed-server.vercel.app/posts");
       return res.data;
     },
   });

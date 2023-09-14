@@ -1,8 +1,31 @@
-import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
+import React, { useContext } from "react";
 import { BiBriefcase, BiMessageDetail } from "react-icons/bi";
 import { FaRegFileAlt } from "react-icons/fa";
 import { GoBookmark } from "react-icons/go";
+import { AuthContext } from "../../../../Provider/AuthProvider";
 const ClientBox = () => {
+  const { user } = useContext(AuthContext);
+  const { data: jobs = [] } = useQuery({
+    queryKey: ["jobs"],
+    queryFn: async () => {
+      const res = await axios(
+        `https://biomed-server.vercel.app/jobs/${user.email}`
+      );
+      return res.data;
+    },
+  });
+
+  const { data: applicant = [] } = useQuery({
+    queryKey: ["applicant"],
+    queryFn: async () => {
+      const res = await axios(
+        `http://localhost:5000/getapplicantemail/${user.email}`
+      );
+      return res.data;
+    },
+  });
   return (
     <div className="mt-6 dark:bg-gray-800 dark:text-white space-y-8 md:space-y-0 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 items-center gap-6">
       {/* box-1 */}
@@ -11,7 +34,9 @@ const ClientBox = () => {
           <BiBriefcase className="text-blue-800  text-5xl" />
         </div>
         <div>
-          <p className="text-blue-800 text-4xl font-semibold text-end">22</p>
+          <p className="text-blue-800 text-4xl font-semibold text-end">
+            {jobs.length}
+          </p>
           <p>Posted Tasks</p>
         </div>
       </div>
@@ -21,7 +46,9 @@ const ClientBox = () => {
           <FaRegFileAlt className="text-red-700 text-5xl" />
         </div>
         <div>
-          <p className="text-red-700 text-4xl font-semibold text-end">9382</p>
+          <p className="text-red-700 text-4xl font-semibold text-end">
+            {applicant.length}
+          </p>
           <p>Application</p>
         </div>
       </div>

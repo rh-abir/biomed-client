@@ -1,5 +1,6 @@
 import React from "react";
 import { FaFacebookF, FaGithub, FaLinkedin } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 const TeamMemberCard = ({ teamMember }) => {
   const { photo, name, position, facebook, linkedin, github } = teamMember;
@@ -25,15 +26,27 @@ const TeamMemberCard = ({ teamMember }) => {
       </div>
       <div className="p-4 border-t mx-8 mt-2">
         <div className="flex justify-center items-center space-x-2">
-          <a href={facebook} target="_blank" className="text-blue-500 text-xl">
+          <Link
+            to={facebook}
+            target="_blank"
+            className="text-blue-500 text-xl"
+          >
             <FaFacebookF />
-          </a>
-          <a href={linkedin} target="_blank" className="text-blue-700 dark:bg-white text-xl">
+          </Link>
+          <Link
+            to={linkedin}
+            target="_blank"
+            className="text-blue-700 dark:bg-white text-xl"
+          >
             <FaLinkedin />
-          </a>
-          <a href={github} target="_blank" className="text-gray-800 dark:bg-white text-xl dark:rounded-full">
+          </Link>
+          <Link
+            to={github}
+            target="_blank"
+            className="text-gray-800 dark:bg-white text-xl dark:rounded-full"
+          >
             <FaGithub />
-          </a>
+          </Link>
         </div>
       </div>
     </div>

@@ -28,6 +28,7 @@ const BrowseTasksDetails = () => {
   console.log(user);
   const {
     _id,
+    email,
     country,
     deadline,
     companyName,
@@ -64,6 +65,7 @@ const BrowseTasksDetails = () => {
           name: user?.displayName,
           image: user?.photoURL,
           email: user?.email,
+          instructorEmail: email,
           deadline,
           title,
           companyName,
@@ -79,10 +81,11 @@ const BrowseTasksDetails = () => {
           grading,
           isApplied: true,
           taskId: _id,
+          message: [{ text: `${user?.displayName} is Applied` }],
         };
 
         axios
-          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .post("http://localhost:5000/appliedjob", applyJob)
           .then((response) => {
             if (response.data.acknowledged) {
               setApplied(true);

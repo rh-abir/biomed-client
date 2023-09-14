@@ -23,7 +23,7 @@ const UserTestimonials = () => {
   }
 
   return (
-    <div className="dark:bg-gray-800 bg-[#BBF7D0] py-28">
+    <div className="dark:bg-gray-800 py-28">
       <Container className="dark:bg-gray-800">
         <SectionTitle
           heading={"User Testimonials"}

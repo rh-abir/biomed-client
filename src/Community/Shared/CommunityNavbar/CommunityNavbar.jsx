@@ -79,7 +79,9 @@ const CommunityNavbar = () => {
             </Link>
             <Link
               to={
-                clientRole
+                adminRole
+                  ? "/dashboard/admin-profile"
+                  : clientRole
                   ? "/dashboard/instructor-view"
                   : "/dashboard/my-profile"
               }
@@ -115,7 +117,9 @@ const CommunityNavbar = () => {
           {/* Profile section for large devices */}
           <Link
             to={
-              clientRole
+              adminRole
+                ? "/dashboard/admin-profile"
+                : clientRole
                 ? "/dashboard/instructor-view"
                 : "/dashboard/my-profile"
             }

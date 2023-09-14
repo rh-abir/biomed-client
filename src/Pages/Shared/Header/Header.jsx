@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import { AiOutlineClose } from "react-icons/ai";
 import { FaAlignJustify } from "react-icons/fa";
+import { IoMdNotificationsOutline } from "react-icons/io";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import { becomeClient } from "../../../api/auth";
@@ -10,6 +11,7 @@ import Dark from "../../../components/Dark/Dark";
 import ClientModal from "../../../components/Modal/ClientModal/ClientModal";
 import ProfileDropdown from "../../../components/ProfileDropdown/ProfileDropdown";
 import Container from "../../../components/Shared/Container/Container";
+import useMessageData from "../../../hooks/useMessageData";
 import "./Header.css";
 import MenuItem from "./MenuItem/MenuItem";
 
@@ -49,6 +51,10 @@ const Header = () => {
     };
   }, []);
 
+  const [getApplayMessage, refetch] = useMessageData();
+
+  console.log(getApplayMessage);
+
   return (
     <div
       className={`fixed w-full bg-green-200 z-50 transition-all ease-in-out duration-200 ${
@@ -74,8 +80,22 @@ const Header = () => {
                 </ul>
               </div>
             </div>
+
+            {user && (
+              <div className="">
+                <Link to="/nofication/message">
+                  <div className="relative cursor-pointer">
+                    <IoMdNotificationsOutline className="text-2xl font-bold" />
+                    <span className="absolute bottom-3 -right-2 text-gray-100 z-10 bg-[#4bd674] p-1 w-5 h-5 rounded-full flex items-center justify-center">
+                      {getApplayMessage ? 1 : 0}
+                    </span>
+                  </div>
+                </Link>
+              </div>
+            )}
+
             <div className="hidden xl:flex items-center gap-10">
-              {!(clientRole || adminRole) && (
+              {!(adminRole || clientRole) && (
                 <button
                   onClick={() => setRoleModal(true)}
                   disabled={!user}
