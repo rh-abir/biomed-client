@@ -110,7 +110,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/privacy",
-        element: <Privacy />
+        element: <Privacy />,
       },
       {
         path: "/registerclient",
@@ -186,7 +186,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/leaderboard",
-        element: <LeaderBoard/>,
+        element: <LeaderBoard />,
       },
       {
         path: "/dashboard/applied-tasks",
@@ -273,7 +273,11 @@ const router = createBrowserRouter([
   // Community Routes
   {
     path: "/community",
-    element: <Community />,
+    element: (
+      <PrivateRoute>
+        <Community />
+      </PrivateRoute>
+    ),
     children: [
       {
         path: "/community",
@@ -283,7 +287,7 @@ const router = createBrowserRouter([
         path: "/community/postDetails/:id",
         element: <PostDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/posts/${params.id}`),
+          fetch(`https://biomed-server.vercel.app/posts/${params.id}`),
       },
     ],
   },

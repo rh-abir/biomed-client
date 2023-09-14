@@ -64,7 +64,7 @@ const BrowseTasksDetails = () => {
           name: user?.displayName,
           image: user?.photoURL,
           email: user?.email,
-          instrucurEmail: email,
+          instructorEmail: email,
           deadline,
           title,
           companyName,

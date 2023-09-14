@@ -66,9 +66,9 @@ const FrequentlyAskQuestion = () => {
       <div className="flex justify-end">
         <button
           onClick={() => scroll.scrollToTop({ duration: 500, smooth: true })}
-          className="btn btn-square bg-[#35495E] text-white font-bold hover:bg-gray-800 transition-colors duration-300 transform px-2 pb-1 pt-2 rounded-t-xl"
+          className="m-3 text-center text-2xl text-primary p-2 rounded-full dark:bg-gray-200 bg-gray-800"
         >
-          <FaRegArrowAltCircleUp className="ms-4"></FaRegArrowAltCircleUp>Go-Top
+          <FaRegArrowAltCircleUp></FaRegArrowAltCircleUp>
         </button>
       </div>
     </>

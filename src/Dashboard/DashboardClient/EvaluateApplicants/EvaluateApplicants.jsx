@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { MdOutlineModeEdit } from "react-icons/md";
 import { PiToolboxLight } from "react-icons/pi";
 import { RiDeleteBin6Line } from "react-icons/ri";
@@ -8,12 +8,17 @@ import { useQuery } from "@tanstack/react-query";
 import placeholder from "../../../assets/placeholder.jpg";
 
 import axios from "axios";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const EvaluateApplicants = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user)
   const { data: evaluateTask = [] } = useQuery({
     queryKey: ["evaluateTask"],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/evaluateTasks`);
+      const res = await axios(
+        `http://localhost:5000/evaluateTasks/${user?.email}`
+      );
       return res.data;
     },
   });
@@ -94,7 +99,9 @@ const EvaluateApplicants = () => {
                     <p>October 27, 2017</p>
                     <p>{evaluate.deadline}</p>
                   </td>
-                  <td className="px-6 py-4 text-green-700 text-sm">{evaluate.appliedjobdata.isEvaluate && "Evaluated" }</td>
+                  <td className="px-6 py-4 text-green-700 text-sm">
+                    {evaluate.appliedjobdata.isEvaluate && "Evaluated"}
+                  </td>
                   <td className="px-6 py-4 text-[#1967d2]">
                     <div className="flex gap-3">
                       <RiDeleteBin6Line />

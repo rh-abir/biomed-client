@@ -6,7 +6,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     // Fetch user data from the backend API here
-    fetch('http://localhost:5000/allusers')
+    fetch('https://biomed-server.vercel.app/allusers')
       .then((response) => response.json())
       .then((data) => {
         // Assuming your API response is an array of user objects

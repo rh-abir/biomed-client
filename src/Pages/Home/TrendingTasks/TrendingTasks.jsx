@@ -18,7 +18,7 @@ const TrendingTasks = () => {
   const { isLoading, data: tasks = [] } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
-      const res = await axios("/TrendingTasksData/trendingTasks.json");
+      const res = await axios("https://biomed-server.vercel.app/trendingtask");
       return res.data;
     },
   });

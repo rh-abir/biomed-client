@@ -53,7 +53,7 @@ const SharePostForm = () => {
         image: user?.photoURL,
       };
 
-      const response = await fetch("http://localhost:5000/communityPosts", {
+      const response = await fetch("https://biomed-server.vercel.app/communityPosts", {
         method: "POST",
         headers: {
           "content-type": "application/json",

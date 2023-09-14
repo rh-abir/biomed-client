@@ -7,7 +7,7 @@ const OurTeam = () => {
   const { isLoading, data: teamMembers = [] } = useQuery({
     queryKey: ["teamMembers"],
     queryFn: async () => {
-      const res = await axios("http://localhost:5000/teamMembers");
+      const res = await axios("https://biomed-server.vercel.app/teamMembers");
       return res.data;
     },
   });
@@ -21,7 +21,7 @@ const OurTeam = () => {
   }
   return (
     <>
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
       {reversedTeamMembers.map((teamMember) => (
         <TeamMemberCard key={teamMember._id} teamMember={teamMember} />
       ))}
