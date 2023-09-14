@@ -7,13 +7,14 @@ import { AuthContext } from "../../../../../../Provider/AuthProvider";
 
 const Comments = () => {
   const { register, handleSubmit } = useForm();
-
+  const { user } = useContext(AuthContext);
+  
   const onSubmit = (data) => {
     // Handle form submission logic here
     console.log(data);
   };
 
-  const { user } = useContext(AuthContext);
+  
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile", user?.email],
     queryFn: async () => {

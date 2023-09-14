@@ -24,8 +24,8 @@ import Container from "../../../components/Shared/Container/Container";
 
 const BrowseTasksDetails = () => {
   const shareUrl = window.location.href;
-  const { user } = useContext(AuthContext);
-  console.log(user);
+  const { user, adminRole, clientRole } = useContext(AuthContext);
+  // console.log(user.photoURL);
   const {
     _id,
     email,
@@ -48,6 +48,7 @@ const BrowseTasksDetails = () => {
   console.log(country);
 
   const [applied, setApplied] = useState(false);
+  const isDisabled = adminRole || clientRole;
 
   const handleApply = () => {
     Swal.fire({
@@ -80,7 +81,14 @@ const BrowseTasksDetails = () => {
           grading,
           isApplied: true,
           taskId: _id,
-          message: [{ text: `${user?.displayName} is Applied` }],
+          message: [
+            {
+              displayName: user?.displayName,
+              email: email,
+              photoURL: user?.photoURL,
+              message: `${user?.displayName} is applied`,
+            },
+          ],
         };
 
         axios
@@ -285,16 +293,31 @@ const BrowseTasksDetails = () => {
                 </div>
 
                 <div className="my-5">
-                  <button
-                    disabled={applied}
-                    onClick={handleApply}
-                    className={`bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition  ${
-                      applied &&
-                      "bg-red-300 hover:bg-red-200 cursor-not-allowed"
-                    }`}
-                  >
-                    Apply Now
-                  </button>
+                  {!isDisabled ? (
+                    <button
+                      disabled={applied}
+                      onClick={handleApply}
+                      className={`bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition  ${
+                        applied &&
+                        "bg-red-300 hover:bg-red-200 cursor-not-allowed"
+                      }`}
+                    >
+                      Apply Now
+                    </button>
+                  ) : (
+                    <button
+                      className={`bg-primary block mx-auto text-gray-100 px-8 py-3 rounded-md hover:bg-[#4ca068] transition ${
+                        isDisabled ? "cursor-not-allowed" : ""
+                      }`}
+                      onClick={(e) => {
+                        if (isDisabled) {
+                          e.preventDefault();
+                        }
+                      }}
+                    >
+                      Apply Now
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
