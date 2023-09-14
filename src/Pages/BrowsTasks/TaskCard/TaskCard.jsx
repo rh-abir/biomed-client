@@ -7,6 +7,7 @@ import { MdLocationOn } from "react-icons/md";
 
 import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
 const TaskCard = ({ task }) => {
@@ -17,16 +18,22 @@ const TaskCard = ({ task }) => {
   const BookMarkUserEmail = user?.email;
 
   const {
-    logo,
-    title,
+    industry,
+    date,
     _id,
     country,
-    description,
-    jobType,
-    industry,
-    startDate,
     deadline,
-    date,
+    companyName,
+    description,
+    experience,
+    jobType,
+    logo,
+    thumbnail,
+    skills,
+    startDate,
+    title,
+    attachment,
+    grading,
     appliedCount,
   } = task;
 
@@ -69,6 +76,60 @@ const TaskCard = ({ task }) => {
         }
       });
     }
+  };
+
+  const [applied, setApplied] = useState(false);
+
+  // Apply functionality
+  const handleApply = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, Apply",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const applyJob = {
+          name: user?.displayName,
+          image: user?.photoURL,
+          email: user?.email,
+          deadline,
+          title,
+          companyName,
+          country,
+          description,
+          experience,
+          jobType,
+          logo,
+          thumbnail,
+          skills,
+          startDate,
+          attachment,
+          grading,
+          isApplied: true,
+          taskId: _id,
+        };
+
+        axios
+          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .then((response) => {
+            if (response.data.acknowledged) {
+              setApplied(true);
+              Swal.fire("Applied", "Your are successfully apply.", "success");
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      axios
+        .put(`https://biomed-server.vercel.app/jobs/${_id}/apply`)
+        .then(() => {});
+    });
   };
 
   return (
@@ -142,11 +203,18 @@ const TaskCard = ({ task }) => {
       <div className="line-clamp-3 mb-5">{description}</div>
 
       <div className="mt-auto grid grid-cols-2 gap-5">
-        <Link
+        {!isDisabled ? <Link
+          disabled={applied}
+          onClick={handleApply}
+          className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
+            applied && "bg-red-300 hover:bg-red-200 cursor-not-allowed"
+          }`}
+        >
+          Apply Now
+        </Link> : <div
           className={`flex items-center justify-center bg-[#7566D9] py-3 text-gray-200 rounded-lg ${
             isDisabled ? "cursor-not-allowed" : ""
           }`}
-          to={`/tasksDatail/${_id}`}
           onClick={(e) => {
             if (isDisabled) {
               e.preventDefault();
@@ -154,7 +222,7 @@ const TaskCard = ({ task }) => {
           }}
         >
           Apply Now
-        </Link>
+        </div>}
         <Link
           className={`flex items-center justify-center bg-primary py-3 text-gray-200 rounded-lg ${
             isDisabled ? "cursor-not-allowed" : ""

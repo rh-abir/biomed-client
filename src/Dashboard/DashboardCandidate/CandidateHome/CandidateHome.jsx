@@ -13,7 +13,9 @@ const CandidateHome = () => {
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile"],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/users/${user?.email}`);
+      const res = await axios(
+        `https://biomed-server.vercel.app/users/${user?.email}`
+      );
       return res.data;
     },
   });
@@ -21,14 +23,17 @@ const CandidateHome = () => {
   return (
     <div className="p-6">
       {/* Title Section */}
-      <DashboardTitle title={`Howdy, ${updateData?.name2 || user?.displayName}!`} slogan={"Welcome"}  />
+      <DashboardTitle
+        title={`Howdy, ${updateData?.name2 || user?.displayName}!`}
+        slogan={"Welcome"}
+      />
       {/* Box Section */}
-      <CandidateBox/>
+      <CandidateBox />
 
       {/* Chart Section &  Notification Section */}
       <div className="xl:flex items-start gap-4 w-full">
-        <CandidateProfileViews/>
-        <CandidateNotification/>
+        <CandidateProfileViews />
+        <CandidateNotification />
       </div>
 
       {/* Recent Applicants Section */}

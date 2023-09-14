@@ -28,15 +28,15 @@ const ClientMenu = () => {
           <AiOutlineClose />
         </button>
       </div>
-      <ul className="text-xl">
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+      <ul className="text-xl space-y-2">
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/client-home"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -44,14 +44,14 @@ const ClientMenu = () => {
             <AiOutlineHome /> Dashboard
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/instructor-view"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -59,14 +59,14 @@ const ClientMenu = () => {
             <AiOutlineUser /> Instructor Profile
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/post-task"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -74,14 +74,14 @@ const ClientMenu = () => {
             <CiPaperplane /> Create A New Task
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li>
           <NavLink
             to="/dashboard/manage-task"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -89,14 +89,14 @@ const ClientMenu = () => {
             <PiBagSimpleBold /> Manage Task
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li>
           <NavLink
             to="/dashboard/evaluate-applicants"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -104,14 +104,14 @@ const ClientMenu = () => {
             <IoIosPaper /> Evaluate Applicant
           </NavLink>
         </li>
-        <li className="hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:text-white dark:hover:bg-gray-600">
+        <li>
           <NavLink
             to={"/dashboard/client-message"}
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
                 isActive
-                  ? " border-primary text-primary dark:text-primary dark:hover:text-primary text-xl lg:text-xl"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
