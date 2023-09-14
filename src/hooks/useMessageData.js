@@ -6,7 +6,7 @@ const useMessageData = () => {
   const user = useContext(AuthContext);
   const currentUserEmail = user?.user?.email;
 
-  const { data: getApplayMessage = [], refetch } = useQuery({
+  const { data: getApplyMessage = [], refetch } = useQuery({
     queryKey: ["allApplyJob", currentUserEmail],
     queryFn: async () => {
       const res = await fetch(
@@ -16,7 +16,7 @@ const useMessageData = () => {
     },
   });
 
-  return [getApplayMessage, refetch];
+  return [getApplyMessage, refetch];
 };
 
 export default useMessageData;
