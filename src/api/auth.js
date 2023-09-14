@@ -5,6 +5,7 @@ export const saveUser = (user, updateData) => {
       email: user?.email,
       name: user?.displayName,
       image: user?.photoURL,
+      userRole: true,
       updateData,
     };
 
@@ -35,7 +36,6 @@ export const saveClient = (user, updateData) => {
       image: user?.photoURL,
       updateData,
     };
-
 
     fetch(`https://biomed-server.vercel.app/users/${user?.email}`, {
       method: "PUT",
