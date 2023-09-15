@@ -5,6 +5,7 @@ export const saveUser = (user, updateData) => {
       email: user?.email,
       name: user?.displayName,
       image: user?.photoURL,
+      userRole: true,
       updateData,
     };
 
@@ -35,7 +36,6 @@ export const saveClient = (user, updateData) => {
       image: user?.photoURL,
       updateData,
     };
-
 
     fetch(`https://biomed-server.vercel.app/users/${user?.email}`, {
       method: "PUT",
@@ -93,6 +93,13 @@ export const getAdminRole = async (email) => {
   const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
   const user = await res.json();
   return user?.admin;
+};
+
+// get admin role
+export const getUserRole = async (email) => {
+  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
+  const userRoleGet = await res.json();
+  return userRoleGet?.userRole;
 };
 
 // get client role

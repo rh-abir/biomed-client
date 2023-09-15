@@ -9,7 +9,6 @@ import {
   AiOutlineUnorderedList,
   AiOutlineUser,
 } from "react-icons/ai";
-import { RiMessage2Line } from "react-icons/ri";
 import { VscFeedback } from "react-icons/vsc";
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -124,20 +123,6 @@ const CandidateMenu = () => {
             }
           >
             <AiOutlineHistory /> Task History
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            onClick={() => setDashboardToggle(false)}
-           className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
-                isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
-                  : "text-gray-700"
-              }`
-            }
-          >
-            <RiMessage2Line /> Messages
           </NavLink>
         </li>
         <li>

@@ -13,6 +13,7 @@ import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
 import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTasks";
 import CandidateHome from "../Dashboard/DashboardCandidate/CandidateHome/CandidateHome";
 import Feedback from "../Dashboard/DashboardCandidate/Feedback/Feedback";
+import LeaderBoard from "../Dashboard/DashboardCandidate/LeaderBoard/LeaderBoard";
 import EditProfile from "../Dashboard/DashboardCandidate/MyProfile/EditProfile/EditProfile";
 import MyProfile from "../Dashboard/DashboardCandidate/MyProfile/MyProfile";
 import ShortlistedTasks from "../Dashboard/DashboardCandidate/ShortlistedTasks/ShortlistedTasks";
@@ -44,12 +45,13 @@ import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
-import MessageHome from "../Pages/Messaging/pages/MessageHome";
+import MessageRoot from "../Pages/Messaging/MessageRoot";
+import MessageShow from "../Pages/Messaging/MessageShow/MessageShow";
+import Demo from "../Pages/Messaging/MessageSidebar/UserList/Demo";
+import Privacy from "../Pages/Privacy/Privacy";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
-import Privacy from "../Pages/Privacy/Privacy";
 import PrivateRoute from "./PrivateRoute";
-import LeaderBoard from "../Dashboard/DashboardCandidate/LeaderBoard/LeaderBoard";
 
 const router = createBrowserRouter([
   {
@@ -124,9 +126,24 @@ const router = createBrowserRouter([
         path: "/about-details",
         element: <AboutDetails />,
       },
+      // message route
       {
-        path: "/nofication/message",
-        element: <MessageHome />,
+        path: "/messageroot",
+        element: <MessageRoot />,
+        children: [
+          {
+            path: "/messageroot",
+            element: <MessageShow />,
+            // loader: ({ params }) =>
+            //   fetch(`http://localhost:5000/get/appliedtask/${params.id}`),
+          },
+          {
+            path: "/messageroot/messagedetails/:id",
+            element: <Demo />,
+            // loader: ({ params }) =>
+            //   fetch(`http://localhost:5000/getAppliedById/${params.id}`),
+          },
+        ],
       },
     ],
   },

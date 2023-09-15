@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
-import { getAdminRole, getClientRole } from "../api/auth";
+import { getAdminRole, getClientRole, getUserRole } from "../api/auth";
 import app from "../firebase/firebase.config";
 
 const auth = getAuth(app);
@@ -21,9 +21,12 @@ export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const [getId, setGetid] = useState("");
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [clientRole, setClientRole] = useState(null);
+  const [userRole, setUserRole] = useState(null);
   const [adminRole, setAdminRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
@@ -64,34 +67,38 @@ const AuthProvider = ({ children }) => {
     return sendPasswordResetEmail(auth, email);
   };
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     if(currentUser){
-  //       axios.post('https://biomed-server.vercel.app/jwt', {email: currentUser.email})
-  //       .then(data =>{
-  //           localStorage.setItem('access-token', data.data.token)
-  //           setLoading(false);
-  //       })
-  //   }
-  //     else{
-  //       localStorage.removeItem('access-token')
-  //   }
-  //   });
-  //   return () => {
-  //     return unsubscribe();
-  //   };
-  // }, []);
-
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      setLoading(false);
+      if (currentUser) {
+        axios
+          .post(`${import.meta.env.VITE_BASE_URL}/jwt`, {
+            email: currentUser?.email,
+          })
+          .then((data) => {
+            localStorage.setItem("access-token", data.data.token);
+            console.log(data);
+            setLoading(false);
+          });
+      } else {
+        localStorage.removeItem("access-token");
+        setLoading(false);
+      }
     });
     return () => {
       return unsubscribe();
     };
   }, []);
+
+  // useEffect(() => {
+  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+  //     setUser(currentUser);
+  //     setLoading(false);
+  //   });
+  //   return () => {
+  //     return unsubscribe();
+  //   };
+  // }, []);
 
   // Admin role
   useEffect(() => {
@@ -104,6 +111,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       getClientRole(user?.email).then((data) => setClientRole(data));
+    }
+  }, [user]);
+
+  // user role
+  useEffect(() => {
+    if (user) {
+      getUserRole(user?.email).then((data) => setUserRole(data));
     }
   }, [user]);
 
@@ -150,8 +164,11 @@ const AuthProvider = ({ children }) => {
   }, [searchBlogs]);
 
   const authInfo = {
+    getId,
+    setGetid,
     user,
     loading,
+    userRole,
     adminRole,
     setAdminRole,
     clientRole,

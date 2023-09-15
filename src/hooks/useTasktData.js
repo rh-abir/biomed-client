@@ -5,9 +5,9 @@ import { AuthContext } from "../Provider/AuthProvider";
 const useTasktData = () => {
   const { user, loading } = useContext(AuthContext);
 
-  const currentUserEmail = user.email;
+  const currentUserEmail = user?.email;
 
-  const { data: allApplayJobs = [], refetch } = useQuery({
+  const { data: allApplayJobs = [], refetch, isLoading } = useQuery({
     queryKey: ["allApplyJob", currentUserEmail],
     queryFn: async () => {
       const res = await fetch(
@@ -17,7 +17,7 @@ const useTasktData = () => {
     },
   });
 
-  return [allApplayJobs, refetch, loading];
+  return [allApplayJobs, refetch, loading, isLoading];
 };
 
 export default useTasktData;

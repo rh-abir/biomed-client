@@ -25,7 +25,7 @@ import Container from "../../../components/Shared/Container/Container";
 const BrowseTasksDetails = () => {
   const shareUrl = window.location.href;
   const { user, adminRole, clientRole } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user.photoURL);
   const {
     _id,
     email,
@@ -65,7 +65,7 @@ const BrowseTasksDetails = () => {
           name: user?.displayName,
           image: user?.photoURL,
           email: user?.email,
-          instructorEmail: email,
+          instrucurEmail: email,
           deadline,
           title,
           companyName,
@@ -81,7 +81,14 @@ const BrowseTasksDetails = () => {
           grading,
           isApplied: true,
           taskId: _id,
-          message: [{ text: `${user?.displayName} is Applied` }],
+          message: [
+            {
+              displayName: user?.displayName,
+              email: user.email,
+              photoURL: user?.photoURL,
+              message: `${user?.displayName} is applied`,
+            },
+          ],
         };
 
         axios

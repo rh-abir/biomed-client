@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton"; 
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 const TrendingSlide = ({ task }) => {
   return (
     <div className="border rounded-xl w-full h-[470px] dark:border-gray-700 dark:hover:border-slate-600 flex flex-col">
@@ -19,7 +19,7 @@ const TrendingSlide = ({ task }) => {
           )}
         </SkeletonTheme>
 
-        <Link to="/">
+        <Link to={`/tasksDatail/${task?._id}`}>
           <p className="mb-4 text-xl font-semibold dark:text-gray-300 hover:text-[#5BBB7B] hover:underline duration-300 cursor-pointer">
             {`${task.description.slice(0, 60)}...`}
           </p>
@@ -32,7 +32,11 @@ const TrendingSlide = ({ task }) => {
           {/* CEO Image */}
           <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
             {task.logo ? (
-              <img className="h-8 w-8 rounded-full" src={task.logo} alt="" />
+              <img
+                className="h-8 w-8 rounded-full object-cover"
+                src={task.logo}
+                alt=""
+              />
             ) : (
               <Skeleton circle={true} height={32} width={32} />
             )}
