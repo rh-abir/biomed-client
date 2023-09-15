@@ -84,7 +84,7 @@ const BrowseTasksDetails = () => {
           message: [
             {
               displayName: user?.displayName,
-              email: user?.email,
+              email: user.email,
               photoURL: user?.photoURL,
               message: `${user?.displayName} is applied`,
             },

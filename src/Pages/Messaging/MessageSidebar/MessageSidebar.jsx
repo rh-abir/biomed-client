@@ -1,10 +1,12 @@
 import React from "react";
+import useMessageData from "../../../hooks/useMessageData";
 import MessageSearch from "./MessageSearch/MessageSearch";
 import UserList from "./UserList/UserList";
-import useMessageData from "../../../hooks/useMessageData";
 
 const MessageSidebar = () => {
   const [getApplyMessage] = useMessageData();
+  // console.log(getApplyMessage, "asdn jlsj ");
+
   return (
     <div className="p-5">
       <div>
