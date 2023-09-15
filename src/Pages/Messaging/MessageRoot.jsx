@@ -9,8 +9,8 @@ const MessageRoot = () => {
       <div className="bg-gray-100 py-5 px-5">
         <MessageNavbar />
       </div>
-      <div className="grid grid-cols-8 h-[700px]">
-        <div className="col-span-3 bg-gray-200 ">
+      <div className="grid grid-cols-8 pt-5">
+        <div className="col-span-3 bg-gray-200">
           <MessageSidebar />
         </div>
         <div className="col-span-5 flex flex-col">

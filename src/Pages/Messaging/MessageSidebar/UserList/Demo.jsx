@@ -13,8 +13,10 @@ const Demo = () => {
   const messages = getApplyMessage[0]?.appliedjobdata.message;
 
   return (
-    <div className="flex flex-col justify-center h-screen">
-      <div>
+    <div className="flex flex-col h-full">
+      <div className="h-[700px] overflow-y-scroll">
+        {" "}
+        {/* Added overflow-y-scroll */}
         {messages.map((msg, index) => (
           <TextMessage key={index} msg={msg} />
         ))}
