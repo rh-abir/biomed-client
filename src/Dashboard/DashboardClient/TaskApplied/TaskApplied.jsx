@@ -1,16 +1,17 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 import { Link, useParams } from "react-router-dom";
-import placeholder from "../../../assets/placeholder.jpg";
 import EvaluateModal from "../../../components/Modal/EvaluateModal/EvaluateModal";
 import ProfileModal from "../../../components/Modal/ProfileModal/ProfileModal";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const TaskApplied = () => {
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
-  const { data: applicants = [] } = useQuery({
+  const { data: applicants = [], isLoading } = useQuery({
     queryKey: ["taskApplied"],
     queryFn: async () => {
       const res = await axios(
@@ -19,6 +20,10 @@ const TaskApplied = () => {
       return res.data;
     },
   });
+
+  if(isLoading) {
+    return <h2>Loading...</h2>
+  }
 
   console.log(applicants);
 
@@ -92,7 +97,7 @@ const TaskApplied = () => {
                           src={
                             applicant?.appliedjobdata.image
                               ? applicant?.appliedjobdata.image
-                              : placeholder
+                              : user.photoURL
                           }
                           alt="Job"
                           className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
@@ -110,8 +115,7 @@ const TaskApplied = () => {
                       {applicant?.appliedjobdata.deadline}
                     </td>
                     <td className="py-2 md:py-4">Active</td>
-                    {applicant?.appliedjobdata?.downloadPdf ||
-                    !applicant?.appliedjobdata?.downloadEvaluate ? (
+                    {applicant?.appliedjobdata?.downloadPdf ? (
                       <td className="py-2 md:py-4">
                         <button
                           onClick={() => {

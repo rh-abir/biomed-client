@@ -33,7 +33,7 @@ const Categorys = () => {
         }
       ></SectionTitle>
       <SkeletonTheme color="#e0e0e0" highlightColor="#f0f0f0">
-        <div className="container mx-auto grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 2xl:grid-cols-4 gap-5">
           {isLoading
             ? Array.from({ length: 8 }).map((_, index) => (
                 <div key={index} className='border px-9 py-10 hover:border-slate-600 rounded-md transition'>

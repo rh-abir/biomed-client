@@ -29,7 +29,7 @@ const TrendingTasks = () => {
         heading={"Trending Tasks"}
         text={"Most viewed and all-time top Tasks"}
       />
-      <div className="w-full px-4 mx-auto">
+      <div className="w-full mx-auto">
         <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb"> {/* Customize colors */}
           {isLoading ? (
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">

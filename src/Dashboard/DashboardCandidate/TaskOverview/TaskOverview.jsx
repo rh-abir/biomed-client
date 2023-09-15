@@ -1,12 +1,24 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
 import useTasktData from "../../../hooks/useTasktData";
 import SingleTaskOverview from "./SingleTaskOverview";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import { AuthContext } from "../../../Provider/AuthProvider";
 
 const TaskOverview = () => {
-  const [allApplayJobs, isLoading] = useTasktData();
+  const { user } = useContext(AuthContext);
+  const { data: allApplayJobs = [], refetch } = useQuery({
+    queryKey: ["allApplyJob"],
+    queryFn: async () => {
+      const res = await axios(
+        `https://biomed-server.vercel.app/allApplyJob?email=${user?.email}`
+      );
+      return res.data;
+    },
+  });
 
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
@@ -56,7 +68,6 @@ const TaskOverview = () => {
                   <SingleTaskOverview
                     key={index}
                     client={client}
-                    loading={isLoading}
                   ></SingleTaskOverview>
                 ))}
             </tbody>

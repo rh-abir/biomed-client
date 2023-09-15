@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const useMessageData = () => {
-  const user = useContext(AuthContext);
+  const {user, clietRole} = useContext(AuthContext);
   const currentUserEmail = user?.user?.email;
 
   const { data: getApplyMessage = [], refetch } = useQuery({
