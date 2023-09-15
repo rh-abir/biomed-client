@@ -5,7 +5,8 @@ import React, { Fragment } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 const ProfileModal = ({ closeModal, isOpen, email }) => {
-  const { data: user = {}, refetch } = useQuery({
+  console.log(email)
+  const { data: userData = {}, refetch } = useQuery({
     queryKey: ["user", email],
     queryFn: async () => {
       const res = await axios.get(
@@ -14,6 +15,7 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
       return res.data;
     },
   });
+
 
   // TODO get all user
 
@@ -59,25 +61,25 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
                 >
                   User Profile
                 </Dialog.Title>
-                {user ? (
+                {userData ? (
                   <div className="bg-white p-6 rounded-lg">
                     <div className="flex items-center">
                       <img
-                        src={user?.image}
-                        alt={user?.name}
+                        src={userData?.image}
+                        alt={userData?.name}
                         className="w-16 h-16 rounded-full mr-4"
                       />
                       <div>
-                        <h2 className="text-2xl font-bold">{user?.name}</h2>
-                        <p className="text-gray-600">{user.email}</p>
+                        <h2 className="text-2xl font-bold">{userData?.name}</h2>
+                        <p className="text-gray-600">{userData.email}</p>
                       </div>
                     </div>
 
                     <div className="mt-4">
                       <h3 className="text-xl font-semibold">About Me</h3>
                       <p className="text-gray-700">
-                        {user?.updateData?.description
-                          ? user?.updateData?.description
+                        {userData?.updateData?.description
+                          ? userData?.updateData?.description
                           : "No data"}
                       </p>
                     </div>
@@ -89,41 +91,41 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
                       <ul className="list-disc list-inside text-gray-700">
                         <li>
                           Phone:{" "}
-                          {user?.updateData?.phone
-                            ? user?.updateData?.phone
+                          {userData?.updateData?.phone
+                            ? userData?.updateData?.phone
                             : "01xxx-xxxxxx"}
                         </li>
                         <li>
                           Email:{" "}
-                          {user?.updateData?.email
-                            ? user?.updateData?.email
+                          {userData?.updateData?.email
+                            ? userData?.updateData?.email
                             : "example@gmail.com"}
                         </li>
                         <li>
                           Website:{" "}
                           <a
-                            href={user?.updateData?.website}
+                            href={userData?.updateData?.website}
                             className="text-blue-500"
                           >
-                            {user?.website ? user?.website : "www.exapmle.com"}
+                            {userData?.website ? userData?.website : "www.exapmle.com"}
                           </a>
                         </li>
                         <li>
                           Country:{" "}
-                          {user?.updateData?.country
-                            ? user?.updateData?.country
+                          {userData?.updateData?.country
+                            ? userData?.updateData?.country
                             : "no country  "}
                         </li>
                         <li>
                           City:{" "}
-                          {user?.updateData?.city
-                            ? user?.updateData?.city
+                          {userData?.updateData?.city
+                            ? userData?.updateData?.city
                             : "no city "}
                         </li>
                         <li>
                           Language:{" "}
-                          {user?.updateData?.language
-                            ? user?.updateData?.language
+                          {userData?.updateData?.language
+                            ? userData?.updateData?.language
                             : "no language"}
                         </li>
                       </ul>
@@ -132,8 +134,8 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
                     <div className="mt-4">
                       <h3 className="text-xl font-semibold">Education</h3>
                       <p className="text-gray-700">
-                        {user?.updateData?.education
-                          ? user?.updateData?.education
+                        {userData?.updateData?.education
+                          ? userData?.updateData?.education
                           : "empty "}
                       </p>
                     </div>
@@ -141,17 +143,17 @@ const ProfileModal = ({ closeModal, isOpen, email }) => {
                     {/* Social Media Links */}
                     <div className="mt-4">
                       <h3 className="text-xl font-semibold">Social Media</h3>
-                      {user?.linkedin && (
+                      {userData?.linkedin && (
                         <a
-                          href={user.updateData?.linkedin}
+                          href={userData.updateData?.linkedin}
                           className="text-blue-500 hover:underline block mb-2"
                         >
                           LinkedIn
                         </a>
                       )}
-                      {user?.twitter && (
+                      {userData?.twitter && (
                         <a
-                          href={user?.updateData?.twitter}
+                          href={userData?.updateData?.twitter}
                           className="text-blue-500 hover:underline block mb-2"
                         >
                           Twitter

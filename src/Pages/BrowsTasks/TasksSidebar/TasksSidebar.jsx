@@ -152,7 +152,7 @@ const TasksSidebar = ({ browseJobsData, getData }) => {
           </div>
         </div>
 
-        <div className="space-y-5">
+        {/* <div className="space-y-5">
           <h2 className="mt-5 -mb-3">Date Posted</h2>
           <div className="flex gap-4">
             <input type="checkbox" className="w-[20px]" />
@@ -170,7 +170,7 @@ const TasksSidebar = ({ browseJobsData, getData }) => {
             <input type="checkbox" className="w-[20px]" />
             <label htmlFor="">Past 24 hours</label>
           </div>
-        </div>
+        </div> */}
         <div className="flex gap-5 mt-5">
           <button
             onClick={() => handleClear()}

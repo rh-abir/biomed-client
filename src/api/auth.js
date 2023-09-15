@@ -95,6 +95,13 @@ export const getAdminRole = async (email) => {
   return user?.admin;
 };
 
+// get admin role
+export const getUserRole = async (email) => {
+  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
+  const userRoleGet = await res.json();
+  return userRoleGet?.userRole;
+};
+
 // get client role
 export const getClientRole = async (email) => {
   const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);

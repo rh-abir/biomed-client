@@ -3,12 +3,11 @@ import { FaEye } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import ApplyModal from "../../../components/Modal/ApplyModal/ApplyModal";
 
-const SingleTaskOverview = ({ client, isLoading }) => {
+const SingleTaskOverview = ({ client }) => {
+  console.log(client);
   const [isOpenApply, setIsOpenApply] = useState(false);
 
   console.log();
-
-  
 
   const closeApplyModal = () => {
     setIsOpenApply(false);
@@ -16,7 +15,8 @@ const SingleTaskOverview = ({ client, isLoading }) => {
 
   const { appliedjobdata, _id } = client;
 
-  const { deadline, companyName, logo, image, title, taskId, attachment } = appliedjobdata;
+  const { deadline, companyName, logo, image, title, taskId, attachment } =
+    appliedjobdata;
 
   const showInfoCompany = {
     _id,
@@ -62,7 +62,11 @@ const SingleTaskOverview = ({ client, isLoading }) => {
             </div>
           </td>
           <td className="py-2 md:py-4 ">
-            <Link to={attachment} target="_blank" className="px-3 py-1 rounded-md text-gray-100 hover:bg-hover bg-primary">
+            <Link
+              to={attachment}
+              target="_blank"
+              className="px-3 py-1 rounded-md text-gray-100 hover:bg-hover bg-primary"
+            >
               Download
             </Link>
           </td>

@@ -33,7 +33,7 @@ const CompanyForm = () => {
             <div className="md:flex justify-between items-center">
               <div className="flex flex-col items-center md:flex-row md:space-x-4 space-y-2 md:space-y-0">
                 <img
-                  src={updateData?.image ? updateData?.image : canvas}
+                  src={updateData?.image ? updateData?.image : user?.photoURL}
                   alt="Company Logo"
                   className="w-16 h-16 rounded-full object-cover border"
                 />

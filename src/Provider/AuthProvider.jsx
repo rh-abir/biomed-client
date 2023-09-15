@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
-import { getAdminRole, getClientRole } from "../api/auth";
+import { getAdminRole, getClientRole, getUserRole } from "../api/auth";
 import app from "../firebase/firebase.config";
 
 const auth = getAuth(app);
@@ -26,6 +26,7 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [clientRole, setClientRole] = useState(null);
+  const [userRole, setUserRole] = useState(null);
   const [adminRole, setAdminRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
@@ -111,6 +112,13 @@ const AuthProvider = ({ children }) => {
     }
   }, [user]);
 
+  // user role
+  useEffect(() => {
+    if (user) {
+      getUserRole(user?.email).then((data) => setUserRole(data));
+    }
+  }, [user]);
+
   // Share my profile data
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile"],
@@ -148,6 +156,7 @@ const AuthProvider = ({ children }) => {
     setGetid,
     user,
     loading,
+    userRole,
     adminRole,
     setAdminRole,
     clientRole,
