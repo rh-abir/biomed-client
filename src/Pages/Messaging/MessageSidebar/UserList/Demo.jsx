@@ -1,24 +1,50 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import { AuthContext } from "../../../../Provider/AuthProvider";
-import useMessageData from "../../../../hooks/useMessageData";
+import useMessageShow from "../../../../hooks/useMessageShow";
 import MessageSend from "../../MessageSend/MessageSend";
-import TextMessage from "./TextMessage";
 
 const Demo = () => {
-  const { user } = useContext(AuthContext);
+  const { user, setGetid } = useContext(AuthContext);
 
-  const [getApplyMessage, refetch] = useMessageData();
+  const { id } = useParams();
 
-  console.log(getApplyMessage[0]?.appliedjobdata.message);
-  const messages = getApplyMessage[0]?.appliedjobdata.message;
+  useEffect(() => {
+    setGetid(id);
+  }, [id, setGetid]);
+  // const data = useLoaderData();
+
+  // console.log(data);
+
+  //  const { data: allmessage = [], refetch } = useQuery({
+  //     queryKey: ["appliedtask", id],
+  //     queryFn: async () => {
+  //       const res = await fetch(`http://localhost:5000/getAppliedById/${id}`);
+  //       return res.json();
+  //     },
+  //   });
+
+  const [allmessage, refetch] = useMessageShow(id);
+
+  console.log(allmessage);
+  // // console.log(id);
+
+  const messagess = allmessage?.appliedjobdata?.message;
+  // console.log(data.appliedjobdata.message);
+
+  // const messagess = allmessage?.appliedjobdata?.message;
 
   return (
     <div className="flex flex-col h-full">
       <div className="h-[700px] overflow-y-scroll">
-        {" "}
-        {/* Added overflow-y-scroll */}
-        {messages.map((msg, index) => (
-          <TextMessage key={index} msg={msg} />
+        {messagess?.map((msg, ind) => (
+          <>
+            <div>
+              <h2 className="bg-gray-400 my-5 px-4 py-2 mx-6 border rounded-2xl text-sm inline-block">
+                {msg.message}
+              </h2>
+            </div>
+          </>
         ))}
       </div>
       <div className="mt-auto">
