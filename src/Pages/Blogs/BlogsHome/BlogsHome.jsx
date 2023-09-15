@@ -1,8 +1,8 @@
-import React from "react";
-import BlogCard from "../BlogCard/BlogCard";
 import axios from "axios";
-import { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import BlogCard from "../BlogCard/BlogCard";
 
 const BlogsHome = () => {
   const [blogs, setBlogs] = useState([]);
@@ -11,7 +11,7 @@ const BlogsHome = () => {
   const [pageCount, setPageCount] = useState(0);
   console.log("Page Count", pageCount);
 
-
+  const { searchBlogs, getBlogsData } = useContext(AuthContext);
 
   const getBlogs = async () => {
     const respnse = await axios.get("https://biomed-server.vercel.app/blogs");
@@ -46,8 +46,18 @@ const BlogsHome = () => {
 
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-10 mt-10">
-        {pageData.length > 0 ? (
+      <div className="grid grid-cols-1 lg:grid-cols-2 2xl:grid-cols-3 space-y-6 lg:space-y-0 lg:gap-10 mt-10">
+        {searchBlogs ? (
+          getBlogsData.length > 0 ? (
+            getBlogsData.map((blogItems) => (
+              <BlogCard key={blogItems._id} blogItems={blogItems} />
+            ))
+          ) : (
+            <div className="flex items-center justify-center">
+              <div className="animate-spin rounded-full h-10 w-10 lg:h-20 lg:w-20 border-t-4 border-primary border-solid lg:mt-40 lg:ms-[250px]"></div>
+            </div>
+          )
+        ) : pageData.length > 0 ? (
           pageData.map((blogItems) => (
             <BlogCard key={blogItems._id} blogItems={blogItems} />
           ))
@@ -58,7 +68,7 @@ const BlogsHome = () => {
         )}
       </div>
       {/* Pagination */}
-      <div className="flex items-center justify-end my-8">
+      <div className="flex items-center justify-end mt-20 md:mt-8">
         <nav
           className="relative z-0 inline-flex rounded-md shadow-sm space-x-2"
           aria-label="Pagination"

@@ -13,7 +13,7 @@ const BlogCard = ({ blogItems }) => {
 
   return (
     <Link to={`/blogs/blogDetails/${_id}`}>
-      <div className="mx-auto sm:w-96 h-full bg-black relative hover:ring-4 ring-green-400 rounded-2xl">
+      <div className="mx-auto w-10/12 h-[300px] md:h-full lg:w-full lg:h-[250px] xl:h-full bg-black relative hover:ring-4 ring-green-400 rounded-2xl">
         <div className=" aspect-w-1 aspect-h-1 h-full ">
           <img
             src={thumbnail}
