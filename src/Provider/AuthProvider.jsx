@@ -29,6 +29,8 @@ const AuthProvider = ({ children }) => {
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
   const [searchPosts, setSearchPosts] = useState("");
   const [getPosts, setGetPosts] = useState([]);
+  const [searchBlogs, setSearchBlogs] = useState("");
+  const [getBlogsData, setGetBlogsData] = useState([]);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -127,7 +129,7 @@ const AuthProvider = ({ children }) => {
     },
   });
 
-  // Search Functionality
+  // Search Functionality of Community Posts
   useEffect(() => {
     fetch(`http://localhost:5000/postSearch/${searchPosts}`)
       .then((res) => res.json())
@@ -136,6 +138,16 @@ const AuthProvider = ({ children }) => {
         console.log("search data", data);
       });
   }, [searchPosts]);
+
+  // Search Functionality of Blogs
+  useEffect(() => {
+    fetch(`http://localhost:5000/blogSearch/${searchBlogs}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGetBlogsData(data);
+        console.log("search data", data);
+      });
+  }, [searchBlogs]);
 
   const authInfo = {
     user,
@@ -162,6 +174,10 @@ const AuthProvider = ({ children }) => {
     getPosts,
     // manage jobs single job
     manageJobs,
+    // blogs search
+    searchBlogs,
+    setSearchBlogs,
+    getBlogsData,
   };
 
   return (
