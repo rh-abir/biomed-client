@@ -10,7 +10,7 @@ const RecentApplicants = () => {
     queryKey: ["recentApplication"],
     queryFn: async () => {
       const res = await axios(
-        `http://localhost:5000/recentApplications/${user.email}`
+        `https://biomed-server.vercel.app/recentApplications/${user.email}`
       );
       return res.data;
     },

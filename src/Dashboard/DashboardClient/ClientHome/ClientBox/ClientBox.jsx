@@ -21,7 +21,7 @@ const ClientBox = () => {
     queryKey: ["applicant"],
     queryFn: async () => {
       const res = await axios(
-        `http://localhost:5000/getapplicantemail/${user.email}`
+        `https://biomed-server.vercel.app/getapplicantemail/${user.email}`
       );
       return res.data;
     },

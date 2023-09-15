@@ -135,13 +135,13 @@ const router = createBrowserRouter([
             path: "/messageroot",
             element: <MessageShow />,
             // loader: ({ params }) =>
-            //   fetch(`http://localhost:5000/get/appliedtask/${params.id}`),
+            //   fetch(`https://biomed-server.vercel.app/get/appliedtask/${params.id}`),
           },
           {
             path: "/messageroot/messagedetails/:id",
             element: <Demo />,
             // loader: ({ params }) =>
-            //   fetch(`http://localhost:5000/getAppliedById/${params.id}`),
+            //   fetch(`https://biomed-server.vercel.app/getAppliedById/${params.id}`),
           },
         ],
       },

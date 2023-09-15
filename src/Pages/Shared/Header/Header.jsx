@@ -81,20 +81,19 @@ const Header = () => {
               </div>
             </div>
 
-            {user && (
-              <div className="">
-                <Link to="/messageroot">
-                  <div className="relative cursor-pointer">
-                    <IoMdNotificationsOutline className="text-2xl font-bold" />
-                    <span className="absolute bottom-3 -right-2 text-gray-100 z-10 bg-[#4bd674] p-1 w-5 h-5 rounded-full flex items-center justify-center">
-                      {getApplayMessage ? 1 : 0}
-                    </span>
-                  </div>
-                </Link>
-              </div>
-            )}
-
             <div className="hidden xl:flex items-center gap-10">
+              {user && (
+                <div className="">
+                  <Link to="/messageroot">
+                    <div className="relative cursor-pointer">
+                      <IoMdNotificationsOutline className="text-2xl font-bold" />
+                      <span className="absolute bottom-3 -right-2 text-gray-100 z-10 bg-[#4bd674] p-1 w-5 h-5 rounded-full flex items-center justify-center">
+                        {getApplayMessage ? 1 : 0}
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              )}
               {!(adminRole || clientRole) && (
                 <button
                   onClick={() => setRoleModal(true)}
@@ -159,6 +158,18 @@ const Header = () => {
               <Dark />
             </div>
             <div className="flex xl:hidden flex-col items-center gap-10">
+              {user && (
+                <div className="">
+                  <Link to="/messageroot">
+                    <div className="relative cursor-pointer">
+                      <IoMdNotificationsOutline className="text-2xl font-bold" />
+                      <span className="absolute bottom-3 -right-2 text-gray-100 z-10 bg-[#4bd674] p-1 w-5 h-5 rounded-full flex items-center justify-center">
+                        {getApplayMessage ? 1 : 0}
+                      </span>
+                    </div>
+                  </Link>
+                </div>
+              )}
               {!clientRole && (
                 <button
                   onClick={() => setRoleModal(true)}
