@@ -1,40 +1,39 @@
-import axios from "axios";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
-import { useEffect } from "react";
-
+import axios from "axios";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://biomed-server.vercel.app',
+  baseURL: `${import.meta.env.VITE_BASE_URL}`,
 });
 
-const useAxiosSecure = () => {
-    const { logOut } = useContext(AuthContext);
-    const navigate = useNavigate();
+export const useAxiosSecure = () => {
+  const navigate = useNavigate();
+  const { logoutUser } = useContext(AuthContext);
 
-    useEffect(() => {
-        axiosSecure.interceptors.request.use((config) => {
-            const token = localStorage.getItem('access-token');
-            if (token) {
-                config.headers.Authorization = `Bearer ${token}`;
-            }
-            return config;
-        });
+  useEffect(() => {
+    axiosSecure.interceptors.request.use((config) => {
+      const token = `Bearer ${localStorage.getItem("access-token")}`;
+      if (token) {
+        config.headers.Authorization = token;
+      }
+      return config;
+    });
 
-        axiosSecure.interceptors.response.use(
-            (response) => response,
-            async (error) => {
-                if (error.response && (error.response.status === 401 || error.response.status === 403)) {
-                    await logOut();
-                    navigate('/login');
-                }
-                return Promise.reject(error);
-            }
-        );
-    }, [logOut, navigate]);
+    axiosSecure.interceptors.response.use(
+      (response) => response,
+      async (error) => {
+        if (
+          (error.response && error.response.status === 403) ||
+          error.response.status === 401
+        ) {
+          await logoutUser();
+          navigate("/login");
+        }
+        return Promise.reject(error);
+      }
+    );
+  }, [logoutUser, navigate]);
 
-    return [axiosSecure];
+  return [axiosSecure];
 };
-
-export default useAxiosSecure;

@@ -15,7 +15,7 @@ const RecentJob = () => {
       <Container>
         <div>
           <SectionTitle
-            heading="Most Recent Job Listing"
+            heading="Recent Tasks Listing"
             text="“Required Skills” is one of the most-used job description sections."
           ></SectionTitle>
         </div>

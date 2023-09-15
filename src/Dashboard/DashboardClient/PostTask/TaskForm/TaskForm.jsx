@@ -8,10 +8,12 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { storage } from "../../../../firebase/firebase.config";
 import LoaderAdvanced from "../../../../components/Loader/LoaderAdvanced";
+import { useAxiosSecure } from "../../../../components/hook/useAxiosSecure";
 
 const imageToken = import.meta.env.VITE_UPLOAD_TOKEN;
 
 const TaskForm = () => {
+  const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
   const [skillOptions, setSkillOptions] = useState(null);
@@ -140,18 +142,16 @@ const TaskForm = () => {
             attachment: downloadUrl,
             date: new Date(),
           };
-          axios
-            .post("https://biomed-server.vercel.app/jobs", currentData)
-            .then((data) => {
-              if (data.data.insertedId) {
-                reset();
-                toast.success("Successfully Added Job");
-                setLoading(false);
-              } else {
-                toast.error("Task Added failed");
-                setLoading(false);
-              }
-            });
+          axiosSecure.post(`/jobs`, currentData).then((data) => {
+            if (data.data.insertedId) {
+              reset();
+              toast.success("Successfully Added Job");
+              setLoading(false);
+            } else {
+              toast.error("Task Added failed");
+              setLoading(false);
+            }
+          });
         });
       });
     });

@@ -6,7 +6,7 @@ import useTasktData from "../../../hooks/useTasktData";
 import SingleTaskOverview from "./SingleTaskOverview";
 
 const TaskOverview = () => {
-  const [allApplayJobs] = useTasktData();
+  const [allApplayJobs, isLoading] = useTasktData();
 
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
@@ -44,6 +44,9 @@ const TaskOverview = () => {
                 <th className="py-3 md:py-5 text-left text-base md:text-sm">
                   Preview Application
                 </th>
+                <th className="py-3 md:py-5 text-left text-base md:text-sm">
+                  Download Attachment
+                </th>
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
@@ -53,6 +56,7 @@ const TaskOverview = () => {
                   <SingleTaskOverview
                     key={index}
                     client={client}
+                    loading={isLoading}
                   ></SingleTaskOverview>
                 ))}
             </tbody>

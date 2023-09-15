@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { AiOutlineClose, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
 import {
-  BsFillPeopleFill,
   BsFillSignpostFill,
   BsMicrosoftTeams,
 } from "react-icons/bs";
@@ -89,21 +88,6 @@ const AdminMenu = () => {
             }
           >
             <HiOutlineUsers /> All Clients
-          </NavLink>
-        </li>
-        <li >
-          <NavLink
-            to="/dashboard/all-moderator"
-            onClick={() => setDashboardToggle(false)}
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
-                isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
-                  : "text-gray-700"
-              }`
-            }
-          >
-            <BsFillPeopleFill /> All Moderator
           </NavLink>
         </li>
         <li >
