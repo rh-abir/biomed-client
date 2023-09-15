@@ -143,7 +143,7 @@ const AuthProvider = ({ children }) => {
 
   // Search Functionality
   useEffect(() => {
-    fetch(`http://localhost:5000/postSearch/${searchPosts}`)
+    fetch(`https://biomed-server.vercel.app/postSearch/${searchPosts}`)
       .then((res) => res.json())
       .then((data) => {
         setGetPosts(data);

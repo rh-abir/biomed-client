@@ -4,7 +4,7 @@ const useMessageShow = (id) => {
   const { data: allmessage = [], refetch } = useQuery({
     queryKey: ["appliedtask", id],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:5000/getAppliedById/${id}`);
+      const res = await fetch(`https://biomed-server.vercel.app/getAppliedById/${id}`);
       return res.json();
     },
   });
