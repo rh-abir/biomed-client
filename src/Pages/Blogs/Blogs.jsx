@@ -8,7 +8,7 @@ import Container from "../../components/Shared/Container/Container";
 import BlogLatest from "./BlogLatest/BlogLatest";
 
 const Blogs = () => {
-  const {  setSearchBlogs, searchBlogs, getBlogsData } = useContext(AuthContext);
+  const {  setSearchBlogs } = useContext(AuthContext);
 
   const { data: bloglatest = [] } = useQuery({
     queryKey: ["blogLatest"],
@@ -37,11 +37,7 @@ const Blogs = () => {
             <div>
               <h2 className="font-semibold mb-5 text-xl">Latest Blog</h2>
               <div className="flex flex-col gap-8">
-                {searchBlogs
-                  ? getBlogsData.map((blog) => (
-                      <BlogLatest key={blog._id} data={blog} />
-                    ))
-                  : bloglatest.map((blog) => (
+                {bloglatest.map((blog) => (
                       <BlogLatest key={blog._id} data={blog} />
                     ))}
               </div>
