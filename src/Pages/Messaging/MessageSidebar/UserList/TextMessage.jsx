@@ -1,11 +1,6 @@
-import React, { useContext } from "react";
-import { AuthContext } from "../../../../Provider/AuthProvider";
+import React from "react";
 
 const TextMessage = ({ msg }) => {
-  const { user } = useContext(AuthContext);
-
-  console.log(msg?.email === user?.email);
-
   return (
     <div>
       <h2 className="bg-gray-400 my-5 px-4 py-2 mx-6 border rounded-2xl text-sm inline-block">

@@ -21,6 +21,8 @@ export const AuthContext = createContext(null);
 const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+  const [getId, setGetid] = useState("");
+
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [clientRole, setClientRole] = useState(null);
@@ -142,6 +144,8 @@ const AuthProvider = ({ children }) => {
   }, [searchPosts]);
 
   const authInfo = {
+    getId,
+    setGetid,
     user,
     loading,
     adminRole,

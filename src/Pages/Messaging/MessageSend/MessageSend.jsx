@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import useMessageData from "../../../hooks/useMessageData";
+import useMessageShow from "../../../hooks/useMessageShow";
 
 const MessageSend = () => {
-  const { user } = useContext(AuthContext);
+  const { user, getId } = useContext(AuthContext);
 
-  const [getApplyMessage, refetch] = useMessageData();
-  const { _id } = getApplyMessage[0];
-  // console.log(_id);
+  console.log(getId);
+
+  const [allmessage, refetch] = useMessageShow(getId);
+  console.log(allmessage);
 
   const { displayName, email, photoURL } = user;
 
-  // console.log(user);
+  // // console.log(user);
 
   const handleSendMessage = async (e) => {
     e.preventDefault();
@@ -20,7 +21,7 @@ const MessageSend = () => {
 
     const messageData = { displayName, email, photoURL, message };
 
-    fetch(`http://localhost:5000/put/appliedtask/${_id}`, {
+    fetch(`http://localhost:5000/put/appliedtask/${getId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -30,7 +31,6 @@ const MessageSend = () => {
       .then((res) => res.json())
       .then((data) => {
         refetch();
-        message.reset();
       });
   };
 
