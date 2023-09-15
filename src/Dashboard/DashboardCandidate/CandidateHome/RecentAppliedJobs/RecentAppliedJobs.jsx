@@ -8,7 +8,7 @@ const RecentAppliedJobs = () => {
   const { isLoading, data: appliedJobs = [] } = useQuery({
     queryKey: ["appliedJobs"],
     queryFn: async () => {
-      const res = await axios("/candidateJobs/candidateJobs.json");
+      const res = await axios("https://biomed-server.vercel.app/recenttask");
       return res.data;
     },
   });
@@ -18,7 +18,7 @@ const RecentAppliedJobs = () => {
   }
   return (
     <div className="mt-8 dark:bg-gray-800  bg-white rounded-lg p-8 shadow-sm">
-      <h3 className="text-xl font-semibold mb-3">Recent Applicants</h3>
+      <h3 className="text-xl font-semibold mb-3">Recent Tasks</h3>
       <div className="grid md:grid-cols-2 md:gap-6">
         {appliedJobs?.map((appliedJob) => (
           <AppliedJobCard key={appliedJob._id} appliedJob={appliedJob} />
