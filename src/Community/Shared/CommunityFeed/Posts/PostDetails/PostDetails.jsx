@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
 import canva from "../../../../../assets/placeholder.jpg";
@@ -6,15 +6,8 @@ import PostDropdown from "../PostDropdown/PostDropdown";
 import "./PostDetails.css";
 
 const PostDetails = () => {
-  const [like, setLike] = useState(0);
-  const [isLiked, setIsLiked] = useState(false);
   const { user } = useContext(AuthContext);
 
-  //   likeHandler
-  const likeHandler = () => {
-    setLike(isLiked ? like - 1 : like + 1);
-    setIsLiked(!isLiked);
-  };
 
   const { name, email, image, photo, title, desc, _id } = useLoaderData();
   return (

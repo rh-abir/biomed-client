@@ -2,17 +2,17 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext } from "react";
 import { AiOutlineHeart } from "react-icons/ai";
-import { GrMoreVertical } from "react-icons/gr";
 import { Link } from "react-router-dom";
 import { Tooltip as ReactTooltip } from "react-tooltip";
 import { AuthContext } from "../../../../Provider/AuthProvider";
 import canvas from "../../../../assets/placeholder.jpg";
+import PostDropdown from "./PostDropdown/PostDropdown";
 import "./Posts.css";
 
 const Posts = () => {
   const { user, clientRole, getPosts, searchPosts } = useContext(AuthContext);
   console.log("Post component", getPosts);
-  //likeHandler
+  // const { photo, title, desc, _id } = useLoaderData();
 
   const { isLoading, data: posts = [] } = useQuery({
     queryKey: ["posts"],
@@ -68,23 +68,26 @@ const Posts = () => {
                       </Link>
                     </div>
                     <div className="flex items-center justify-center">
-                      <Link to={`/community/postDetails/${post?._id}`}>
-                        {user?.email === post?.email && (
-                          <>
-                            <div className="postTopRight">
-                              <GrMoreVertical
-                                className="text-xl cursor-pointer"
-                                data-tooltip-id="tooltip-1"
-                              />
-                            </div>
-                            <ReactTooltip
-                              id="tooltip-1"
-                              place="left"
-                              content="View Details"
+                      {user?.email === post?.email && (
+                        <>
+                          <div
+                            className="postTopRight"
+                            data-tooltip-id="tooltip-1"
+                          >
+                            <PostDropdown
+                              postId={post?._id}
+                              photo={post?.photo}
+                              title={post?.title}
+                              desc={post?.desc}
                             />
-                          </>
-                        )}
-                      </Link>
+                          </div>
+                          <ReactTooltip
+                            id="tooltip-1"
+                            place="left"
+                            content="View Details"
+                          />
+                        </>
+                      )}
 
                       <div
                         className="text-sm md:text-lg mx-2 font-semibold"
@@ -101,11 +104,11 @@ const Posts = () => {
                   </div>
                   <div className="flex flex-col md:flex-row py-4 px-1 gap-4">
                     <img
-                      className="w-full md:w-40 md:h-36 object-cover rounded-md"
+                      className="w-full md:w-[350px] md:h-[200px] rounded-md"
                       src={post.photo ? post.photo : "No image found"}
                       alt="Post Image"
                     />
-                    <span className="postText">
+                    <span className="postText w-32">
                       {post.desc && post.desc.length > 50 ? (
                         <>
                           {post.desc.slice(0, 500)}...
@@ -156,13 +159,17 @@ const Posts = () => {
                     </Link>
                   </div>
                   <div className="flex items-center justify-center">
-                    <Link to={`/community/postDetails/${post?._id}`}>
-                      {user?.email === post?.email && (
-                        <>
-                        <div className="postTopRight">
-                          <GrMoreVertical
-                            className="text-xl cursor-pointer"
-                            data-tooltip-id="tooltip-1"
+                    {user?.email === post?.email && (
+                      <>
+                        <div
+                          className="postTopRight"
+                          data-tooltip-id="tooltip-1"
+                        >
+                          <PostDropdown
+                             postId={post?._id}
+                             photo={post?.photo}
+                             title={post?.title}
+                             desc={post?.desc}
                           />
                         </div>
                         <ReactTooltip
@@ -171,9 +178,7 @@ const Posts = () => {
                           content="View Details"
                         />
                       </>
-                      )}
-                    </Link>
-
+                    )}
                     <div
                       className="text-sm md:text-lg mx-2 font-semibold"
                       data-tooltip-id="tooltip-2"
@@ -188,13 +193,13 @@ const Posts = () => {
                   </div>
                 </div>
                 <Link to={`/community/postDetails/${post?._id}`}>
-                  <div className="flex flex-col md:flex-row py-4 px-1 gap-4">
+                  <div className="md:grid grid-cols-5 py-4 px-1 gap-4">
                     <img
-                      className="w-full md:w-40 md:h-36 object-cover rounded-md"
+                      className="w-full rounded-md col-span-2 h-60 object-cover"
                       src={post.photo ? post.photo : "No image found"}
                       alt="Post Image"
                     />
-                    <span className="postText">
+                    <span className="postText col-span-3">
                       {post.desc && post.desc.length > 50 ? (
                         <>
                           {post.desc.slice(0, 500)}...
