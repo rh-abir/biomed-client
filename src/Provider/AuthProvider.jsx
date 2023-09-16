@@ -35,6 +35,8 @@ const AuthProvider = ({ children }) => {
   const [getPosts, setGetPosts] = useState([]);
   const [searchBlogs, setSearchBlogs] = useState("");
   const [getBlogsData, setGetBlogsData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [tab, setTab] = useState("");
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -144,6 +146,7 @@ const AuthProvider = ({ children }) => {
     },
   });
 
+
   // Search Functionality of Community Posts
   useEffect(() => {
     fetch(`http://localhost:5000/postSearch/${searchPosts}`)
@@ -153,6 +156,15 @@ const AuthProvider = ({ children }) => {
         console.log("search data", data);
       });
   }, [searchPosts]);
+
+  // Category Functionality of Community Posts
+  useEffect(() => {
+    fetch(`http://localhost:5000/categories/${tab}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      });
+  }, [tab]);
 
   // Search Functionality of Blogs
   useEffect(() => {
@@ -189,6 +201,7 @@ const AuthProvider = ({ children }) => {
     setCommunitySidebarToggle,
     // my profile data sharing
     myProfileData,
+    // posts searching
     searchPosts,
     setSearchPosts,
     getPosts,
@@ -198,6 +211,10 @@ const AuthProvider = ({ children }) => {
     searchBlogs,
     setSearchBlogs,
     getBlogsData,
+    // post category
+    tab,
+    setTab,
+    categories,
   };
 
   return (
