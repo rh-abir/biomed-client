@@ -50,6 +50,7 @@ import MessageShow from "../Pages/Messaging/MessageShow/MessageShow";
 import Demo from "../Pages/Messaging/MessageSidebar/UserList/Demo";
 import Privacy from "../Pages/Privacy/Privacy";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
+import SpecificCategoryLayout from "../Pages/SpecificCategory/SpecificCategoryLayout";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 
@@ -102,9 +103,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/specificCategory/:title",
-        element: <SpecificCategory />,
-        loader: ({ params }) =>
-          fetch(`/categorysData/categorys.json/${params.title}`),
+        element: <SpecificCategoryLayout />,
+        children: [
+          {
+            path: "/specificCategory/:title",
+            element: <SpecificCategory />,
+            loader: ({ params }) =>
+              fetch(`/categorysData/categorys.json/${params.title}`),
+          },
+        ],
       },
       {
         path: "/terms",

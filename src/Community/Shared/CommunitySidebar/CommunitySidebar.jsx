@@ -1,9 +1,9 @@
-import { useQuery } from "@tanstack/react-query";
-import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
+import { AiOutlineClose } from "react-icons/ai";
 import { BiBriefcase, BiSolidMessageDetail } from "react-icons/bi";
 import { MdOutlineContentCopy, MdRssFeed } from "react-icons/md";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Provider/AuthProvider";
 import "./CommunitySidebar.css";
 
 // Sidebar Items Data
@@ -31,17 +31,19 @@ const sidebarItems = [
 ];
 
 const CommunitySidebar = () => {
-  const { data: allUsers = [], refetch } = useQuery({
-    queryKey: ["allUsers"],
-    queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/allusers");
-      return res.data;
-    },
-  });
+  const {setCommunitySidebarToggle}=useContext(AuthContext)
 
   return (
-    <div className="leftSidebar">
-      <div className="sidebarWrapper">
+    <div className="rightSidebar">
+      <div className="flex justify-start p-4 lg:hidden">
+        <button
+          className="bg-primary p-2 rounded-full text-white hover:bg-hover mb-3"
+          onClick={() => setCommunitySidebarToggle(false)}
+        >
+          <AiOutlineClose />
+        </button>
+      </div>
+      <div className="px-5 pb-5 lg:p-5">
         {/* Sidebar Category */}
         <h3 className="mb-4 text-lg font-semibold">Category</h3>
         <div className="sidebarList">
@@ -54,17 +56,6 @@ const CommunitySidebar = () => {
             </Link>
           ))}
         </div>
-        <hr className="sidebarHr" />
-        {/* Sidebar Friends */}
-         <h3 className="mb-4 text-lg font-semibold">Users</h3>
-        <ul className="space-y-4">
-          {allUsers?.map((user) => (
-            <li key={user._id} className="flex items-center cursor-pointer">
-              <img src={user.image} alt="" className="sidebarFriendImg" />
-              <span className="text-lg">{user.name}</span>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

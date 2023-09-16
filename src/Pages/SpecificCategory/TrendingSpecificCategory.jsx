@@ -9,7 +9,7 @@ const TrendingSpecificCategory = ({ task }) => {
         src={task.logo}
         alt="latest-blog-thumbnail"
       />
-
+ 
       <div>
         <Link
           to={`/tasksDatail/${task?._id}`}

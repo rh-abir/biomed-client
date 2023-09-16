@@ -42,13 +42,12 @@ const PostDetails = () => {
         )}
       </div>
       <div className="px-4 py-2">
-        <div className="text-sm md:text-lg font-semibold md:hidden">
+        <div className="text-sm md:text-lg font-semibold md:hidden pb-2">
           {title}
         </div>
-        <p className="text-sm md:text-lg">{desc}</p>
+        <p className="text-sm md:text-lg xl:text-xl">{desc}</p>
       </div>
-
-      <img className="w-11/12 mx-auto pt-10" src={photo} alt="Posted Image" />
+      <img className="w-11/12 mx-auto pb-3 md:pb-6 xl:pb-8" src={photo} alt="Posted Image" />
     </div>
   );
 };

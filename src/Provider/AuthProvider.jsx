@@ -30,6 +30,7 @@ const AuthProvider = ({ children }) => {
   const [adminRole, setAdminRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
+  const [communitySidebarToggle, setCommunitySidebarToggle] = useState(false);
   const [searchPosts, setSearchPosts] = useState("");
   const [getPosts, setGetPosts] = useState([]);
   const [searchBlogs, setSearchBlogs] = useState("");
@@ -175,6 +176,7 @@ const AuthProvider = ({ children }) => {
     setClientRole,
     dashboardToggle,
     tasksSidebarToggle,
+    communitySidebarToggle,
     setLoading,
     createUser,
     loginUser,
@@ -184,6 +186,7 @@ const AuthProvider = ({ children }) => {
     googleLoginUser,
     setDashboardToggle,
     setTasksSidebarToggle,
+    setCommunitySidebarToggle,
     // my profile data sharing
     myProfileData,
     searchPosts,

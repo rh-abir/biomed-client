@@ -102,23 +102,25 @@ const Posts = () => {
                       />
                     </div>
                   </div>
-                  <div className="flex flex-col md:flex-row py-4 px-1 gap-4">
-                    <img
-                      className="w-full md:w-[350px] md:h-[200px] rounded-md"
-                      src={post.photo ? post.photo : "No image found"}
-                      alt="Post Image"
-                    />
-                    <span className="postText w-32">
-                      {post.desc && post.desc.length > 50 ? (
-                        <>
-                          {post.desc.slice(0, 500)}...
-                          <button className="font-semibold">See more</button>
-                        </>
-                      ) : (
-                        post.desc
-                      )}
-                    </span>
-                  </div>
+                  <Link to={`/community/postDetails/${post?._id}`}>
+                    <div className="md:grid grid-cols-5 py-4 px-1 gap-4">
+                      <img
+                        className="w-full rounded-md col-span-2 h-60 object-cover"
+                        src={post.photo ? post.photo : "No image found"}
+                        alt="Post Image"
+                      />
+                      <span className="postText col-span-3">
+                        {post.desc && post.desc.length > 50 ? (
+                          <>
+                            {post.desc.slice(0, 500)}...
+                            <button className="font-semibold">See more</button>
+                          </>
+                        ) : (
+                          post.desc
+                        )}
+                      </span>
+                    </div>
+                  </Link>
                 </div>
               </Link>
             </div>
@@ -152,7 +154,7 @@ const Posts = () => {
                           {post?.name ? post?.name : "Unknown User"}
                         </div>
 
-                        <div className="text-sm md:text-lg mx-2 font-semibold">
+                        <div className="text-sm md:text-lg mx-2 font-semibold hidden md:block">
                           {post.title}
                         </div>
                       </div>
@@ -166,10 +168,10 @@ const Posts = () => {
                           data-tooltip-id="tooltip-1"
                         >
                           <PostDropdown
-                             postId={post?._id}
-                             photo={post?.photo}
-                             title={post?.title}
-                             desc={post?.desc}
+                            postId={post?._id}
+                            photo={post?.photo}
+                            title={post?.title}
+                            desc={post?.desc}
                           />
                         </div>
                         <ReactTooltip
@@ -192,17 +194,21 @@ const Posts = () => {
                     />
                   </div>
                 </div>
+                {/* title for mobile device */}
+                <div className="text-sm md:text-lg mx-2 font-semibold md:hidden">
+                  {post.title}
+                </div>
                 <Link to={`/community/postDetails/${post?._id}`}>
                   <div className="md:grid grid-cols-5 py-4 px-1 gap-4">
                     <img
-                      className="w-full rounded-md col-span-2 h-60 object-cover"
+                      className="w-full rounded-md col-span-2 h-52 lg:h-52 object-cover mb-2 md:mb-0"
                       src={post.photo ? post.photo : "No image found"}
                       alt="Post Image"
                     />
-                    <span className="postText col-span-3">
+                    <span className="col-span-3 text-sm md:text-base xl:text-lg">
                       {post.desc && post.desc.length > 50 ? (
                         <>
-                          {post.desc.slice(0, 500)}...
+                          {post.desc.slice(0, 450)}...
                           <button className="font-semibold">See more</button>
                         </>
                       ) : (
