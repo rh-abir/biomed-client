@@ -1,11 +1,8 @@
 import React, { useContext, useState } from "react";
-import { BiLike, BiSolidLike } from "react-icons/bi";
-import { GoComment } from "react-icons/go";
 import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../../../Provider/AuthProvider";
 import canva from "../../../../../assets/placeholder.jpg";
 import PostDropdown from "../PostDropdown/PostDropdown";
-import Comments from "./Comments/Comments";
 import "./PostDetails.css";
 
 const PostDetails = () => {
@@ -59,38 +56,6 @@ const PostDetails = () => {
       </div>
 
       <img className="w-11/12 mx-auto pt-10" src={photo} alt="Posted Image" />
-      <div className="flex items-center justify-between pt-3 px-4">
-        <div className="flex items-center">
-          <BiSolidLike className="text-xs md:text-2xl lg:text-xl text-blue-700 cursor-pointer" />
-          <span className="text-xs md:text-base lg:text-sm ms-1 flex items-center gap-2">
-            {like ? like : 0} <span>people like it</span>
-          </span>
-        </div>
-      </div>
-      <hr className="postHr" />
-      <div className="flex items-center justify-between pt-3 px-4">
-        <button
-          onClick={likeHandler}
-          className="flex items-center gap-1 text-sm md:text-lg cursor-pointer"
-        >
-          {isLiked ? (
-            <BiSolidLike className="text-xl text-blue-700 cursor-pointer" />
-          ) : (
-            <BiLike className="md:text-xl" />
-          )}
-          <span className="text-sm">Like</span>
-        </button>
-        <div
-          id="comment"
-          className="flex items-center gap-1 text-sm md:text-lg cursor-pointer"
-        >
-          <GoComment className="md:text-xl" />
-          <span className="text-sm">Comment</span>
-        </div>
-      </div>
-      <hr className="postHr" />
-      {/* comments component */}
-      <Comments />
     </div>
   );
 };

@@ -120,14 +120,21 @@ const SharePostForm = () => {
                 {...register("email")}
               />
             </div>
+            <div className="flex justify-around gap-4">
             <div>
               <input
                 className="border-b-2 w-11/12 md:w-full focus:outline-none px-1 pt-1"
                 placeholder="Title"
-                rows={3}
-                cols={20}
                 {...register("title")}
               />
+            </div>
+            <div>
+              <input
+                className="border-b-2 w-11/12 md:w-full focus:outline-none px-1 pt-1"
+                placeholder="Type"
+                {...register("category")}
+              />
+            </div>
             </div>
           </div>
           <textarea
