@@ -52,6 +52,8 @@ import Privacy from "../Pages/Privacy/Privacy";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import TaskForm from "../Dashboard/DashboardClient/TaskForm/TaskForm";
+import CreateForm from "../Dashboard/DashboardClient/TaskForm/CraeteForm/CreateForm";
 
 const router = createBrowserRouter([
   {
@@ -145,6 +147,15 @@ const router = createBrowserRouter([
           },
         ],
       },
+      // task form
+      {
+        path: "/task-form",
+        element: <TaskForm />
+      },
+      {
+        path: "/create-form",
+        element: <CreateForm />
+      }
     ],
   },
   {

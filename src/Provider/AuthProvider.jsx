@@ -155,7 +155,7 @@ const AuthProvider = ({ children }) => {
 
   // Search Functionality of Blogs
   useEffect(() => {
-    fetch(`http://localhost:5000/blogSearch/${searchBlogs}`)
+    fetch(`https://biomed-server.vercel.app/blogSearch/${searchBlogs}`)
       .then((res) => res.json())
       .then((data) => {
         setGetBlogsData(data);
