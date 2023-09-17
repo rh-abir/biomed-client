@@ -94,7 +94,7 @@ const CheckoutForm = ({ price }) => {
             );
 
             axios
-              .put(`http://localhost:5000/users/${user?.email}`, {
+              .put(`https://biomed-server.vercel.app/users/${user?.email}`, {
                 paid: true,
               })
               .then((res) => {
