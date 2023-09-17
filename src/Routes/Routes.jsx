@@ -54,6 +54,7 @@ import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 import TaskForm from "../Dashboard/DashboardClient/TaskForm/TaskForm";
 import CreateForm from "../Dashboard/DashboardClient/TaskForm/CraeteForm/CreateForm";
+import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 
 const router = createBrowserRouter([
   {
@@ -150,12 +151,16 @@ const router = createBrowserRouter([
       // task form
       {
         path: "/task-form",
-        element: <TaskForm />
+        element: <TaskForm />,
       },
       {
         path: "/create-form",
-        element: <CreateForm />
-      }
+        element: <CreateForm />,
+      },
+      {
+        path: "/payment-page",
+        element: <PaymentPage />,
+      },
     ],
   },
   {

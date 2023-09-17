@@ -7,12 +7,15 @@ import { AuthContext } from "../../../../Provider/AuthProvider";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 } from "uuid";
 import { storage } from "../../../../firebase/firebase.config";
-import LoaderAdvanced from "../../../../components/Loader/LoaderAdvanced";
 import { useAxiosSecure } from "../../../../components/hook/useAxiosSecure";
+import { useQuery } from "@tanstack/react-query";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const imageToken = import.meta.env.VITE_UPLOAD_TOKEN;
 
 const TaskForm = () => {
+  const navigate = useNavigate();
   const [axiosSecure] = useAxiosSecure();
   const { user } = useContext(AuthContext);
 
@@ -98,7 +101,31 @@ const TaskForm = () => {
     { value: "100", label: "100 points" },
   ];
 
+  const { data: userData = {} } = useQuery({
+    queryKey: ["userData"],
+    queryFn: async () => {
+      const res = await axios(`http://localhost:5000/users/${user?.email}`);
+      return res.data;
+    },
+  });
+
   const onSubmit = (data) => {
+    if (userData.postCount === 3 && !userData.paid) {
+      Swal.fire({
+        title: "Your Free service end",
+        text: "After completing 3 tasks, you should payment",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Payment first",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate("/payment-page");
+        }
+      });
+      return;
+    }
     setLoading(true);
     const attachmentFile = data.attachment[0];
     console.log(attachmentFile);
@@ -144,6 +171,9 @@ const TaskForm = () => {
           };
           axiosSecure.post(`/jobs`, currentData).then((data) => {
             if (data.data.insertedId) {
+              axios
+                .put(`http://localhost:5000/user-post-increment/${user?.email}`)
+                .then(() => {});
               reset();
               toast.success("Successfully Added Job");
               setLoading(false);
@@ -269,7 +299,7 @@ const TaskForm = () => {
           )}
         </div>
 
-        <div className="grid grid-cols-2 gap-5">
+        <div className="grid md:grid-cols-2 gap-5">
           <div className="mb-4">
             <label htmlFor="name">Task Title</label>
             <input
@@ -437,21 +467,23 @@ const TaskForm = () => {
               styles={customStyles}
             />
           </div>
-        </div>
-        <div className="mb-4">
-          <label htmlFor="deadline">Application Deadline Date</label>
 
-          <input
-            type="date"
-            id="deadline"
-            placeholder="Enter application deadline"
-            className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
-            {...register("deadline", { required: "Title is required" })}
-          />
-          {errors.deadline && (
-            <p className="text-red-500">{errors.deadline.message}</p>
-          )}
+          <div className="mb-4">
+            <label htmlFor="deadline">Application Deadline Date</label>
+
+            <input
+              type="date"
+              id="deadline"
+              placeholder="Enter application deadline"
+              className="w-full px-5 py-4 dark:bg-slate-700 bg-[#F1F5F9] rounded-md outline-none"
+              {...register("deadline", { required: "Title is required" })}
+            />
+            {errors.deadline && (
+              <p className="text-red-500">{errors.deadline.message}</p>
+            )}
+          </div>
         </div>
+
         <div className="grid lg:grid-cols-2 gap-10">
           <div className="mb-4">
             <label htmlFor="name">Country</label>
