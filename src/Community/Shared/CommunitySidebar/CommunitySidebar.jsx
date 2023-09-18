@@ -2,40 +2,48 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { BiBriefcase, BiSolidMessageDetail } from "react-icons/bi";
+import { BiBookmarkHeart, BiBriefcase, BiSolidMessageDetail } from "react-icons/bi";
 import { MdOutlineContentCopy, MdRssFeed } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import CommunityCategories from "./CommunityCategories/CommunityCategories";
 import "./CommunitySidebar.css";
 
-// Sidebar Items Data
-const sidebarItems = [
-  {
-    icon: <MdRssFeed className="mr-1 text-2xl" />,
-    text: "Feed",
-    link: "/community",
-  },
-  {
-    icon: <BiSolidMessageDetail className="mr-1 text-2xl" />,
-    text: "Chats",
-    link: "/",
-  },
-  {
-    icon: <BiBriefcase className="mr-1 text-2xl" />,
-    text: "Tasks",
-    link: "/browseTasks/browseTasks-home",
-  },
-  {
-    icon: <MdOutlineContentCopy className="mr-1 text-2xl" />,
-    text: "Contents",
-    link: "/blogs",
-  },
-];
-
 const CommunitySidebar = () => {
-  const { setCommunitySidebarToggle } = useContext(AuthContext);
+  const { setCommunitySidebarToggle, adminRole } = useContext(AuthContext);
 
+  // Sidebar Items Data
+  const sidebarItems = [
+    {
+      icon: <MdRssFeed className="mr-1 text-2xl" />,
+      text: "Feed",
+      link: "/community",
+    },
+    !adminRole
+      ? {
+          icon: <BiSolidMessageDetail className="mr-1 text-2xl" />,
+          text: "Chats",
+          link: "/",
+        }
+      : null,
+    {
+      icon: <BiBriefcase className="mr-1 text-2xl" />,
+      text: "Tasks",
+      link: "/browseTasks/browseTasks-home",
+    },
+    {
+      icon: <MdOutlineContentCopy className="mr-1 text-2xl" />,
+      text: "Contents",
+      link: "/blogs",
+    },
+    {
+      icon: <BiBookmarkHeart className="mr-1 text-2xl" />,
+      text: "Favourite Posts",
+      link: "/community/favouritePosts",
+    },
+  ].filter(Boolean);
+
+  // Showing all users
   const { data: allUsers = [], refetch } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {

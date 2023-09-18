@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
+import FavouritePosts from "../Community/Shared/CommunityFeed/FavouritePosts/FavouritePosts";
 import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
 import AddTeamMember from "../Dashboard/DashboardAdmin/AddTeamMember/AddTeamMember";
 import AdminAboutUs from "../Dashboard/DashboardAdmin/AdminAboutUs/AdminAboutUs";
@@ -308,6 +309,10 @@ const router = createBrowserRouter([
         element: <PostDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/posts/${params.id}`),
+      },
+      {
+        path: "/community/favouritePosts",
+        element: <FavouritePosts />,
       },
     ],
   },
