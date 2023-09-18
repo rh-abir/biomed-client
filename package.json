@@ -22,6 +22,7 @@
     "@stripe/react-stripe-js": "^2.3.0",
     "@stripe/stripe-js": "^2.1.5",
     "@tanstack/react-query": "^4.32.6",
+    "aos": "^2.3.4",
     "axios": "^1.4.0",
     "clipboard-copy": "^4.0.1",
     "clsx": "^2.0.0",

@@ -19,7 +19,7 @@ const TaskForm = () => {
               link of your form with others and see thier submissions. It's
               suitable for online MCQ exam and for job recruitments
             </p>
-            <Link to="/create-form" className="bg-primary tex-gray-50 px-3 py-2 rounded-md hover:bg-hover self-start text-gray-100 text-lg uppercase">
+            <Link to="/form-template" className="bg-primary tex-gray-50 px-3 py-2 rounded-md hover:bg-hover self-start text-gray-100 text-lg uppercase">
               get started
             </Link>
           </div>

@@ -53,8 +53,10 @@ import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 import TaskForm from "../Dashboard/DashboardClient/TaskForm/TaskForm";
-import CreateForm from "../Dashboard/DashboardClient/TaskForm/CraeteForm/CreateForm";
 import PaymentPage from "../Pages/PaymentPage/PaymentPage";
+import Template from "../Dashboard/DashboardClient/TaskForm/Template/Template";
+import SearchShow from "../Pages/Shared/Header/SearchForm/SearchData/SearchShow/SearchShow";
+import PaymentShow from "../Dashboard/DashboardAdmin/PaymentShow/PaymentShow";
 
 const router = createBrowserRouter([
   {
@@ -154,12 +156,16 @@ const router = createBrowserRouter([
         element: <TaskForm />,
       },
       {
-        path: "/create-form",
-        element: <CreateForm />,
+        path: "/form-template",
+        element: <Template />,
       },
       {
         path: "/payment-page",
         element: <PaymentPage />,
+      },
+      {
+        path: "/search-show",
+        element: <SearchShow />,
       },
     ],
   },
@@ -276,6 +282,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-client",
         element: <AllClients />,
+      },
+      // paid user show route
+      {
+        path: "/dashboard/all-paid-user",
+        element: <PaymentShow />,
       },
       {
         path: "/dashboard/social-media",

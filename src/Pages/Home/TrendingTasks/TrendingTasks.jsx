@@ -5,14 +5,14 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import "react-loading-skeleton/dist/skeleton.css"; // Import Skeleton CSS
+import "react-loading-skeleton/dist/skeleton.css";
 import "./TrendingTasks.css";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
 import Container from "../../../components/Shared/Container/Container";
 import TrendingSlide from "./TrendingSlide/TrendingSlide";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton"; // Import Skeleton and SkeletonTheme
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 const TrendingTasks = () => {
   const { isLoading, data: tasks = [] } = useQuery({
@@ -29,8 +29,12 @@ const TrendingTasks = () => {
         heading={"Trending Tasks"}
         text={"Most viewed and all-time top Tasks"}
       />
-      <div className="w-full mx-auto">
-        <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb"> {/* Customize colors */}
+      <div
+        className="w-full mx-auto"
+      >
+        <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+          {" "}
+          {/* Customize colors */}
           {isLoading ? (
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {Array.from({ length: 4 }).map((_, index) => (
@@ -40,9 +44,9 @@ const TrendingTasks = () => {
                   <Skeleton height={20} width={250} className="mt-1" />
                   <div className="flex justify-between">
                     <Skeleton circle height={50} width={50} className="mt-1" />
-                    <Skeleton  height={20} width={60} className=" mt-5" />
+                    <Skeleton height={20} width={60} className=" mt-5" />
                     <div>
-                      <Skeleton  height={20} width={100} className="ml-4 mt-5" />
+                      <Skeleton height={20} width={100} className="ml-4 mt-5" />
                     </div>
                   </div>
                 </div>
