@@ -32,7 +32,7 @@ const AboutUs = () => {
 
           {/* Content */}
           <div className="w-full lg:w-1/2">
-            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-slate-600 mb-4">
+            <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-slate-600 dark:text-slate-400 mb-4">
               About Us
             </h2>
             <p className="mb-4">{aboutUs[0]?.descOne}</p>

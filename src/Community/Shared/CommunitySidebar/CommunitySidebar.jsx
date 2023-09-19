@@ -2,7 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext } from "react";
 import { AiOutlineClose } from "react-icons/ai";
-import { BiBookmarkHeart, BiBriefcase, BiSolidMessageDetail } from "react-icons/bi";
+import {
+  BiBookmarkHeart,
+  BiBriefcase,
+  BiSolidMessageDetail,
+} from "react-icons/bi";
 import { MdOutlineContentCopy, MdRssFeed } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";

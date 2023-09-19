@@ -12,6 +12,7 @@ import PostDropdown from "./PostDropdown/PostDropdown";
 import "./Posts.css";
 
 const Posts = () => {
+  // const [toggleFavourite, setToggleFavourite] = useState(false);
   const { user, clientRole, getPosts, searchPosts, tab, categories } =
     useContext(AuthContext);
 
@@ -41,18 +42,8 @@ const Posts = () => {
     const newFavorites = [...favorites, { postId, userEmail: user.email }];
     localStorage.setItem("favorites", JSON.stringify(newFavorites));
     setFavorites(newFavorites);
+    console.log(postId);
   };
-
-  // // Function to remove a post from favorites
-  // const removeFromFavorites = (postId) => {
-  //   const filteredFavorites = favorites.filter(
-  //     (favorite) =>
-  //       favorite.postId !== postId || favorite.userEmail !== user.email
-  //   );
-
-  //   localStorage.setItem("favorites", JSON.stringify(filteredFavorites));
-  //   setFavorites(filteredFavorites);
-  // };
 
   // Add favourite posts handler
   const handleAddToFavorites = async (post) => {
@@ -67,7 +58,7 @@ const Posts = () => {
       );
       if (response.status === 200) {
         addToFavorites(post._id);
-        toast.success("Post added to favorites successfully");
+        toast.success("Post added to favorites");
       } else {
         toast.error("Failed to add post to favorites");
       }
@@ -77,10 +68,33 @@ const Posts = () => {
     }
   };
 
-  // // Remove favorited post handler
+  // Function to remove a post from favorites
+  const removeFromFavorites = (postId) => {
+    const filteredFavorites = favorites.filter(
+      (favorite) => favorite.postId !== postId
+    );
+
+    localStorage.setItem("favorites", JSON.stringify(filteredFavorites));
+    setFavorites(filteredFavorites);
+  };
+
+  // Remove favorited post handler
   const handleRemoveFromFavorites = async (post) => {
-    console.log(post);
-    toast.success("Favorite post removed")
+    try {
+      const response = await axios.delete(
+        `http://localhost:5000/favouritePosts/${post._id}`
+      );
+      if (response.status === 200) {
+        removeFromFavorites(post._id);
+        console.log(post._id);
+        toast.success("Removed from favorites");
+      } else {
+        toast.error("Failed to remove from favorites");
+      }
+    } catch (error) {
+      console.error("Error removing from favorites:", error);
+      toast.error("An error occurred while removing from favorites");
+    }
   };
 
   return (
@@ -165,17 +179,53 @@ const Posts = () => {
                             />
                           </>
                         )}
-                        <div
+                        {/* Add and Remove favourite post */}
+                        <button
                           className="text-sm md:text-lg mx-2 font-semibold"
-                          data-tooltip-id="tooltip-2"
+                          onClick={() => {
+                            const isFavorite = favorites.some(
+                              (favorite) =>
+                                favorite.postId === post?._id &&
+                                favorite.userEmail === user?.email
+                            );
+
+                            if (isFavorite) {
+                              handleRemoveFromFavorites(post);
+                            } else {
+                              handleAddToFavorites(post);
+                            }
+                          }}
                         >
-                          <AiOutlineHeart className="text-2xl cursor-pointer" />
-                        </div>
-                        <ReactTooltip
-                          id="tooltip-2"
-                          place="left"
-                          content="Add to your favourite"
-                        />
+                          {favorites.some(
+                            (favorite) =>
+                              favorite.postId === post?._id &&
+                              favorite.userEmail === user?.email
+                          ) ? (
+                            <>
+                              <AiFillHeart
+                                className="text-2xl cursor-pointer text-red-600"
+                                data-tooltip-id="tooltip-2"
+                              />
+                              <ReactTooltip
+                                id="tooltip-2"
+                                place="left"
+                                content="Remove from your favorites"
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <AiOutlineHeart
+                                className="text-2xl cursor-pointer"
+                                data-tooltip-id="tooltip-3"
+                              />
+                              <ReactTooltip
+                                id="tooltip-3"
+                                place="left"
+                                content="Add to your favorites"
+                              />
+                            </>
+                          )}
+                        </button>
                       </div>
                     </div>
                     {/* title for mobile device */}
@@ -263,17 +313,53 @@ const Posts = () => {
                             />
                           </>
                         )}
-                        <div
+                        {/* Add and Remove favourite post */}
+                        <button
                           className="text-sm md:text-lg mx-2 font-semibold"
-                          data-tooltip-id="tooltip-2"
+                          onClick={() => {
+                            const isFavorite = favorites.some(
+                              (favorite) =>
+                                favorite.postId === post?._id &&
+                                favorite.userEmail === user?.email
+                            );
+
+                            if (isFavorite) {
+                              handleRemoveFromFavorites(post);
+                            } else {
+                              handleAddToFavorites(post);
+                            }
+                          }}
                         >
-                          <AiOutlineHeart className="text-2xl cursor-pointer" />
-                        </div>
-                        <ReactTooltip
-                          id="tooltip-2"
-                          place="left"
-                          content="Add to your favourite"
-                        />
+                          {favorites.some(
+                            (favorite) =>
+                              favorite.postId === post?._id &&
+                              favorite.userEmail === user?.email
+                          ) ? (
+                            <>
+                              <AiFillHeart
+                                className="text-2xl cursor-pointer text-red-600"
+                                data-tooltip-id="tooltip-2"
+                              />
+                              <ReactTooltip
+                                id="tooltip-2"
+                                place="left"
+                                content="Remove from your favorites"
+                              />
+                            </>
+                          ) : (
+                            <>
+                              <AiOutlineHeart
+                                className="text-2xl cursor-pointer"
+                                data-tooltip-id="tooltip-3"
+                              />
+                              <ReactTooltip
+                                id="tooltip-3"
+                                place="left"
+                                content="Add to your favorites"
+                              />
+                            </>
+                          )}
+                        </button>
                       </div>
                     </div>
                     {/* title for mobile device */}
