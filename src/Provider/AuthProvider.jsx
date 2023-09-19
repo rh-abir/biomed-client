@@ -38,6 +38,11 @@ const AuthProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [tab, setTab] = useState("");
 
+  // home page search
+  const [search, setSearch] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [getSearchData, setGetSearchData] = useState([]);
+
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -149,7 +154,7 @@ const AuthProvider = ({ children }) => {
 
   // Search Functionality of Community Posts
   useEffect(() => {
-    fetch(`http://localhost:5000/postSearch/${searchPosts}`)
+    fetch(`https://biomed-server.vercel.app/postSearch/${searchPosts}`)
       .then((res) => res.json())
       .then((data) => {
         setGetPosts(data);
@@ -168,13 +173,24 @@ const AuthProvider = ({ children }) => {
 
   // Search Functionality of Blogs
   useEffect(() => {
-    fetch(`http://localhost:5000/blogSearch/${searchBlogs}`)
+    fetch(`https://biomed-server.vercel.app/blogSearch/${searchBlogs}`)
       .then((res) => res.json())
       .then((data) => {
         setGetBlogsData(data);
         console.log("search data", data);
       });
   }, [searchBlogs]);
+
+  // Search banner page
+  // Search Functionality of Blogs
+  useEffect(() => {
+    fetch(`https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setGetSearchData(data);
+      });
+  }, [search, industry]);
+
 
   const authInfo = {
     getId,
@@ -215,6 +231,13 @@ const AuthProvider = ({ children }) => {
     tab,
     setTab,
     categories,
+
+    // banner search
+    search,
+    setSearch,
+    industry,
+    setIndustry,
+    getSearchData,
   };
 
   return (

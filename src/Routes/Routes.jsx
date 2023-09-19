@@ -54,6 +54,11 @@ import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import SpecificCategoryLayout from "../Pages/SpecificCategory/SpecificCategoryLayout";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
+import PaymentPage from "../Pages/PaymentPage/PaymentPage";
+import SearchShow from "../Pages/Shared/Header/SearchForm/SearchData/SearchShow/SearchShow";
+import PaymentShow from "../Dashboard/DashboardAdmin/PaymentShow/PaymentShow";
+import LiveRoom from "../Pages/LiveRoom/LiveRoom";
+import Room from "../Pages/LiveRoom/Room/Room";
 
 const router = createBrowserRouter([
   {
@@ -143,15 +148,31 @@ const router = createBrowserRouter([
             path: "/messageroot",
             element: <MessageShow />,
             // loader: ({ params }) =>
-            //   fetch(`http://localhost:5000/get/appliedtask/${params.id}`),
+            //   fetch(`https://biomed-server.vercel.app/get/appliedtask/${params.id}`),
           },
           {
             path: "/messageroot/messagedetails/:id",
             element: <Demo />,
             // loader: ({ params }) =>
-            //   fetch(`http://localhost:5000/getAppliedById/${params.id}`),
+            //   fetch(`https://biomed-server.vercel.app/getAppliedById/${params.id}`),
           },
         ],
+      },
+      {
+        path: "/payment-page",
+        element: <PaymentPage />,
+      },
+      {
+        path: "/search-show",
+        element: <SearchShow />,
+      },
+      {
+        path: "/live-room",
+        element: <LiveRoom />,
+      },
+      {
+        path: "/room/:roomId",
+        element: <Room />,
       },
     ],
   },
@@ -187,12 +208,6 @@ const router = createBrowserRouter([
         path: "/dashboard/task-overview",
         element: <TaskOverview />,
       },
-      // {
-      //   path: "/jobsDatail/:id",
-      //   element: <BrowseTasksDetails />,
-      //   loader: ({ params }) =>
-      //     fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
-      // },
       {
         path: "/dashboard/task-details",
         element: <TaskDetails />,
@@ -268,6 +283,11 @@ const router = createBrowserRouter([
       {
         path: "/dashboard/all-client",
         element: <AllClients />,
+      },
+      // paid user show route
+      {
+        path: "/dashboard/all-paid-user",
+        element: <PaymentShow />,
       },
       {
         path: "/dashboard/social-media",

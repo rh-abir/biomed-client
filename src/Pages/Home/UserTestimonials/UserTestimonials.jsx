@@ -4,7 +4,7 @@ import React from "react";
 import "swiper/css";
 import 'swiper/css/effect-coverflow';
 import "swiper/css/pagination";
-import { EffectCoverflow, FreeMode, Pagination } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
@@ -34,41 +34,38 @@ const UserTestimonials = () => {
             "Discover how our platform has transformed tasks and projects for our users."
           }
         />
-        <Swiper
-          effect={'coverflow'}
-          grabCursor={true}
-          freeMode={true}
-          loop={true}
-          centeredSlides={true}
-          slidesPerView={'auto'}
-          coverflowEffect={{
-            rotate: 50,
-            stretch: 0,
-            depth: 100,
-            modifier: 1,
-            slideShadows: true,
-          }}
-          pagination={false}
-          modules={[EffectCoverflow, Pagination, FreeMode]}
-          className="mySwiper"
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-            },
-            640: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
-        >
-          {testimonials.map((userFeedback, index) => (
-            <SwiperSlide key={index}>
-              <TestimonialItem userFeedback={userFeedback} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div>
+          <Swiper
+            spaceBetween={50}
+            freeMode={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={4}
+            loop={true}
+            pagination={{ clickable: true }}
+            modules={[Autoplay, Pagination]}
+            className="mySwiper"
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            {testimonials.map((userFeedback, index) => (
+              <SwiperSlide key={index}>
+                <TestimonialItem userFeedback={userFeedback} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </Container>
     </div>
   );
