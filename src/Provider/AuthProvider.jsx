@@ -164,7 +164,7 @@ const AuthProvider = ({ children }) => {
 
   // Category Functionality of Community Posts
   useEffect(() => {
-    fetch(`http://localhost:5000/categories/${tab}`)
+    fetch(`https://biomed-server.vercel.app/categories/${tab}`)
       .then((res) => res.json())
       .then((data) => {
         setCategories(data);
