@@ -28,7 +28,7 @@ const BrowseTasks = () => {
     // console.log(data);
   };
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-white">
       <Container>
         <button
           onClick={() => setTasksSidebarToggle(true)}

@@ -1,11 +1,13 @@
-import React, { useState } from "react";
 import { Rating } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import React from "react";
 import { ImQuotesLeft } from "react-icons/im";
 
 const TestimonialItem = ({ userFeedback }) => {
-  const { user_image, user_name, feedback } = userFeedback;
-  const [rating, setRating] = useState(4);
+  const { user_image, user_name, feedback, ratings } = userFeedback;
+  console.log("userFeedback", userFeedback);
+  const ratingValue = parseInt(ratings);
+
   return (
     <div
       className="my-20 border shadow-sm rounded-md"
@@ -20,7 +22,7 @@ const TestimonialItem = ({ userFeedback }) => {
         </div>
         <h2 className="pt-16 text-2xl font-bold pb-3">{user_name}</h2>
         <div className="mb-6">
-          <Rating style={{ maxWidth: 160 }} value={rating} readOnly />
+          <Rating style={{ maxWidth: 160 }} value={ratingValue} readOnly />
         </div>
         <div className="text-5xl text-primary">
           <ImQuotesLeft />

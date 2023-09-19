@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
+import FavouritePosts from "../Community/Shared/CommunityFeed/FavouritePosts/FavouritePosts";
 import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
 import AddTeamMember from "../Dashboard/DashboardAdmin/AddTeamMember/AddTeamMember";
 import AdminAboutUs from "../Dashboard/DashboardAdmin/AdminAboutUs/AdminAboutUs";
@@ -50,6 +51,7 @@ import MessageShow from "../Pages/Messaging/MessageShow/MessageShow";
 import Demo from "../Pages/Messaging/MessageSidebar/UserList/Demo";
 import Privacy from "../Pages/Privacy/Privacy";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
+import SpecificCategoryLayout from "../Pages/SpecificCategory/SpecificCategoryLayout";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 import PaymentPage from "../Pages/PaymentPage/PaymentPage";
@@ -107,9 +109,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/specificCategory/:title",
-        element: <SpecificCategory />,
-        loader: ({ params }) =>
-          fetch(`/categorysData/categorys.json/${params.title}`),
+        element: <SpecificCategoryLayout />,
+        children: [
+          {
+            path: "/specificCategory/:title",
+            element: <SpecificCategory />,
+            loader: ({ params }) =>
+              fetch(`/categorysData/categorys.json/${params.title}`),
+          },
+        ],
       },
       {
         path: "/terms",
@@ -310,11 +318,7 @@ const router = createBrowserRouter([
   // Community Routes
   {
     path: "/community",
-    element: (
-      <PrivateRoute>
-        <Community />
-      </PrivateRoute>
-    ),
+    element: <Community />,
     children: [
       {
         path: "/community",
@@ -325,6 +329,10 @@ const router = createBrowserRouter([
         element: <PostDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/posts/${params.id}`),
+      },
+      {
+        path: "/community/favouritePosts",
+        element: <FavouritePosts />,
       },
     ],
   },

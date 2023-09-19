@@ -42,6 +42,7 @@
     "react-select": "^5.7.4",
     "react-share": "^4.4.1",
     "react-spinners": "^0.13.8",
+    "react-tabs": "^6.0.2",
     "react-tooltip": "^5.20.0",
     "react-vertical-timeline-component": "^3.6.0",
     "recharts": "^2.7.3",

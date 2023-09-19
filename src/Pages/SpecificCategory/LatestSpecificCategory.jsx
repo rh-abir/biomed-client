@@ -9,7 +9,7 @@ const LatestSpecificCategory = ({ latestData }) => {
         src={latestData.logo}
         alt="latest-blog-thumbnail"
       />
-
+ 
       <div>
         <Link
           to={`/tasksDatail/${latestData?._id}`}

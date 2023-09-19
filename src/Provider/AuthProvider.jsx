@@ -30,10 +30,13 @@ const AuthProvider = ({ children }) => {
   const [adminRole, setAdminRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
+  const [communitySidebarToggle, setCommunitySidebarToggle] = useState(false);
   const [searchPosts, setSearchPosts] = useState("");
   const [getPosts, setGetPosts] = useState([]);
   const [searchBlogs, setSearchBlogs] = useState("");
   const [getBlogsData, setGetBlogsData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [tab, setTab] = useState("");
 
   // home page search
   const [search, setSearch] = useState("");
@@ -148,6 +151,7 @@ const AuthProvider = ({ children }) => {
     },
   });
 
+
   // Search Functionality of Community Posts
   useEffect(() => {
     fetch(`https://biomed-server.vercel.app/postSearch/${searchPosts}`)
@@ -157,6 +161,15 @@ const AuthProvider = ({ children }) => {
         console.log("search data", data);
       });
   }, [searchPosts]);
+
+  // Category Functionality of Community Posts
+  useEffect(() => {
+    fetch(`http://localhost:5000/categories/${tab}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data);
+      });
+  }, [tab]);
 
   // Search Functionality of Blogs
   useEffect(() => {
@@ -191,6 +204,7 @@ const AuthProvider = ({ children }) => {
     setClientRole,
     dashboardToggle,
     tasksSidebarToggle,
+    communitySidebarToggle,
     setLoading,
     createUser,
     loginUser,
@@ -200,8 +214,10 @@ const AuthProvider = ({ children }) => {
     googleLoginUser,
     setDashboardToggle,
     setTasksSidebarToggle,
+    setCommunitySidebarToggle,
     // my profile data sharing
     myProfileData,
+    // posts searching
     searchPosts,
     setSearchPosts,
     getPosts,
@@ -211,6 +227,10 @@ const AuthProvider = ({ children }) => {
     searchBlogs,
     setSearchBlogs,
     getBlogsData,
+    // post category
+    tab,
+    setTab,
+    categories,
 
     // banner search
     search,

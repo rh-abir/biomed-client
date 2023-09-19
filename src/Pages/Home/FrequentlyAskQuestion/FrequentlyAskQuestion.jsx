@@ -19,7 +19,7 @@ const FrequentlyAskQuestion = () => {
   return (
     <>
       <Container>
-        <div className="dark:bg-gray-800 bg-white mb-10">
+        <div className="dark:bg-gray-800 bg-white mb-10 px-6 py-1">
           <div>
             <SectionTitle heading="Frequently Asked Questions (FAQ)"></SectionTitle>
           </div>

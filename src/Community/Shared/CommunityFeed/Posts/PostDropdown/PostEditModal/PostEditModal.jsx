@@ -30,13 +30,16 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
 
       data.photo = downloadUrl;
 
-      const response = await fetch(`https://biomed-server.vercel.app/posts/${postId}`, {
-        method: "PATCH",
-        headers: {
-          "content-type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      const response = await fetch(
+        `http://localhost:5000/posts/${postId}`,
+        {
+          method: "PATCH",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      );
 
       if (!response.ok) {
         throw new Error("Failed to create a new post");
@@ -49,7 +52,7 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
         queryClient.invalidateQueries("posts");
         Swal.fire("Success", "Post updated successfully", "success");
         setLoading(false);
-        // closeEditModal();
+        closeEditModal();
         navigate("/community");
       },
       onError: () => {
@@ -86,6 +89,7 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
               <span className="text-red-500">{errors?.photo.message}</span>
             )}
 
+
             {/* title field */}
             <input
               type="text"
@@ -93,26 +97,16 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
               placeholder="Title"
               defaultValue={title || ""}
               className="w-full px-5 py-4 bg-slate-100 border focus:border-green-600 transition rounded-md outline-none"
-              {...register("title", {
-                required: "Please add title",
-              })}
+              {...register("title")}
             />
-            {errors?.title && (
-              <span className="text-red-500">{errors?.title.message}</span>
-            )}
           </div>
           <textarea
-            name="description"
+            name="desc"
             placeholder="Description"
             defaultValue={desc || ""}
             className="w-full px-5 py-4 bg-slate-100 border focus:border-green-600 transition rounded-md outline-none"
-            {...register("description", {
-              required: "Please add description",
-            })}
+            {...register("desc")}
           />
-          {errors?.description && (
-            <span className="text-red-500">{errors?.description.message}</span>
-          )}
 
           <button
             className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-700 duration-500"

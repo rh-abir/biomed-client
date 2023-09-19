@@ -1,6 +1,6 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { Link } from "react-router-dom";
 const TrendingSlide = ({ task }) => {
   return (
     <div className="border rounded-xl w-full h-[470px] dark:border-gray-700 dark:hover:border-slate-600 flex flex-col">
@@ -33,7 +33,7 @@ const TrendingSlide = ({ task }) => {
           <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
             {task.logo ? (
               <img
-                className="h-8 w-8 rounded-full object-cover"
+                className="h-10 w-10 rounded-full object-cover"
                 src={task.logo}
                 alt=""
               />
