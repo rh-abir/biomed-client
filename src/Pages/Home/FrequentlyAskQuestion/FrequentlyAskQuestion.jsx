@@ -14,7 +14,6 @@ const FrequentlyAskQuestion = () => {
       .then((data) => setFaq(data));
   }, []);
 
-  console.log(faq);
 
   return (
     <>

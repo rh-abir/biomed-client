@@ -26,8 +26,6 @@ const Footer = () => {
       return res.data;
     },
   });
-
-  console.log(socialMedia[0])
   
 
   const [email, setEmail] = React.useState("");

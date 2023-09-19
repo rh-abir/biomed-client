@@ -82,7 +82,6 @@ const AuthProvider = ({ children }) => {
           })
           .then((data) => {
             localStorage.setItem("access-token", data.data.token);
-            console.log(data);
             setLoading(false);
           });
       } else {
@@ -94,16 +93,6 @@ const AuthProvider = ({ children }) => {
       return unsubscribe();
     };
   }, []);
-
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     setLoading(false);
-  //   });
-  //   return () => {
-  //     return unsubscribe();
-  //   };
-  // }, []);
 
   // Admin role
   useEffect(() => {
@@ -150,34 +139,41 @@ const AuthProvider = ({ children }) => {
 
   // Search Functionality of Community Posts
   useEffect(() => {
-    fetch(`https://biomed-server.vercel.app/postSearch/${searchPosts}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setGetPosts(data);
-        console.log("search data", data);
-      });
+    if (searchPosts) {
+      fetch(`https://biomed-server.vercel.app/postSearch/${searchPosts}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setGetPosts(data);
+          console.log("search data", data);
+        });
+    }
   }, [searchPosts]);
 
   // Search Functionality of Blogs
   useEffect(() => {
-    fetch(`https://biomed-server.vercel.app/blogSearch/${searchBlogs}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setGetBlogsData(data);
-        console.log("search data", data);
-      });
+    if (searchBlogs) {
+      fetch(`https://biomed-server.vercel.app/blogSearch/${searchBlogs}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setGetBlogsData(data);
+          console.log("search data", data);
+        });
+    }
   }, [searchBlogs]);
 
   // Search banner page
   // Search Functionality of Blogs
   useEffect(() => {
-    fetch(`https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`)
-      .then((res) => res.json())
-      .then((data) => {
-        setGetSearchData(data);
-      });
+    if (search) {
+      fetch(
+        `https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setGetSearchData(data);
+        });
+    }
   }, [search, industry]);
-
 
   const authInfo = {
     getId,
