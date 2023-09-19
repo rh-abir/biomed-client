@@ -6,7 +6,6 @@ import {
   AiOutlineUser,
 } from "react-icons/ai";
 import { CiPaperplane } from "react-icons/ci";
-import { FaWpforms } from "react-icons/fa";
 import { IoIosPaper } from "react-icons/io";
 import { PiBagSimpleBold } from "react-icons/pi";
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -72,21 +71,6 @@ const ClientMenu = () => {
             }
           >
             <CiPaperplane /> Create A New Task
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            onClick={() => setDashboardToggle(false)}
-            to={"/task-form"}
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
-                isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
-                  : "text-gray-700"
-              }`
-            }
-          >
-            <FaWpforms /> Create A Task Form
           </NavLink>
         </li>
         <li>

@@ -52,11 +52,11 @@ import Privacy from "../Pages/Privacy/Privacy";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
-import TaskForm from "../Dashboard/DashboardClient/TaskForm/TaskForm";
 import PaymentPage from "../Pages/PaymentPage/PaymentPage";
-import Template from "../Dashboard/DashboardClient/TaskForm/Template/Template";
 import SearchShow from "../Pages/Shared/Header/SearchForm/SearchData/SearchShow/SearchShow";
 import PaymentShow from "../Dashboard/DashboardAdmin/PaymentShow/PaymentShow";
+import LiveRoom from "../Pages/LiveRoom/LiveRoom";
+import Room from "../Pages/LiveRoom/Room/Room";
 
 const router = createBrowserRouter([
   {
@@ -150,15 +150,6 @@ const router = createBrowserRouter([
           },
         ],
       },
-      // task form
-      {
-        path: "/task-form",
-        element: <TaskForm />,
-      },
-      {
-        path: "/form-template",
-        element: <Template />,
-      },
       {
         path: "/payment-page",
         element: <PaymentPage />,
@@ -166,6 +157,14 @@ const router = createBrowserRouter([
       {
         path: "/search-show",
         element: <SearchShow />,
+      },
+      {
+        path: "/live-room",
+        element: <LiveRoom />,
+      },
+      {
+        path: "/room/:roomId",
+        element: <Room />,
       },
     ],
   },
@@ -201,12 +200,6 @@ const router = createBrowserRouter([
         path: "/dashboard/task-overview",
         element: <TaskOverview />,
       },
-      // {
-      //   path: "/jobsDatail/:id",
-      //   element: <BrowseTasksDetails />,
-      //   loader: ({ params }) =>
-      //     fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
-      // },
       {
         path: "/dashboard/task-details",
         element: <TaskDetails />,

@@ -171,7 +171,7 @@ const AuthProvider = ({ children }) => {
   // Search banner page
   // Search Functionality of Blogs
   useEffect(() => {
-    fetch(`http://localhost:5000/jobSearchByTitle/${search}/${industry}`)
+    fetch(`https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`)
       .then((res) => res.json())
       .then((data) => {
         setGetSearchData(data);

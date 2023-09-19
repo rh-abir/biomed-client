@@ -4,7 +4,7 @@ import { AuthContext } from "../../../../Provider/AuthProvider";
 import { useNavigate } from "react-router-dom";
 
 const SearchForm = () => {
-  const { setSearch, setIndustry, getSearchData } = useContext(AuthContext);
+  const { setSearch, setIndustry } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleOnSearch = (event) => {
@@ -35,7 +35,6 @@ const SearchForm = () => {
             <div className="lg:w-1/3">
               <select
                 name="Categories"
-                // onChange={handleCategoryChange}
                 id="XBpUo_category"
                 className="w-full dark:bg-slate-800 py-2 pl-2 pr-8 rounded-lg outline-none"
               >
