@@ -7,7 +7,9 @@ const TestimonialItem = ({ userFeedback }) => {
   const { user_image, user_name, feedback } = userFeedback;
   const [rating, setRating] = useState(4);
   return (
-    <div className="my-20 border shadow-sm rounded-md">
+    <div
+      className="my-20 border shadow-sm rounded-md"
+    >
       <div className="px-3 py-16 flex h-[450px] items-center flex-col bg-white dark:bg-gray-700 rounded-lg">
         <div className="absolute top-5">
           <img

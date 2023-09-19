@@ -77,6 +77,7 @@ const Header = () => {
                   />
                   <MenuItem name={"Blog"} path={"/blogs"} />
                   <MenuItem name={"Community Forum"} path={"/community"} />
+                  <MenuItem name={"Live Room"} path={"/live-room"} />
                 </ul>
               </div>
             </div>

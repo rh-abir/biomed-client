@@ -31,36 +31,38 @@ const UserTestimonials = () => {
             "Discover how our platform has transformed tasks and projects for our users."
           }
         />
-        <Swiper
-          spaceBetween={50}
-          freeMode={true}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          slidesPerView={4}
-          loop={true}
-          pagination={{ clickable: true }}
-          modules={[Autoplay, Pagination]}
-          className="mySwiper"
-          breakpoints={{
-            320: {
-              slidesPerView: 1,
-            },
-            640: {
-              slidesPerView: 2,
-            },
-            1024: {
-              slidesPerView: 3,
-            },
-          }}
-        >
-          {testimonials.map((userFeedback, index) => (
-            <SwiperSlide key={index}>
-              <TestimonialItem userFeedback={userFeedback} />
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <div>
+          <Swiper
+            spaceBetween={50}
+            freeMode={true}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            slidesPerView={4}
+            loop={true}
+            pagination={{ clickable: true }}
+            modules={[Autoplay, Pagination]}
+            className="mySwiper"
+            breakpoints={{
+              320: {
+                slidesPerView: 1,
+              },
+              640: {
+                slidesPerView: 2,
+              },
+              1024: {
+                slidesPerView: 3,
+              },
+            }}
+          >
+            {testimonials.map((userFeedback, index) => (
+              <SwiperSlide key={index}>
+                <TestimonialItem userFeedback={userFeedback} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </Container>
     </div>
   );
