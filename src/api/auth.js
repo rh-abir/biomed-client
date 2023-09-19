@@ -18,7 +18,6 @@ export const saveUser = (user, updateData) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         resolve(data);
       })
       .catch((error) => {

@@ -45,8 +45,6 @@ const BrowseTasksDetails = () => {
     appliedCount,
   } = useLoaderData();
 
-  console.log(country);
-
   const [applied, setApplied] = useState(false);
   const isDisabled = adminRole || clientRole;
 

@@ -38,7 +38,6 @@ const Login = () => {
   const handleGoogle = () => {
     googleLoginUser()
       .then((result) => {
-        console.log(result.user);
         saveUser(result.user);
         navigate(from, { replace: true });
         toast.success("Successfully login with Google");

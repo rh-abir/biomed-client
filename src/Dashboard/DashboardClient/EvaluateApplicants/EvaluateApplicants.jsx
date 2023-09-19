@@ -12,7 +12,6 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 
 const EvaluateApplicants = () => {
   const { user } = useContext(AuthContext);
-  console.log(user)
   const { data: evaluateTask = [] } = useQuery({
     queryKey: ["evaluateTask"],
     queryFn: async () => {
