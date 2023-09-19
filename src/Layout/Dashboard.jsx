@@ -9,8 +9,6 @@ const Dashboard = () => {
   const { dashboardToggle, adminRole, clientRole, userRole } =
     useContext(AuthContext);
 
-  console.log(userRole);
-
   if (userRole === null || adminRole === null || clientRole === null) {
     return <Loader />;
   }

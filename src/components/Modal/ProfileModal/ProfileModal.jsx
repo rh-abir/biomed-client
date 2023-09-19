@@ -5,7 +5,6 @@ import React, { Fragment } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
 
 const ProfileModal = ({ closeModal, isOpen, email }) => {
-  console.log(email)
   const { data: userData = {}, refetch } = useQuery({
     queryKey: ["user", email],
     queryFn: async () => {

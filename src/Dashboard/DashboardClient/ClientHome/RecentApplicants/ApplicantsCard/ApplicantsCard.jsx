@@ -7,7 +7,6 @@ import { Tooltip as ReactTooltip } from "react-tooltip";
 
 const ApplicantsCard = ({ applicant }) => {
   const { appliedjobdata } = applicant;
-  console.log(appliedjobdata);
 
   return (
     <div className="xl:flex gap-4 mb-2 border w-full px-5 py-5 lg:py-10 rounded-xl">
