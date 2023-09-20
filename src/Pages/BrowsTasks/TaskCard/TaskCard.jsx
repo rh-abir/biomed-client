@@ -51,7 +51,7 @@ const TaskCard = ({ task }) => {
     setIsbookMark(true);
 
     if (!isbookMark) {
-      axios.post("https://biomed-server.vercel.app/bookmark", BookMarkData).then((res) => {
+      axios.post(`${import.meta.env.VITE_BASE_URL}/bookmark`, BookMarkData).then((res) => {
         if (res.data.acknowledged) {
           toast.success("Successfully Bookmark!");
         }
@@ -95,7 +95,7 @@ const TaskCard = ({ task }) => {
         };
 
         axios
-          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .post(`${import.meta.env.VITE_BASE_URL}/appliedjob`, applyJob)
           .then((response) => {
             if (response.data.acknowledged) {
               setApplied(true);
@@ -108,7 +108,7 @@ const TaskCard = ({ task }) => {
       }
 
       axios
-        .put(`https://biomed-server.vercel.app/jobs/${_id}/apply`)
+        .put(`${import.meta.env.VITE_BASE_URL}/jobs/${_id}/apply`)
         .then(() => {});
     });
   };

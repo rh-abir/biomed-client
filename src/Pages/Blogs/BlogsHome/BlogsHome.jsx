@@ -14,7 +14,7 @@ const BlogsHome = () => {
   const { searchBlogs, getBlogsData } = useContext(AuthContext);
 
   const getBlogs = async () => {
-    const respnse = await axios.get("https://biomed-server.vercel.app/blogs");
+    const respnse = await axios.get(`${import.meta.env.VITE_BASE_URL}/blogs`);
     setBlogs(respnse.data);
   };
 

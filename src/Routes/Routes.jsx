@@ -80,7 +80,7 @@ const router = createBrowserRouter([
             path: "/blogs/blogDetails/:id",
             element: <BlogDetails />,
             loader: ({ params }) =>
-              fetch(`https://biomed-server.vercel.app/blogs/${params.id}`),
+              fetch(`${import.meta.env.VITE_BASE_URL}/blogs/${params.id}`),
           },
         ],
       },
@@ -103,7 +103,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/job/${params.id}`),
+          fetch(`${import.meta.env.VITE_BASE_URL}/job/${params.id}`),
       },
       {
         path: "/specificCategory/:title",
@@ -140,13 +140,13 @@ const router = createBrowserRouter([
             path: "/messageroot",
             element: <MessageShow />,
             // loader: ({ params }) =>
-            //   fetch(`https://biomed-server.vercel.app/get/appliedtask/${params.id}`),
+            //   fetch(`${import.meta.env.VITE_BASE_URL}/get/appliedtask/${params.id}`),
           },
           {
             path: "/messageroot/messagedetails/:id",
             element: <Demo />,
             // loader: ({ params }) =>
-            //   fetch(`https://biomed-server.vercel.app/getAppliedById/${params.id}`),
+            //   fetch(`${import.meta.env.VITE_BASE_URL}/getAppliedById/${params.id}`),
           },
         ],
       },
@@ -234,7 +234,7 @@ const router = createBrowserRouter([
         element: <TaskApplied />,
         loader: ({ params }) =>
           fetch(
-            `https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`
+            `${import.meta.env.VITE_BASE_URL}/applyTaskInstructor/${params.id}`
           ),
       },
       {
@@ -324,7 +324,7 @@ const router = createBrowserRouter([
         path: "/community/postDetails/:id",
         element: <PostDetails />,
         loader: ({ params }) =>
-          fetch(`https://biomed-server.vercel.app/posts/${params.id}`),
+          fetch(`${import.meta.env.VITE_BASE_URL}/posts/${params.id}`),
       },
     ],
   },

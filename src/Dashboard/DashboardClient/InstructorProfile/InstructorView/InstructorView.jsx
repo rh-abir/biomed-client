@@ -13,7 +13,7 @@ const InstructorView = () => {
   const { data: companyView = [] } = useQuery({
     queryKey: ["companyView"],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/users/${user?.email}`);
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/users/${user?.email}`);
       return res?.data;
     },
   });

@@ -22,7 +22,6 @@ const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
   const [getId, setGetid] = useState("");
-
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [clientRole, setClientRole] = useState(null);
@@ -120,7 +119,7 @@ const AuthProvider = ({ children }) => {
     queryKey: ["profile"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/users/${user?.email}`
       );
       return res.data;
     },
@@ -131,7 +130,7 @@ const AuthProvider = ({ children }) => {
     queryKey: ["manageJobs"],
     queryFn: async () => {
       const res = await axios.get(
-        `https://biomed-server.vercel.app/jobs/${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/jobs/${user?.email}`
       );
       return res.data;
     },
@@ -140,7 +139,7 @@ const AuthProvider = ({ children }) => {
   // Search Functionality of Community Posts
   useEffect(() => {
     if (searchPosts) {
-      fetch(`https://biomed-server.vercel.app/postSearch/${searchPosts}`)
+      fetch(`${import.meta.env.VITE_BASE_URL}/postSearch/${searchPosts}`)
         .then((res) => res.json())
         .then((data) => {
           setGetPosts(data);
@@ -152,7 +151,7 @@ const AuthProvider = ({ children }) => {
   // Search Functionality of Blogs
   useEffect(() => {
     if (searchBlogs) {
-      fetch(`https://biomed-server.vercel.app/blogSearch/${searchBlogs}`)
+      fetch(`${import.meta.env.VITE_BASE_URL}/blogSearch/${searchBlogs}`)
         .then((res) => res.json())
         .then((data) => {
           setGetBlogsData(data);
@@ -166,7 +165,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (search) {
       fetch(
-        `https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`
+        `${import.meta.env.VITE_BASE_URL}/jobSearchByTitle/${search}/${industry}`
       )
         .then((res) => res.json())
         .then((data) => {

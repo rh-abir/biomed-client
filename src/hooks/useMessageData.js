@@ -11,13 +11,13 @@ const useMessageData = () => {
     //   if (clientRole) {
     //     // Fetch data for clients
     //     const res = await fetch(
-    //       `https://biomed-server.vercel.app/get/clientData`
+    //       `${import.meta.env.VITE_BASE_URL}/get/clientData`
     //     );
     //     return res.json();
     //   } else {
     //     // Fetch data for non-clients
     //     const res = await fetch(
-    //       `https://biomed-server.vercel.app/get/nonClientData`
+    //       `${import.meta.env.VITE_BASE_URL}/get/nonClientData`
     //     );
     //     return res.json();
     //   }
@@ -27,12 +27,12 @@ const useMessageData = () => {
     queryFn: async () => {
       if (clientRole) {
         const res = await fetch(
-          `https://biomed-server.vercel.app/get/appliedtask/${currentUserEmail}`
+          `${import.meta.env.VITE_BASE_URL}/get/appliedtask/${currentUserEmail}`
         );
         return res.json();
       } else {
         const res = await fetch(
-          `https://biomed-server.vercel.app/user/appliedtask/${currentUserEmail}`
+          `${import.meta.env.VITE_BASE_URL}/user/appliedtask/${currentUserEmail}`
         );
         return res.json();
       }

@@ -9,7 +9,7 @@ export const postApplyJobs = (user, applyJob) => {
   };
 
   axios
-    .post("https://biomed-server.vercel.app/apply-jobs", apply)
+    .post(`${import.meta.env.VITE_BASE_URL}/apply-jobs`, apply)
     .then((response) => {
       console.log("Response:", response.data);
     })

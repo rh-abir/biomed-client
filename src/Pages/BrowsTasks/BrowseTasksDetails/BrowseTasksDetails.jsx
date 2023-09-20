@@ -90,7 +90,7 @@ const BrowseTasksDetails = () => {
         };
 
         axios
-          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
+          .post(`${import.meta.env.VITE_BASE_URL}/appliedjob`, applyJob)
           .then((response) => {
             if (response.data.acknowledged) {
               setApplied(true);
@@ -103,7 +103,7 @@ const BrowseTasksDetails = () => {
       }
 
       axios
-        .put(`https://biomed-server.vercel.app/jobs/${_id}/apply`)
+        .put(`${import.meta.env.VITE_BASE_URL}/jobs/${_id}/apply`)
         .then(() => {});
     });
   };
@@ -114,7 +114,6 @@ const BrowseTasksDetails = () => {
     const postLink = window.location.href;
     copy(postLink)
       .then(() => {
-        // setCopySuccess(true);
         toast.success("Successfully copy linked");
         setSeeLink(false);
       })

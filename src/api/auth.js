@@ -9,7 +9,7 @@ export const saveUser = (user, updateData) => {
       updateData,
     };
 
-    fetch(`https://biomed-server.vercel.app/users/${user?.email}`, {
+    fetch(`${import.meta.env.VITE_BASE_URL}/users/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -36,7 +36,7 @@ export const saveClient = (user, updateData) => {
       updateData,
     };
 
-    fetch(`https://biomed-server.vercel.app/users/${user?.email}`, {
+    fetch(`${import.meta.env.VITE_BASE_URL}/users/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -61,7 +61,7 @@ export const becomeClient = async (email) => {
     client: true,
   };
 
-  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`, {
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${email}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -77,7 +77,7 @@ export const becomeAdmin = async (email) => {
     admin: true,
   };
 
-  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`, {
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${email}`, {
     method: "PUT",
     headers: {
       "content-type": "application/json",
@@ -89,21 +89,21 @@ export const becomeAdmin = async (email) => {
 
 // get admin role
 export const getAdminRole = async (email) => {
-  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${email}`);
   const user = await res.json();
   return user?.admin;
 };
 
 // get admin role
 export const getUserRole = async (email) => {
-  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${email}`);
   const userRoleGet = await res.json();
   return userRoleGet?.userRole;
 };
 
 // get client role
 export const getClientRole = async (email) => {
-  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
+  const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${email}`);
   const user = await res.json();
   return user?.client;
 };

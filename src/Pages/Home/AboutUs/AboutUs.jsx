@@ -10,7 +10,7 @@ const AboutUs = () => {
   const { data: aboutUs = [] } = useQuery({
     queryKey: ["aboutUs"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/aboutDetails");
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/aboutDetails`);
       return res?.data;
     },
   });

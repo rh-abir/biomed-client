@@ -13,7 +13,7 @@ const AllModerator = () => {
   const { data: allModerator = [] } = useQuery({
     queryKey: ["allModerator"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/moderators");
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/moderators`);
       return res.data;
     },
   });

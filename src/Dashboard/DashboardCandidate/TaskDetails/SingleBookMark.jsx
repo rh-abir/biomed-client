@@ -11,7 +11,7 @@ const SingleBookMark = ({ bookmark }) => {
   const { logo, deadline, title, _id } = bookmark.task;
 
   const handleDelete = () => {
-    axios.delete(`https://biomed-server.vercel.app/bookmark/${_id}`).then((res) => {
+    axios.delete(`${import.meta.env.VITE_BASE_URL}/bookmark/${_id}`).then((res) => {
       console.log(res.data.deletedCount);
       if (res.data.deletedCount >= 0) {
         toast.error("Delete confirm ");

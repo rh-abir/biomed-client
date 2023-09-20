@@ -55,7 +55,7 @@ const AllClients = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://biomed-server.vercel.app/user?email=${email}`)
+          .delete(`${import.meta.env.VITE_BASE_URL}/user?email=${email}`)
           .then((res) => {
             if (res?.data?.acknowledged) {
               refetch();

@@ -19,7 +19,7 @@ const SocialMediaForm = () => {
   const { data: socialMedia, isLoading } = useQuery({
     queryKey: ["social-media", user?.email],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/social-media`);
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/social-media`);
       return res.data;
     },
   });
@@ -34,7 +34,7 @@ const SocialMediaForm = () => {
     const linkedin = data.linkedin;
     const updatedSocialMedia = { facebook, twitter, instagram, linkedin };
     fetch(
-      `https://biomed-server.vercel.app/social-media/${socialMedia[0]._id}`,
+      `${import.meta.env.VITE_BASE_URL}/social-media/${socialMedia[0]._id}`,
       {
         method: "PUT",
         headers: {

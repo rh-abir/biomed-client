@@ -36,7 +36,7 @@ const PostForm = () => {
             conclusion: data?.conclusion
         };
         console.log(currentData);
-        axios.post("https://biomed-server.vercel.app/blogs", currentData).then((data) => {
+        axios.post(`${import.meta.env.VITE_BASE_URL}/blogs`, currentData).then((data) => {
             if (data.data.insertedId) {
                 reset();
                 toast.success("Successfully Added Blog");

@@ -7,7 +7,7 @@ const OurTeam = () => {
   const { isLoading, data: teamMembers = [] } = useQuery({
     queryKey: ["teamMembers"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/teamMembers");
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/teamMembers`);
       return res.data;
     },
   });

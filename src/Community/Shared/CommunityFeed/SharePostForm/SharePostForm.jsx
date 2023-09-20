@@ -20,7 +20,7 @@ const SharePostForm = () => {
     queryKey: ["profile", user?.email],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/users/${user?.email}`
       );
       return res.data;
     },
@@ -53,7 +53,7 @@ const SharePostForm = () => {
         image: user?.photoURL,
       };
 
-      const response = await fetch("https://biomed-server.vercel.app/communityPosts", {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/communityPosts`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

@@ -73,7 +73,7 @@ const AdminForm = () => {
     queryKey: ["companyView"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/users/${user?.email}`
       );
       return res?.data;
     },
