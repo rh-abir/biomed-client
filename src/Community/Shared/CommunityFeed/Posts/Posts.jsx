@@ -53,7 +53,7 @@ const Posts = () => {
         userEmail: user.email,
       };
       const response = await axios.post(
-        "https://biomed-server.vercel.app/favouritePosts",
+        "http://localhost:5000/favouritePosts",
         postData
       );
       if (response.status === 200) {
@@ -82,7 +82,7 @@ const Posts = () => {
   const handleRemoveFromFavorites = async (post) => {
     try {
       const response = await axios.delete(
-        `https://biomed-server.vercel.app/favouritePosts/${post._id}`
+        `http://localhost:5000/favouritePosts/${post._id}`
       );
       if (response.status === 200) {
         removeFromFavorites(post._id);

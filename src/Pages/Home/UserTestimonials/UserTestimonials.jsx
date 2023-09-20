@@ -4,7 +4,7 @@ import React from "react";
 import "swiper/css";
 import 'swiper/css/effect-coverflow';
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import { EffectCoverflow } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Container from "../../../components/Shared/Container/Container";
 import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
@@ -36,17 +36,19 @@ const UserTestimonials = () => {
         />
         <div>
           <Swiper
-            spaceBetween={50}
-            freeMode={true}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-            }}
-            slidesPerView={4}
-            loop={true}
-            pagination={{ clickable: true }}
-            modules={[Autoplay, Pagination]}
-            className="mySwiper"
+             effect={'coverflow'}
+             grabCursor={true}
+             centeredSlides={true}
+             slidesPerView={'auto'}
+             coverflowEffect={{
+               rotate: 50,
+               stretch: 0,
+               depth: 100,
+               modifier: 1,
+               slideShadows: true,
+             }}
+             modules={[EffectCoverflow]}
+             className="mySwiper"
             breakpoints={{
               320: {
                 slidesPerView: 1,
