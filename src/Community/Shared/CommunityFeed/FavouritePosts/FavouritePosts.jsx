@@ -11,7 +11,7 @@ const FavouritePosts = () => {
     queryKey: ["favouritePosts"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/favouritePosts/${user?.email}`
+        `https://biomed-server.vercel.app/favouritePosts/${user?.email}`
       );
       return res.data;
     },

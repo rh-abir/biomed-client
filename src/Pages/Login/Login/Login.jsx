@@ -69,12 +69,12 @@ const Login = () => {
   return (
     <div
       style={gradientBg}
-      className=" lg:min-h-screen h-screen flex items-center justify-center bg-no-repeat bg-cover lg:bg-contain"
+      className="h-full md:h-1/3 2xl:min-h-screen flex items-center justify-center bg-no-repeat bg-cover lg:bg-contain md:py-10"
     >
-      <div className="dark:bg-gray-800 dark:text-white bg-gray-50 px-5 md:px-12 lg:px-20 py-12  rounded-md shadow-md">
+      <div className="dark:bg-gray-800 dark:text-white bg-gray-50 px-5 md:px-12 lg:px-20 py-8 2xl:py-12  rounded-md shadow-md">
         <div>
           <div className="mb-10 px-10">
-            <h1 className="text-4xl font-semibold mb-5">Sign in</h1>
+            <h1 className="text-xl md:text-2xl 2xl:text-4xl font-semibold mb-5">Sign in</h1>
             <p>
               If you don’t have an account register <br /> You can{" "}
               <Link to={"/register"} className="text-primary">
@@ -160,7 +160,7 @@ const Login = () => {
             <div className="flex items-center justify-center ">
               <button
                 onClick={handleGoogle}
-                className="flex items-center gap-3 border px-10 text-2 py-3 rounded-md hover:bg-gray-100 hover:text-gray-700 transition"
+                className="flex items-center gap-3 border px-2 md:px-10 text-2 py-3 rounded-md hover:bg-gray-100 hover:text-gray-700 transition"
               >
                 <FcGoogle />
                 Login with google
