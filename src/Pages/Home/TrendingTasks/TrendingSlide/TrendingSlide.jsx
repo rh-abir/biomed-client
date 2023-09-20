@@ -55,7 +55,7 @@ const TrendingSlide = ({ task }) => {
           to={`/tasksDatail/${task?._id}`}
           className="bg-primary hover:bg-hover transition hover:text-gray-100 text-gray-50 py-1 px-2 rounded-md"
         >
-          View Details
+          Details
         </Link>
       </div>
     </div>

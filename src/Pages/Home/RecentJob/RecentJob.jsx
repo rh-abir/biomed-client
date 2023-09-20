@@ -16,7 +16,7 @@ const RecentJob = () => {
         <div>
           <SectionTitle
             heading="Recent Tasks Listing"
-            text="“Required Skills” is one of the most-used job description sections."
+            text="Stay Up-to-Date with Recent Task Activity"
           ></SectionTitle>
         </div>
         <div
