@@ -8,6 +8,7 @@ import { MdPermMedia } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { v4 } from "uuid";
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import canvas from "../../../../assets/placeholder.jpg";
 import { storage } from "../../../../firebase/firebase.config";
 import "./SharePostForm.css";
 
@@ -108,7 +109,7 @@ const SharePostForm = () => {
                 >
                   <img
                     referrerPolicy="no-referrer"
-                    src={updateData?.image ? updateData?.image : user?.photoURL}
+                    src={user?.photoURL ? user?.photoURL : canvas}
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />
@@ -136,7 +137,7 @@ const SharePostForm = () => {
             <div>
               <div className="mb-4 cursor-pointer">
                 <select
-                 className="w-full px-4 py-2 dark:bg-slate-800 bg-slate-100 border rounded-md focus:border-green-600 mt-2 cursor-pointer"
+                 className="w-full px-4 py-2 bg-slate-100 border rounded-md focus:border-green-600 mt-2 cursor-pointer"
                   {...register("category")}
                 >
                   <option

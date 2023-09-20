@@ -9,6 +9,7 @@ import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile"
 import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
+import PaymentShow from "../Dashboard/DashboardAdmin/PaymentShow/PaymentShow";
 import PostBlog from "../Dashboard/DashboardAdmin/PostBlog/PostBlog";
 import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
 import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTasks";
@@ -43,22 +44,21 @@ import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AboutDetails from "../Pages/Home/AboutUs/AboutDetails/AboutDetails";
 import Home from "../Pages/Home/Home";
+import LiveRoom from "../Pages/LiveRoom/LiveRoom";
+import Room from "../Pages/LiveRoom/Room/Room";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import MessageRoot from "../Pages/Messaging/MessageRoot";
 import MessageShow from "../Pages/Messaging/MessageShow/MessageShow";
 import Demo from "../Pages/Messaging/MessageSidebar/UserList/Demo";
+import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 import Privacy from "../Pages/Privacy/Privacy";
+import SearchShow from "../Pages/Shared/Header/SearchForm/SearchData/SearchShow/SearchShow";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
 import SpecificCategoryLayout from "../Pages/SpecificCategory/SpecificCategoryLayout";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
-import PaymentPage from "../Pages/PaymentPage/PaymentPage";
-import SearchShow from "../Pages/Shared/Header/SearchForm/SearchData/SearchShow/SearchShow";
-import PaymentShow from "../Dashboard/DashboardAdmin/PaymentShow/PaymentShow";
-import LiveRoom from "../Pages/LiveRoom/LiveRoom";
-import Room from "../Pages/LiveRoom/Room/Room";
 
 const router = createBrowserRouter([
   {
