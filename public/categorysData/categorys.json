@@ -1,50 +1,42 @@
 [
   {
     "icon": "https://i.ibb.co/V2HDcN0/icon1.png",
-    "service_number": "8",
     "title": "Business",
-    "sub_title": "Software Engineer, Web / Mobile Developer & More"
+    "sub_title": "Find tasks and evaluations focused on Business related topics."
   },
   {
     "icon": "https://i.ibb.co/31GZB4p/icon2.png",
-    "service_number": "4",
     "title": "Research",
-    "sub_title": "Website Design Adobe XD, Figma Adobe Photoshop"
+    "sub_title": "Discover tasks and evaluations around the realm of Research."
   },
   {
     "icon": "https://i.ibb.co/7grLW2y/icon3.png",
-    "service_number": "1",
     "title": "Technology",
-    "sub_title": "Service Digital and Social Media Management"
+    "sub_title": "Explore tasks and evaluations within the domain of Technology."
   },
   {
     "icon": "https://i.ibb.co/Jx9LxWn/icon4.png",
-    "service_number": "2",
     "title": "Healthcare",
-    "sub_title": "Writing, Translation Project, get It Wuickly done"
+    "sub_title": "Uncover tasks and evaluations that delve into Healthcare."
   },
   {
     "icon": "https://i.ibb.co/RpR11wX/icon5.png",
-    "service_number": "3",
     "title": "History",
-    "sub_title": "Freelancer Music, Audio Services, Music Projects"
+    "sub_title": "Access tasks and evaluations that pertain to the field of History"
   },
   {
     "icon": "https://i.ibb.co/LCFYBxL/icon6.png",
-    "service_number": "0",
     "title": "Arts",
     "sub_title": "Animation Video Maker that Brings Studio Quality"
   },
   {
     "icon": "https://i.ibb.co/F4196Pj/icon7.png",
-    "service_number": "2",
     "title": "Mathematics",
-    "sub_title": "Programmers and coders Both for Your Project"
+    "sub_title": "Locate tasks and evaluations pertaining to Mathematics."
   },
   {
     "icon": "https://i.ibb.co/Qr6BqSN/icon8.png",
-    "service_number": "5",
     "title": "History",
-    "sub_title": "Team Works, Collaboration Meet for Your Business"
+    "sub_title": "Find tasks and evaluations that revolve the domain of History."
   }
 ]
