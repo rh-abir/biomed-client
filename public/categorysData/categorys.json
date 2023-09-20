@@ -1,0 +1,50 @@
+[
+  {
+    "icon": "https://i.ibb.co/V2HDcN0/icon1.png",
+    "service_number": "8",
+    "title": "Business",
+    "sub_title": "Software Engineer, Web / Mobile Developer & More"
+  },
+  {
+    "icon": "https://i.ibb.co/31GZB4p/icon2.png",
+    "service_number": "4",
+    "title": "Research",
+    "sub_title": "Website Design Adobe XD, Figma Adobe Photoshop"
+  },
+  {
+    "icon": "https://i.ibb.co/7grLW2y/icon3.png",
+    "service_number": "1",
+    "title": "Technology",
+    "sub_title": "Service Digital and Social Media Management"
+  },
+  {
+    "icon": "https://i.ibb.co/Jx9LxWn/icon4.png",
+    "service_number": "2",
+    "title": "Healthcare",
+    "sub_title": "Writing, Translation Project, get It Wuickly done"
+  },
+  {
+    "icon": "https://i.ibb.co/RpR11wX/icon5.png",
+    "service_number": "3",
+    "title": "History",
+    "sub_title": "Freelancer Music, Audio Services, Music Projects"
+  },
+  {
+    "icon": "https://i.ibb.co/LCFYBxL/icon6.png",
+    "service_number": "0",
+    "title": "Arts",
+    "sub_title": "Animation Video Maker that Brings Studio Quality"
+  },
+  {
+    "icon": "https://i.ibb.co/F4196Pj/icon7.png",
+    "service_number": "2",
+    "title": "Mathematics",
+    "sub_title": "Programmers and coders Both for Your Project"
+  },
+  {
+    "icon": "https://i.ibb.co/Qr6BqSN/icon8.png",
+    "service_number": "5",
+    "title": "History",
+    "sub_title": "Team Works, Collaboration Meet for Your Business"
+  }
+]

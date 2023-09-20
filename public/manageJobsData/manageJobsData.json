@@ -1,0 +1,62 @@
+[
+    {
+        "company_profile_url": "https://www.examplecompany.com",
+        "job": "Software Engineer (Android)",
+        "segment": "Technology",
+        "location": "San Francisco, CA",
+        "applied_number": 120,
+        "created_date": "2023-08-01",
+        "expired_date": "2023-09-01",
+        "status": "Active"
+    },
+    {
+        "company_profile_url": "https://www.examplecompany.com",
+        "job": "Libraries",
+        "segment": "Technology",
+        "location": "New York, NY",
+        "applied_number": 75,
+        "created_date": "2023-07-15",
+        "expired_date": "2023-08-15",
+        "status": "Active"
+    },
+    {
+        "company_profile_url": "https://www.examplecompany.com",
+        "job": "Recruiting Coordinator",
+        "segment": "Human Resources",
+        "location": "Los Angeles, CA",
+        "applied_number": 50,
+        "created_date": "2023-07-10",
+        "expired_date": "2023-08-10",
+        "status": "Active"
+    },
+    {
+        "company_profile_url": "https://www.examplecompany.com",
+        "job": "Product Manager",
+        "segment": "Product Management",
+        "location": "Seattle, WA",
+        "applied_number": 90,
+        "created_date": "2023-08-05",
+        "expired_date": "2023-09-05",
+        "status": "Active"
+    },
+    {
+        "company_profile_url": "https://www.examplecompany.com",
+        "job": "Senior Product Designer",
+        "segment": "Design",
+        "location": "Austin, TX",
+        "applied_number": 60,
+        "created_date": "2023-07-20",
+        "expired_date": "2023-08-20",
+        "status": "Active"
+    },
+    {
+        "company_profile_url": "https://www.examplecompany.com",
+        "job": "Senior Product Designer",
+        "segment": "Design",
+        "location": "Chicago, IL",
+        "applied_number": 70,
+        "created_date": "2023-07-25",
+        "expired_date": "2023-08-25",
+        "status": "Active"
+    }
+]

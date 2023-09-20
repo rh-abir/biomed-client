@@ -1,0 +1,16 @@
+/* Toggle Appear */
+
+.animated-slideIn {
+  animation: slideIn 500ms ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

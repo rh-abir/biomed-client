@@ -1,0 +1,50 @@
+[
+  {
+    "job_name": "Software Engineer",
+    "company_logo": "https://i.ibb.co/rwY4Khb/icons8-canvas-student-100.png",
+    "company_name": "Tech Innovators Inc.",
+    "job_location": "On site",
+    "salary": "$120,000 - $150,000",
+    "company_description": "Tech Innovators Inc. is a leading tech company focused on pushing the boundaries of innovation. Join us to create cutting-edge software solutions that shape the future."
+  },
+  {
+    "job_name": "Marketing Manager",
+    "company_logo": "https://i.ibb.co/QHX7MzG/icons8-krita-64.png",
+    "company_name": "Global Marketing Solutions",
+    "job_location": "Work from home",
+    "salary": "$90,000 - $110,000",
+    "company_description": "Global Marketing Solutions is a remote-friendly company dedicated to driving creative and impactful global marketing campaigns."
+  },
+  {
+    "job_name": "Data Scientist",
+    "company_logo": "https://i.ibb.co/1LV8LCr/icons8-nfc-logo-48.png",
+    "company_name": "Data Insights Co.",
+    "job_location": "Work from home",
+    "salary": "$100,000 - $130,000",
+    "company_description": "At Data Insights Co., we specialize in extracting meaningful insights from complex data. Join our remote team to make data-driven decisions that shape industries."
+  },
+  {
+    "job_name": "UX/UI Designer",
+    "company_logo": "https://i.ibb.co/KqXY3W4/icons8-amazon-alexa-logo-48.png",
+    "company_name": "DesignWorks Ltd.",
+    "job_location": "On site",
+    "salary": "$85,000 - $105,000",
+    "company_description": "DesignWorks Ltd. is a creative hub where UX/UI designers craft stunning user experiences. Join our on-site team and bring imagination to life through design."
+  },
+  {
+    "job_name": "Financial Analyst",
+    "company_logo": "https://i.ibb.co/1X3G6FS/icons8-logo-48.png",
+    "company_name": "Financial Insights Group",
+    "job_location": "On site",
+    "salary": "$70,000 - $90,000",
+    "company_description": "Financial Insights Group provides valuable financial analysis to empower businesses. Join us on-site and contribute to informed financial decision-making."
+  },
+  {
+    "job_name": "Registered Nurse",
+    "company_logo": "https://i.ibb.co/BzvvNVy/icons8-google-photos-48.png",
+    "company_name": "HealthCare Plus",
+    "job_location": "Work from home",
+    "salary": "$60,000 - $80,000",
+    "company_description": "HealthCare Plus is dedicated to delivering top-notch healthcare remotely. Join our team of registered nurses and make a meaningful impact on patient well-being."
+  }
+]

@@ -1,0 +1,140 @@
+[
+  {
+    "_id": "1",
+    "name": "Senior Web Developer",
+    "image": "https://i.ibb.co/9ZL7H4X/segment.png",
+    "company": "Segment",
+    "applied_time": "5 hours ago",
+    "location": "New York, NY",
+    "salary": "$90,000 - $120,000",
+    "job_type": [
+      {
+        "type": "Private",
+        "color": "bg-blue-500"
+      },
+      {
+        "type": "Remote",
+        "color": "bg-green-500"
+      },
+      {
+        "type": "Urgent",
+        "color": "bg-red-500"
+      }
+    ]
+  },
+  {
+    "_id": "2",
+    "name": "UX Designer",
+    "image": "https://i.ibb.co/thT84pL/catalyst.png",
+    "company": "Catalyst",
+    "applied_time": "7 hours ago",
+    "location": "San Francisco, CA",
+    "salary": "$70,000 - $100,000",
+    "job_type": [
+      {
+        "type": "Private",
+        "color": "bg-blue-500"
+      },
+      {
+        "type": "Part Time",
+        "color": "bg-green-500"
+      },
+      {
+        "type": "Urgent",
+        "color": "bg-red-500"
+      }
+    ]
+  },
+  {
+    "_id": "3",
+    "name": "Content Writer",
+    "image": "https://i.ibb.co/mq63zXV/upwork.png",
+    "company": "Upwork",
+    "applied_time": "10 hours ago",
+    "location": "London, UK",
+    "salary": "$50,000 - $70,000",
+    "job_type": [
+      {
+        "type": "Remote",
+        "color": "bg-blue-500"
+      },
+      {
+        "type": "Temporary",
+        "color": "bg-green-500"
+      },
+      {
+        "type": "Urgent",
+        "color": "bg-red-500"
+      }
+    ]
+  },
+  {
+    "_id": "4",
+    "name": "Marketing Manager",
+    "image": "https://i.ibb.co/b29NYVV/figma.png",
+    "company": "Figma",
+    "applied_time": "12 hours ago",
+    "location": "Los Angeles, CA",
+    "salary": "$80,000 - $110,000",
+    "job_type": [
+      {
+        "type": "Private",
+        "color": "bg-blue-500"
+      },
+      {
+        "type": "Full Time",
+        "color": "bg-green-500"
+      },
+      {
+        "type": "Urgent",
+        "color": "bg-red-500"
+      }
+    ]
+  },
+  {
+    "_id": "5",
+    "name": "Data Analyst",
+    "image": "https://i.ibb.co/r03qjSK/medium.png",
+    "company": "Medium",
+    "applied_time": "16 hours ago",
+    "location": "Boston, MA",
+    "salary": "$60,000 - $90,000",
+    "job_type": [
+      {
+        "type": "Private",
+        "color": "bg-blue-500"
+      },
+      {
+        "type": "Freelancer",
+        "color": "bg-green-500"
+      },
+      {
+        "type": "Urgent",
+        "color": "bg-red-500"
+      }
+    ]
+  },
+  {
+    "_id": "6",
+    "name": "Customer Support Specialist",
+    "image": "https://i.ibb.co/9cPZy2M/invision.png",
+    "company": "Invision",
+    "applied_time": "20 hours ago",
+    "location": "London, UK",
+    "salary": "$45,000 - $65,000",
+    "job_type": [
+      {
+        "type": "Remote",
+        "color": "bg-blue-500"
+      },
+      {
+        "type": "Private",
+        "color": "bg-green-500"
+      },
+      {
+        "type": "Urgent",
+        "color": "bg-red-500"
+      }
+    ]
+  }
+]

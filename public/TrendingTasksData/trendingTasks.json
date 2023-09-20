@@ -1,0 +1,66 @@
+[
+  {
+    "_id": 1,
+    "task_image": "https://i.ibb.co/yhLYWpG/data.png",
+    "task_title": "Data Entry for Market Research",
+    "task_text": "Efficiently input and organize market research data to support strategic decision-making.",
+    "ceo_image": "https://i.ibb.co/h7QsDxF/ceo-w.png",
+    "ceo_name": "Alexandra"
+  },
+  {
+    "_id": 2,
+    "task_image": "https://i.ibb.co/qr6J8xS/content-edit.png",
+    "task_title": "Essay Proofreading and Editing",
+    "task_text": "Polish and refine written content to ensure clarity, accuracy, and proper formatting.",
+    "ceo_image": "https://i.ibb.co/q0djqz2/ceo-m.jpg",
+    "ceo_name": "John"
+  },
+  {
+    "_id": 3,
+    "task_image": "https://i.ibb.co/F0HB9hY/img-2.png",
+    "task_title": "Graphic Design for Social Media Post",
+    "task_text": "Conceptualize and create visually appealing designs for impactful social media posts.",
+    "ceo_image": "https://i.ibb.co/h7QsDxF/ceo-w.png",
+    "ceo_name": "Michelle"
+  },
+  {
+    "_id": 4,
+    "task_image": "https://i.ibb.co/T44Y0mq/img-4.jpg",
+    "task_title": "Assignment: Create a Website Landing Page",
+    "task_text": "Build an engaging website landing page that effectively communicates your brand.",
+    "ceo_image": "https://i.ibb.co/q0djqz2/ceo-m.jpg",
+    "ceo_name": "David"
+  },
+  {
+    "_id": 5,
+    "task_image": "https://i.ibb.co/LkLY9Q2/img-4.png",
+    "task_title": "Language Learning Quiz: Spanish Vocabulary",
+    "task_text": "Develop a language learning quiz to enhance Spanish vocabulary acquisition.",
+    "ceo_image": "https://i.ibb.co/h7QsDxF/ceo-w.png",
+    "ceo_name": "Emily"
+  },
+  {
+    "_id": 6,
+    "task_image": "https://i.ibb.co/HYjjp4W/email-managemant.png",
+    "task_title": "Virtual Assistant: Email Management",
+    "task_text": "Provide efficient email management and communication support as a virtual assistant.",
+    "ceo_image": "https://i.ibb.co/q0djqz2/ceo-m.jpg",
+    "ceo_name": "Anderson"
+  },
+  {
+    "_id": 7,
+    "task_image": "https://i.ibb.co/XXQ3DK9/math.png",
+    "task_title": "Mathematics Problem Solving",
+    "task_text": "Craft challenging algebraic equations that encourage critical thinking and problem-solving.",
+    "ceo_image": "https://i.ibb.co/h7QsDxF/ceo-w.png",
+    "ceo_name": "Williams"
+  },
+  {
+    "_id": 8,
+    "task_image": "https://i.ibb.co/7jscDXh/video-edit.png",
+    "task_title": "Video Editing: Create a Tutorial Video",
+    "task_text": "Edit and compile video content into an informative tutorial that educates and engages.",
+    "ceo_image": "https://i.ibb.co/q0djqz2/ceo-m.jpg",
+    "ceo_name": "David"
+  }
+]

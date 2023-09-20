@@ -1,0 +1,110 @@
+[
+    {
+       
+        "image": "https://img.freepik.com/free-photo/shiny-night-city_1127-8.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Scenic Mountains",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Active"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/skyscraper_1112-1069.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Coastal Retreat",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Pending"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/business-office-sky-cityscape-tourism_1127-2401.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Cultural Immersion",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Active"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/modern-business-building-with-glass-wall-from-empty-floor_1127-2865.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Urban Exploration",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Completed"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-3154.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Earth Mountains",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 6, 1990",
+        "status": "Pending"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/high-angle-pie-chart-with-cities_52683-98166.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Earth Costal",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 9, 1998",
+        "status": "Active"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/shiny-night-city_1127-8.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Natural Revolution",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Nov 8, 1989",
+        "status": "Pending"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/empty-floor-front-modern-building_1127-3154.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Urban Exploration",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Completed"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/modern-business-building-with-glass-wall-from-empty-floor_1127-2865.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Scenic Mountains",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Active"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/business-office-sky-cityscape-tourism_1127-2401.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Coastal Retreat",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Pending"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/skyscraper_1112-1069.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Cultural Immersion",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Active"
+    },
+    {
+       
+        "image": "https://img.freepik.com/free-photo/shiny-night-city_1127-8.jpg?size=626&ext=jpg&uid=R98052885&ga=GA1.2.1323370950.1686453375&semt=sph",
+        "title": "Urban Exploration",
+        "heading": "Segment",
+        "address": "London, UK",
+        "date": "Dec 5, 2030",
+        "status": "Completed"
+    }
+]

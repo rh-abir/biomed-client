@@ -1,0 +1,50 @@
+[
+  {
+    "_id": "1",
+    "image": "https://i.ibb.co/55cWBTS/applicants-1.jpg",
+    "name": "John Doe",
+    "position": "Software Engineer",
+    "location": "New York, USA",
+    "pay_per_hour": 40
+  },
+  {
+    "_id": "2",
+    "image": "https://i.ibb.co/Yb6J6fZ/applicants-2.jpg",
+    "name": "Jane Smith",
+    "position": "Graphic Designer",
+    "location": "Los Angeles, USA",
+    "pay_per_hour": 35
+  },
+  {
+    "_id": "3",
+    "image": "https://i.ibb.co/SR10BVQ/applicants-3.jpg",
+    "name": "Emily Brown",
+    "position": "Data Analyst",
+    "location": "London, UK",
+    "pay_per_hour": 45
+  },
+  {
+    "_id": "4",
+    "image": "https://i.ibb.co/0t0cFWX/applicants-4.jpg",
+    "name": "Alex Johnson",
+    "position": "Marketing Manager",
+    "location": "Toronto, Canada",
+    "pay_per_hour": 50
+  },
+  {
+    "_id": "5",
+    "image": "https://i.ibb.co/cb9rmmw/applicants-5.jpg",
+    "name": "Sophia Martinez",
+    "position": "Product Manager",
+    "location": "San Francisco, USA",
+    "pay_per_hour": 55
+  },
+  {
+    "_id": "6",
+    "image": "https://i.ibb.co/vz6WttX/applicants-6.jpg",
+    "name": "Michael Clark",
+    "position": "UX Designer",
+    "location": "Sydney, Australia",
+    "pay_per_hour": 42
+  }
+]

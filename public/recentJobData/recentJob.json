@@ -1,0 +1,90 @@
+[
+  {
+    "id": "1",
+
+    "location": "New York, NY",
+    "company_name": "Tech Innovators Inc.",
+    "job_type": ["Full-time", "Remote", "Contract"],
+    "job_title": "Senior Software Engineer",
+    "job_description": "We are looking for an experienced software engineer to join our team and work on cutting-edge projects.",
+    "rating": 4.7,
+    "salary": "$100k - $120k"
+  },
+  {
+    "id": "2",
+
+    "location": "San Francisco, CA",
+    "company_name": "Data Insights Co.",
+    "job_type": ["Full-time", "On-site"],
+    "job_title": "Data Scientist",
+    "job_description": "Join our data science team to analyze and extract insights from large datasets.",
+    "rating": 4.5,
+    "salary": "$90k - $110k "
+  },
+  {
+    "id": "3",
+
+    "location": "Los Angeles, CA",
+    "company_name": "EcoTech Solutions",
+    "job_type": ["Full-time", "Remote"],
+    "job_title": "Environmental Analyst",
+    "job_description": "Help us make a positive impact on the environment by analyzing environmental data and trends.",
+    "rating": 4.2,
+    "salary": "$80k - $95k "
+  },
+  {
+    "id": "4",
+
+    "location": "Chicago, IL",
+    "company_name": "Healthcare Innovations Ltd.",
+    "job_type": ["Full-time", "On-site"],
+    "job_title": "Medical Researcher",
+    "job_description": "Contribute to breakthroughs in healthcare by conducting medical research and clinical trials.",
+    "rating": 4.6,
+    "salary": "$85k - $105k "
+  },
+  {
+    "id": "5",
+
+    "location": "Austin, TX",
+    "company_name": "Digital Creations LLC",
+    "job_type": ["Full-time", "Remote", "Freelance"],
+    "job_title": "UI/UX Designer",
+    "job_description": "Design user-friendly and visually appealing interfaces for web and mobile applications.",
+    "rating": 4.4,
+    "salary": "$70k - $90k "
+  },
+  {
+    "id": "6",
+
+    "location": "Seattle, WA",
+    "company_name": "Cloud Innovations Corp.",
+    "job_type": ["Full-time", "Remote"],
+    "job_title": "Cloud Solutions Architect",
+    "job_description": "Architect and implement cloud solutions for our enterprise clients.",
+    "rating": 4.8,
+    "salary": "$110k - $130k "
+  },
+  {
+    "id": "7",
+
+    "location": "Denver, CO",
+    "company_name": "Finance Experts Inc.",
+    "job_type": ["Full-time", "On-site"],
+    "job_title": "Financial Analyst",
+    "job_description": "Analyze financial data to provide insights and recommendations for our clients.",
+    "rating": 4.1,
+    "salary": "$75k - $95k "
+  },
+  {
+    "id": "8",
+
+    "location": "Boston, MA",
+    "company_name": "Green Energy Solutions",
+    "job_type": ["Full-time", "Remote"],
+    "job_title": "Renewable Energy Engineer",
+    "job_description": "Work on renewable energy projects and contribute to a sustainable future.",
+    "rating": 4.5,
+    "salary": "$90k - $110k "
+  }
+]
