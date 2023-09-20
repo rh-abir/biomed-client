@@ -35,7 +35,7 @@ const AddTeamMember = () => {
       data.photo = downloadUrl;
 
       console.log(downloadUrl);
-      const response = await fetch("https://biomed-server.vercel.app/teamMembers", {
+      const response = await fetch(`${import.meta.env.VITE_BASE_URL}/teamMembers`, {
         method: "POST",
         headers: {
           "content-type": "application/json",

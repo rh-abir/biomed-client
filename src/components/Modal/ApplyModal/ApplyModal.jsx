@@ -36,7 +36,7 @@ const ApplyModal = ({ closeModal, isOpen, showInfoCompany }) => {
         };
 
         axios
-          .put(`https://biomed-server.vercel.app/appliedjob/${_id}`, applyJob)
+          .put(`${import.meta.env.VITE_BASE_URL}/appliedjob/${_id}`, applyJob)
           .then((response) => {
             console.log(response);
             reset();

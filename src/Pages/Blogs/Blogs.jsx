@@ -14,7 +14,7 @@ const Blogs = () => {
     queryKey: ["blogLatest"],
     queryFn: async () => {
       const res = await axios.get(
-        "https://biomed-server.vercel.app/blogslatest"
+        `${import.meta.env.VITE_BASE_URL}/blogslatest`
       );
       return res.data;
     },

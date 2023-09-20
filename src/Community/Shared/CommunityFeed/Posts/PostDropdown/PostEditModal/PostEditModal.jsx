@@ -31,7 +31,7 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
       data.photo = downloadUrl;
 
       const response = await fetch(
-        `https://biomed-server.vercel.app/posts/${postId}`,
+        `${import.meta.env.VITE_BASE_URL}/posts/${postId}`,
         {
           method: "PATCH",
           headers: {
@@ -88,7 +88,6 @@ const PostEditModal = ({ setIsEditModalOpen, title, desc, postId }) => {
             {errors?.photo && (
               <span className="text-red-500">{errors?.photo.message}</span>
             )}
-
 
             {/* title field */}
             <input

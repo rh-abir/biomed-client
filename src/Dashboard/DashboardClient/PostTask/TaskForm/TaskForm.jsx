@@ -104,7 +104,7 @@ const TaskForm = () => {
   const { data: userData = {} } = useQuery({
     queryKey: ["userData"],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/users/${user?.email}`);
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/users/${user?.email}`);
       return res.data;
     },
   });
@@ -172,7 +172,7 @@ const TaskForm = () => {
           axiosSecure.post(`/jobs`, currentData).then((data) => {
             if (data.data.insertedId) {
               axios
-                .put(`https://biomed-server.vercel.app/user-post-increment/${user?.email}`)
+                .put(`${import.meta.env.VITE_BASE_URL}/user-post-increment/${user?.email}`)
                 .then(() => {});
               reset();
               toast.success("Successfully Added Job");
@@ -186,7 +186,7 @@ const TaskForm = () => {
       });
     });
   };
-
+  
   const customStyles = {
     control: (provided) => ({
       ...provided,

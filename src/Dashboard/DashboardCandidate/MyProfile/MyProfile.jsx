@@ -6,7 +6,6 @@ import { FaFacebookF, FaGithub, FaLinkedin, FaTwitter } from "react-icons/fa";
 import { TfiWorld } from "react-icons/tfi";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
-import canvas from "../../../assets/placeholder.jpg";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 
 const CompanyForm = () => {
@@ -16,7 +15,7 @@ const CompanyForm = () => {
     queryKey: ["companyView"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/users/${user?.email}`
       );
       return res?.data;
     },

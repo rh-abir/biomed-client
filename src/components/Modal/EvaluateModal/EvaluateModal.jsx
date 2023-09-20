@@ -55,7 +55,7 @@ const EvaluateModal = ({ closeModal, isOpen, applicantInfo }) => {
 
         axios
           .put(
-            `https://biomed-server.vercel.app/appliedjob/${applicantInfo?._id}`,
+            `${import.meta.env.VITE_BASE_URL}/appliedjob/${applicantInfo?._id}`,
             evaluateTask
           )
           .then((response) => {

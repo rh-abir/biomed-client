@@ -15,7 +15,7 @@ const ShortlistedTasks = () => {
   const { data: shortListedTasks = [] } = useQuery({
     queryKey: ["shortListedTasks"],
     queryFn: async () => {
-      const res = await axios("https://biomed-server.vercel.app/applidejobs");
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/applidejobs`);
       return res.data;
     },
   });

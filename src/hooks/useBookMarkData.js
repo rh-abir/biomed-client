@@ -10,7 +10,7 @@ const useBookMarkData = () => {
     queryKey: ["Bookmark", currentUserEmail],
     queryFn: async () => {
       const res = await fetch(
-        `https://biomed-server.vercel.app/bookmark?email=${currentUserEmail}`
+        `${import.meta.env.VITE_BASE_URL}/bookmark?email=${currentUserEmail}`
       );
       return res.json();
     },

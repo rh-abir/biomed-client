@@ -10,7 +10,7 @@ const RecentApplicants = () => {
     queryKey: ["recentApplication"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/recentApplications/${user.email}`
+        `${import.meta.env.VITE_BASE_URL}/recentApplications/${user.email}`
       );
       return res.data;
     },

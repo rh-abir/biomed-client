@@ -11,7 +11,7 @@ const ClientBox = () => {
     queryKey: ["jobs"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/jobs/${user.email}`
+        `${import.meta.env.VITE_BASE_URL}/jobs/${user.email}`
       );
       return res.data;
     },
@@ -21,7 +21,7 @@ const ClientBox = () => {
     queryKey: ["applicant"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/getapplicantemail/${user.email}`
+        `${import.meta.env.VITE_BASE_URL}/getapplicantemail/${user.email}`
       );
       return res.data;
     },

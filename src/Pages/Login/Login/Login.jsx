@@ -36,7 +36,7 @@ const Login = () => {
   };
 
   const handleGoogle = () => {
-    googleLoginUser()
+    googleLoginUser()  
       .then((result) => {
         saveUser(result.user);
         navigate(from, { replace: true });

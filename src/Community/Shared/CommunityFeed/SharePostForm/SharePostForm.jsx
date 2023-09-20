@@ -21,7 +21,7 @@ const SharePostForm = () => {
     queryKey: ["profile", user?.email],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/users/${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/users/${user?.email}`
       );
       return res.data;
     },
@@ -55,7 +55,7 @@ const SharePostForm = () => {
       };
 
       const response = await fetch(
-        "https://biomed-server.vercel.app/communityPosts",
+        `${import.meta.env.VITE_BASE_URL}/communityPosts`,
         {
           method: "POST",
           headers: {
@@ -137,13 +137,10 @@ const SharePostForm = () => {
             <div>
               <div className="mb-4 cursor-pointer">
                 <select
-                 className="w-full px-4 py-2 bg-slate-100 border rounded-md focus:border-green-600 mt-2 cursor-pointer"
+                  className="w-full px-4 py-2 bg-slate-100 border rounded-md focus:border-green-600 mt-2 cursor-pointer"
                   {...register("category")}
                 >
-                  <option
-                    className="cursor-pointer py-2"
-                    disabled 
-                  >
+                  <option className="cursor-pointer py-2" disabled>
                     Select Category
                   </option>
                   <option

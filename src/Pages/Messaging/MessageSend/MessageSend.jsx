@@ -19,7 +19,7 @@ const MessageSend = () => {
 
     const messageData = { displayName, email, photoURL, message };
 
-    fetch(`https://biomed-server.vercel.app/put/appliedtask/${getId}`, {
+    fetch(`${import.meta.env.VITE_BASE_URL}/put/appliedtask/${getId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

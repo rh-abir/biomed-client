@@ -17,7 +17,7 @@ const TaskApplied = () => {
     queryKey: ["taskApplied"],
     queryFn: async () => {
       const res = await axios(
-        `https://biomed-server.vercel.app/applyTaskInstructor/${id}`
+        `${import.meta.env.VITE_BASE_URL}/applyTaskInstructor/${id}`
       );
       return res.data;
     },
@@ -140,7 +140,9 @@ const TaskApplied = () => {
                     ) : (
                       <td className="py-2 md:py-4">
                         <button className="bg-green-200 text-gray-400 px-5 py-1 rounded-md cursor-not-allowed">
-                          Evaluate
+                          {
+                            applicant?.appliedjobdata?.isEvaluate ? "Evaluated" : "Evaluate"
+                          }
                         </button>
                       </td>
                     )}

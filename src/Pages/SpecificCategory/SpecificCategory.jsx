@@ -9,10 +9,8 @@ const SpecificCategory = () => {
 
   const [specificCategoryData, setSpecificCategoryData] = useState([]);
 
-  const [latestTaskData, setLatestTaskData] = useState([]);
-
   useEffect(() => {
-    fetch(`https://biomed-server.vercel.app/categoryjobs/?industry=${title}`)
+    fetch(`${import.meta.env.VITE_BASE_URL}/categoryjobs/?industry=${title}`)
       .then((res) => res.json())
       .then((data) => setSpecificCategoryData(data));
   }, [title]);

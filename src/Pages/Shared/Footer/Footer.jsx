@@ -22,7 +22,7 @@ const Footer = () => {
   const { data: socialMedia = [], isLoading } = useQuery({
     queryKey: ["socialMedia"],
     queryFn: async () => {
-      const res = await axios(`https://biomed-server.vercel.app/social-media`);
+      const res = await axios(`${import.meta.env.VITE_BASE_URL}/social-media`);
       return res.data;
     },
   });
@@ -61,13 +61,13 @@ const Footer = () => {
             <Link target="_blank" to={socialMedia[0].facebook}>
               <FaFacebookF />
             </Link>
-            <Link target="_blank" to={socialMedia[0].linkedin}>
+            <Link target="_blank" to={socialMedia[0].twitter}>
               <FaTwitter />
             </Link>
             <Link target="_blank" to={socialMedia[0].instagram}>
               <FaInstagram />
             </Link>
-            <Link target="_blank" to={socialMedia[0].twitter}>
+            <Link target="_blank" to={socialMedia[0].linkedin}>
               <FaLinkedinIn />
             </Link>
           </div>
