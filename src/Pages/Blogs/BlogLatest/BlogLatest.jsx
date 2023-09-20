@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const BlogLatest = ({ data }) => {
   return (
-    <div className="flex gap-3">
+    <div className="flex lg:flex-col 2xl:flex-row gap-3">
       <img
         className="w-16 h-16 object-cover rounded-full"
         src={data.thumbnail}

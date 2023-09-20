@@ -18,7 +18,6 @@ export const saveUser = (user, updateData) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         resolve(data);
       })
       .catch((error) => {
@@ -93,6 +92,13 @@ export const getAdminRole = async (email) => {
   const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
   const user = await res.json();
   return user?.admin;
+};
+
+// get admin role
+export const getUserRole = async (email) => {
+  const res = await fetch(`https://biomed-server.vercel.app/users/${email}`);
+  const userRoleGet = await res.json();
+  return userRoleGet?.userRole;
 };
 
 // get client role

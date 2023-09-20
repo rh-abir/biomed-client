@@ -19,7 +19,7 @@ const MessageSend = () => {
 
     const messageData = { displayName, email, photoURL, message };
 
-    fetch(`http://localhost:5000/put/appliedtask/${getId}`, {
+    fetch(`https://biomed-server.vercel.app/put/appliedtask/${getId}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

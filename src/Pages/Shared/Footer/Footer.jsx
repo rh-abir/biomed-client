@@ -26,7 +26,7 @@ const Footer = () => {
       return res.data;
     },
   });
-  // console.log(socialMedia)
+  
 
   const [email, setEmail] = React.useState("");
   const [subscriptionMessage, setSubscriptionMessage] = React.useState("");
@@ -58,16 +58,16 @@ const Footer = () => {
           </div>
           <div className="flex gap-5 items-center">
             <p>Follow Us</p>
-            <Link to="/">
+            <Link target="_blank" to={socialMedia[0].facebook}>
               <FaFacebookF />
             </Link>
-            <Link to="/">
+            <Link target="_blank" to={socialMedia[0].linkedin}>
               <FaTwitter />
             </Link>
-            <Link to="/">
+            <Link target="_blank" to={socialMedia[0].instagram}>
               <FaInstagram />
             </Link>
-            <Link to="/">
+            <Link target="_blank" to={socialMedia[0].twitter}>
               <FaLinkedinIn />
             </Link>
           </div>
@@ -100,7 +100,7 @@ const Footer = () => {
               <Link to="/blogs">
                 <p>Blogs</p>
               </Link>
-              <Link>About Us</Link>
+              <Link to="/about-details">About Us</Link>
               <Link to="/privacy">
                 <p>Privacy Policy</p>
               </Link>

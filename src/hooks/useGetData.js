@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+  import { useQuery } from "@tanstack/react-query";
 
 const useGetData = (url) => {
   const { data: mydata = [], refetch } = useQuery({

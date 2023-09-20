@@ -28,7 +28,7 @@ const BrowseTasks = () => {
     // console.log(data);
   };
   return (
-    <div className="pt-20">
+    <div className="pt-20 bg-white">
       <Container>
         <button
           onClick={() => setTasksSidebarToggle(true)}
@@ -59,7 +59,7 @@ const BrowseTasks = () => {
           )}
           <div className="col-span-4 lg:col-span-7 xl:col-span-3">
             {browseJobsData && (
-              <BrowseTasksHome browseJobsData={jobsData && jobsData} />
+              <BrowseTasksHome  browseJobsData={jobsData && jobsData} />
             )}
           </div>
         </div>

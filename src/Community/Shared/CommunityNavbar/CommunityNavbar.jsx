@@ -1,41 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useContext, useState } from "react";
-import { AiOutlineHome } from "react-icons/ai";
+import React, { useContext } from "react";
 import { BiSearchAlt2 } from "react-icons/bi";
-import { FiArrowLeft } from "react-icons/fi";
-import { MdSend } from "react-icons/md";
-import { Link, useLocation } from "react-router-dom";
+import { GiHamburgerMenu } from "react-icons/gi";
+import { Link } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 import logo from "../../../assets/logo.png";
 import "./CommunityNavbar.css";
 
 const CommunityNavbar = () => {
-  const [searchText, setSerchText] = useState("");
-  const { user, adminRole, setSearchPosts,clientRole } = useContext(AuthContext);
-
-  // Define a function to determine which icon to display based on the route
-  const location = useLocation();
-  const getIcon = () => {
-    if (location.pathname === "/community") {
-      return (
-        <Link to="/" title="Back to Home" className="topbarIconItem md:hidden">
-          <AiOutlineHome className="text-3xl text-gray-600" />
-        </Link>
-      );
-    } else if (location.pathname === "/community/community-profile") {
-      return (
-        <Link
-          to="/community"
-          title="Back to Community"
-          className="topbarIconItem md:hidden"
-        >
-          <FiArrowLeft className="text-3xl text-gray-600" />
-        </Link>
-      );
-    }
-    return null;
-  };
+  const {
+    user,
+    adminRole,
+    setSearchPosts,
+    clientRole,
+    setCommunitySidebarToggle,
+  } = useContext(AuthContext);
 
   const { data: myProfileData = [] } = useQuery({
     queryKey: ["profile", user?.email],
@@ -48,13 +28,6 @@ const CommunityNavbar = () => {
   });
 
   const { updateData } = myProfileData;
-
-
-  // Search handler
-  const handleSearch = () => {
-    setSearchPosts(searchText)
-  }
-
 
   return (
     <>
@@ -72,11 +45,6 @@ const CommunityNavbar = () => {
           </span>
           {/* Profile section for small devices */}
           <div className="flex justify-center items-center">
-            <Link to={"/community"}>
-              <div title="Back to Home" className="topbarIconItem md:hidden">
-                {getIcon()} {/* Render the dynamic icon */}
-              </div>
-            </Link>
             <Link
               to={
                 adminRole
@@ -101,18 +69,15 @@ const CommunityNavbar = () => {
           </div>
         </div>
         {/* Navbar Right SIde */}
-        <div className="flex items-center justify-around text-gray-600 ms-4 md:mx-4 gap-6">
+        <div className="flex items-center justify-around text-gray-600 ms-4 md:mx-4 gap-1 md:gap-6">
           <div className="w-full h-8 bg-slate-200 rounded-full flex items-center ">
             <BiSearchAlt2 className="text-2xl mt-1 ml-2" />
             <input
-              onChange={(e) => setSerchText(e.target.value)}
+              onChange={(e) => setSearchPosts(e.target.value)}
               type="text"
               placeholder="Search"
-              className="border-none w-full focus:outline-none rounded-full px-1  bg-slate-200"
+              className="border-none w-full focus:outline-none rounded-full px-1 bg-slate-200"
             />
-            <button onClick={handleSearch}>
-              <MdSend className="text-xl me-2" />
-            </button>
           </div>
           {/* Profile section for large devices */}
           <Link
@@ -136,6 +101,13 @@ const CommunityNavbar = () => {
               />
             </div>
           </Link>
+          {/* Hamburger Menue */}
+          <button
+            onClick={() => setCommunitySidebarToggle(true)}
+            className="topbarIconItem lg:hidden"
+          >
+            <GiHamburgerMenu className="text-2xl md:text-3xl text-gray-600" />
+          </button>
         </div>
       </nav>
     </>

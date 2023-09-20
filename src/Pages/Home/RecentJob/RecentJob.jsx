@@ -16,10 +16,12 @@ const RecentJob = () => {
         <div>
           <SectionTitle
             heading="Recent Tasks Listing"
-            text="“Required Skills” is one of the most-used job description sections."
+            text="Stay Up-to-Date with Recent Task Activity"
           ></SectionTitle>
         </div>
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
+        <div
+          className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5"
+        >
           {recentJob.map((task) => (
             <TrendingSlide key={task?._id} task={task} />
           ))}

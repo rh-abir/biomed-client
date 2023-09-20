@@ -45,8 +45,6 @@ const BrowseTasksDetails = () => {
     appliedCount,
   } = useLoaderData();
 
-  console.log(country);
-
   const [applied, setApplied] = useState(false);
   const isDisabled = adminRole || clientRole;
 
@@ -92,7 +90,7 @@ const BrowseTasksDetails = () => {
         };
 
         axios
-          .post("http://localhost:5000/appliedjob", applyJob)
+          .post("https://biomed-server.vercel.app/appliedjob", applyJob)
           .then((response) => {
             if (response.data.acknowledged) {
               setApplied(true);

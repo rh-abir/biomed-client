@@ -12,12 +12,11 @@ import { AuthContext } from "../../../Provider/AuthProvider";
 
 const EvaluateApplicants = () => {
   const { user } = useContext(AuthContext);
-  console.log(user)
   const { data: evaluateTask = [] } = useQuery({
     queryKey: ["evaluateTask"],
     queryFn: async () => {
       const res = await axios(
-        `http://localhost:5000/evaluateTasks/${user?.email}`
+        `https://biomed-server.vercel.app/evaluateTasks/${user?.email}`
       );
       return res.data;
     },

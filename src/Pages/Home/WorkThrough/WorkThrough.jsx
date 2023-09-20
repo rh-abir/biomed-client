@@ -1,11 +1,4 @@
 import React from "react";
-import Container from "../../../components/Shared/Container/Container";
-import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
 import {
   AiOutlineCheck,
   AiOutlineCheckCircle,
@@ -15,6 +8,13 @@ import {
   AiOutlineStar,
   AiOutlineUser,
 } from "react-icons/ai";
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+import "react-vertical-timeline-component/style.min.css";
+import Container from "../../../components/Shared/Container/Container";
+import SectionTitle from "../../../components/Shared/SectionTitle/SectionTitle";
 
 const WorkThrough = () => {
   return (
@@ -29,7 +29,7 @@ const WorkThrough = () => {
           <VerticalTimelineElement
             contentStyle={{ background: "#5BBB7B", color: "#fff" }}
             className="vertical-timeline-element--work"
-            date={<span className="text-2xl font-bold">Sign-Up</span>}
+            date={<span className="text-2xl font-bold text-gray-700 dark:text-gray-200">Sign-Up</span>}
             iconStyle={{ background: "#5BBB7B", color: "#fff" }}
             icon={<AiOutlineUser />}
           >
@@ -44,7 +44,7 @@ const WorkThrough = () => {
           <VerticalTimelineElement
             contentStyle={{ background: "#5BBB7B", color: "#fff" }}
             className="vertical-timeline-element--work"
-            date={<span className="text-2xl font-bold">Task-Submission</span>}
+            date={<span className="text-2xl font-bold text-gray-700 dark:text-gray-200">Task-Submission</span>}
             iconStyle={{ background: "#5BBB7B", color: "#fff" }}
             icon={<AiOutlineCheckCircle />}
           >
@@ -59,7 +59,7 @@ const WorkThrough = () => {
           <VerticalTimelineElement
             contentStyle={{ background: "#5BBB7B", color: "#fff" }}
             className="vertical-timeline-element--work"
-            date={<span className="text-2xl font-bold">Task-Evaluation</span>}
+            date={<span className="text-2xl font-bold text-gray-700 dark:text-gray-200">Task-Evaluation</span>}
             iconStyle={{ background: "#5BBB7B", color: "#fff" }}
             icon={<AiOutlineCheck />}
           >
@@ -74,7 +74,7 @@ const WorkThrough = () => {
           <VerticalTimelineElement
             contentStyle={{ background: "#5BBB7B", color: "#fff" }}
             className="vertical-timeline-element--work"
-            date={<span className="text-2xl font-bold ">Feedback</span>}
+            date={<span className="text-2xl font-bold text-gray-700 dark:text-gray-200 ">Feedback</span>}
             iconStyle={{ background: "#5BBB7B", color: "#fff" }}
             icon={<AiOutlineStar />}
           >
@@ -89,7 +89,7 @@ const WorkThrough = () => {
           <VerticalTimelineElement
             contentStyle={{ background: "#5BBB7B", color: "#fff" }}
             className="vertical-timeline-element--education"
-            date={<span className="text-2xl font-bold ">Results</span>}
+            date={<span className="text-2xl font-bold text-gray-700 dark:text-gray-200 ">Results</span>}
             iconStyle={{ background: "#5BBB7B", color: "#fff" }}
             icon={<AiOutlineFileDone />}
           >
@@ -105,7 +105,7 @@ const WorkThrough = () => {
           <VerticalTimelineElement
             contentStyle={{ background: "#5BBB7B", color: "#fff" }}
             className="vertical-timeline-element--education"
-            date={<span className="text-2xl font-bold">Payment</span>}
+            date={<span className="text-2xl font-bold text-gray-700 dark:text-gray-200">Payment</span>}
             iconStyle={{ background: "#5BBB7B", color: "#fff" }}
             icon={<AiOutlineDollarCircle />}
           >
@@ -120,7 +120,7 @@ const WorkThrough = () => {
           <VerticalTimelineElement
             contentStyle={{ background: "#5BBB7B", color: "#fff" }}
             className="vertical-timeline-element--education"
-            date={<span className="text-2xl font-bold">Support</span>}
+            date={<span className="text-2xl font-bold text-gray-700 dark:text-gray-200">Support</span>}
             iconStyle={{ background: "#5BBB7B", color: "#fff" }}
             icon={<AiOutlineQuestionCircle />}
           >

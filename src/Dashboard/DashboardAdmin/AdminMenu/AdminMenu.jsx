@@ -1,9 +1,6 @@
 import React, { useContext } from "react";
 import { AiOutlineClose, AiOutlineHome, AiOutlineLogout } from "react-icons/ai";
-import {
-  BsFillSignpostFill,
-  BsMicrosoftTeams,
-} from "react-icons/bs";
+import { BsFillSignpostFill, BsMicrosoftTeams } from "react-icons/bs";
 import { FaUsers } from "react-icons/fa";
 import { FaUsersGear } from "react-icons/fa6";
 import { HiOutlineUsers } from "react-icons/hi2";
@@ -35,9 +32,9 @@ const AdminMenu = () => {
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/admin-home"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -45,14 +42,14 @@ const AdminMenu = () => {
             <AiOutlineHome /> Dashboard
           </NavLink>
         </li>
-        <li >
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/admin-profile"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -60,14 +57,14 @@ const AdminMenu = () => {
             <ImProfile /> Admin Profile
           </NavLink>
         </li>
-        <li >
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/all-users"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -75,14 +72,14 @@ const AdminMenu = () => {
             <FaUsers /> All Users
           </NavLink>
         </li>
-        <li >
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/all-client"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -90,14 +87,29 @@ const AdminMenu = () => {
             <HiOutlineUsers /> All Clients
           </NavLink>
         </li>
-        <li >
+        <li>
+          <NavLink
+            onClick={() => setDashboardToggle(false)}
+            to={"/dashboard/all-paid-user"}
+            className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
+                isActive
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
+                  : "text-gray-700"
+              }`
+            }
+          >
+            <HiOutlineUsers /> All Paid Users
+          </NavLink>
+        </li>
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/post-blog"
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -105,14 +117,14 @@ const AdminMenu = () => {
             <BsFillSignpostFill /> Post A New Blog
           </NavLink>
         </li>
-        <li >
+        <li>
           <NavLink
             to={"/dashboard/admin-home"}
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -120,14 +132,14 @@ const AdminMenu = () => {
             <RiChatSettingsLine /> Manage Blogs
           </NavLink>
         </li>
-        <li >
+        <li>
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/social-media"
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -136,14 +148,14 @@ const AdminMenu = () => {
           </NavLink>
         </li>
 
-        <li >
+        <li>
           <NavLink
             to="/dashboard/about-us"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -151,14 +163,14 @@ const AdminMenu = () => {
             <FaUsersGear className="text-2xl" /> About Us
           </NavLink>
         </li>
-        <li >
+        <li>
           <NavLink
             to="/dashboard/team-member"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }

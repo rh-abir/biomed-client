@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import DashboardTitle from "../../../components/DashboardTitle/DashboardTitle";
 import { Link, useParams } from "react-router-dom";
-import placeholder from "../../../assets/placeholder.jpg";
 import EvaluateModal from "../../../components/Modal/EvaluateModal/EvaluateModal";
 import ProfileModal from "../../../components/Modal/ProfileModal/ProfileModal";
+import { AuthContext } from "../../../Provider/AuthProvider";
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
 
 const TaskApplied = () => {
+  const { user } = useContext(AuthContext);
   const { id } = useParams();
-  const { data: applicants = [] } = useQuery({
+  const { data: applicants = [], isLoading } = useQuery({
     queryKey: ["taskApplied"],
     queryFn: async () => {
       const res = await axios(
@@ -20,18 +23,10 @@ const TaskApplied = () => {
     },
   });
 
-  console.log(applicants);
-
   const [currentPage, setCurrentPage] = useState(1);
   const rowsPerPage = 6;
   const startIndex = (currentPage - 1) * rowsPerPage;
   const endIndex = startIndex + rowsPerPage;
-
-  // const showInfoCompany = {
-  //   _id,
-  //   title,
-  //   deadline,
-  // };
 
   const [isOpenEvaluate, setIsOpenEvaluate] = useState(false);
   const [isOpenProfile, setIsOpenProfile] = useState(false);
@@ -45,6 +40,8 @@ const TaskApplied = () => {
   const closeProfileModal = () => {
     setIsOpenProfile(false);
   };
+
+  console.log(applicants);
 
   return (
     <>
@@ -84,6 +81,23 @@ const TaskApplied = () => {
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
+                {isLoading && (
+                  <SkeletonTheme color="#f3f3f3" highlightColor="#ecebeb">
+                    <div className="flex items-center gap-3">
+                      <Skeleton
+                        className="animate-pulse"
+                        circle
+                        height={50}
+                        width={50}
+                      />
+                      <Skeleton
+                        className="animate-pulse"
+                        height={20}
+                        width={200}
+                      />
+                    </div>
+                  </SkeletonTheme>
+                )}
                 {applicants?.slice(startIndex, endIndex)?.map((applicant) => (
                   <tr key={applicant._id}>
                     <td className="py-2 md:py-4">
@@ -92,7 +106,7 @@ const TaskApplied = () => {
                           src={
                             applicant?.appliedjobdata.image
                               ? applicant?.appliedjobdata.image
-                              : placeholder
+                              : user.photoURL
                           }
                           alt="Job"
                           className="w-12 h-12 md:w-14 md:h-14 rounded-xl mr-3 md:mr-4"
@@ -110,8 +124,8 @@ const TaskApplied = () => {
                       {applicant?.appliedjobdata.deadline}
                     </td>
                     <td className="py-2 md:py-4">Active</td>
-                    {applicant?.appliedjobdata?.downloadPdf ||
-                    !applicant?.appliedjobdata?.downloadEvaluate ? (
+                    {applicant?.appliedjobdata?.downloadPdf &&
+                    applicant?.appliedjobdata?.isEvaluate === undefined ? (
                       <td className="py-2 md:py-4">
                         <button
                           onClick={() => {

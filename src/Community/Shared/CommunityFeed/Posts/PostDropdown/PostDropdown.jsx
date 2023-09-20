@@ -76,19 +76,19 @@ const PostDropdown = ({ postId, photo, title, desc }) => {
           ref={dropdownRef}
           onMouseEnter={openDropdown}
           onMouseLeave={closeDropdown}
-          className="absolute top-full right-0 mt-2 dark:bg-gray-800 bg-white border border-gray-300 shadow-md rounded-md"
+          className="absolute top-full right-0 mt-2 bg-white border border-gray-300 shadow-md rounded-md"
         >
           <ul className="flex flex-col">
             <li
               onClick={openEditModal}
-              className="px-5 py-2 w-full dark:hover:bg-slate-600 hover:bg-green-600 hover:text-white duration-500 cursor-pointer flex items-center gap-2"
+              className="px-5 py-2 w-full hover:bg-green-600 hover:text-white duration-500 cursor-pointer flex items-center gap-2"
             >
               <AiFillEdit />
               Edit
             </li>
             <li
               onClick={handleDeletePost}
-              className="px-5 py-2 w-full dark:hover:bg-slate-600 hover:bg-red-600 hover:text-white duration-500 cursor-pointer flex items-center gap-2"
+              className="px-5 py-2 w-full hover:bg-red-600 hover:text-white duration-500 cursor-pointer flex items-center gap-2"
             >
               <FaTrashAlt /> Remove
             </li>

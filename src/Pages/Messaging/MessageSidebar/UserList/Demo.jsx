@@ -12,6 +12,17 @@ const Demo = () => {
   useEffect(() => {
     setGetid(id);
   }, [id, setGetid]);
+  // const data = useLoaderData();
+
+  // console.log(data);
+
+  //  const { data: allmessage = [], refetch } = useQuery({
+  //     queryKey: ["appliedtask", id],
+  //     queryFn: async () => {
+  //       const res = await fetch(`https://biomed-server.vercel.app/getAppliedById/${id}`);
+  //       return res.json();
+  //     },
+  //   });
 
   const [allmessage, refetch] = useMessageShow(id);
 

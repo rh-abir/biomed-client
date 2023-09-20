@@ -1,5 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import CommunityHome from "../Community/CommunityHome/CommunityHome";
+import FavouritePosts from "../Community/Shared/CommunityFeed/FavouritePosts/FavouritePosts";
 import PostDetails from "../Community/Shared/CommunityFeed/Posts/PostDetails/PostDetails";
 import AddTeamMember from "../Dashboard/DashboardAdmin/AddTeamMember/AddTeamMember";
 import AdminAboutUs from "../Dashboard/DashboardAdmin/AdminAboutUs/AdminAboutUs";
@@ -8,6 +9,7 @@ import AdminProfile from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfile"
 import AdminProfileEdit from "../Dashboard/DashboardAdmin/AdminProfile/AdminProfileEdit/AdminProfileEdit";
 import AllClients from "../Dashboard/DashboardAdmin/AllClients/AllClients";
 import AllUsers from "../Dashboard/DashboardAdmin/AllUsers/AllUsers";
+import PaymentShow from "../Dashboard/DashboardAdmin/PaymentShow/PaymentShow";
 import PostBlog from "../Dashboard/DashboardAdmin/PostBlog/PostBlog";
 import SocialMedia from "../Dashboard/DashboardAdmin/SocialMedia/SocialMedia";
 import AppliedTasks from "../Dashboard/DashboardCandidate/AppliedTasks/AppliedTasks";
@@ -42,14 +44,19 @@ import Contact from "../Pages/Contact/Contact";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AboutDetails from "../Pages/Home/AboutUs/AboutDetails/AboutDetails";
 import Home from "../Pages/Home/Home";
+import LiveRoom from "../Pages/LiveRoom/LiveRoom";
+import Room from "../Pages/LiveRoom/Room/Room";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
 import MessageRoot from "../Pages/Messaging/MessageRoot";
 import MessageShow from "../Pages/Messaging/MessageShow/MessageShow";
 import Demo from "../Pages/Messaging/MessageSidebar/UserList/Demo";
+import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 import Privacy from "../Pages/Privacy/Privacy";
+import SearchShow from "../Pages/Shared/Header/SearchForm/SearchData/SearchShow/SearchShow";
 import SpecificCategory from "../Pages/SpecificCategory/SpecificCategory";
+import SpecificCategoryLayout from "../Pages/SpecificCategory/SpecificCategoryLayout";
 import Terms from "../components/Terms/Terms";
 import PrivateRoute from "./PrivateRoute";
 
@@ -102,9 +109,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/specificCategory/:title",
-        element: <SpecificCategory />,
-        loader: ({ params }) =>
-          fetch(`/categorysData/categorys.json/${params.title}`),
+        element: <SpecificCategoryLayout />,
+        children: [
+          {
+            path: "/specificCategory/:title",
+            element: <SpecificCategory />,
+            loader: ({ params }) =>
+              fetch(`/categorysData/categorys.json/${params.title}`),
+          },
+        ],
       },
       {
         path: "/terms",
@@ -134,12 +147,32 @@ const router = createBrowserRouter([
           {
             path: "/messageroot",
             element: <MessageShow />,
+            // loader: ({ params }) =>
+            //   fetch(`https://biomed-server.vercel.app/get/appliedtask/${params.id}`),
           },
           {
             path: "/messageroot/messagedetails/:id",
             element: <Demo />,
+            // loader: ({ params }) =>
+            //   fetch(`https://biomed-server.vercel.app/getAppliedById/${params.id}`),
           },
         ],
+      },
+      {
+        path: "/payment-page",
+        element: <PaymentPage />,
+      },
+      {
+        path: "/search-show",
+        element: <SearchShow />,
+      },
+      {
+        path: "/live-room",
+        element: <LiveRoom />,
+      },
+      {
+        path: "/room/:roomId",
+        element: <Room />,
       },
     ],
   },
@@ -175,12 +208,6 @@ const router = createBrowserRouter([
         path: "/dashboard/task-overview",
         element: <TaskOverview />,
       },
-      // {
-      //   path: "/jobsDatail/:id",
-      //   element: <BrowseTasksDetails />,
-      //   loader: ({ params }) =>
-      //     fetch(`https://biomed-server.vercel.app/applyTaskInstructor/${params.id}`),
-      // },
       {
         path: "/dashboard/task-details",
         element: <TaskDetails />,
@@ -257,6 +284,11 @@ const router = createBrowserRouter([
         path: "/dashboard/all-client",
         element: <AllClients />,
       },
+      // paid user show route
+      {
+        path: "/dashboard/all-paid-user",
+        element: <PaymentShow />,
+      },
       {
         path: "/dashboard/social-media",
         element: <SocialMedia />,
@@ -286,11 +318,7 @@ const router = createBrowserRouter([
   // Community Routes
   {
     path: "/community",
-    element: (
-      <PrivateRoute>
-        <Community />
-      </PrivateRoute>
-    ),
+    element: <Community />,
     children: [
       {
         path: "/community",
@@ -301,6 +329,10 @@ const router = createBrowserRouter([
         element: <PostDetails />,
         loader: ({ params }) =>
           fetch(`https://biomed-server.vercel.app/posts/${params.id}`),
+      },
+      {
+        path: "/community/favouritePosts",
+        element: <FavouritePosts />,
       },
     ],
   },

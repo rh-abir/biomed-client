@@ -8,7 +8,6 @@ import {
 import { CiPaperplane } from "react-icons/ci";
 import { IoIosPaper } from "react-icons/io";
 import { PiBagSimpleBold } from "react-icons/pi";
-import { RiMessage2Line } from "react-icons/ri";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../Provider/AuthProvider";
 
@@ -34,9 +33,9 @@ const ClientMenu = () => {
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/client-home"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -49,9 +48,9 @@ const ClientMenu = () => {
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/instructor-view"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -64,9 +63,9 @@ const ClientMenu = () => {
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/post-task"}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -79,9 +78,9 @@ const ClientMenu = () => {
             to="/dashboard/manage-task"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -94,29 +93,14 @@ const ClientMenu = () => {
             to="/dashboard/evaluate-applicants"
             onClick={() => setDashboardToggle(false)}
             className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
           >
             <IoIosPaper /> Evaluate Applicant
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
-            to={"/dashboard/client-message"}
-            onClick={() => setDashboardToggle(false)}
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
-                isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
-                  : "text-gray-700"
-              }`
-            }
-          >
-            <RiMessage2Line /> Messages
           </NavLink>
         </li>
         <li

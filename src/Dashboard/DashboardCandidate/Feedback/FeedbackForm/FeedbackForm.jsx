@@ -21,20 +21,15 @@ const FeedbackForm = () => {
       },
       body: JSON.stringify(data),
     })
-      
       .then((res) => res.json())
       .then((result) => {
         console.log(result);
-        toast.success(
-          "Your feedback has added successfully",
-        );
+        toast.success("Your feedback has added successfully");
         reset();
       })
       .catch((error) => {
         console.log(error);
-        toast.error(
-        "Opps... feedback added faild"
-        );
+        toast.error("Opps... feedback added faild");
       });
   };
 
@@ -87,6 +82,30 @@ const FeedbackForm = () => {
               />
             </div>
           </div>
+        </div>
+        {/*Ratings Field */}
+        <div className="mb-4 cursor-pointer">
+          <label htmlFor="ratings">Give Ratings</label>
+          <select
+            className="w-full px-4 py-5 dark:bg-slate-800  bg-slate-100 border rounded-md focus:border-blue-600 mt-2 cursor-pointer"
+            {...register("ratings")}
+          >
+            <option className="cursor-pointer py-2" value="1">
+              1
+            </option>
+            <option className="cursor-pointer py-2" value="2">
+              2
+            </option>
+            <option className="cursor-pointer py-2" value="3">
+              3
+            </option>
+            <option className="cursor-pointer py-2" value="4">
+              4
+            </option>
+            <option className="cursor-pointer py-2" value="5">
+              5
+            </option>
+          </select>
         </div>
         <div className="mb-4">
           <label htmlFor="feedback" className="block mb-2">

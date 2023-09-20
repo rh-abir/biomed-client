@@ -14,19 +14,25 @@ const FrequentlyAskQuestion = () => {
       .then((data) => setFaq(data));
   }, []);
 
-  console.log(faq);
 
   return (
     <>
       <Container>
-        <div className="dark:bg-gray-800 bg-white mb-10">
+        <div className="dark:bg-gray-800 bg-white mb-10 px-6 py-1">
           <div>
             <SectionTitle heading="Frequently Asked Questions (FAQ)"></SectionTitle>
           </div>
           <div className="grid lg:grid-cols-2 gap-10">
             <div className="grid divide-y divide-neutral-200 max-w-2xl mt-4">
               {faq.map((n, index) => (
-                <div className="py-5" key={index}>
+                <div
+                  data-aos="fade-up"
+                  data-aos-anchor-placement="top-bottom"
+                  data-aos-duration="2000"
+                  data-aos-offset="200"
+                  className="py-5"
+                  key={index}
+                >
                   <details className="group">
                     <summary className="flex justify-between items-center font-medium text-xl cursor-pointer list-none">
                       <span>

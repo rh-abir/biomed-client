@@ -11,7 +11,6 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import CreatableSelect from "react-select/creatable";
 
 const EvaluateModal = ({ closeModal, isOpen, applicantInfo }) => {
-  console.log(applicantInfo)
   const [pointsOptions, setPointsOptions] = useState(null);
   const {
     register,

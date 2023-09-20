@@ -12,7 +12,7 @@ import {
   updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
-import { getAdminRole, getClientRole } from "../api/auth";
+import { getAdminRole, getClientRole, getUserRole } from "../api/auth";
 import app from "../firebase/firebase.config";
 
 const auth = getAuth(app);
@@ -26,11 +26,22 @@ const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const [clientRole, setClientRole] = useState(null);
+  const [userRole, setUserRole] = useState(null);
   const [adminRole, setAdminRole] = useState(null);
   const [dashboardToggle, setDashboardToggle] = useState(false);
   const [tasksSidebarToggle, setTasksSidebarToggle] = useState(false);
+  const [communitySidebarToggle, setCommunitySidebarToggle] = useState(false);
   const [searchPosts, setSearchPosts] = useState("");
   const [getPosts, setGetPosts] = useState([]);
+  const [searchBlogs, setSearchBlogs] = useState("");
+  const [getBlogsData, setGetBlogsData] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [tab, setTab] = useState("");
+
+  // home page search
+  const [search, setSearch] = useState("");
+  const [industry, setIndustry] = useState("");
+  const [getSearchData, setGetSearchData] = useState([]);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -74,7 +85,6 @@ const AuthProvider = ({ children }) => {
           })
           .then((data) => {
             localStorage.setItem("access-token", data.data.token);
-            console.log(data);
             setLoading(false);
           });
       } else {
@@ -87,16 +97,6 @@ const AuthProvider = ({ children }) => {
     };
   }, []);
 
-  // useEffect(() => {
-  //   const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-  //     setUser(currentUser);
-  //     setLoading(false);
-  //   });
-  //   return () => {
-  //     return unsubscribe();
-  //   };
-  // }, []);
-
   // Admin role
   useEffect(() => {
     if (user) {
@@ -108,6 +108,13 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     if (user) {
       getClientRole(user?.email).then((data) => setClientRole(data));
+    }
+  }, [user]);
+
+  // user role
+  useEffect(() => {
+    if (user) {
+      getUserRole(user?.email).then((data) => setUserRole(data));
     }
   }, [user]);
 
@@ -133,27 +140,67 @@ const AuthProvider = ({ children }) => {
     },
   });
 
-  // Search Functionality
+
+  // Search Functionality of Community Posts
   useEffect(() => {
-    fetch(`http://localhost:5000/postSearch/${searchPosts}`)
+    if (searchPosts) {
+      fetch(`https://biomed-server.vercel.app/postSearch/${searchPosts}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setGetPosts(data);
+          console.log("search data", data);
+        });
+    }
+  }, [searchPosts]);
+
+  // Category Functionality of Community Posts
+  useEffect(() => {
+    fetch(`https://biomed-server.vercel.app/categories/${tab}`)
       .then((res) => res.json())
       .then((data) => {
-        setGetPosts(data);
-        console.log("search data", data);
+        setCategories(data);
       });
-  }, [searchPosts]);
+  }, [tab]);
+
+  // Search Functionality of Blogs
+  useEffect(() => {
+    if (searchBlogs) {
+      fetch(`https://biomed-server.vercel.app/blogSearch/${searchBlogs}`)
+        .then((res) => res.json())
+        .then((data) => {
+          setGetBlogsData(data);
+          console.log("search data", data);
+        });
+    }
+  }, [searchBlogs]);
+
+  // Search banner page
+  // Search Functionality of Blogs
+  useEffect(() => {
+    if (search) {
+      fetch(
+        `https://biomed-server.vercel.app/jobSearchByTitle/${search}/${industry}`
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          setGetSearchData(data);
+        });
+    }
+  }, [search, industry]);
 
   const authInfo = {
     getId,
     setGetid,
     user,
     loading,
+    userRole,
     adminRole,
     setAdminRole,
     clientRole,
     setClientRole,
     dashboardToggle,
     tasksSidebarToggle,
+    communitySidebarToggle,
     setLoading,
     createUser,
     loginUser,
@@ -163,13 +210,30 @@ const AuthProvider = ({ children }) => {
     googleLoginUser,
     setDashboardToggle,
     setTasksSidebarToggle,
+    setCommunitySidebarToggle,
     // my profile data sharing
     myProfileData,
+    // posts searching
     searchPosts,
     setSearchPosts,
     getPosts,
     // manage jobs single job
     manageJobs,
+    // blogs search
+    searchBlogs,
+    setSearchBlogs,
+    getBlogsData,
+    // post category
+    tab,
+    setTab,
+    categories,
+
+    // banner search
+    search,
+    setSearch,
+    industry,
+    setIndustry,
+    getSearchData,
   };
 
   return (

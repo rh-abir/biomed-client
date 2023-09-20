@@ -9,7 +9,6 @@ import {
   AiOutlineUnorderedList,
   AiOutlineUser,
 } from "react-icons/ai";
-import { RiMessage2Line } from "react-icons/ri";
 import { VscFeedback } from "react-icons/vsc";
 
 import { Link, NavLink, useNavigate } from "react-router-dom";
@@ -40,10 +39,10 @@ const CandidateMenu = () => {
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/candidate-home"}
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+           className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -55,10 +54,10 @@ const CandidateMenu = () => {
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to={"/dashboard/my-profile"}
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+           className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -70,10 +69,10 @@ const CandidateMenu = () => {
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-overview"
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+           className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -85,10 +84,10 @@ const CandidateMenu = () => {
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-details"
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+           className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -100,10 +99,10 @@ const CandidateMenu = () => {
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-submission"
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+           className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -115,10 +114,10 @@ const CandidateMenu = () => {
           <NavLink
             onClick={() => setDashboardToggle(false)}
             to="/dashboard/task-history"
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+           className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }
@@ -128,26 +127,12 @@ const CandidateMenu = () => {
         </li>
         <li>
           <NavLink
-            onClick={() => setDashboardToggle(false)}
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
-                isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
-                  : "text-gray-700"
-              }`
-            }
-          >
-            <RiMessage2Line /> Messages
-          </NavLink>
-        </li>
-        <li>
-          <NavLink
             to="/dashboard/feedback"
             onClick={() => setDashboardToggle(false)}
-            className={({ isActive }) =>
-              `flex items-center gap-3 dark:text-white hover:bg-green-200 transition py-5 px-3 rounded-md text-gray-600 dark:hover:bg-gray-600${
+           className={({ isActive }) =>
+              `flex items-center gap-3 dark:text-white hover:bg-green-200 dark:hover:bg-slate-600 transition py-5 px-3 rounded-md text-gray-600${
                 isActive
-                  ? " border-primary text-primary  dark:text-primary dark:hover:text-primary text-xl lg:text-xl bg-green-200 transition py-5 px-3 rounded-md"
+                  ? " border-primary text-primary  dark:text-primary dark:hover:bg-slate-600 text-xl lg:text-xl bg-green-200 dark:bg-slate-600 transition py-5 px-3 rounded-md"
                   : "text-gray-700"
               }`
             }

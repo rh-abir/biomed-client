@@ -22,7 +22,12 @@ const AboutUs = () => {
       <div className="py-10 md:py-16">
         <div className="container mx-auto flex flex-col lg:flex-row items-center">
           {/* Image*/}
-          <div className="w-full lg:w-1/2 mb-6 md:mb-0 md:mr-6">
+          <div
+            className="w-full lg:w-1/2 mb-6 md:mb-0 md:mr-6"
+            data-aos="fade-right"
+            data-aos-offset="500"
+            data-aos-duration="2000"
+          >
             <img
               src="https://i.ibb.co/jhh5rzh/about-us.png"
               alt="About Us"
@@ -31,7 +36,12 @@ const AboutUs = () => {
           </div>
 
           {/* Content */}
-          <div className="w-full lg:w-1/2">
+          <div
+            className="w-full lg:w-1/2"
+            data-aos="fade-left"
+            data-aos-offset="500"
+            data-aos-duration="2000"
+          >
             <h2 className="text-xl md:text-3xl lg:text-4xl font-bold text-slate-600 mb-4">
               About Us
             </h2>
