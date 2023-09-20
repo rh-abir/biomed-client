@@ -12,8 +12,6 @@ const MessageSend = () => {
 
   const { displayName, email, photoURL } = user;
 
-  // // console.log(user);
-
   const handleSendMessage = async (e) => {
     e.preventDefault();
     const message = e.target.text.value;

@@ -12,27 +12,12 @@ const Demo = () => {
   useEffect(() => {
     setGetid(id);
   }, [id, setGetid]);
-  // const data = useLoaderData();
-
-  // console.log(data);
-
-  //  const { data: allmessage = [], refetch } = useQuery({
-  //     queryKey: ["appliedtask", id],
-  //     queryFn: async () => {
-  //       const res = await fetch(`http://localhost:5000/getAppliedById/${id}`);
-  //       return res.json();
-  //     },
-  //   });
 
   const [allmessage, refetch] = useMessageShow(id);
 
   console.log(allmessage);
-  // // console.log(id);
 
   const messagess = allmessage?.appliedjobdata?.message;
-  // console.log(data.appliedjobdata.message);
-
-  // const messagess = allmessage?.appliedjobdata?.message;
 
   return (
     <div className="flex flex-col h-full">

@@ -5,7 +5,6 @@ import UserList from "./UserList/UserList";
 
 const MessageSidebar = () => {
   const [getApplyMessage] = useMessageData();
-  // console.log(getApplyMessage, "asdn jlsj ");
 
   return (
     <div className="p-5">
