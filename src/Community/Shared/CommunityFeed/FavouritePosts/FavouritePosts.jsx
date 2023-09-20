@@ -16,7 +16,7 @@ const FavouritePosts = () => {
       return res.data;
     },
   });
- 
+  console.log(favouritePosts);
   return (
     <div>
       <div className="overflow-x-auto">
