@@ -69,7 +69,7 @@ const Register = () => {
   return (
     <div
       style={gradientBg}
-      className=" h-full md:h-1/3 2xl:min-h-screen flex items-center justify-center bg-no-repeat bg-cover lg:bg-contain m-2 md:py-10"
+      className="h-full md:h-1/3 2xl:min-h-screen flex items-center justify-center bg-no-repeat bg-cover lg:bg-contain m-2 md:py-10"
     >
       <div className="dark:bg-gray-800 dark:text-white  bg-gray-50 shadow-md px-6 py-8 md:px-16 lg:px-20 rounded-md">
         <div>

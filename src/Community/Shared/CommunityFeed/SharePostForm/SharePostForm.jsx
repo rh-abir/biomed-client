@@ -8,6 +8,7 @@ import { MdPermMedia } from "react-icons/md";
 import { Link } from "react-router-dom";
 import { v4 } from "uuid";
 import { AuthContext } from "../../../../Provider/AuthProvider";
+import canvas from "../../../../assets/placeholder.jpg";
 import { storage } from "../../../../firebase/firebase.config";
 import "./SharePostForm.css";
 
@@ -108,7 +109,7 @@ const SharePostForm = () => {
                 >
                   <img
                     referrerPolicy="no-referrer"
-                    src={updateData?.image ? updateData?.image : user?.photoURL}
+                    src={user?.photoURL ? user?.photoURL : canvas}
                     alt="Profile"
                     className="w-full h-full object-cover"
                   />

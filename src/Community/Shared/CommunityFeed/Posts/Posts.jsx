@@ -53,7 +53,7 @@ const Posts = () => {
         userEmail: user.email,
       };
       const response = await axios.post(
-        "http://localhost:5000/favouritePosts",
+        "https://biomed-server.vercel.app/favouritePosts",
         postData
       );
       if (response.status === 200) {

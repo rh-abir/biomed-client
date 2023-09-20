@@ -71,7 +71,7 @@ const Login = () => {
       style={gradientBg}
       className="h-full md:h-1/3 2xl:min-h-screen flex items-center justify-center bg-no-repeat bg-cover lg:bg-contain md:py-10"
     >
-      <div className="dark:bg-gray-800 dark:text-white bg-gray-50 px-5 md:px-12 lg:px-20 py-4 2xl:py-12  rounded-md shadow-md">
+      <div className="dark:bg-gray-800 dark:text-white bg-gray-50 px-5 md:px-12 lg:px-20 py-8 2xl:py-12  rounded-md shadow-md">
         <div>
           <div className="mb-10 px-10">
             <h1 className="text-xl md:text-2xl 2xl:text-4xl font-semibold mb-5">Sign in</h1>
