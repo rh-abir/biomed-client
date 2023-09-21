@@ -49,9 +49,7 @@ import Room from "../Pages/LiveRoom/Room/Room";
 import Login from "../Pages/Login/Login/Login";
 import Register from "../Pages/Login/Register/Register";
 import RegisterClient from "../Pages/LoginClient/RegisterClient/RegisterClient";
-import MessageRoot from "../Pages/Messaging/MessageRoot";
-import MessageShow from "../Pages/Messaging/MessageShow/MessageShow";
-import Demo from "../Pages/Messaging/MessageSidebar/UserList/Demo";
+import Messenger from "../Pages/Messaging/components/Messenger";
 import PaymentPage from "../Pages/PaymentPage/PaymentPage";
 import Privacy from "../Pages/Privacy/Privacy";
 import SearchShow from "../Pages/Shared/Header/SearchForm/SearchData/SearchShow/SearchShow";
@@ -140,24 +138,7 @@ const router = createBrowserRouter([
         element: <AboutDetails />,
       },
       // message route
-      {
-        path: "/messageroot",
-        element: <MessageRoot />,
-        children: [
-          {
-            path: "/messageroot",
-            element: <MessageShow />,
-            // loader: ({ params }) =>
-            //   fetch(`${import.meta.env.VITE_BASE_URL}/get/appliedtask/${params.id}`),
-          },
-          {
-            path: "/messageroot/messagedetails/:id",
-            element: <Demo />,
-            // loader: ({ params }) =>
-            //   fetch(`${import.meta.env.VITE_BASE_URL}/getAppliedById/${params.id}`),
-          },
-        ],
-      },
+
       {
         path: "/payment-page",
         element: <PaymentPage />,
@@ -183,6 +164,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register />,
+  },
+
+  {
+    path: "/messager",
+    element: <Messenger />,
   },
   {
     path: "/dashboard",

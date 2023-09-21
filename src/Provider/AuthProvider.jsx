@@ -37,6 +37,8 @@ const AuthProvider = ({ children }) => {
   const [categories, setCategories] = useState([]);
   const [tab, setTab] = useState("");
 
+  const [message, setMessage] = useState([]);
+
   // home page search
   const [search, setSearch] = useState("");
   const [industry, setIndustry] = useState("");
@@ -237,6 +239,9 @@ const AuthProvider = ({ children }) => {
     industry,
     setIndustry,
     getSearchData,
+
+    message,
+    setMessage,
   };
 
   return (

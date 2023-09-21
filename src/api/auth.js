@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // save user with role in database
 export const saveUser = (user, updateData) => {
   return new Promise((resolve, reject) => {
@@ -9,7 +11,8 @@ export const saveUser = (user, updateData) => {
       updateData,
     };
 
-    fetch(`${import.meta.env.VITE_BASE_URL}/users/${user?.email}`, {
+    // todo change url 
+    fetch(`http://localhost:5000/users/${user?.email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -26,6 +29,20 @@ export const saveUser = (user, updateData) => {
       });
   });
 };
+
+
+
+export const getFriends = async(email) => {
+  try{
+      const res = await axios.get(`http://localhost:5000/get-friends/${email}`)
+      // return res.data
+      // console.log(res)
+      return res?.data
+  }catch(err) {
+      console.log(err)
+  }
+};
+
 
 export const saveClient = (user, updateData) => {
   return new Promise((resolve, reject) => {

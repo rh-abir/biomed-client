@@ -1,12 +1,14 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import React from "react";
 import ReactDOM from "react-dom/client";
-import "./index.css";
-import { RouterProvider } from "react-router-dom";
-import router from "./Routes/Routes.jsx";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import AuthProvider from "./Provider/AuthProvider";
-import { Toaster } from "react-hot-toast";
 import { HelmetProvider } from "react-helmet-async";
+import { Toaster } from "react-hot-toast";
+import { RouterProvider } from "react-router-dom";
+import AuthProvider from "./Provider/AuthProvider";
+import router from "./Routes/Routes.jsx";
+import "./index.css";
+
+import "./main.scss";
 
 const queryClient = new QueryClient();
 

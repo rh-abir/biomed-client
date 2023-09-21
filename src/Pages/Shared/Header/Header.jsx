@@ -95,6 +95,9 @@ const Header = () => {
                   </Link>
                 </div>
               )}
+
+              {user && <MenuItem name={"Message"} path={"/messager"} />}
+
               {!(adminRole || clientRole) && (
                 <button
                   onClick={() => setRoleModal(true)}
