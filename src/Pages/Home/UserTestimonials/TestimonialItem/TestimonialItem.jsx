@@ -5,13 +5,11 @@ import { ImQuotesLeft } from "react-icons/im";
 
 const TestimonialItem = ({ userFeedback }) => {
   const { user_image, user_name, feedback, ratings } = userFeedback;
-  console.log("userFeedback", userFeedback);
+  // console.log("userFeedback", userFeedback);
   const ratingValue = parseInt(ratings);
 
   return (
-    <div
-      className="my-20 border shadow-sm rounded-md"
-    >
+    <div className="my-20 border shadow-sm rounded-md">
       <div className="px-3 py-16 flex h-[450px] items-center flex-col bg-white dark:bg-gray-700 rounded-lg">
         <div className="absolute top-5">
           <img

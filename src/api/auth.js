@@ -115,6 +115,7 @@ export const getAdminRole = async (email) => {
 export const getUserRole = async (email) => {
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${email}`);
   const userRoleGet = await res.json();
+
   return userRoleGet?.userRole;
 };
 
@@ -122,5 +123,6 @@ export const getUserRole = async (email) => {
 export const getClientRole = async (email) => {
   const res = await fetch(`${import.meta.env.VITE_BASE_URL}/users/${email}`);
   const user = await res.json();
+
   return user?.client;
 };

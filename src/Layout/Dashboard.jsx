@@ -9,32 +9,32 @@ const Dashboard = () => {
   const { dashboardToggle, adminRole, clientRole, userRole } =
     useContext(AuthContext);
 
-  if (userRole === null || adminRole === null || clientRole === null) {
-    return <Loader />;
-  }
-
-  return (
-    <div>
-      <Navbar />
-      <div className="grid grid-cols-4 dark:bg-gray-700 lg:grid-cols-6 xl:grid-cols-4 pt-[94px]">
-        <aside
-          className={`col-span-1 dark:bg-gray-700 lg:col-span-2 xl:col-span-1 hidden lg:block`}
-        >
-          <Sidebar />
-        </aside>
-
-        {dashboardToggle && (
-          <aside className="lg:hidden">
+  if (userRole === true || adminRole === true || clientRole === true) {
+    return (
+      <div>
+        <Navbar />
+        <div className="grid grid-cols-4 dark:bg-gray-700 lg:grid-cols-6 xl:grid-cols-4 pt-[94px]">
+          <aside
+            className={`col-span-1 dark:bg-gray-700 lg:col-span-2 xl:col-span-1 hidden lg:block`}
+          >
             <Sidebar />
           </aside>
-        )}
 
-        <div className="col-span-4 lg:col-span-4 xl:col-span-3 dark:bg-gray-700 bg-slate-100">
-          <Outlet />
+          {dashboardToggle && (
+            <aside className="lg:hidden">
+              <Sidebar />
+            </aside>
+          )}
+
+          <div className="col-span-4 lg:col-span-4 xl:col-span-3 dark:bg-gray-700 bg-slate-100">
+            <Outlet />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
+
+  return <Loader />;
 };
 
 export default Dashboard;
